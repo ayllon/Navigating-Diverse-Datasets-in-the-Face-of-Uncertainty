@@ -1,0 +1,72 @@
+\documentclass[12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper]{geometry}
+\usepackage{fancyhdr}
+\usepackage{titling}
+\usepackage{graphicx}
+\usepackage[backend=biber,style=authoryear,citestyle=authoryear,maxcitenames=1]{biblatex}
+
+\usepackage{lipsum}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue
+}
+
+\graphicspath{{images/}}
+
+% Title, author
+\title{LOL WUT (Working Title)}
+\author{Alejandro Álvarez Ayllón}
+\date{\today}
+
+% Page style
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\fancyhead{}
+\fancyhead[RO,LE]{\thetitle}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+
+% Bibliography
+\addbibresource{zotero_library.bib}
+
+% Document
+\begin{document}
+
+\frontmatter
+
+\input{titlepage}
+
+\chapter*{Abstract}
+\lipsum[1-5]
+
+\chapter*{Dedication}
+\lipsum[10-12]
+
+\chapter*{Acknowledgments}
+\lipsum[10-11]
+
+\tableofcontents
+
+\mainmatter
+
+\chapter{Introduction}
+\lipsum[1-10]
+
+\chapter{Conclusion}
+\input{chapters/conclusion}
+
+\backmatter
+
+\begin{refsection}
+\nocite{Alvarez2019}
+
+\printbibliography[heading=bibintoc,title={List of Publications}]
+\end{refsection}
+
+\end{document}
