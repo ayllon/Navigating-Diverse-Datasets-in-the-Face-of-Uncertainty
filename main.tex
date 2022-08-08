@@ -11,11 +11,19 @@
 \usepackage{epigraph}
 \usepackage{graphicx}
 \usepackage{tabularx}
-\usepackage[autolanguage]{numprint}
 \usepackage{easy-todo}
+\usepackage{makecell,siunitx}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{multicol}
+\usepackage{placeins}
+\usepackage[autolanguage]{numprint}
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 
 \usepackage{lipsum}
+
+\robustify\bfseries
 
 % Links
 \usepackage{hyperref}
@@ -58,6 +66,18 @@
 % Et al
 \newcommand{\etal}{\textit{et al}. }
 
+% Math symbols
+\newcommand{\eqdist}{\stackrel{d}{=}}
+
+% Quotes in italic
+\renewcommand{\mkbegdispquote}[2]{\itshape}
+
+% Table header bold
+\renewcommand\theadfont{\bfseries}% bold tabular headers
+
+% Align on +/-
+\sisetup{separate-uncertainty}
+
 % Epigraph style
 \setlength\epigraphrule{0pt}
 \setlength\epigraphwidth{.6\textwidth}
@@ -72,6 +92,14 @@
 
 % Glossary
 \input{glossary}
+
+% Aliases for Find2, Mind and PresQ to avoid repeating textsc
+\newcommand{\Find}[0]{\textsc{Find2}\xspace}
+\newcommand{\Mind}[0]{\textsc{Mind}\xspace}
+\newcommand{\Zigzag}[0]{\textsc{Zigzag}\xspace}
+\newcommand{\PresQ}[0]{\textsc{PresQ}\xspace}
+\newcommand{\PresQG}[0]{\textsc{PresQ(G)}\xspace}
+\newcommand{\Hyperclique}[0]{\textsc{Hyperclique}\xspace}
 
 % Document
 \begin{document}
@@ -144,11 +172,11 @@ a plus rien à retrancher.}}
 \label{chapter:literature_review}
 \input{chapters/literature_review}
 
-\chapter{Discovery of \glsfmtfull{EDD} via quasi-cliques on hypergraphs}
+\chapter{\PresQ}
 \label{chapter:edd}
 \input{chapters/common_multidimensional}
 
-\chapter{\glsfmtfull{SOM} statistical test}
+\chapter{\glsfmtlong{SOM} statistical test}
 \label{chapter:som}
 \input{chapters/som}
 
