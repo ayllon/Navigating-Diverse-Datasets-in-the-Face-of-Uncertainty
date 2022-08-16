@@ -836,25 +836,29 @@ We have found evidence that code generation is a well-proven approach for
 accessing raw data files, although most solutions have not been generalized
 onto a distributed environment.
 
-\emph{AQP}
-research can bring response times down to a latency suitable for interactive exploration. However,
-the overlap between raw data files and approximate query processing still seems to be
-an area where more research may be needed.
-
-In general, there are building blocks that satisfy each one of the three
-requirements that we want to satisfy, albeit separately. However, it is unclear how
-difficult it would be to integrate or implement them in practice.
-
-Finally, it seems likely that the future will bring even more powerful
-building blocks for data exploration, resulting in flexible systems tailored to
-specific needs and capable of adapting themselves to changes on the workflow,
-allowing users to focus on the information rather than on how to treat performantly
-the raw data.
-
-\todo{Gaps in the literature}
+\subsection{Identifying gaps in the literature}
 \label{sec:mapping/gaps}
 
-Multiple files normally ignored \cite{Silva2016}.
-21.37\% of queries in \gls{SDSS} are done to the table
-\href{http://skyserver.sdss.org/dr8/en/help/browser/browser.asp?n=DBObjects&t=U}{\texttt{DBObjects}},
-which describes other tables on the schema.
+As a result of this survey, we realized that most solutions treat files
+separately, leaving it to the end-user to work out how they are related,
+an observation shared by other authors~\cite{Silva2016}.
+These files may have not yet been ingested into a database system and 
+the schema may be unfamiliar and not adequately documented, or even be
+composed of multiple files with heterogeneous schemes~\cite{alawini2016,zhang2015astronomy}.
+
+Therefore, our goal is to assist users in understanding how multiple raw files are related;
+identifying shared sets of attributes, and facilitating
+relationship-based mining between different files with heterogeneous schemes.
+To illustrate this, we show three possible scenarios for this kind of
+exploration of associations.
+These are focused mainly on astronomy but they can be extrapolated to other areas~\cite{Borne2001}:
+
+\begin{itemize}
+    \item \emph{Spatial}: Identify objects in the same location.
+    \item \emph{Temporal}: Identify events occurring within the same time period.
+    \item \emph{Coincidence}: In general, apply clustering techniques to
+    identify objects that are co-located within a multidimensional space.
+\end{itemize}
+
+In chapter~\ref{chapter:presq} we propose a novel algorithm, \PresQ, that fills this gap for
+uncertain numerical data.

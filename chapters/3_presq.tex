@@ -1,3 +1,7 @@
+Most of content on this chapter appears in the article
+\emph{\textsc{PresQ}: Discovery of Multidimensional Equally-Distributed Dependencies via Quasi-Cliques on Hypergraphs}~\cite{AlvarezAyllonPresQ2022},
+published on \emph{IEEE Transactions on Emerging Topics in Computing}.
+
 %%%%%%%%%%%%%%%%
 % INTRODUCTION %
 %%%%%%%%%%%%%%%%
@@ -6,43 +10,46 @@
 
 \section{Introduction}
 
-Nowadays, it is not uncommon for many types of users ---from proficient
-data scientists to enthusiasts without formal training--- to dive
-into overwhelming sets of data looking for any relevant pattern they
-can find. This data may consist of raw files that have not yet been ingested
-into a database system and for which the schema may be unfamiliar and not
-adequately documented. Furthermore, the entire data set may be composed
-of multiple files with heterogeneous schemes~\cite{alawini2016,zhang2015astronomy}.
-
-For the \emph{in-situ} interactive exploration, there are many proposals at different
-levels: database (indexes, physical layout),
-middleware (pre-fetching, query approximation) and user interface (visualization,
-assisted exploration) \cite{Idreos2015}. For more details, including a survey of existing
-solutions, we refer the reader to an exhaustive systematic mapping of the literature
-previously published~\cite{Alvarez2019}.
-As a result of this survey, we realized that most of the solutions
-treat files separately, leaving it to the end-user to work out how they are related.
-This is an observation shared by other authors~\cite{Silva2016}.
-
-Therefore, our goal is to assist users to understand how multiple raw files
-are related; to identify shared sets of attributes, and to facilitate
-relationship-based mining between different files with heterogeneous schemes.
-To illustrate this, we show three possible scenarios for this kind of
-exploration of associations.
-These are focused mainly on astronomy but they can be extrapolated to other areas~\cite{Borne2001}:
+Imagine an astronomer facing several data files containing raw astronomical measurements
+with little or no explanation about their schema. These files may come from different
+surveys or different sets of observations, and the user can only make the following
+educated guesses:
 
 \begin{itemize}
-    \item \emph{Spatial}: Identify objects in the same location.
-    \item \emph{Temporal}: Identify events occurring within the same time period.
-    \item \emph{Coincidence}: In general, apply clustering techniques to
-    identify objects that are co-located within a multidimensional space.
+    \item The populations are likely the same, or at least very similar (i.e., stars)
+    \item A subset of the attributes is shared between the relations (i.e., brightness
+        on different electromagnetic bands)
+    \item This measurement has an associated uncertainty~\cite{Stonebraker2009}, either
+        explicitly stated or not (i.e., random errors, instrument precision, floating point 
+        precision~\cite{dawson2008comparing})
 \end{itemize}
 
-\textsc{ReDiscover} \cite{alawini2016} is an example of a proposed solution aimed in this
+The first intuition would be to run a statistical test between all possible pairs of columns,
+such as the Kolmogorov-Smirnov~\cite{Hodges1958} or Wilcoxon~\cite{Wilcoxon1945} tests.
+
+\textsc{ReDiscover}~\cite{alawini2016} is an example of a proposed solution aimed in this
 direction. It is based on machine learning techniques, such as Support Vector
 Machines, to identify matching columns between scientific tabular data.
 Yet, this system focuses mainly on the correspondence between individual columns.
 This is insufficient for spatial and coincidence associations, as they are multidimensional.
+We are left only with a set of pairwise correspondences that may not be enough to cross-match
+tuples between files.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{images/presq/no2ind}
+    \caption{
+        Example of a 2D distribution where the pairwise matching would not be accurate enough. It is artificial, but it serves to illustrate the point.
+    }
+    \label{fig:pairwise_ind}
+\end{figure}
+
+\begin{example}
+In figure \ref{fig:pairwise_ind}, imagine that $A$ and $B$ are attributes from a relation $R$,
+and $C$ to $E$ attributes from a relation $S$.
+Pairwise tests would tell us that $A$ matches $C$ and $E$; and that $B$ matches $D$ and $F$.
+This information is not enough to do a cross-match.
+\end{example}
 
 Our general research question is: Can we use the actual \emph{data} to
 automatically guide the user to cross-match different files or to use them together as
