@@ -37,7 +37,7 @@ tuples between files.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\linewidth]{images/presq/no2ind}
+    \includegraphics[width=\linewidth]{images/3_presq/no2ind}
     \caption{
         Example of a 2D distribution where the pairwise matching would not be accurate enough. It is artificial, but it serves to illustrate the point.
     }
@@ -54,9 +54,8 @@ This information is not enough to do a cross-match.
 Our general research question is: Can we use the actual \emph{data} to
 automatically guide the user to cross-match different files or to use them together as
 a single source, taking multidimensionality into account?
-To bridge this gap, we propose the concept of \emph{Equally-Distributed Dependencies}
-(EDDs), which is inspired by the idea of \emph{Inclusion Dependencies} (INDs) from the
-relational algebra:
+To bridge this gap, we propose the concept of \glspl{EDD}, which is inspired by the idea of
+\glspl{IND} from the relational algebra:
 
 \begin{displayquote}
 An inclusion dependency between column A of relation
@@ -67,7 +66,7 @@ and Y , we write $R.X \subseteq S.Y$ , or $X \subseteq Y$ , when each distinct
 combination of values in X appears in Y \cite{abedjan2015}
 \end{displayquote}
 
-The definition of IND is based on set theory, which is not directly applicable to
+The definition of \gls{IND} is based on set theory, which is not directly applicable to
 numeric data where measures are in the real domain (e.g. spatial coordinates) and usually
 have an associated uncertainty that may or may not be explicitly stored.
 
@@ -81,18 +80,18 @@ of relation R and a set of columns Y of relation S, written $R.X \eqdist S.Y$ or
 $X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
 \end{displayquote}
 
-The term \emph{arity} refers to the cardinality of the sets of attributes $X$ and $Y$. For instance, if $|X| = 1$, we talk about unary EDDs; if $|X| = 2$,
-binary or 2-EDDs; and, in general, for $|X| = n$, $n$-ary EDDs.
+The term \emph{arity} refers to the cardinality of the sets of attributes $X$ and $Y$. For instance, if $|X| = 1$, we talk about unary \glspl{EDD}; if $|X| = 2$,
+binary or 2-\glspl{EDD}; and, in general, for $|X| = n$, $n$-ary \glspl{EDD}.
 
 \textbf{Contribution:} This paper develops the basis for equally-distributed
 dependencies and proposes a statistically robust algorithm for finding them.
 Different experiments show that our proposal successfully finds dependencies in a
 reasonable amount of time. In addition, it shows how different parametrizations balance performance
-(run-time), efficacy (capability of finding high-arity EDDs), and efficiency (avoidance of
+(run-time), efficacy (capability of finding high-arity \glspl{EDD}), and efficiency (avoidance of
 redundant results).
 
 \textbf{Paper organization:} In section~\ref{sec:literature_review}, we briefly discuss
-existing work done on IND discovery.
+existing work done on \gls{IND} discovery.
 In section~\ref{sec:background}, we introduce the background for our research. 
 In section~\ref{sec:inferring}, we propose a novel algorithm based on quasi-cliques
 to infer common equally-distributed multidimensional attributes.
@@ -109,21 +108,21 @@ further work.
 \section{Related works}
 \label{sec:literature_review}
 
-Finding high arity INDs is a NP-hard problem \cite{kantola1992}.
+Finding high arity \glspl{IND} is a NP-hard problem \cite{kantola1992}.
 For instance, for two sets of $n$ attributes in $R$ and $S$,
 there are $n!$ different possible permutations to check.
-In comparison, finding unary INDs seems a relatively simple problem,
+In comparison, finding unary \glspl{IND} seems a relatively simple problem,
 as the worst case has complexity $O(n^2)$. Nonetheless,
 testing over real files may require expensive input/output operations.
 Furthermore, as we will see later, false positives at this stage can quickly make
-finding high arity INDs unfeasible. This is because the search space tends to grow exponentially
-with the number of one-attribute matches, making unary INDs search time much less important
+finding high arity \glspl{IND} unfeasible. This is because the search space tends to grow exponentially
+with the number of one-attribute matches, making unary \glspl{IND} search time much less important
 than reducing the number of false positives.
 
 We used a published experimental evaluation~\cite{Dursch2019} as a starting point for
 assessing how adequate existing solutions are for our problem. The authors carried out a
-set of experiments with thirteen IND algorithms, of which seven are for unary INDs,
-four for $n$-ary INDs, and two for both types. A more recent survey confirms that this
+set of experiments with thirteen \gls{IND} algorithms, of which seven are for unary \glspl{IND},
+four for $n$-ary \glspl{IND}, and two for both types. A more recent survey confirms that this
 work contains the current state-of-the-art for Inclusion
 Dependencies~\cite{kossmann_data_2022}.
 
@@ -135,10 +134,10 @@ algorithms evaluated by the authors and discuss their suitability for our needs.
 \label{sec:nind_finding}
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\linewidth]{images/presq/lattice}
+    \includegraphics[width=\linewidth]{images/3_presq/lattice}
     \caption{
         Example structure of the search space as a lattice for an initial set
-        of 4 unary INDs.
+        of 4 unary \glspl{IND}.
         As an illustration, if the 2-INDs surrounded by a solid line were valid,
         a bottom-up traversal would only need checking the validity of the 3-INDs with a 
         grey background since the others could not be valid.
@@ -179,14 +178,14 @@ This partial order enables us to structure the search space as a lattice, as exe
 ---from level $k$ to $k$+1--- or top-down ---from level $k$ to $k$--1--- order.
 
 \textsc{Mind}~\cite{DeMarchi2002} is a bottom-up approach: it starts
-from a set of known, satisfied unary INDs and builds higher arity candidates
+from a set of known, satisfied unary \glspl{IND} and builds higher arity candidates
 combining them.
 These new candidates are then validated against the database and those satisfied
 are used for computing the next level candidates until no more candidates are available.
 
 \Zigzag~\cite{DeMarchi2003zigzag} starts with a \textsc{Mind} bottom-up approach
-up to a given arity $n \ge 2$. Then, it uses all satisfied INDs to initialize a \textit{positive border}
-and the non-satisfied to initialize a \textit{negative border}. The set of satisfied INDs
+up to a given arity $n \ge 2$. Then, it uses all satisfied \glspl{IND} to initialize a \textit{positive border}
+and the non-satisfied to initialize a \textit{negative border}. The set of satisfied \glspl{IND}
 is used to generate the set of candidates with the highest arity possible, called
 \textit{optimistic border},
 which is then validated against the database. This is the bottom-up part of the search.
@@ -195,24 +194,24 @@ Invalid candidates are treated depending on how many tuples are different betwee
 Those above a given threshold (too many different tuples) are added to the negative border.
 Those below are top-down traversed, from level $n$ to $n$--1, validated, and then added
 to the positive border if they are satisfied. The algorithm then iterates, building a new
-optimistic border until it is not possible to generate new INDs. The optimistic approach
-can prune the search space very aggressively when there are high-arity INDs,
+optimistic border until it is not possible to generate new \glspl{IND}. The optimistic approach
+can prune the search space very aggressively when there are high-arity \glspl{IND},
 but when most arities are low,  \textsc{Mind} may perform better.
 
 \Find~\cite{koeller2003discovery} is based on the equivalence
 between finding $n$-INDs and finding cliques on $n$-uniform hypergraphs (a generalization
-of the concept of a graph where each edge connects $n$ nodes). Each unary IND corresponds
+of the concept of a graph where each edge connects $n$ nodes). Each unary \gls{IND} corresponds
 to a node, and an $n$-IND corresponds to an edge on an $n$-uniform hypergraph.
-Once such a graph is built, each IND corresponds to a clique and maximal INDs
+Once such a graph is built, each \gls{IND} corresponds to a clique and maximal \glspl{IND}
 correspond to maximal cliques. They present the \Hyperclique algorithm,
 capable of finding maximal cliques performantly, which can be mapped back to candidate
-maximal INDs. These are finally validated using database queries.
+maximal \glspl{IND}. These are finally validated using database queries.
 As \Zigzag, \Find starts with a bottom-up
-approach to look for maximal cliques (i.e., potential maximal INDs). The invalid ones
+approach to look for maximal cliques (i.e., potential maximal \glspl{IND}). The invalid ones
 are used to generate a new ($n$+1) uniform graph. This is a stage that corresponds to the top-down
 traversal.
 
-While these three algorithms were evaluated on INDs between relational datasets
+While these three algorithms were evaluated on \glspl{IND} between relational datasets
 and with attributes that can be directly compared (i.e. from discrete domains), their
 traversal of the search space and their validation steps are well decoupled. They
 can be easily be adapted to the equality-of-distribution statistical tests.
@@ -226,11 +225,11 @@ attributes and their combinations, which is inapplicable
 for continuous data that can very possibly have an associated uncertainty.
 
 From the three suitable candidates, \Mind's bottom-up approach can be performant enough for
-relatively low arity IND relations. However, it has one substantial disadvantage:
-it requires an exponential number of tests, prohibitive for higher arity INDs.
+relatively low arity \gls{IND} relations. However, it has one substantial disadvantage:
+it requires an exponential number of tests, prohibitive for higher arity \glspl{IND}.
 Both \Zigzag and \Find overcome this limitation by alternating between \emph{optimistic}
 (top-down) and \emph{pessimistic} (bottom-up) traversals.
-Finally, \Find maps the search of INDs to the search of maximal cliques. We know that
+Finally, \Find maps the search of \glspl{IND} to the search of maximal cliques. We know that
 using statistical tests will introduce unavoidable false negatives, which would
 translate into missing edges.
 A clique with missing edges is a quasi-clique, and finding quasi-cliques, while at least
@@ -240,16 +239,16 @@ as hard as finding cliques, is doable. This has influenced our approach.
 
 Foreign key discovery is outside the scope of this paper.
 We briefly survey this area, however, since we consider it complementary to
-IND discovery. A foreign key (FK) constrain on an attribute
+\gls{IND} discovery. A foreign key (FK) constrain on an attribute
 $A$ over a primary key (PK) $B$ implies that all values present on $A$ must also be
 present on $B$.
 Therefore, there exists an inclusion dependency between $A$ and $B$.
 However, the reverse is not necessarily true. For instance, two auto-increment attributes from
 two different relations may have an accidental Inclusion Dependency with no semantic meaning.
 
-To distinguish between accidental and meaningful INDs, Rostin \etal~\cite{Rostin2009} propose to
+To distinguish between accidental and meaningful \glspl{IND}, Rostin \etal~\cite{Rostin2009} propose to
 train machine learning models over a set of features extracted from positive PK/FK relations and
-negative, non-meaningful INDs. However, their proposal is limited to unary INDs.
+negative, non-meaningful \glspl{IND}. However, their proposal is limited to unary \glspl{IND}.
 
 Zhang \etal~\cite{Zhang2010} present an algorithm capable of handling multi-column PK/FK relations.
 They define the concept of \emph{Randomness Test}, which assumes that an FK is a representative
@@ -262,7 +261,7 @@ where $X$ must be chosen to balance precision and recall.
 More recently, Jian \etal~\cite{jiang_holistic_2020} introduced an approach that identifies
 both PK and FK holistically. They validate Zhang's concept of \emph{Randomness} and propose a simplified
 estimator that treats each attribute separately. They do not need the PKs to be known but require a list of
-INDs as input.
+\glspl{IND} as input.
 
 It is worth noting that even though the latter two publications use the idea of the FK being a random
 sample of the PK, their methods use the \emph{distance} between distributions for
@@ -297,15 +296,15 @@ flawed idea to compare floating-point numbers with strict equality.
 Instead, we can use $R.X \eqdist S.Y$ as an approximation, meaning that the two sets of
 attributes are equally distributed. This relation is, unlike the subset relation, symmetrical.
 
-Following the parallelism with IND finding, we say that the dataset $d$ satisfies
+Following the parallelism with \gls{IND} finding, we say that the dataset $d$ satisfies
 the relation defined by equality of distribution $\eqdist$ when a statistical test
 fails to reject the null hypothesis
 \begin{equation}
     H_0: P(R[X]) = P(S[Y])
     \label{eq:eqdist}
 \end{equation}
-Three inference rules can be used to derive some additional INDs from an already known
-set of INDs. They are defined using sets and subsets \cite{Casanova1984},
+Three inference rules can be used to derive some additional \glspl{IND} from an already known
+set of \glspl{IND}. They are defined using sets and subsets \cite{Casanova1984},
 but they translate to the equality of distribution:
 
 \begin{description}
@@ -327,7 +326,7 @@ Thanks to the validity of these rules, particularly the permutation and projecti
 we can use the specialization relation seen in definition \ref{def:specialization}
 when dealing with distributions.
 
-With these rules we have defined the search space similar to the one from IND discovery.
+With these rules we have defined the search space similar to the one from \gls{IND} discovery.
 The last requirement is a property that allows the pruning of the
 search space as illustrated in figure~\ref{fig:lattice}.
 
@@ -349,9 +348,9 @@ This is denoted as $d \models I$.
 
 \footnotetext{Strictly speaking, \emph{not rejecting} $H_{0_2}$ implies that we can not reject $H_{0_1}$.}
 
-This property is similar to that proposed for INDs\cite{DeMarchi2002}, with the exception that even if $d \models I_2$, there is a probability to falsely reject $I_1$ bound by the significance level $\alpha$.
+This property is similar to that proposed for \glspl{IND}\cite{DeMarchi2002}, with the exception that even if $d \models I_2$, there is a probability to falsely reject $I_1$ bound by the significance level $\alpha$.
 
-% This property is similar to the one proposed for INDs\cite{DeMarchi2002}, with the exception that even if $d \models I_2$, there is a probability to falsely reject $I_1$ bound by the significance level $\alpha$.
+% This property is similar to the one proposed for \glspl{IND}\cite{DeMarchi2002}, with the exception that even if $d \models I_2$, there is a probability to falsely reject $I_1$ bound by the significance level $\alpha$.
 
 \begin{example}
     If we have two sets of $10$ attributes that are equally distributed, the number of
@@ -419,8 +418,8 @@ The hyper-clique problem is a particular case when either $\lambda = 1$ or $\gam
 \section{Inferring common multidimensional data}
 \label{sec:inferring}
 
-The first required step to find multidimensional EDDs is to
-find a set of unary EDDs, for which a naive approach would
+The first required step to find multidimensional \glspl{EDD} is to
+find a set of unary \glspl{EDD}, for which a naive approach would
 mean quadratic complexity. To reduce the complexity, we
 propose an algorithm based on interval trees in
 section \ref{sec:unary}. In section
@@ -435,7 +434,7 @@ and false negatives.
 \label{sec:unary}
 
 The first required step for any of the three algorithms is to find a set of valid unary
-EDDs on the datasets. i.e., attribute pairs that follow
+\glspl{EDD} on the datasets. i.e., attribute pairs that follow
 the same distribution. It can be done with the non-parametric
 Kolmogorov-Smirnov (KS) two-sample test~\cite{Hodges1958}.
 More formally, for a possible pair of attributes $A$ and $B$ from two different relations,
@@ -444,8 +443,8 @@ this null hypothesis is accepted or rejected with a significance level $\alpha \
 which is the probability of falsely rejecting $H_0$ (false negative).
 
 Consider a dataset containing the relations $R_1,R_2,\ldots,R_n$ with a total number of
-attributes $N = \sum_{i=1}^n |R_i|$. A naive approach to finding unary EDDs requires $N - 1$
-statistical tests for each attribute. Since the EDD relation is symmetric
+attributes $N = \sum_{i=1}^n |R_i|$. A naive approach to finding unary \glspl{EDD} requires $N - 1$
+statistical tests for each attribute. Since the \gls{EDD} relation is symmetric
 ($A \eqdist B \iff B \eqdist A$) half of the tests can be avoided, bounding the total number
 of tests by the quadratic expression $(N \times (N - 1)) / 2$.
 
@@ -457,20 +456,20 @@ reduced to $O(N \log(N) + M)$, where $M$ is the total number of overlapping pair
 Note that $M \le (N \times (N - 1)) / 2$, so the worst-case remains quadratic.
 
 However, the cost of the tests themselves is almost negligible when compared to the cost of
-finding $n$-ary EDDs, which is exponential with
-the number of unary EDDs. Therefore, a low significance level $\alpha$ for finding unary EDDs
+finding $n$-ary \glspl{EDD}, which is exponential with
+the number of unary \glspl{EDD}. Therefore, a low significance level $\alpha$ for finding unary \glspl{EDD}
 will considerably increase the cost at later stages.
 
 \subsection{Multidimensional EDDs}
 \label{sec:multidimensional_edd}
 Once we have a set of unary matches, we need to find which, if any, higher dimensional
 sets of attributes are shared between each pair of relations. As discussed in section
-\ref{sec:literature_review}, only three of the existing IND finding solutions are not strongly
+\ref{sec:literature_review}, only three of the existing \gls{IND} finding solutions are not strongly
 dependent on discrete types: \Mind, \Zigzag and \Find.
 However, replacing the \emph{inclusion} tests with statistical tests affects their behavior.
 
 \Mind traverses the search space bottom-up. Thus, for two relations with a single
-multidimensional EDD with $n$ attributes, every combination of $k$ nodes from $k = 2$
+multidimensional \gls{EDD} with $n$ attributes, every combination of $k$ nodes from $k = 2$
 to $k = n$ must be tested, as shown in equation~\ref{eq:mind_tests}.
 
 \begin{equation}
@@ -480,26 +479,26 @@ to $k = n$ must be tested, as shown in equation~\ref{eq:mind_tests}.
 
 Since statistical tests are not exact, the chances of having
 at least one false rejection in the validation chain
-increases with the maximal EDD arity, introducing
+increases with the maximal \gls{EDD} arity, introducing
 discontinuities in the search space. This makes its traversal more difficult.
 
 The search algorithm of \Find is capable of finding
-maximal INDs with fewer tests. As an input, it requires a set of valid unary and $n$-ary
-IND relations. A k-uniform hypergraph $G(V,E)$ is then constructed, where the set of accepted
-unary INDs are mapped to the set of vertices $V$, and the set of accepted $k$-INDs to 
+maximal \glspl{IND} with fewer tests. As an input, it requires a set of valid unary and $n$-ary
+\gls{IND} relations. A k-uniform hypergraph $G(V,E)$ is then constructed, where the set of accepted
+unary \glspl{IND} are mapped to the set of vertices $V$, and the set of accepted $k$-INDs to 
 the set of edges $E$. 
-Given this initial hypergraph, the authors of \Find prove that finding higher arity INDs can be
-mapped to the problem of finding cliques, since all the generalized $k$-ary INDs
+Given this initial hypergraph, the authors of \Find prove that finding higher arity \glspl{IND} can be
+mapped to the problem of finding cliques, since all the generalized $k$-ary \glspl{IND}
 \emph{must} appear as edges.
 
-However, this is not always true for the EDD finding problem. The statistical test
+However, this is not always true for the \gls{EDD} finding problem. The statistical test
 will yield some false positives and some false negatives, a combination that makes it
 difficult for \Find to find the true relations. Cliques will likely be \emph{broken} due
 to the false rejections, and there will be spurious edges due to false positives.
-Higher arity EDDs do not appear as cliques in this scenario.
+Higher arity \glspl{EDD} do not appear as cliques in this scenario.
 
 Finally, \Zigzag can not recover well from missing
-EDDs. Any rejected EDD is added to the negative border
+\glspl{EDD}. Any rejected \gls{EDD} is added to the negative border
 and will not be considered any further. Additionally, some
 early experiments with \Zigzag indicated
 that the combination of false positives and false negatives
@@ -508,18 +507,18 @@ makes the algorithm run close to its worst-case complexity (factorial).
 \subsection{\PresQ algorithm}
 \label{sec:presq}
 
-As we have discussed, EDD finding does not map well to the clique-finding
+As we have discussed, \gls{EDD} finding does not map well to the clique-finding
 problem due to missing and spurious edges caused by the statistical tests. We propose instead
 an algorithm based on quasi-cliques as described in definition~\ref{def:quasi_clique}.
 This approach is better suited to the uncertainties associated to hypothesis testing.
 
 \textbf{Finding quasi-cliques \emph{seeds}:} Some initial experiments with \Find showed that,
 by only modifying the validation strategy to use statistical tests, the algorithm was able
-to find relatively high arity EDDs regardless of the missing edges.
+to find relatively high arity \glspl{EDD} regardless of the missing edges.
 
-The modified \Find maps the initial set of EDDs into a graph and lets the \Hyperclique
-algorithm find the set of maximal cliques, then maps them back to EDDs and validates the
-inferred EDDs. Therefore, if \Find finds high arity EDDs is because \Hyperclique finds
+The modified \Find maps the initial set of \glspl{EDD} into a graph and lets the \Hyperclique
+algorithm find the set of maximal cliques, then maps them back to \glspl{EDD} and validates the
+inferred \glspl{EDD}. Therefore, if \Find finds high arity \glspl{EDD} is because \Hyperclique finds
 maximal cliques close to the maximal quasi-clique. This makes sense since, generally,
 a quasi-clique contains smaller but denser sub-graphs~\cite{SaneiMehri2018} and a clique
 is denser than a quasi-clique.
@@ -582,14 +581,14 @@ seeds found.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{images/presq/pipeline}
+    \includegraphics[width=\linewidth]{images/3_presq/pipeline}
     \caption{Simplified schematic of the algorithm.}
     \label{fig:presq_pipeline}
 \end{figure}
 
  Given datasets $R$ and $S$,
 
-(a) Candidate $1$-EDDs are found applying the interval-tree as described in section~\ref{sec:unary}.
+(a) Candidate $1$-\glspl{EDD} are found applying the interval-tree as described in section~\ref{sec:unary}.
 
 (b) Those for which the Kolmogorov-Smirnov finds a significant difference are discarded,
     and the rest are mapped to nodes.
@@ -619,15 +618,15 @@ Three candidates of arity 8 are generated given the constrain on the number of e
 \subsubsection{Parameters}
 
 Before explaining how to tailor the parameterization of the quasi-clique finding for the purpose
-of searching EDDs, we need to remind that, given two sets of attributes $R[X]$ and $S[Y]$,
+of searching \glspl{EDD}, we need to remind that, given two sets of attributes $R[X]$ and $S[Y]$,
 our algorithm builds on the null hypothesis $H_0: P(R[X]) = P(S[Y])$.
-In other words, it is based on the \emph{assumption} that any EDD candidate is valid.
+In other words, it is based on the \emph{assumption} that any \gls{EDD} candidate is valid.
 
 Let $\alpha$ be the significance level chosen by the user before running the algorithm.
 Let $G$ be the initial $k$-uniform hypergraph and let $K$ be a quasi-clique candidate.
 Under $H_0$, $K$ represents a $|K|$-ary EDD, and by the projection rule,
-all possible edges between the nodes in $K$ are also valid $k$-ary EDDs.
-If we run null hypothesis tests over these $k$-ary specialized EDDs,
+all possible edges between the nodes in $K$ are also valid $k$-ary \glspl{EDD}.
+If we run null hypothesis tests over these $k$-ary specialized \glspl{EDD},
 by the definition of type-I error, we can expect as many as $\alpha \times \binom{|K|}{k}$ false rejections.
 In other words, under $H_0$, we can expect a ratio of $\alpha$ missing edges.
 This is equivalent to setting the threshold for equation~\ref{eq:edge_hyperclique} as:
@@ -639,8 +638,8 @@ This is equivalent to setting the threshold for equation~\ref{eq:edge_hypercliqu
 Adjusting $\lambda$ is less straightforward: a high threshold
 will reject good candidates. A low one will accept spurious ones, triggering
 unnecessary tests. Even worse, the spurious quasi-cliques tend to have a high cardinality.
-Once rejected, they will cascade and cause an increase on lower-arity EDDs
-to be tested as much as $\binom{n}{k+1}$, where $n$ is the arity of the EDD candidate,
+Once rejected, they will cascade and cause an increase on lower-arity \glspl{EDD}
+to be tested as much as $\binom{n}{k+1}$, where $n$ is the arity of the \gls{EDD} candidate,
 and $k$ is the current level of the bottom-up exploration.
 
 To solve this dilemma, we propose to use an adaptive value for $\lambda$ based on the
@@ -666,7 +665,7 @@ null hypothesis and accept that the set of edges connecting the node are spuriou
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/presq/hypergeom}
+    \includegraphics{images/3_presq/hypergeom}
     \caption{Distribution of the degree of the nodes under the null hypothesis that the 
     missing edges on the quasi-clique are due to the expected false negative rate of the
     statistical test.
@@ -696,7 +695,7 @@ and the effects of the parameters $\gamma$ and $\Lambda$ on the quasi-clique fin
 
 In the following section, we will show that adapting \Find clique validation with ours
 is enough to improve its performance in run-time and results. The \emph{growing}
-step improves the efficacy (i.e. more maximal EDDs found) at the cost of a higher run-time.
+step improves the efficacy (i.e. more maximal \glspl{EDD} found) at the cost of a higher run-time.
 
 \section{Experiments}
 \label{sec:experiments}
@@ -708,9 +707,9 @@ searches for quasi-cliques instead of full cliques.
 
 We focus on comparing these algorithms for two main reasons:
 1) To prove that quasi-clique finding can outperform clique finding both in run-time and
-results when the data is noisy, an advantage not necessarily exclusive to EDD finding;
-2) While INDs are targeted towards inferring foreign-key relationships and generally of low arity,
-we expect EDDs to be of high arity ---\emph{co-located within a multidimensional space}---,
+results when the data is noisy, an advantage not necessarily exclusive to \gls{EDD} finding;
+2) While \glspl{IND} are targeted towards inferring foreign-key relationships and generally of low arity,
+we expect \glspl{EDD} to be of high arity ---\emph{co-located within a multidimensional space}---,
 and \Find performs well when the arity is high~\cite{Dursch2019}.
 
 \subsection{Experimental design}
@@ -807,7 +806,7 @@ The initialization stage of the test is as follows:
         a similar procedure to reduce the number of columns to check \cite{Kruse2017}.
     \item A random sample is taken from both relations (it defaults to 200)
     \item The algorithm described in section~\ref{sec:unary} is used to find a set of valid
-        unary EDDs.
+        unary \glspl{EDD}.
     \item \emph{All} possible $n$-EDDs (for $n \in \{2, 3\}$) are generated and validated.
         The tests begin at different arities in order to compare the resiliency of
         \Find and \PresQ for different initial conditions.
@@ -826,14 +825,14 @@ there is an unavoidable effect of the randomization of the sampling in step 3 an
 $N$-dimensional permutation tests, we have repeated the experiment.
 As a result, we are confident that the difference is significant and not due to chance.
 
-While \Find has no parameters beyond the initial set of EDDs,
+While \Find has no parameters beyond the initial set of \glspl{EDD},
 \PresQ requires a value for both $\gamma$ and $\Lambda$. As we mentioned earlier,
 it makes sense to bind $\gamma$ to the expected number of missing edges
 (false negatives): $\gamma = 1 - \alpha$. For $\Lambda$, we have tested with the
 values 0.05 and 0.1 since lower values yield too many accidental quasi-cliques,
 while higher values defeat the tolerance introduced by $\gamma$.
 
-To measure the efficacy (EDDs finding) and efficiency (run-time) of the algorithms,
+To measure the efficacy (\glspl{EDD} finding) and efficiency (run-time) of the algorithms,
 we took the measurements summarized in tables \ref{tab:raw_measurements}
 and \ref{tab:derived_measurements}.
 
@@ -848,11 +847,11 @@ and \ref{tab:derived_measurements}.
                                    candidates.
                                    Tests can be potentially expensive, so we measure how many
                                    statistical tests are necessary. \\
-        \emph{EDD count} & Without removing non-maximal EDDs \\
-        \emph{Maximal EDD count} & Removing non-maximal EDDs \\
+        \emph{EDD count} & Without removing non-maximal \glspl{EDD} \\
+        \emph{Maximal EDD count} & Removing non-maximal \glspl{EDD} \\
         \emph{Timeouts} & The execution time has a time limit of 3000 seconds. We report the
          percentage of runs that could not finish within the allocated time window. \\
-        \emph{Highest arity} & The maximum EDD arity found \\
+        \emph{Highest arity} & The maximum \gls{EDD} arity found \\
     \end{tabular}
 \end{table}
 
@@ -862,14 +861,14 @@ and \ref{tab:derived_measurements}.
     \centering
     \begin{tabular}{p{0.16\linewidth} p{0.75\linewidth}}
         \emph{Match ratio} & It is a ratio between the maximum arity of the maximal
-        quasi-clique found and the \textit{true} maximum EDD possible to find on
+        quasi-clique found and the \textit{true} maximum \gls{EDD} possible to find on
         each separate run.
         This \emph{truth} is solely based on attribute names. The algorithms can
-        find higher arity EDDs when the values are taken into account.
+        find higher arity \glspl{EDD} when the values are taken into account.
         This is a proof of success: the metadata would not have sufficed to capture
         this trait. \\
         
-        \emph{Accuracy} & Measured as the number of total returned EDDs, divided by
+        \emph{Accuracy} & Measured as the number of total returned \glspl{EDD}, divided by
         the number of statistical tests executed. A ratio of $1$ (best) means that every
         candidate was accepted by the statistical test, while a ratio of $0$ (worst)
         means that all candidate quasi-cliques were rejected. This value is
@@ -887,15 +886,15 @@ of the results. As a general guideline, we consider:
     \item For a similar match ratio, the lower the run-time, the better.
 \end{itemize}
 
-For a similar match ratio, a higher number of maximal EDDs is desirable. Arguably not
-for the IND discovery ---after all, a few good candidates may suffice---,
+For a similar match ratio, a higher number of maximal \glspl{EDD} is desirable. Arguably not
+for the \gls{IND} discovery ---after all, a few good candidates may suffice---,
 but it proves the capacity of finding maximal quasi-cliques.
 
 It is important to note that some of these measures are interdependent. For instance,
-if a maximal EDD with a higher arity is found, the number of EDDs should generally decrease.
+if a maximal \gls{EDD} with a higher arity is found, the number of \glspl{EDD} should generally decrease.
 Conversely, if a true, high arity candidate is rejected, multiple generalizations will be considered
-and possibly accepted, increasing the number of unique EDDs.
-Similarly, finding more maximal EDDs implies running more statistical
+and possibly accepted, increasing the number of unique \glspl{EDD}.
+Similarly, finding more maximal \glspl{EDD} implies running more statistical
 tests, so the run-time will be worse. Ultimately, it is up to the user to decide what is
 more important and parameterize the algorithm accordingly.
 
@@ -955,7 +954,7 @@ but have different sets of attributes. These datasets are an example of data fus
 
 \emph{Waveform Database Generator}
     We use version 1, with 21 attributes, and version 2, which shares the same 21 attributes and adds 19
-    extra features that are just Gaussian noise. This 21-ary EDD between the datasets goes
+    extra features that are just Gaussian noise. This 21-ary \gls{EDD} between the datasets goes
     beyond the maximum 7-ary evaluated in previous works~\cite{Dursch2019}.
     Additionally, the number of attributes and their distribution similarity generates many false positives at low
     dimensionality, stressing the capability of processing noisy, dense, graphs.
@@ -1017,7 +1016,7 @@ These results confirm that spurious edges influence the
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/presq/3hyper_beta}
+    \includegraphics{images/3_presq/3hyper_beta}
     \caption{Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
     for different ratios of spurious edges ($\beta$).
     Each data-point corresponds to 15 runs.}
@@ -1034,7 +1033,7 @@ of missing edges and run-time.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/presq/3hyper_alpha}
+    \includegraphics{images/3_presq/3hyper_alpha}
     \caption{Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
     for different ratios of missing edges ($\alpha$).
     Each data-point corresponds to 15 runs.}
@@ -1059,7 +1058,7 @@ This makes sense since there is no correlation between missing edges.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/presq/quasi_corr_20}
+    \includegraphics{images/3_presq/quasi_corr_20}
     \caption{
     Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.
     In this setup there were no timeouts. Each data-point corresponds to 5 runs.
@@ -1087,7 +1086,7 @@ $\hat{\phi}$ can be estimated using bootstrapping.
 In this manner, we obtain the estimated population mean and standard deviation. Finally,
 we compute the $95\%$ confidence interval $\hat{\mu_\phi} \pm 1.96 \hat{\sigma_\phi}$
 
-Figure \ref{fig:results_summary} shows this confidence interval for match ratio, unique EDDs,
+Figure \ref{fig:results_summary} shows this confidence interval for match ratio, unique \glspl{EDD},
 number of tests and wall time (columns) for a significance level of $0.10$, against the
 different datasets (rows).
 
@@ -1101,7 +1100,7 @@ missing true ones. Consequently, the efficiency is improved at the cost of the e
 \PresQ allows us to increase the significance
 level without sacrificing much efficacy.
 
-For the AFDS dataset, when comparing the maximum EDD arity found per pair of files,
+For the AFDS dataset, when comparing the maximum \gls{EDD} arity found per pair of files,
 scenarios two and three are the most similar, as seen in figure~\ref{fig:afds}.
 We can obtain this insight without even knowing what the schema nor the content of the files are.
 After seeing this result, we checked the original paper from
@@ -1111,7 +1110,7 @@ We consider this another proof of the utility of the proposed techniques.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/presq/afds}
+    \includegraphics[width=0.5\linewidth]{images/3_presq/afds}
     \caption{
         Pairwise max arity found on the AFDS dataset for each pair of scenarios
     }
@@ -1122,9 +1121,9 @@ Table~\ref{tab:ind2_summary} summarizes the overall results when
 we execute our tests over the datasets \emph{Mortage vs Treasury},
 \emph{Ailerons vs Elevators} and \emph{DC2} for different values of $\gamma$ and $\Lambda$ ---
 note that \Find is equivalent to either one of the two parameters set to $1.$. For run-time,
-match ratio, and the number of unique EDDs, we provide the first and third quartiles.
+match ratio, and the number of unique \glspl{EDD}, we provide the first and third quartiles.
 The \emph{precision} column shows a measure of how many candidates are accepted by the
-statistical test. A value of $1$ means that all candidates were valid EDDs.
+statistical test. A value of $1$ means that all candidates were valid \glspl{EDD}.
 
 When the search algorithm looks for cliques (first entry for each dataset),
 the precision is high since almost all candidates were accepted. However,
@@ -1133,7 +1132,7 @@ columns. As the potential maximal arity becomes higher ---e.g., \emph{DC2}--- th
 chance of having missing edges increases, thus making the search more resource intensive.
 
 On the other hand, in a too permissive setup where only $\gamma$ constrains the quasi-cliques
-(second entry), the algorithm is too eager and accepts EDD candidates later rejected either
+(second entry), the algorithm is too eager and accepts \gls{EDD} candidates later rejected either
 by the statistical test or by the limitation of not accepting duplicated columns.
 The precision is low, and the search time increases as well.
 
@@ -1152,12 +1151,12 @@ when running over the DC2 dataset. The first four stages are unaffected by this 
     from both relations. Only overlapping ranges are compared,
     reducing by $~27\%$ the number of tests required.
 \item $~810$ KS tests need to be done. $~49$ pairwise combinations are considered equally distributed
-    (uEDDs).
-\item $(n \times (n - 1)) \div 2 ~= 1176$ edges are build combining all uEDDs and validated
+    (\glspl{uEDD}).
+\item $(n \times (n - 1)) \div 2 ~= 1176$ edges are build combining all \glspl{uEDD} and validated
     using the $k$NN test. $~612$ edges are considered valid.
 \item The initial graph has half as many edges as the complete graph.
     Since we know the ground truth, we can extract the sub-graph induced by the set of
-    true uEDD and find the number of missing edges to be $\approx 0.10$ on average,
+    true \gls{uEDD} and find the number of missing edges to be $\approx 0.10$ on average,
     as we expected.
 \end{enumerate}
 
@@ -1194,7 +1193,7 @@ to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\linewidth]{images/presq/all}
+    \includegraphics[width=\linewidth]{images/3_presq/all}
     \caption{
         $95\%$ confidence intervals for the percent difference
         (equation \ref{eq:percent_difference}) between \Find and
@@ -1205,7 +1204,7 @@ to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
         For ratio, higher is better. For tests and run-time, lower is better. Unique is harder to
         assess since the results also depend on the statistical power of the chosen test.
         Since the growing stage can generate many candidates, a low-powered test will accept
-        many false EDDs.
+        many false \glspl{EDD}.
     }
     \label{fig:results_summary}
 \end{figure*}
@@ -1336,9 +1335,9 @@ define the initial edges for the $n$-EDD finding.
 
 
 The \emph{KEEL} dataset contains 43 different relations. The interval tree saves around 45\% of
-the tests since many columns do not overlap. The number of EDDs increments in `bursts' when a
+the tests since many columns do not overlap. The number of \glspl{EDD} increments in `bursts' when a
 relation that matches a previous one enters the pool. This is due to the existence of
-high arity EDDs (16, 12, 7 and 6).
+high arity \glspl{EDD} (16, 12, 7 and 6).
 The high number of $2$-EDDs makes the growing stage eventually impractical.
 
 For the \emph{ChEMBL} databases, we have used a naive random sampling that only requires a single
@@ -1365,9 +1364,9 @@ dimensionality, and the initial graph becomes very dense.
 
 \begin{figure*}[htb]
     \centering
-    \includegraphics{images/presq/scalability}
+    \includegraphics{images/3_presq/scalability}
     \caption{Scalability of \PresQ with respect to the number of columns.
-    The top row corresponds to the number of EDDs with arities 1, 2, and $n \ge 3$.
+    The top row corresponds to the number of \glspl{EDD} with arities 1, 2, and $n \ge 3$.
     The middle row shows the time spent on each stage: sampling, searching, and testing for the different arities.
     Note that the two n-EDDs variants are stacked over the previous stages, displaying the total run-time.
     The last row shows the percentage of runs timed out at 50 minutes.
@@ -1377,7 +1376,7 @@ dimensionality, and the initial graph becomes very dense.
 
 \begin{figure}[htb]
     \centering
-    \includegraphics{images/presq/scalability_sample_wave}
+    \includegraphics{images/3_presq/scalability_sample_wave}
     \caption{
         Scalability of \PresQ with respect to the number of samples for the Waveform datasets.
         Note that for the top row the $y$ axis is linear between $0$ and $100$, and
@@ -1395,13 +1394,13 @@ Identifying shared attributes between multiple numerical datasets is an interest
 problem. It combines the challenging nature of algorithms devised to find Inclusion Dependencies,
 an NP-hard problem~\cite{kantola1992}, with the unavoidable uncertainty of statistical
 methods.
-This uncertainty reflects as falsely rejected EDDs and falsely accepted EDDs.
+This uncertainty reflects as falsely rejected \glspl{EDD} and falsely accepted \glspl{EDD}.
 
 \Find is an algorithm that maps inclusion dependencies to hyper-cliques,
 which generally performs  at least as well as the alternatives \cite{Dursch2019}.
 It is not strongly coupled to the discrete nature of the underlying data.
 However, its ability ---and of most, if not all, of the existing algorithms--- to find
-high arity EDDs will be impaired by the level of false rejections.
+high arity \glspl{EDD} will be impaired by the level of false rejections.
 
 A lower rejection threshold could compensate for this. Yet, it increases the number
 of false detections, which is a known factor that degrades
@@ -1450,7 +1449,7 @@ quasi-cliques can be used as \emph{seeds} to grow other quasi-cliques by adding 
 The results shown in  section~\ref{sec:experiments} demonstrate that this method is capable of
 finding considerable more maximal quasi-cliques (not contained in any other found quasi-cliques)
 at the expense of a higher run-time. This is due both to the traversal of the search space and the
-validation of the EDDs represented by the quasi-cliques.
+validation of the \glspl{EDD} represented by the quasi-cliques.
 
 The loss of accuracy introduced by this growing stage is minor when starting at $n = 3$,
 which means that the statistical test could not reject most candidates. However, for an
@@ -1458,7 +1457,7 @@ initial $n = 2$, most candidates were rejected. We consider that this is mostly 
 to the lack of power of the $k$NN test for low dimensions, which introduces
 many spurious edges.
 
-The overall run-time of the EDD finding algorithms is heavily influenced by the
+The overall run-time of the \gls{EDD} finding algorithms is heavily influenced by the
 chosen parameter values.
 A strict parametrization will reject most seed candidates, and the quasi-clique search will fall
 into exponential complexity. Conversely, a flexible one will be faster at finding
@@ -1466,10 +1465,10 @@ quasi-clique candidates. Yet, the statistical test will likely reject them, caus
 into an exponential number of newer, smaller candidates.
 In general, a balanced parametrization based on both $\gamma$ and $\Lambda$ is more predictable.
 
-As a final remark, the set of accepted EDDs may contain several false positives depending on the power of
+As a final remark, the set of accepted \glspl{EDD} may contain several false positives depending on the power of
 the multivariate statistical test. A second pass adapted from the foreign key literature can prove helpful.
 For instance, we can envision a ranking based on the previously discussed \emph{randomness}~\cite{Zhang2010}
-in order to decide which set of EDDs is more suitable for cross-matching the datasets.
+in order to decide which set of \glspl{EDD} is more suitable for cross-matching the datasets.
 
 \section{Threats to validity}
 \label{sec:threats}
@@ -1486,7 +1485,7 @@ it is evident that, on average, the quasi-clique-based searching algorithm consi
 better both in terms of run-time and ability to find the maximal EDD.
 It has enough runs as to make the difference significant.
 It is worth mentioning that there are proposed heuristics~\cite{koeller2003discovery} to find higher
-arity EDDs, even when edges are missing, by merging found lower-arity EDDs and testing them
+arity \glspl{EDD}, even when edges are missing, by merging found lower-arity \glspl{EDD} and testing them
 instead.
 Nonetheless, we consider that the run-time differences are significant enough to make
 the quasi-clique-based search a better approach in those cases.
@@ -1510,8 +1509,7 @@ well as the original \Find algorithm.
 One significant caveat of our approach is that it may not find
 any dependencies if prior filtering has been applied to only one of the two relations
 (i.e., signal to noise filtering). This is a limitation of the validation
-step. This issue was also recognized on the original \Find
-proposal \cite{koeller2003discovery}.
+step. This issue was also recognized on the original \Find proposal \cite{koeller2003discovery}.
 
 All the necessary code to reproduce our tests, our
 measurements, and figures, are publicly available\footnote{\url{https://doi.org/10.5281/zenodo.6865856}}.
@@ -1523,24 +1521,24 @@ is a similar problem to that of finding Inclusion Dependencies between tables
 in a relational model. However, the statistical nature of tests, with their
 potential uncertainties, can make more difficult their finding and considerably
 degrade the performance of existing algorithms.
-This problem can be mapped to finding quasi-cliques, as the IND problem can be mapped
+This problem can be mapped to finding quasi-cliques, as the \gls{IND} problem can be mapped
 to finding full cliques.
 
-In this paper, we have introduced the concept of EDD, similar to the IND from the relational
+In this paper, we have introduced the concept of EDD, similar to the \gls{IND} from the relational
 domain. We have proposed \PresQ, a new algorithm based on the search of maximal quasi-cliques
 on hyper-graphs. We have proven that by limiting the quasi-cliques by the number of missing
 edges, and the degree of the nodes, our algorithm can successfully
 identify shared sets of attributes.
 
 In general, comprehensive approaches will be needed to
-find very high arity EDDs, given the complexity of the IND/EDD discovery
+find very high arity \glspl{EDD}, given the complexity of the \gls{IND}/\gls{EDD} discovery
 problem. For further work, we can envision three main routes:
 
 \emph{Improving the finding of quasi-cliques in hypergraphs} Via novel algorithms
     or by generalizing some of the many existing techniques~\cite{WU2015693}.
 
 \emph{Data-aware algorithms} For instance, the correlation matrix on both sides of
-    the EDD is likely to be similar. Perhaps this kind of information can be used to
+    the \gls{EDD} is likely to be similar. Perhaps this kind of information can be used to
     augment the algorithms, or inform the traversal.
 
 \emph{Dimensionality reduction} Searching for quasi-cliques involves exponential
