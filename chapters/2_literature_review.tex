@@ -11,9 +11,7 @@ In section~\ref{sec:mapping/overview}, we restate the objectives of the original
 literature mapping.
 In section~\ref{sec:mapping/methodology}, we describe the research question and methodology.
 In section~\ref{sec:mapping/results}, we summarize the results of the literature mapping.
-In section~\ref{sec:mapping/discussion}, we discuss the interpretation of our findings and our insights.
-Finally, in section~\ref{sec:mapping/gaps} we identify the gaps in the literature and introduce
-the next steps of our research.
+Finally, in section~\ref{sec:mapping/discussion}, we discuss the interpretation of our findings and our insights.
 
 The content of this chapter appears in the article
 \emph{Interactive Data Exploration of Distributed Raw Files: A Systematic Mapping
@@ -193,6 +191,7 @@ Publications that pass the selection criteria will be classified into two axes:
 data exploration facet and research type.
 
 \subsubsection{Category}
+\label{sec:mapping_category}
 As mentioned in section \ref{sec:mapping/research_questions}, we base our study on
 the classification done by Idreos \etal \cite{Idreos2015}, which is included for
 convenience in table \ref{tab:mapping/clustering}. For more details, we refer the
@@ -834,29 +833,3 @@ We have found evidence that code generation is a well-proven approach for
 accessing raw data files, although most solutions have not been generalized
 onto a distributed environment.
 
-\subsection{Identifying gaps in the literature}
-\label{sec:mapping/gaps}
-
-As a result of this survey, we realized that most solutions treat files
-separately, leaving it to the end-user to work out how they are related,
-an observation shared by other authors~\cite{Silva2016}.
-These files may have not yet been ingested into a database system and 
-the schema may be unfamiliar and not adequately documented, or even be
-composed of multiple files with heterogeneous schemes~\cite{alawini2016,zhang2015astronomy}.
-
-Therefore, our goal is to assist users in understanding how multiple raw files are related;
-identifying shared sets of attributes, and facilitating
-relationship-based mining between different files with heterogeneous schemes.
-To illustrate this, we show three possible scenarios for this kind of
-exploration of associations.
-These are focused mainly on astronomy but they can be extrapolated to other areas~\cite{Borne2001}:
-
-\begin{itemize}
-    \item \emph{Spatial}: Identify objects in the same location.
-    \item \emph{Temporal}: Identify events occurring within the same time period.
-    \item \emph{Coincidence}: In general, apply clustering techniques to
-    identify objects that are co-located within a multidimensional space.
-\end{itemize}
-
-In chapter~\ref{chapter:presq} we propose a novel algorithm, \PresQ, that fills this gap for
-uncertain numerical data.

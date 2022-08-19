@@ -1,0 +1,139 @@
+As a result of the survey presented in chapter~\ref{chapter:literature_review},
+we realized that most solutions treat files
+separately, leaving it to the end-user to work out how they are related,
+an observation shared by other authors~\cite{Silva2016}.
+These files may have not yet been ingested into a database system and 
+the schema may be unfamiliar and not adequately documented, or even be
+composed of multiple files with heterogeneous schemes~\cite{alawini2016,zhang2015astronomy}.
+
+In \emph{Data Mining in Astronomical Databases}, Borne
+describes how data exploration of this kind of diverse datasets is, however,
+relevant since it can drive to serendipitous discoveries~\cite{Borne2001}. He proposes
+two groups of data mining in this respect:
+
+\paragraph{Event based}
+
+\begin{description}[leftmargin=1cm, labelindent=0.5cm]
+  \item[Known events / known algorithms]
+    Use physical models to locate known phenomena of interest spatially
+    or temporally within a large database
+  \item[Known events / unknown algorithms]
+    Use pattern recognition and clustering to discover new relationships between known
+    phenomena.
+  \item[Unknown events / known algorithms]
+    Use predictive models to predict the presence of unseen events within a
+    large and complex database.
+  \item[Unknown events / unknown algorithms]
+    Use thresholds to identify transifent or unique events.
+\end{description}
+
+\paragraph{Relationship based}
+
+\begin{description}[leftmargin=1cm, labelindent=0.5cm]
+    \item[Spatial]
+        Identify objects in the same location.
+    \item[Temporal]
+        Identify events occurring within the same time period.
+    \item[Coincidence]
+        In general, apply clustering techniques to
+        identify objects that are co-located within a multidimensional space.
+\end{description}
+
+Borne then enumerates a list of science requirements for data mining:
+
+\begin{description}[leftmargin=1cm, labelindent=0.5cm]
+    \item[Object Cross-Identification] between catalogs. Similar to the natural join
+        in relational algebra, except based on spatial or multidimensional co-location.
+    \item[Object Cross-Correlation] comparing sets of attributes over the full set of objects.
+        For instance, identify remote galaxies as those that are \emph{not} present on the ultraviolet.
+    \item[Nearest-neighbor identification] or, in general, application of clustering algorithms in multidimensional spaces.
+    \item[Systematic Data Exploration] via event- and relationship-based queries to a database
+        hoping to make serendipitous discoveries.
+\end{description}
+
+\section{Examining real use cases}
+
+To get a better idea of what kind of explorations astronomers do, I looked for
+concrete examples of queries mentioning \emph{astronomy} on the 242 articles classified on
+the systematic literature mapping from chapter~\ref{chapter:literature_review}.
+
+It is soon evident that the datasets published by \gls{SDSS}~\cite{SDSS14} are popular as test
+sets since they are readily available and well documented~\cite{Gray2002}.
+Furthermore, there are sample queries available~\cite{SDSSSamples}, and real ones can also be
+obtained~\cite{SDSSSqlLogs}. Listing~\ref{sql:get_queries} shows an example of how to obtain a list
+of queries performed by users.
+
+\begin{listing}[htbp]
+\begin{minted}[linenos]{sql}
+    SELECT clientIP, seq, statement, elapsed
+    FROM SQLlog
+    WHERE yy=2018 AND mm>=10 AND rows>0 AND dbname LIKE 'BestDR14%'
+\end{minted}
+\caption{Example of how to obtain a list of queries performed by users during the end of 2018 over the 14th data release}\label{sql:get_queries}
+\end{listing}
+
+In total, 25 articles -- a $10.3\%$ -- use \gls{SDSS} as a test dataset.
+Table~\ref{tab:sdss_queries_count} classifies these 25 articles following the same schema as described
+in section~\ref{sec:mapping_category}.
+
+\begin{table}[htbp]
+  \begin{center}
+    \begin{tabular}{l r r r}
+      \textbf{Category} & \textbf{Total} & \textbf{SDSS} & \textbf{\%} \\ \hline
+      Exploration Interfaces & 34 & 3 & $8.8\%$ \\
+      Indexes & 58 & 5 & $8.6\%$ \\
+      Storage & 39 & 11 & $28.3\%$ \\
+      Data Visualization & 36 & 2 & $5.6\%$ \\
+      Interactive Performance Optimizations & 48 & 4 & $8.3\%$ \\
+    \end{tabular}
+  \end{center}
+  \caption{Classification of the articles that use the data from the \gls{SDSS}}\label{tab:sdss_queries_count}
+\end{table}
+
+To better understand how this dataset is used, I processed the results from query~\ref{sql:get_queries}
+and extracted the columns, relations, and filters.
+Table~\ref{tab:most_tables} shows the most frequent queried combinations.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{l r r}
+    \textbf{Tables} & \textbf{Count} & \textbf{Percentage} \\ \hline
+    fGetNearbyObjEq, PhotoPrimary          &  264785 &  37.62\% \\
+    DBObjects\textasteriskcentered         &  150458 &  21.37\% \\
+    PhotoTag, fGetObjFromRectEq            &   93094 &  13.23\% \\
+    IndexMap\textasteriskcentered          &   41265 &   5.86\% \\
+    Galaxy, fGetNearbyObjEq                &   31130 &   4.42\% \\
+    sppParams, PhotoTag, fGetObjFromRectEq &   29805 &   4.23\% \\
+\end{tabular}
+\caption{Combination of relations most frequently queries. Tables marked with (\textasteriskcentered) are meta-data tables (i.e., describe the schema)}\label{tab:most_tables}
+\end{table}
+
+Interestingly, introspection queries are widespread, indicating that users spend considerable
+time familiarizing themselves with the schema.
+
+\todo{Actualizar con el informe 2019 el capítulo 2}
+
+\section{Insights}
+
+\paragraph{Múltiples ficheros} Cuando se quieren realizar consultas sobre múltiples
+ficheros, la estructura de datos puede no coincidir. Ejemplo simple, en un fichero el
+identificador único para una galaxia puede llamarse \texttt{ID}, y en otro \texttt{OBJECT\_ID}.
+Izquierdo+\cite{Izquierdo2013} se enfrentan con un problema muy similar: ¿cómo averiguar
+qué atributos son los mismos? Quizá, en nuestro caso, se pueda emplear el tipo y la distribución de los valores
+como una pista adicional: por ejemplo, difícilmente se correspondan un atributo de la tabla $A$ con
+valores entre \numprint{0} y \numprint{6}, con un atributo de la tabla $B$ con valores entre \numprint{0}
+y \numprint{1e8}. Sin embargo, un rango entre \numprint{0} y \numprint{1e8} (flujo) puede estar
+relacionado con otro con valores comprendidos entre \numprint{-4.4} y \numprint{27.0} (magnitud).
+
+\todo{Clustering enlaza con \ref{chapter:som}}.
+
+
+
+
+
+Therefore, our goal is to assist users in understanding how multiple raw files are related;
+identifying shared sets of attributes, and facilitating
+relationship-based mining between different files with heterogeneous schemes.
+
+In chapter~\ref{chapter:presq} we propose a novel algorithm, \PresQ, that fills this gap for
+uncertain numerical data.
