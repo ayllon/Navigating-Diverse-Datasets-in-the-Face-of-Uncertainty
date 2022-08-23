@@ -105,35 +105,44 @@ Table~\ref{tab:most_tables} shows the most frequent queried combinations.
     Galaxy, fGetNearbyObjEq                &   31130 &   4.42\% \\
     sppParams, PhotoTag, fGetObjFromRectEq &   29805 &   4.23\% \\
 \end{tabular}
-\caption{Combination of relations most frequently queries. Tables marked with (\textasteriskcentered) are meta-data tables (i.e., describe the schema)}\label{tab:most_tables}
+\caption{Combination of relations most frequently queries. Tables marked with (\textasteriskcentered)
+are meta-data tables (i.e., describe the schema)}\label{tab:most_tables}
 \end{table}
 
 Interestingly, introspection queries are widespread, indicating that users spend considerable
 time familiarizing themselves with the schema.
 
+\section{Defining objectives}
+\label{sec:objectives}
+
+\paragraph{Support for data distributed across multiple files} is generally neglected by
+\textit{in-situ} data exploration solutions~\cite{Silva2016}. However, indexing, storage,
+and interactivity are well covered, as seen in chapter~\ref{chapter:literature_review}.
+
+\paragraph{Exploring the database schema} itself, at least judging from the \gls{SDSS} data,
+is non-negligible user activity. Indexing is hardly helpful if the users do not know what to query.
+
+\paragraph{The question that arises is:} can we help users to navigate \textit{in-situ} datasets
+split across multiple files, with unknown schema, facilitating relationship-based mining?
+When metadata is present, we could rely on name matching, but when it is not, or is misaligned?
+
+\textsc{ReDiscover}~\cite{alawini2016} is an example of a proposed solution for this problem.
+It uses machine learning techniques, such as Support Vector Machines, to identify matching
+columns between scientific tabular data.
+Yet, this system focuses mainly on the correspondence between \emph{individual columns},
+which is insufficient for spatial and coincidence associations, as they are multidimensional.
+We are left only with a set of pairwise correspondences that may not be enough to cross-match
+tuples between files.
+
+In chapter~\ref{chapter:presq} we propose a novel algorithm, \PresQ, that can recover
+multidimensional correspondences between datasets with different, undocumented --- or unknown --- schema.
+
+\PresQ relies on statistical tests to accept or discard these correspondences.
+To complement this method, chapter~\ref{chapter:som} describes a multidimensional
+statistical test based on \gls{SOM} that offers additional interpretability. It can be used
+with \PresQ for studying with more details accepted or rejected correspondences;
+or afterward over the merged dataset for clustering or as a pre-processing for nearest-neighbor
+coincidence search~\cite{silva2011som}.
+
+
 \todo{Actualizar con el informe 2019 el capítulo 2}
-
-\section{Insights}
-
-\paragraph{Múltiples ficheros} Cuando se quieren realizar consultas sobre múltiples
-ficheros, la estructura de datos puede no coincidir. Ejemplo simple, en un fichero el
-identificador único para una galaxia puede llamarse \texttt{ID}, y en otro \texttt{OBJECT\_ID}.
-Izquierdo+\cite{Izquierdo2013} se enfrentan con un problema muy similar: ¿cómo averiguar
-qué atributos son los mismos? Quizá, en nuestro caso, se pueda emplear el tipo y la distribución de los valores
-como una pista adicional: por ejemplo, difícilmente se correspondan un atributo de la tabla $A$ con
-valores entre \numprint{0} y \numprint{6}, con un atributo de la tabla $B$ con valores entre \numprint{0}
-y \numprint{1e8}. Sin embargo, un rango entre \numprint{0} y \numprint{1e8} (flujo) puede estar
-relacionado con otro con valores comprendidos entre \numprint{-4.4} y \numprint{27.0} (magnitud).
-
-\todo{Clustering enlaza con \ref{chapter:som}}.
-
-
-
-
-
-Therefore, our goal is to assist users in understanding how multiple raw files are related;
-identifying shared sets of attributes, and facilitating
-relationship-based mining between different files with heterogeneous schemes.
-
-In chapter~\ref{chapter:presq} we propose a novel algorithm, \PresQ, that fills this gap for
-uncertain numerical data.
