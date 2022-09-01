@@ -1,16 +1,60 @@
-\todo{Conclusiones y trabajo futuro}
+\todo{Conclusions and future work}
 
-Non trivial cuts (notebooks about how to find convex intersection, etc.)
+Relying on data distribution alone can be feasible, as the relation between attributes
+contain useful information. Even without metadata.
 
-One can more or less devise an strategy if a single attribute is cut with a simple
-less than or/and greater than (right?) but what if the thing is more complicated,
-like SNR?
+\todo{Is it worth to mention dead-ends? i.e., structure on PGN}
 
-Dig out the notebooks, put them nicely here. Open question, might be cool.
+What about SOM, how does it fit here? I guess what I say on the introduction 
+of the SOM paper.
 
-Some of the points mentioned in EDD paper:
+Remember to re-insist on whatever I had mentioned on the introduction :)
+Need to close the loop and refresh what this was all about.
 
-* Correlation matrices
-* Dimensionality reduction
-* No direct EDD (i.e. SNR filtering) Link this with convex checks somehow, I guess?
-* How to identify files cut among a given attribute? i.e. coordinate X
+i.e.
+
+1. I wanted to help scientists blah
+2. Literature review showed that blah blah
+3. \PresQ is awesome
+4. SOM helps a lot
+
+Remind objective of thesis
+
+\section{Future work}
+
+\todo{Dig out the notebooks, put them nicely here. Open question, might be cool.}
+
+
+
+\emph{Improving the finding of quasi-cliques in hypergraphs} Via novel algorithms
+    or by generalizing some of the many existing techniques~\cite{WU2015693}.
+
+\emph{Data-aware algorithms} For instance, the correlation matrix on both sides of
+    the \gls{EDD} is likely to be similar. Perhaps this kind of information can be used to
+    augment the algorithms, or inform the traversal.
+    
+\emph{Domain-knowledge driven} Perhaps via priors, Bayesian two-sample~\cite{soriano2015bayesian}.
+\begin{quote}
+I propose a multi-resolution method where two-sample comparison is achieved
+through carrying out a collection of local two-sample tests, each comparing the cor-
+responding pair of probability assignment coefficients on a node in the partition tree
+and thus corresponding to the two-sample difference at a particular location and
+scale.
+\end{quote}
+Kind of merges with not-quite EDD, doesn't it? Sounds nice, whole direction, bayesian handling of this stuff.
+Enumerate, chain ideas?
+
+\emph{Dimensionality reduction} Searching for quasi-cliques involves exponential
+    time complexity on the number of nodes. Thus, applying a dimensionality reduction beforehand
+    would reduce the total run-time and also decrease the noise. Nonetheless, a complication
+    arises from the premise that we do not know which attributes are shared.
+
+\emph{Not-quite EDD} (i.e. SNR filtering). Some kind of intersection of point of clouds. Convex
+    intersection (see notebooks) does not work for dimensions lower than 3 IIRC.
+    One can more or less devise an strategy if a single attribute is cut with a simple
+    less than or/and greater than (right?) but what if the thing is more complicated,
+    like SNR? Correlation between fields become tricky.
+
+\emph{Other type of numerical dependencies} i.e. how to identify files cut among a
+    given set of attributes? i.e. coordinate X, Y, tiling. Some kind of continuity test, I guess,
+    but how 

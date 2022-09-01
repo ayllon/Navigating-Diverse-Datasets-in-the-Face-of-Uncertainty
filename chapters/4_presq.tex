@@ -68,11 +68,12 @@ However, this definition can be naturally reformulated in terms of
 equality of distribution $X \eqdist Y: F_X(x) = F_Y(x) \; \forall x$, where $F_X$ and
 $F_Y$ are the cumulative distribution functions of X and Y, respectively:
 
-\begin{displayquote}
+\begin{definition}
 An equally-distributed dependency between a set of columns X from
 of relation R and a set of columns Y of relation S, written $R.X \eqdist S.Y$ or
 $X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
-\end{displayquote}
+\label{def:eqdist}
+\end{definition}
 
 The term \emph{arity} refers to the cardinality of the sets of attributes $X$ and $Y$. For instance, if $|X| = 1$, we talk about unary \glspl{EDD}; if $|X| = 2$,
 binary or 2-\glspl{EDD}; and, in general, for $|X| = n$, $n$-ary \glspl{EDD}.
@@ -314,7 +315,35 @@ but they translate to the equality of distribution:
 
 The reflexivity, permutation and transitivity rules are well known to hold
 for $\eqdist$ \cite{randles1979introduction}.
-We have proven that the projection rule also holds, as is logical~\cite{Alvarez2021inference}.
+
+%We have proven that the projection rule also holds, as is logical~\cite{Alvarez2021inference}.
+For the projection, we need to prove that if two sets of random variables
+$X_1,\dots,X_n$ and $Y_1,\dots,Y_n$ are equally distributed, so are
+any of their possible sub-sequences.
+
+\begin{proof}
+Let $X'$ and $Y'$ be the sequences $X_1,\dots,X_m$ and $Y_1,\dots,Y_m$ with $m < n$.
+Their corresponding  \gls{CDF} are just the \emph{marginal} \gls{CDF}:
+
+\begin{equation}
+\begin{split}
+    F_{X_1,\dots,X_m}(x_1,\dots,x_m) = & F_{X_1,\dots,X_m,X_{m+1},X_n}(x_1,\dots,x_m,x_{m+1},\dots,x_n) \\
+    F_{Y_1,\dots,Y_m}(y_1,\dots,y_m) =& F_{Y_1,\dots,Y_m,Y_{m+1},Y_n}(x_1,\dots,x_m,x_{m+1},\dots,x_n)\\
+    & \forall (x_1,\dots,x_m) \in \mathbb{R}^m \textrm{ and } x_i \xrightarrow{} \infty \; \forall i > m
+\end{split}
+\end{equation}
+
+By definition \ref{def:eqdist}, the right hand-side of both equations must be the same.
+By transitivity, 
+
+\begin{equation}
+\begin{split}
+    & F_{X_1,\dots,X_m}(x_1,\dots,x_m) = F_{Y_1,\dots,Y_m}(y_1,\dots,y_m) \\
+    & \implies X_1,\dots,X_m \eqdist Y_1,\dots,Y_m
+\end{split}
+\end{equation}
+
+\end{proof}
 
 Thanks to the validity of these rules, particularly the permutation and projection,
 we can use the specialization relation seen in definition \ref{def:specialization}
@@ -1508,34 +1537,22 @@ step. This issue was also recognized on the original \Find proposal \cite{koelle
 All the necessary code to reproduce our tests, our
 measurements, and figures, are publicly available\footnote{\url{https://doi.org/10.5281/zenodo.6865856}}.
 
-\section{Conclusions and future work}
+\section{Conclusions}
 \label{sec:presq_conclusions}
-Finding sets of equally-distributed dependencies between numerical datasets
-is a similar problem to that of finding Inclusion Dependencies between tables
-in a relational model. However, the statistical nature of tests, with their
-potential uncertainties, can make more difficult their finding and considerably
-degrade the performance of existing algorithms.
-This problem can be mapped to finding quasi-cliques, as the \gls{IND} problem can be mapped
-to finding full cliques.
 
-In this paper, we have introduced the concept of EDD, similar to the \gls{IND} from the relational
-domain. We have proposed \PresQ, a new algorithm based on the search of maximal quasi-cliques
-on hyper-graphs. We have proven that by limiting the quasi-cliques by the number of missing
-edges, and the degree of the nodes, our algorithm can successfully
+Finding sets of equally-distributed dependencies between numerical datasets is a similar
+problem to that of finding Inclusion Dependencies between tables in a relational model.
+However, the statistical nature of tests, with their potential uncertainties, can make
+their finding more complicated and considerably degrade the performance of existing algorithms.
+This problem can be mapped to finding quasi-cliques, as the \gls{IND} problem can be
+mapped to finding full cliques.
+
+In this chapter, we have introduced the concept of EDD, similar to the \gls{IND} from
+the relational domain. We have proposed \PresQ, a new algorithm based on the search of
+maximal quasi-cliques on hyper-graphs. We have proven that by limiting the quasi-cliques
+by the number of missing edges, and the degree of the nodes, our algorithm can successfully
 identify shared sets of attributes.
 
-In general, comprehensive approaches will be needed to
-find very high arity \glspl{EDD}, given the complexity of the \gls{IND}/\gls{EDD} discovery
-problem. For further work, we can envision three main routes:
-
-\emph{Improving the finding of quasi-cliques in hypergraphs} Via novel algorithms
-    or by generalizing some of the many existing techniques~\cite{WU2015693}.
-
-\emph{Data-aware algorithms} For instance, the correlation matrix on both sides of
-    the \gls{EDD} is likely to be similar. Perhaps this kind of information can be used to
-    augment the algorithms, or inform the traversal.
-
-\emph{Dimensionality reduction} Searching for quasi-cliques involves exponential
-    time complexity on the number of nodes. Thus, applying a dimensionality reduction beforehand
-    would reduce the total run-time and also decrease the noise. Nonetheless, a complication
-    arises from the premise that we do not know which attributes are shared.
+In general, comprehensive approaches will be needed to find very high arity \glspl{EDD},
+given the complexity of the \gls{IND}/\gls{EDD} discovery problem.
+In chapter~\ref{chapter:conclusions} we discuss some possible directions for future research.
