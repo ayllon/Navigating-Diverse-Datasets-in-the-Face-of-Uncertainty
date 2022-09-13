@@ -129,6 +129,10 @@
 \chapter*{Style reference}
 \input{style_ref}
 
+% Code environment
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\renewcommand\listingscaption{Code}
+
 % Table of content, figures, etc.
 \tableofcontents
 
@@ -189,6 +193,13 @@ a plus rien à retrancher.}}
 
 % Bibliography
 \printbibliography[heading=bibintoc]
+
+% Appendices
+\appendix
+\chapter{\PresQ bench-marking tools}
+\label{appendix:presq_benchmarks}
+\input{chapters/A1_presq_benchmarks}
+
 
 % Backmatter
 \backmatter

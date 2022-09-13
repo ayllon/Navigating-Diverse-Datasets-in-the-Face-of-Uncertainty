@@ -69,7 +69,9 @@ of queries performed by users.
     FROM SQLlog
     WHERE yy=2018 AND mm>=10 AND rows>0 AND dbname LIKE 'BestDR14%'
 \end{minted}
-\caption{Example of how to obtain a list of queries performed by users during the end of 2018 over the 14th data release}\label{sql:get_queries}
+\caption[Obtaining a list of queries performed by \gls{SDSS} users]{
+    Example of how to obtain a list of queries performed by users during the end of 2018 over the 14th data release
+}\label{sql:get_queries}
 \end{listing}
 
 In total, 25 articles -- a $10.3\%$ -- use \gls{SDSS} as a test dataset.
@@ -105,12 +107,16 @@ Table~\ref{tab:most_tables} shows the most frequent queried combinations.
     Galaxy, fGetNearbyObjEq                &   31130 &   4.42\% \\
     sppParams, PhotoTag, fGetObjFromRectEq &   29805 &   4.23\% \\
 \end{tabular}
-\caption{Combination of relations most frequently queries. Tables marked with (\textasteriskcentered)
-are meta-data tables (i.e., describe the schema)}\label{tab:most_tables}
+\caption[Most frequently queried relations from the \gls{SDSS}]{
+    Combination of relations most frequently queried. Tables marked with (\textasteriskcentered)
+    are meta-data tables (i.e., describe the schema)
+}\label{tab:most_tables}
 \end{table}
 
-Interestingly, introspection queries are widespread, indicating that users spend considerable
-time familiarizing themselves with the schema.
+Interestingly, introspection queries are widespread, indicating that users spend considerable time
+familiarizing themselves with the schema. This result is consistent with the observation from an IBM
+study that finds that even data architects can spend up to 70\% of their time just discovering the
+metadata of databases~\cite{Wu2008}, and considering the complexity of the SDSS schema~\cite{Khoussainova2010}.
 
 \section{Defining objectives}
 \label{sec:objectives}

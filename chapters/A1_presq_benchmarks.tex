@@ -1,0 +1,51 @@
+The repository \texttt{MatchBox}\footnote{\url{https://github.com/ayllon/MatchBox/}}
+contains the Python implementation of \PresQ and \Find used as a reference for the
+performance comparison shown in chapter~\ref{chapter:presq}, together with instructions
+to reproduce the results.
+
+For facilitating the replicability of the results, the repository contains an \linebreak
+\texttt{environment.yml} file that allows re-creating a working Python environment
+with all the requirements installed using \href{https://docs.conda.io/en/latest/}{\texttt{Conda}}:
+
+\begin{minted}{bash}
+conda env create
+conda activate matchbox
+\end{minted}
+
+\section{Bench-marking quasi-clique finding}
+
+\begin{code}
+\label{script:quasi_missing}
+\caption{Benchmark quasi-clique search with a set of missing ratios}
+\begin{minted}{bash}
+for alpha in 0.05 0.10 0.15 0.20 0.25 0.30; do
+    ./bin/benchmark-quasiclique.py --out results/quasi3.csv \
+       --rank 3 \
+       --cardinality 10 20 30 \
+       --additional 0.5 \
+       --repeat 15 \
+       --missing-edges $alpha \
+       --extra-edges 0 \
+       --timeout 300
+done
+\end{minted}
+\end{code}
+
+\begin{code}
+\label{script:quasi_spurious}
+\caption{Benchmark quasi-clique search with a set of additional edges}
+\begin{minted}{bash}
+for beta in 0.2 0.4 0.6 0.8; do
+    ./bin/benchmark-quasiclique.py --out results/quasi3.csv \
+        --rank 3 \
+        --cardinality 10 20 30 \
+        --additional 0.5 \
+        --repeat 15 \
+        --missing-edges 0.1 \
+        --extra-edges $beta \
+        --timeout 1200
+done
+\end{minted}
+\end{code}
+
+\section{Bench-marking EDD finding}

@@ -32,7 +32,7 @@ such as the Kolmogorov-Smirnov~\cite{Hodges1958} or Wilcoxon~\cite{Wilcoxon1945}
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{images/3_presq/no2ind}
-    \caption{
+    \caption[Example of a 2D distribution where the pairwise matching is not enough]{
         Example of a 2D distribution where the pairwise matching would not be accurate enough. It is artificial, but it serves to illustrate the point.
     }
     \label{fig:pairwise_ind}
@@ -90,7 +90,7 @@ existing work done on \gls{IND} discovery.
 In section~\ref{sec:background}, we introduce the background for our research. 
 In section~\ref{sec:inferring}, we propose a novel algorithm based on quasi-cliques
 to infer common equally-distributed multidimensional attributes.
-In section~\ref{sec:experiments}, we show experimental results, and in
+In section~\ref{sec:presq_experiments}, we show experimental results, and in
 section~\ref{sec:discussion}, we discuss our findings. We list the
 threats to the validity of this study in section~\ref{sec:threats}. Finally, in section
 \ref{sec:presq_conclusions}, we compile the conclusions and propose areas for
@@ -130,7 +130,8 @@ algorithms evaluated by the authors and discuss their suitability for our needs.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=\linewidth]{images/3_presq/lattice}
-    \caption{
+    \caption[Example structure of the search space as a lattice for an initial set
+        of 4 unary \glspl{IND}.]{
         Example structure of the search space as a lattice for an initial set
         of 4 unary \glspl{IND}.
         As an illustration, if the 2-INDs surrounded by a solid line were valid,
@@ -605,7 +606,7 @@ seeds found.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{images/3_presq/pipeline}
-    \caption{Simplified schematic of the algorithm.}
+    \caption{Simplified schematic of \PresQ.}
     \label{fig:presq_pipeline}
 \end{figure}
 
@@ -689,7 +690,9 @@ null hypothesis and accept that the set of edges connecting the node are spuriou
 \begin{figure}[ht]
     \centering
     \includegraphics{images/3_presq/hypergeom}
-    \caption{Distribution of the degree of the nodes under the null hypothesis that the 
+    \caption[Distribution of the degree of the nodes under the assumption that missing edges
+    are due to the expected false negative rate.]{
+    Distribution of the degree of the nodes under the null hypothesis that the 
     missing edges on the quasi-clique are due to the expected false negative rate of the
     statistical test.
     The vertical line corresponds to the one-tail test with $\alpha = 0.05$.}
@@ -721,7 +724,7 @@ is enough to improve its performance in run-time and results. The \emph{growing}
 step improves the efficacy (i.e. more maximal \glspl{EDD} found) at the cost of a higher run-time.
 
 \section{Experiments}
-\label{sec:experiments}
+\label{sec:presq_experiments}
 We have implemented in Python a version of \Find that validates candidates with statistical
 tests, and the proposed \PresQ.
 Both share most of the code, including initialization and statistical
@@ -1040,9 +1043,11 @@ These results confirm that spurious edges influence the
 \begin{figure}[ht]
     \centering
     \includegraphics{images/3_presq/3hyper_beta}
-    \caption{Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
-    for different ratios of spurious edges ($\beta$).
-    Each data-point corresponds to 15 runs.}
+    \caption[Recovery ratio and run-times for cliques on uniform $3$-hypergraphs for different ratios of spurious edges.]{
+        Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
+        for different ratios of spurious edges ($\beta$).
+        Each data-point corresponds to 15 runs.
+    }
     \label{fig:3hyper_beta}
 \end{figure}
 
@@ -1057,7 +1062,8 @@ of missing edges and run-time.
 \begin{figure}[ht]
     \centering
     \includegraphics{images/3_presq/3hyper_alpha}
-    \caption{Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
+    \caption[Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
+    for different ratios of missing edges.]{Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
     for different ratios of missing edges ($\alpha$).
     Each data-point corresponds to 15 runs.}
     \label{fig:3hyper_alpha}
@@ -1082,7 +1088,7 @@ This makes sense since there is no correlation between missing edges.
 \begin{figure}[ht]
     \centering
     \includegraphics{images/3_presq/quasi_corr_20}
-    \caption{
+    \caption[Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.]{
     Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.
     In this setup there were no timeouts. Each data-point corresponds to 5 runs.
     }
@@ -1217,7 +1223,7 @@ to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
 \begin{figure*}[t]
     \centering
     \includegraphics[width=\linewidth]{images/3_presq/all}
-    \caption{
+    \caption[$95\%$ confidence intervals for the percent difference between \Find and \PresQ.]{
         $95\%$ confidence intervals for the percent difference
         (equation \ref{eq:percent_difference}) between \Find and
         three parameterizations of \PresQ for the DC2, Ailerons vs. Elevator, and
@@ -1234,7 +1240,7 @@ to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
 
 % Results starting arity 2
 \begin{table*}[htb]
-    \caption{
+    \caption[Summary of run-time, matching ratio, and number of maximal quasi-cliques found.]{
         Summary of run-time, matching ratio (based on name), and number of maximal quasi-cliques found
         accepted by the statistical test.
         The significance level is $\alpha = 0.1$.
@@ -1285,7 +1291,7 @@ to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
 
 % Results starting at arity 3
 \begin{table*}[htpb]
-    \caption{
+    \caption[Summary of run-time, matching ratio, and number of maximal quasi-cliques found with an initial arity $k = 3$.]{
         Summary of run-time, matching ratio (based on name), and number of maximal quasi-cliques found.
         Significance level is $\alpha = 0.1$, initial arity $k = 3$.
     }
@@ -1388,19 +1394,21 @@ dimensionality, and the initial graph becomes very dense.
 \begin{figure*}[htb]
     \centering
     \includegraphics{images/3_presq/scalability}
-    \caption{Scalability of \PresQ with respect to the number of columns.
-    The top row corresponds to the number of \glspl{EDD} with arities 1, 2, and $n \ge 3$.
-    The middle row shows the time spent on each stage: sampling, searching, and testing for the different arities.
-    Note that the two n-EDDs variants are stacked over the previous stages, displaying the total run-time.
-    The last row shows the percentage of runs timed out at 50 minutes.
-    Each data-point summarizes between 10 and 13 randomized runs.}
+    \caption[Scalability of \PresQ with respect to the number of columns.]{
+        Scalability of \PresQ with respect to the number of columns.
+        The top row corresponds to the number of \glspl{EDD} with arities 1, 2, and $n \ge 3$.
+        The middle row shows the time spent on each stage: sampling, searching, and testing for the different arities.
+        Note that the two n-EDDs variants are stacked over the previous stages, displaying the total run-time.
+        The last row shows the percentage of runs timed out at 50 minutes.
+        Each data-point summarizes between 10 and 13 randomized runs.
+    }
     \label{fig:scalability}
 \end{figure*}
 
 \begin{figure}[htb]
     \centering
     \includegraphics{images/3_presq/scalability_sample_wave}
-    \caption{
+    \caption[Scalability of \PresQ with respect to the number of samples for the Waveform datasets.]{
         Scalability of \PresQ with respect to the number of samples for the Waveform datasets.
         Note that for the top row the $y$ axis is linear between $0$ and $100$, and
         logarithmic afterwards. Each data-point summarizes 10 randomized runs.
@@ -1469,7 +1477,7 @@ performance since the density of the graphs can be kept under control.
 
 If a more exhaustive listing of maximal quasi-cliques is required, the initial set of
 quasi-cliques can be used as \emph{seeds} to grow other quasi-cliques by adding suitable vertices.
-The results shown in  section~\ref{sec:experiments} demonstrate that this method is capable of
+The results shown in  section~\ref{sec:presq_experiments} demonstrate that this method is capable of
 finding considerable more maximal quasi-cliques (not contained in any other found quasi-cliques)
 at the expense of a higher run-time. This is due both to the traversal of the search space and the
 validation of the \glspl{EDD} represented by the quasi-cliques.
@@ -1497,7 +1505,7 @@ in order to decide which set of \glspl{EDD} is more suitable for cross-matching 
 \label{sec:threats}
 
 \textbf{Internal validity:} The results shown in the
-experiments described in section~\ref{sec:experiments} could risk being just a fluctuation,
+experiments described in section~\ref{sec:presq_experiments} could risk being just a fluctuation,
 not due to an underlying algorithmic improvement. However,
 the experimental design described in section~\ref{sec:experiment_design} significantly reduces
 this possibility thanks to the randomization of the initial conditions,

@@ -1,30 +1,55 @@
-\todo{Conclusions and future work}
+\glsresetall
 
-Relying on data distribution alone can be feasible, as the relation between attributes
-contain useful information. Even without metadata.
+\emph{In situ} Data Exploration is an active research area that requires
+a multidisciplinary approach: algorithms, data structures, machine learning,
+statistics,  data visualization, information sciences, and, unavoidably,
+the domain knowledge --- or business understanding ---  provided by an expert.
 
-\todo{Is it worth to mention dead-ends? i.e., structure on PGN}
+Going back to the \gls{CRISPDM} model described in  chapter~\ref{chapter:introduction}
+and shown in figure~\ref{fig:crispdm}, our initial objective was to identify
+gaps in the tooling available for experts to understand data coming as a set of
+unprocessed and perhaps inconsistent set of files. These files are not optimized
+for access, and any early decision on how to ingest them into a database may be
+counterproductive until the dataset is better understood.
 
-What about SOM, how does it fit here? I guess what I say on the introduction 
-of the SOM paper.
+The literature survey from chapter~\ref{chapter:literature_review} showed that
+solutions for visualization, optimizations, indexing, storage,\ldots abound.
+Still, there is little to no mention of assisting users on \emph{understanding}
+data schema, especially when it comes to multiple files from diverse origins or
+when meta-data is incomplete or inconsistent.
+In chapter~\ref{chapter:diverse}, we have seen that users spend a non-negligible
+amount of resources just examining the data structure and layout.
 
-Remember to re-insist on whatever I had mentioned on the introduction :)
-Need to close the loop and refresh what this was all about.
+The question that followed was: can we leverage the data \emph{distribution} to
+assist users in understanding the schema, on seeing how different datasets may come together?
+This is particularly important when the data is numerical and uncertain since
+one can not just compare tuples individually but needs to inspect distributions.
 
-i.e.
+In the relational world, the \gls{IND} concept comes close to the objective:
+parts of a relation contained (included) within another. However, this modeling
+relies on the attributes' discrete nature, such as name, date of birth, etc.
 
-1. I wanted to help scientists blah
-2. Literature review showed that blah blah
-3. \PresQ is awesome
-4. SOM helps a lot
+In chapter~\ref{chapter:presq} we propose a generalization, the \gls{EDD}, that
+relaxes the strict containment relation required by \glspl{IND}.
+We then introduce \PresQ, a novel algorithm for \gls{EDD} finding that incorporates
+uncertainty into its world modeling, proving that relying on data distribution alone is feasible.
+Therefore, \PresQ is applicable in situations where most existing \gls{IND} solutions
+are not: when the data is intrinsically uncertain --- measures of physical properties ---,
+or when the validation strategy for the inclusion is an approximate heuristic.
+The only requirement is that the expectation of false negatives --- i.e., significance
+level for statistical tests --- can be estimated.
 
-Remind objective of thesis
+For the experiments used to evaluate \PresQ, described in ~\ref{sec:presq_experiments},
+the statistical test of choice was based on the $k$-nearest neighbors. While this test
+performs well for a wide range of datasets, the resulting trained \emph{model} is not
+very useful.
+Chapter~\ref{chapter:som} introduces a statistical test based on \gls{SOM}, which provides,
+in addition to a $p$ value, a trained projection that we can later use for binning and
+cross-matching both datasets using the matching set of features. The resulting \gls{SOM}
+is also interpretable in case of rejection, which is also helpful in tentative data exploration.
 
 \section{Future work}
-
-\todo{Dig out the notebooks, put them nicely here. Open question, might be cool.}
-
-
+\todo{Is it worth to mention dead-ends? i.e., structure on PGN}
 
 \emph{Improving the finding of quasi-cliques in hypergraphs} Via novel algorithms
     or by generalizing some of the many existing techniques~\cite{WU2015693}.
