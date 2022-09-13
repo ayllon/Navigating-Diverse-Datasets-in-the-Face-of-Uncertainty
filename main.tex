@@ -20,6 +20,7 @@
 \usepackage{xspace}
 \usepackage{subcaption}
 \usepackage{easy-todo}
+\usepackage{xcolor}
 \usepackage[autolanguage]{numprint}
 \usepackage[backend=biber,style=alphabetic]{biblatex}
 \usepackage{lipsum}
@@ -105,6 +106,20 @@
 \newcommand{\PresQG}[0]{\textsc{PresQ(G)}\xspace}
 \newcommand{\Hyperclique}[0]{\textsc{Hyperclique}\xspace}
 
+% Code environment
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\renewcommand\listingscaption{Code}
+
+\usemintedstyle{vs}
+\setminted{
+frame=lines,
+bgcolor=lightgray,
+linenos,
+framesep=2mm,
+baselinestretch=1.2,
+fontsize=\footnotesize
+}
+
 % Document
 \begin{document}
 
@@ -129,11 +144,8 @@
 \chapter*{Style reference}
 \input{style_ref}
 
-% Code environment
-\newenvironment{code}{\captionsetup{type=listing}}{}
-\renewcommand\listingscaption{Code}
-
 % Table of content, figures, etc.
+\cleardoublepage
 \tableofcontents
 
 \cleardoublepage

@@ -49,3 +49,42 @@ done
 \end{code}
 
 \section{Bench-marking EDD finding}
+
+\subsection{\Find vs. \PresQ}
+
+\begin{code}
+\label{script:edd_finding}
+\caption{Benchmark \Find vs. \PresQ over the Ailerons/Elevators datasets}
+\begin{minted}{bash}
+ID="ailerons_$(date +%Y%m%d)"
+
+./bin/benchmark.py --id "${ID}" \
+    --repeat 1000 \
+    --timeout 3000 \
+    --output-dir "./results/" \
+    "./data/keel/ailerons/ailerons.dat" \
+    "./data/keel/elevators/elevators.dat"
+\end{minted}
+\end{code}
+
+\subsection{Performance wrt. columns}
+
+\begin{code}
+\label{script:perf_columns}
+\caption{Benchmark performance with respect to the number of columns}
+\begin{minted}{bash}
+ID="chembl_$(date +%Y%m%d)"
+
+for i in {82..160..6}; do
+    ./bin/benchmark.py --id "${ID}" \
+        --output-dir "./results/" \
+        --lambdas 0.1 \
+        --bootstrap-alpha 0.05 \
+        --no-find2 \
+        --repeat 10 \
+        --files $i \
+        --timeout 3000 \
+        ./data/chembl/chembl_??.db
+done
+\end{minted}
+\end{code}

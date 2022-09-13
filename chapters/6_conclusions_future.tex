@@ -49,37 +49,59 @@ cross-matching both datasets using the matching set of features. The resulting \
 is also interpretable in case of rejection, which is also helpful in tentative data exploration.
 
 \section{Future work}
-\todo{Is it worth to mention dead-ends? i.e., structure on PGN}
+\todo{Is it worth to mention dead-ends? i.e., structure on Probabilistic Graphical Networks}
 
-\emph{Improving the finding of quasi-cliques in hypergraphs} Via novel algorithms
-    or by generalizing some of the many existing techniques~\cite{WU2015693}.
-
-\emph{Data-aware algorithms} For instance, the correlation matrix on both sides of
-    the \gls{EDD} is likely to be similar. Perhaps this kind of information can be used to
-    augment the algorithms, or inform the traversal.
+\begin{itemize}
+    \item In chapter~\ref{chapter:presq}, we prove that finding quasi-cliques in hypergraphs
+    is a successful technique to find \gls{EDD}, or \gls{IND} based on approximate heuristics
+    between relations. Therefore, a place for further research is to
+    \textbf{improve the quasi-clique finding} algorithm, either via novel algorithms or by
+    generalizing some of the many existing techniques~\cite{WU2015693}.
+            
+    \item On the other hand, the existing algorithms based on quasi-clique search forget
+    about certain aspects of the datasets. For instance, the correlation matrix on both
+    sides of the \gls{EDD} is likely to be similar, and it may be possible to leverage
+    \textbf{data-aware} algorithms to augment the quasi-clique finding.
     
-\emph{Domain-knowledge driven} Perhaps via priors, Bayesian two-sample~\cite{soriano2015bayesian}.
-\begin{quote}
-I propose a multi-resolution method where two-sample comparison is achieved
-through carrying out a collection of local two-sample tests, each comparing the cor-
-responding pair of probability assignment coefficients on a node in the partition tree
-and thus corresponding to the two-sample difference at a particular location and
-scale.
-\end{quote}
-Kind of merges with not-quite EDD, doesn't it? Sounds nice, whole direction, bayesian handling of this stuff.
-Enumerate, chain ideas?
+    \item Sometimes, the algorithms should not assume equality-of-distribution. For instance, one of the
+    datasets may have been filtered beforehand --- i.e., signal-to-noise, value clipping, etc. This issue affects
+    both \gls{EDD} and \gls{IND} algorithms~\cite{koeller2003discovery}. \textbf{Partial inclusion/equality-of-distribution}
+    remains an open problem.
+            
+    \item \PresQ is based on frequentist probability, which does not allow incorporating \textbf{prior beliefs}
+    into the algorithm. i.e., a \textbf{domain-expert} has no way of influencing the result based
+    on her knowledge of the area.
+    A Bayesian framework could prove helpful in this respect. Furthermore, in relation with the previous point,
+    it can also be used to perform local null hypothesis testing~\cite{soriano2015bayesian}, which could help
+    identify partial \glspl{EDD} --- as when a filter has been applied to one of the datasets.
+    
+    \item Searching for quasi-cliques involves exponential time complexity on the number of nodes.
+    Thus, beforehand, applying a \textbf{dimensionality reduction} would reduce the total
+    run-time and decrease the noise. Nonetheless, a complication arises from the premise that
+    we do not know which attributes are shared.
+        
+    \item Finally, \textbf{Finding other types of numerical dependencies} can be of interest.
+    For instance, a single dataset may be split between multiple files based on the values
+    from a given set of attributes, which may or may not overlap.
+    As an example, figure~\ref{subfig:tu_multifile} shows an example where a single dataset is
+    cleanly cut using two spatial dimensions, which can be easily \emph{learned} by a decision tree.
+    Figure~\ref{subfig:mer_multifile} shows another dataset also cut using the same two
+    coordinates, but where there exists an overlap between some of the files.
+\end{itemize}
 
-\emph{Dimensionality reduction} Searching for quasi-cliques involves exponential
-    time complexity on the number of nodes. Thus, applying a dimensionality reduction beforehand
-    would reduce the total run-time and also decrease the noise. Nonetheless, a complication
-    arises from the premise that we do not know which attributes are shared.
-
-\emph{Not-quite EDD} (i.e. SNR filtering). Some kind of intersection of point of clouds. Convex
-    intersection (see notebooks) does not work for dimensions lower than 3 IIRC.
-    One can more or less devise an strategy if a single attribute is cut with a simple
-    less than or/and greater than (right?) but what if the thing is more complicated,
-    like SNR? Correlation between fields become tricky.
-
-\emph{Other type of numerical dependencies} i.e. how to identify files cut among a
-    given set of attributes? i.e. coordinate X, Y, tiling. Some kind of continuity test, I guess,
-    but how 
+\begin{figure}[htbp]
+    \begin{subfigure}[]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{images/6_conclusions/tu_multifile_tree.png}
+    \caption{Without overlap}\label{subfig:tu_multifile}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[]{0.5\textwidth}
+    \includegraphics[width=\textwidth]{images/6_conclusions/mer_multifile_tree.png}
+    \caption{With overlap}\label{subfig:mer_multifile}
+    \end{subfigure}
+    \caption{
+        Data-sets distributed multiple files based on two spatial coordinates.
+        Each color corresponds to a single file.
+    }
+    \label{fig:tree_cat_cut}
+\end{figure}
