@@ -23,7 +23,7 @@ The script snippet~\ref{script:quasi_missing} shows the relevant extract used to
 the capacity of \PresQ to recover from missing edges, as reported in figure~\ref{fig:3hyper_alpha}.
 
 \begin{code}
-\caption{Benchmark quasi-clique search with a set of missing ratios}\label{script:quasi_missing}
+\caption{Benchmark quasi-clique search with a set of missing ratios. The comments need to be removed.}\label{script:quasi_missing}
 \begin{minted}{bash}
 for alpha in 0.05 0.10 0.15 0.20 0.25 0.30; do
   ./bin/benchmark-quasiclique.py \
@@ -32,7 +32,7 @@ for alpha in 0.05 0.10 0.15 0.20 0.25 0.30; do
     --cardinality 10 20 30 \     # Number of nodes on the quasi-clique
     --additional 0.5 \           # |V| * 0.5 additional nodes
     --repeat 15 \                # Generate 15 different hypergraphs
-    --missing-edges $alpha \     # Remove $alpha edges from the quasi-clique
+    --missing-edges ${alpha} \   # Remove $alpha edges from the quasi-clique
     --extra-edges 0 \            # Do not add any spurious edge
     --timeout 300                # Limit execution to 5 minutes
 done
@@ -45,36 +45,76 @@ figure~\ref{fig:hyper_ab_corr}. The set of spurious edges $S$ contains \emph{all
 on the hypergraph \emph{not} belonging to the quasi-clique.
 
 \begin{code}
-\caption{Benchmark quasi-clique search with a set of additional edges}\label{script:quasi_spurious}
+\caption{Benchmark quasi-clique search with a set of additional edges. The comments need to be removed.}\label{script:quasi_spurious}
 \begin{minted}{bash}
 for beta in 0.2 0.4 0.6 0.8; do
   ./bin/benchmark-quasiclique.py \
-    --out results/quasi3.csv \ # Output CSV
-    --rank 3 \                 # 3-hypergraph
-    --cardinality 10 20 30 \   # Number of nodes on the quasi-clique
-    --additional 0.5 \         # |V| * 0.5 additional nodes
-    --repeat 15 \              # Generate 15 different hypergraphs
-    --missing-edges 0.1 \      # Remove 10% of edges from the quasi-clique
-    --extra-edges $beta \      # Add $beta * |S| spurious edges
-    --timeout 1200             # Limit execution to 20 minutes
+    --out "results/quasi3.csv" \ # Output CSV
+    --rank 3 \                   # 3-hypergraph
+    --cardinality 10 20 30 \     # Number of nodes on the quasi-clique
+    --additional 0.5 \           # |V| * 0.5 additional nodes
+    --repeat 15 \                # Generate 15 different hypergraphs
+    --missing-edges 0.1 \        # Remove 10% of edges from the quasi-clique
+    --extra-edges ${beta} \      # Add $beta * |S| spurious edges
+    --timeout 1200               # Limit execution to 20 minutes
 done
 \end{minted}
 \end{code}
 
 \section{Bench-marking EDD finding}
 
+\texttt{benchmark.py} is a script that can be used to measure the performance of
+\PresQ and the custom implementation of \Find over datasets available in any of
+the supported formats: \gls{FITS}, \textsc{KEEL} \texttt{.dat} files, \gls{CSV},
+and \textsc{SQLite}.
+The script needs a minimum of two relations and supports multiple running
+parameterizations of \PresQ with a single invocation.
+
+The measurements are written to a set of \gls{CSV} files:
+
+\begin{center}
+\resizebox{\textwidth}{!}{%
+    \begin{tabular}{r|l}
+    \thead{Name} & \thead{Description} \\
+    \texttt{sampling.csv}  & Sampling time \\
+    \texttt{uind.csv}      & Statistics about unary EDD \\
+    \texttt{bootstrap.csv} & Statistics about initial edges tested and accepted \\
+    \texttt{find2.csv}     & \Find runs \\
+    \texttt{findg\_\{$\Lambda$\}\_\{$\theta$\}\_\{grow\}.csv} & \PresQ runs with different parameterizations \vspace{1em} \\
+    \texttt{\{uuid[0:2]\}/\{uuid\}/histogram.txt} & Histogram of the EDD arity found for run \texttt{uuid} \\
+    \texttt{\{uuid[0:2]\}/\{uuid\}/nind.txt} & List of EDD found for run \texttt{uuid}
+\end{tabular}}
+\end{center}
+
+Note that the effective value of $\gamma = 1 -\alpha \times \theta$. i.e, \texttt{findg\_0.05\_1.00\_1.csv} contains
+the results for a run of \PresQ with $\Lambda = 0.05$, $\gamma = 1 - 0.1 \times 1 = 0.9$ (for $\alpha = 0.1$),
+and the growing stage enabled.
+
 \subsection{\Find vs. \PresQ}
 
+The snippet~\ref{script:edd_finding} shows, as an illustration, how the comparison for the
+datasets \texttt{Ailerons vs Elevators} was executed for table~\ref{tab:ind2_summary}.
+For completion, it also shows the parameters that kept their default values.
+
 \begin{code}
-\label{script:edd_finding}
-\caption{Benchmark \Find vs. \PresQ over the Ailerons/Elevators datasets}
+\caption{Benchmark \Find vs. \PresQ over the \texttt{Ailerons vs Elevators} datasets. The comments need to be removed.}\label{script:edd_finding}
 \begin{minted}{bash}
 ID="ailerons_$(date +%Y%m%d)"
 
-./bin/benchmark.py --id "${ID}" \
-    --repeat 1000 \
-    --timeout 3000 \
-    --output-dir "./results/" \
+./bin/benchmark.py \
+    --output-dir "./results/" \ # Write the results to this directory
+    --id "${ID}"              \ # Under the given folder name
+    --repeat 1000             \ # 1000 randomized runs
+    --timeout 3000            \ # With a timeout of 50 minutes for one run
+    --sample-size 200         \ # Sample size (DEFAULT)
+    -k 3                      \ # Neighbors for the kNN test (DEFAULT)
+    --permutations 500        \ # Permutations for the kNN test (DEFAULT)
+    --nind-alpha 0.05         \ # Significance level for EDDs (DEFAULT)
+    --bootstrap-arity 2       \ # Rank for the initial hypergraph (DEFAULT)
+    --lambdas 0.05 0.1        \ # PresQ parameter Lambda (DEFAULT)
+    --gammas 1.               \ # gamma = 1 - alpha * 1 (DEFAULT)
+     # Significance levels for initial edges/2-EDD (DEFAULT)
+    --bootstrap-alpha 0.05 0.1 0.15 \
     "./data/keel/ailerons/ailerons.dat" \
     "./data/keel/elevators/elevators.dat"
 \end{minted}
@@ -82,22 +122,35 @@ ID="ailerons_$(date +%Y%m%d)"
 
 \subsection{Performance wrt. columns}
 
+The snippet~\ref{script:perf_columns} corresponds to the performance evaluation shown
+in figure~\ref{fig:scalability}, where new relations are added incrementally to measure
+the scalability of \PresQ with respect to the number of attributes.
+One instance of \textsc{ChemBL} contains 80 relations. Note that the script
+originally expected one file per relation; thus, the \texttt{SQLite} backends abuses
+nomenclature for the parameter \texttt{--files}.
+
 \begin{code}
-\label{script:perf_columns}
-\caption{Benchmark performance with respect to the number of columns}
+\caption{Benchmark performance with respect to the number of columns. The comments need to be removed.}\label{script:perf_columns}
 \begin{minted}{bash}
 ID="chembl_$(date +%Y%m%d)"
 
-for i in {82..160..6}; do
-    ./bin/benchmark.py --id "${ID}" \
-        --output-dir "./results/" \
-        --lambdas 0.1 \
-        --bootstrap-alpha 0.05 \
-        --no-find2 \
-        --repeat 10 \
-        --files $i \
-        --timeout 3000 \
-        ./data/chembl/chembl_??.db
+for i in {82..160..6}; do       # From 82 to 160 relations
+  ./bin/benchmark.py \
+    --output-dir "./results/" \ # Write the results to this directory
+     --id "${ID}"             \ # Under the given folder name
+    --repeat 10               \ # 10 randomized runs
+    --timeout 3000            \ # With a timeout of 50 minutes for one run
+    --lambdas 0.1             \ # PresQ parameter Lambda
+    --bootstrap-alpha 0.05    \ # Significance levels for initial edges/2-EDD
+    --no-find2                \ # Do not run Find2 in this case
+    --files $i                \ # Number of relations
+    --sample-size 200         \ # Sample size (DEFAULT)
+    -k 3                      \ # Neighbors for the kNN test (DEFAULT)
+    --permutations 500        \ # Permutations for the kNN test (DEFAULT)
+    --nind-alpha 0.05         \ # Significance level for EDDs (DEFAULT)
+    --bootstrap-arity 2       \ # Rank for the initial hypergraph (DEFAULT)
+    --gammas 1.               \ # gamma = 1 - alpha * 1 (DEFAULT)
+    ./data/chembl/chembl_??.db
 done
 \end{minted}
 \end{code}
