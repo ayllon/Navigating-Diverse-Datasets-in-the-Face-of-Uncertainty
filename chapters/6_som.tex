@@ -332,7 +332,7 @@ probably due to the imbalance of the KDTree.
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics{images/4_som/normal_location}
+    \includegraphics{images/6_som/normal_location}
     \caption{
     Location test for two multivariate Gaussian distributions with $D=1000$
     }
@@ -348,7 +348,7 @@ to the other methods.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics{images/4_som/normal_scale}
+    \includegraphics{images/6_som/normal_scale}
     \caption{Scale test for two multivariate Gaussian distributions with $D=1000$}
     \label{fig:normal_scale}
 \end{figure}
@@ -367,7 +367,7 @@ their type II error as the dimensionality increase.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics{images/4_som/normal_location_fair}
+    \includegraphics{images/6_som/normal_location_fair}
     \caption{Fair location test for two multivariate Gaussian distributions with $D=1000$}
     \label{fig:normal_fair_location}
 \end{figure}
@@ -379,7 +379,7 @@ tests worsen as the number of the dimensions increase.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics{images/4_som/normal_scale_fair}
+    \includegraphics{images/6_som/normal_scale_fair}
     \caption{Fair scale test for two multivariate Gaussian distributions with $D=1000$}
     \label{fig:normal_fair_scale}
 \end{figure}
@@ -411,12 +411,12 @@ rapidly increases for the magnitude cutout, but barely for the SNR one.
 
 \begin{figure}[htbp]
     \begin{subfigure}[]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{images/4_som/divergence/dc2_mag_divergence.eps}
+    \includegraphics[width=\textwidth]{images/6_som/divergence/dc2_mag_divergence.eps}
     \caption{\gls{KLD} for the $\text{MAG}_\text{VIS}$ cutout}
     \end{subfigure}
     \hfill
     \begin{subfigure}[]{0.5\textwidth}
-    \includegraphics[width=\textwidth]{images/4_som/divergence/dc2_snr_divergence.eps}
+    \includegraphics[width=\textwidth]{images/6_som/divergence/dc2_snr_divergence.eps}
     \caption{\gls{KLD} for the SNR cutout}
     \end{subfigure}
     \caption{\gls{KLD} for the DC2 samples}
@@ -432,7 +432,7 @@ tests can use the full sample while the classifiers must split the data into tra
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics{images/4_som/dc2_mag}
+    \includegraphics{images/6_som/dc2_mag}
     \caption{Statistical performance vs sample size (left) and dimensionality (right)}
     \label{fig:dc2_mag}
 \end{figure}
@@ -444,7 +444,7 @@ while both classifiers remain with a high error rate.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics{images/4_som/dc2_snr}
+    \includegraphics{images/6_som/dc2_snr}
     \caption{Statistical performance vs sample size (left) and dimensionality (right)}
     \label{fig:dc2_snr}
 \end{figure}
@@ -478,7 +478,7 @@ between both (right). The ``most different'' cells hint at how they are differen
 
 \begin{figure}[t]
     \centering
-    \includegraphics[width=\textwidth]{images/4_som/imd.eps}
+    \includegraphics[width=\textwidth]{images/6_som/imd.eps}
     \caption[Comparing \gls{SOM} density variations]{Density of samples for the general population (left), poorest segment (center) and
     relative difference (right). Cells with a value of $-1$ do not have any low-income student,
     while those with a value of $0.5$ show an ``excess'' with respect to the general
@@ -496,7 +496,7 @@ there is a relation. Thus, we prove that our proposed test can be useful for dat
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{images/4_som/imd_histogram.eps}
+    \includegraphics[width=\textwidth]{images/6_som/imd_histogram.eps}
     \caption[Histogram of the Indices of Multiple Deprivations for two populations]{
         \emph{Indices of Multiple Deprivations} for the general population (left) and for
         young female students from the \emph{North Western Region}.
@@ -584,7 +584,7 @@ conscious efforts when choosing a correct answer.
 
 \begin{figure}[htb]
     \centering
-    \includegraphics[width=\textwidth]{images/4_som/eye_regress.eps}
+    \includegraphics[width=\textwidth]{images/6_som/eye_regress.eps}
     \caption[Codebook values for the two most distinct features from the Eye dataset.]{
         Codebook values for the two most distinct features from the Eye dataset.
         Darker neurons are more sensitive to the given feature.
@@ -656,9 +656,9 @@ $k$NN. Their distribution has been estimated using bootstrapping. The parametriz
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\textwidth]{images/4_som/presq_som.eps}
+    \includegraphics[width=\textwidth]{images/6_som/presq_som.eps}
     
-    \includegraphics[width=\textwidth]{images/4_som/presq_som_aileron.eps}
+    \includegraphics[width=\textwidth]{images/6_som/presq_som_aileron.eps}
     \caption[Relative difference between $\PresQ_{SOM}$ and $\PresQ_{kNN}$.]{
         Relative difference between $\PresQ_{SOM}$ and $\PresQ_{kNN}$.
         Top: DC2 dataset~\cite{EuclidDesprez2020}.

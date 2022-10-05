@@ -31,7 +31,7 @@ such as the Kolmogorov-Smirnov~\cite{Hodges1958} or Wilcoxon~\cite{Wilcoxon1945}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\linewidth]{images/3_presq/no2ind}
+    \includegraphics[width=\linewidth]{images/5_presq/no2ind}
     \caption[Example of a 2D distribution where the pairwise matching is not enough]{
         Example of a 2D distribution where the pairwise matching would not be accurate enough. It is artificial, but it serves to illustrate the point.
     }
@@ -129,7 +129,7 @@ algorithms evaluated by the authors and discuss their suitability for our needs.
 \label{sec:nind_finding}
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=\linewidth]{images/3_presq/lattice}
+    \includegraphics[width=\linewidth]{images/5_presq/lattice}
     \caption[Example structure of the search space as a lattice for an initial set
         of 4 unary \glspl{IND}.]{
         Example structure of the search space as a lattice for an initial set
@@ -605,7 +605,7 @@ seeds found.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{images/3_presq/pipeline}
+    \includegraphics[width=\linewidth]{images/5_presq/pipeline}
     \caption{Simplified schematic of \PresQ.}
     \label{fig:presq_pipeline}
 \end{figure}
@@ -689,7 +689,7 @@ null hypothesis and accept that the set of edges connecting the node are spuriou
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/3_presq/hypergeom}
+    \includegraphics{images/5_presq/hypergeom}
     \caption[Distribution of the degree of the nodes under the assumption that missing edges
     are due to the expected false negative rate.]{
     Distribution of the degree of the nodes under the null hypothesis that the 
@@ -1042,7 +1042,7 @@ These results confirm that spurious edges influence the
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/3_presq/3hyper_beta}
+    \includegraphics{images/5_presq/3hyper_beta}
     \caption[Recovery ratio and run-times for cliques on uniform $3$-hypergraphs for different ratios of spurious edges.]{
         Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
         for different ratios of spurious edges ($\beta$).
@@ -1061,7 +1061,7 @@ of missing edges and run-time.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/3_presq/3hyper_alpha}
+    \includegraphics{images/5_presq/3hyper_alpha}
     \caption[Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
     for different ratios of missing edges.]{Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
     for different ratios of missing edges ($\alpha$).
@@ -1087,7 +1087,7 @@ This makes sense since there is no correlation between missing edges.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics{images/3_presq/quasi_corr_20}
+    \includegraphics{images/5_presq/quasi_corr_20}
     \caption[Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.]{
     Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.
     In this setup there were no timeouts. Each data-point corresponds to 5 runs.
@@ -1139,7 +1139,7 @@ We consider this another proof of the utility of the proposed techniques.
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.5\linewidth]{images/3_presq/afds}
+    \includegraphics[width=0.5\linewidth]{images/5_presq/afds}
     \caption{
         Pairwise max arity found on the AFDS dataset for each pair of scenarios
     }
@@ -1222,7 +1222,7 @@ to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=\linewidth]{images/3_presq/all}
+    \includegraphics[width=\linewidth]{images/5_presq/all}
     \caption[$95\%$ confidence intervals for the percent difference between \Find and \PresQ.]{
         $95\%$ confidence intervals for the percent difference
         (equation \ref{eq:percent_difference}) between \Find and
@@ -1393,7 +1393,7 @@ dimensionality, and the initial graph becomes very dense.
 
 \begin{figure*}[htb]
     \centering
-    \includegraphics{images/3_presq/scalability}
+    \includegraphics{images/5_presq/scalability}
     \caption[Scalability of \PresQ with respect to the number of columns.]{
         Scalability of \PresQ with respect to the number of columns.
         The top row corresponds to the number of \glspl{EDD} with arities 1, 2, and $n \ge 3$.
@@ -1407,7 +1407,7 @@ dimensionality, and the initial graph becomes very dense.
 
 \begin{figure}[htb]
     \centering
-    \includegraphics{images/3_presq/scalability_sample_wave}
+    \includegraphics{images/5_presq/scalability_sample_wave}
     \caption[Scalability of \PresQ with respect to the number of samples for the Waveform datasets.]{
         Scalability of \PresQ with respect to the number of samples for the Waveform datasets.
         Note that for the top row the $y$ axis is linear between $0$ and $100$, and
