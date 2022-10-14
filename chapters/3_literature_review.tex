@@ -1,25 +1,25 @@
-\todo{Corresponds to identify essential problems, solutions principles}
+\glsresetall
 
-Feedback into task, refine specification.
+Following the \emph{Engineering Design Process}, we have defined the task in
+section~\ref{enum:objectives}. For clarification, and as a required step prior
+to identifying the essential problems and solution principles, the natural next
+step is a literature review, one of the initial stages of our process.
 
-% Content from IEEE, conclusion/discussion is that multiple files with uncertain data,
-% which is our target, is kind of overlooked (Silva2016)
-% This opens next chapter, which is the main contribution of this dissertation.
+This chapter summarizes the results of the \emph{Systematic Mapping of the Literature},
+following the method defined in section~\ref{sec:method_literature_review}.
 
-We need to survey the state-of-the-art to answer the first two objectives described in
-chapter~\ref{enum:objectives}.
-We performed an exhaustive systematic mapping of the literature to obtain an overview
-of the existing techniques.
-
-In section~\ref{sec:mapping/overview}, we restate the objectives of the original
-literature mapping.
-In section~\ref{sec:mapping/methodology}, we enumerate the research questions.
+Since the \emph{Engineering Design Process} is iterative and includes feedback loops, in
+section~\ref{sec:mapping/overview}, we estate the objectives of the
+\emph{original} literature mapping. These objectives were later refined,
+incorporating the results of this study.
+In section~\ref{sec:mapping/method}, we describe our method.
 In section~\ref{sec:mapping/results}, we summarize the results of the literature mapping.
-Finally, in section~\ref{sec:mapping/discussion}, we discuss the interpretation of our findings and our insights.
+Finally, in section~\ref{sec:mapping/discussion}, we discuss the interpretation of our findings
+and insights.
 
-The content of this chapter appears in the article
-\emph{Interactive Data Exploration of Distributed Raw Files: A Systematic Mapping
-Study}~\cite{Alvarez2019}, published on IEEE Access.
+Part of the content of this chapter appears in the article \emph{Interactive Data Exploration
+of Distributed Raw Files: A Systematic Mapping Study}~\cite{Alvarez2019},
+published on IEEE Access.
 
 \section{Overview}
 \label{sec:mapping/overview}
@@ -58,26 +58,25 @@ In summary, we need to satisfy three main requirements:
     option due to the data volume and because we aim for a system that extends and does
     not replace the existing data management solution
   \item Ideally, \emph{distributed}, since files are stored and replicated by an already existing
-    distributed storage~\cite{Baud2012}.
+    distributed storage system~\cite{Baud2012}.
 \end{enumerate}
 
 The granularity of the access has to be higher than \emph{file level} because
-scientists normally worry about datasets that are defined by the data origin,
+scientists normally care about datasets that are defined by the data origin,
 year, conditions, etc\ldots, and one dataset may be distributed across
 several files.
 
-\section{Methodology}
-\label{sec:mapping/methodology}
-\todo{Retitle this section}
-
-\subsection{Research questions}
-\label{sec:mapping/research_questions}
+\section{Method}
+\label{sec:mapping/method}
 
 Idreos \etal~\cite{Idreos2015} propose a classification of different possible approaches
 to our problem.
 This study provides an excellent introduction but we wanted to expand on it by answering
 two questions that were not covered by the original paper and we also wished to survey
 the subsequent evolution of the domain.
+
+\subsection{Research questions}
+\label{sec:mapping/research_questions}
 
 \subsubsection{RQ1. How has the research area evolved?}
 Given that this is an active research area, it has probably progressed since
@@ -86,10 +85,10 @@ question to answer to decide how to focus future research is:
 How has it evolved since 2015?
 
 \subsubsection{RQ2. What is the maturity level of the research area?}
-How many complete and reliable solutions are there?
+How many complete and reliable solutions are available?
 Are they successfully implemented in practice?
 How do they improve the users' experience? Identifying publications is not enough,
-we also want to assess in what part of the software lifecycle they focus.
+we also want to assess in what part of the software life-cycle they focus.
 
 \subsubsection{RQ3. How far are we from a tool that solves our three requirements?}
 The final target of this research is to identify solutions that cover our three
@@ -108,11 +107,11 @@ three different strategies, as follows:
 \begin{itemize}
   \item Set of known works obtained from \cite{Idreos2015} because our RQ2 is
     not covered by the original classification.
-  \item Forward snowballing\cite{Webster2002} from the known set of publications using Google Scholar.
+  \item Forward snowballing~\cite{Webster2002} from the known set of publications using Google Scholar.
   \item For completeness, database searches to improve the coverage of our study.
 \end{itemize}
 
-Jalali and Wohlin\cite{Jalali2012} argue that snowballing and database searches
+Jalali and Wohlin~\cite{Jalali2012} argue that snowballing and database searches
 can lead to similar patterns but they also agree that it is
 ``not easy to draw any general conclusions'' about if the conclusions obtained are the same
 using the two different approaches. Thus, we have opted to follow both.
@@ -129,7 +128,7 @@ The set of digital libraries consulted is:
 \end{itemize}
 
 Given the fast pace at which the field moves, older papers have been probably
-superseded or, if still relevant, we expect them to be already included in\cite{Idreos2015}.
+superseded or, if still relevant, we expect them to be already included in \cite{Idreos2015}.
 Consequently, we have limited the scope in time to studies published from 2010 onwards.
 
 All of the references obtained by any of the previous method were imported into
@@ -152,16 +151,16 @@ or read the complete study.
 We have focused here on finding primary studies related to data exploration.
 The filtering was performed using the following exclusion criteria:
 
-\begin{description}
-  \item[Unsupported language] Studies written in a language different than
+\begin{itemize}
+  \item \emph{Unsupported language} Studies written in a language different than
   English, Spanish or French
-  \item[Incomplete publication] Abstract only, or presentations were excluded
-  \item[Off topic] Out of the data exploration domain
-  \item[Not a primary study] Secondary, tertiary and surveys
-  \item[Duplication] In case of duplication, or high similarity for the same
+  \item \emph{Incomplete publication} Abstract only, or presentations were excluded
+  \item \emph{Off topic} Out of the data exploration domain
+  \item \emph{Not a primary study} Secondary, tertiary and surveys
+  \item \emph{Duplication} In case of duplication, or high similarity for the same
   set of authors, only the most complete or the most recent was
   taken into account.
-\end{description}
+\end{itemize}
 
 Those publications that passed the inclusion criteria were reviewed to make
 sure all their fields were correct. Normally, this should have been done during
@@ -176,9 +175,9 @@ data exploration facet and research type.
 
 \subsubsection{Category}
 \label{sec:mapping_category}
-As mentioned in section \ref{sec:mapping/research_questions}, we base our study on
-the classification done by Idreos \etal \cite{Idreos2015}, which is included for
-convenience in table \ref{tab:mapping/clustering}. For more details, we refer the
+As mentioned in section~\ref{sec:mapping/research_questions}, we base our study on
+the classification done by Idreos \etal~\cite{Idreos2015}, which is included for
+convenience in table~\ref{tab:mapping/clustering}. For more details, we refer the
 interested reader to Idreos' tutorial.
 
 For our purposes, we have assigned one single category to each work covered
@@ -209,9 +208,9 @@ could fit.
 \subsubsection{Research type}
 To answer our second research question---the maturity of the area---we follow
 the classification of research approaches done by \cite{Wieringa2006},
-as our guidelines for systematic mapping do\cite{Petersen2007}.
+as our guidelines for systematic mapping do~\cite{Petersen2007}.
 
-We summarize the different research types in table \ref{tab:mapping/research_type}.
+We summarize the different research types in table~\ref{tab:mapping/research_type}.
 
 As per this classification, we expect mature solutions that have been
 implemented in practice to be covered by one or more \emph{Evaluation Research}
@@ -318,10 +317,10 @@ Table \ref{tab:mapping/category_summary} displays the frequency of publications 
 classification cluster proposed by Idreos~\cite{Idreos2015}. It is worth mentioning that
 four papers on the \emph{Database Layer} did not fall into
 the predefined clusters, given their genericity~\cite{Kersten2011}, or as an
-evaluation of different techniques\cite{Siddiqa2017,Zoumpatianos2015,Palpanas2015}.
+evaluation of different techniques~\cite{Siddiqa2017,Zoumpatianos2015,Palpanas2015}.
 
 Figure \ref{fig:mapping/layer_vs_type} displays the frequency of each major cluster
-against the research type count for each one. In table \ref{tab:mapping/publication},
+against the research type count for each one. In table~\ref{tab:mapping/publication},
 we display the publication forums where more than one study has been published.
 While there are two main forum, summing 30.58\% of all the publications,
 most of the papers are spread out on different conferences and journals.
@@ -407,16 +406,24 @@ reviews to include gray literature in searches.
 \end{table}
 
 We refer to our published work~\cite{Alvarez2019} for the complete list of classified publications.
+\todo{Add the list as an appendix?}
 
 \section{Discussion}
 \label{sec:mapping/discussion}
 
+With this results, we now answer the three research questions in
+section~\ref{sec:mapping/answers}. Then, in section~\ref{sec:mapping/insights}
+we explain the insights we obtain from these answers. Finally,
+we enumerate the threats to the validity of this study in
+section~\ref{sec:mapping/threats}.
+
 \subsection{Answering the research questions}
+\label{sec:mapping/answers}
 
 \subsubsection{RQ1. How has the research area evolved?}
 Figure \ref{fig:mapping/layers_histogram} displays the evolution during time
 of each of the three major classification clusters: user interaction,
-middleware and database\todo{Update during 2022!}.
+middleware and database.
 
 Considering our search strategy, most of the
 results are posterior to 2012. Different approaches seem to be, in general, well
@@ -470,7 +477,7 @@ encouraged by the journals and conferences of this area.
 In figure \ref{fig:mapping/venn_requirements} we display a Venn diagram with our three
 requirements. We can see there is a single study that covers the three requirements:
 \textit{{A} {D}istributed {I}n-situ {A}nalysis {M}ethod for {L}arge-scale
-{S}cientific {D}ata}, by D.Han \etal\cite{Han2017}. While they mention the
+{S}cientific {D}ata}, by D.Han \etal~\cite{Han2017}. While they mention the
 access over raw files and the fact that it is distributed, they do not
 explicitly state anything about their interactivity. However, the measured times
 for selective queries that they report are in the order of a few seconds. Consequently, we
@@ -484,9 +491,10 @@ Aside from this paper, no other study combines access to raw data with low
 response times.
 
 The solutions that cover at least two out of the three requirements are 
-summarized in more detail in section \ref{sec:mapping/details}.
+summarized in more detail in section~\ref{sec:mapping/details}.
 
 \subsection{Study insights}
+\label{sec:mapping/insights}
 Research in data exploration is very active and there has been---and there is---
 a myriad of solutions proposed. In fact, this should not come as a surprise:
 in 2005 Stonebraker~\cite{Stonebraker2005} had already predicted this was bound to
@@ -524,6 +532,7 @@ results of this study, the difficulty for users to decide will likely become
 more challenging.
 
 \subsection{Threats to validity}
+\label{sec:mapping/threats}
 \subsubsection{Search bias}
 The gaps identified may be covered in
 journals and conferences associated with the user domain---e.g. astrophysics---,
@@ -537,13 +546,13 @@ Given the huge number of papers that resulted from the search,
 a first filtering was done just based on title and abstract.
 This is a difficult challenge. Unlike in other disciplines, sometimes abstracts
 do not contain enough information about the paper and keywords can be inconsistent
-between journals and authors\cite{Budgen2008,Brereton2007,Jalali2012}.
+between journals and authors~\cite{Budgen2008,Brereton2007,Jalali2012}.
 As recommended by \cite{Brereton2007}, we have also taken into consideration
 the conclusions to cover this issue.
 
 \subsubsection{Classification}
 Another concern about these classifications is the bias of the researcher's own
-interpretation\cite{MacLure2005}.
+interpretation~\cite{MacLure2005}.
 For instance, \emph{Jorgensen and Shepperd} report on a disagreement over
 39\% of the reviewed papers in their systematic review~\cite{Jorgensen2007}
 due to different interpretations of the description of each category. We
@@ -556,8 +565,8 @@ explicitly mentioned if the authors did not consider them relevant for the
 purposes of their publication. Therefore, there may have been false negatives.
 
 The present paper documents our process and the resulting
-publication list has been made publicly available---see section
-\ref{sec:mapping/search_strategy}---, so anyone interested can
+publication list has been made publicly available---see
+section~\ref{sec:mapping/search_strategy}---, so any interested reader can
 replicate and/or validate our results.
 
 \section{Discussion of relevant methods}
@@ -615,7 +624,7 @@ Distributed File System (\textsc{HDFS}) across the cluster. Additionally, the ou
 data may be cached optionally in memory - via ramfs or the filesystem cache.
 
 For the interactive stage, on each HDFS Data Node it is deployed an 
-instance of a customized \textsc{PostgresRaw}\cite{Alagiannis2012Adaptive}
+instance of a customized \textsc{PostgresRaw}~\cite{Alagiannis2012Adaptive}
 database, a modified version of \textsc{PostgreSQL} with additional support for 
 raw files based on positional maps - positions of attributes within the file.
 
@@ -640,8 +649,8 @@ associate related data entries contained in the raw data files at the record
 level.
 
 To do so, the authors formally define two additional workflow 
-algebraic data operators\cite{Ogasawara2011}, which allows to address 
-specific records stored on a file within a dataflow: \emph{Raw Data Extraction} 
+algebraic data operators~\cite{Ogasawara2011}, which allows to address 
+specific records stored on a file within a data-flow: \emph{Raw Data Extraction} 
 - read, tokenize, filter, parse - and \emph{Raw Data Indexing}. These 
 operators can be composed with the existing ones, as \emph{Map} or 
 \emph{Filter} - for instance, a user could map a list of file names to their 
@@ -700,7 +709,7 @@ displayed more performantly.
 
 Although their solution is back-end agnostic, their proposed implementation 
 relies on \scidb~\cite{Stonebraker2011}. It quickly comes to mind that this could 
-potentially be integrated with the previous method by Han \etal\cite{Han2017}, 
+potentially be integrated with the previous method by Han \etal~\cite{Han2017}, 
 resulting on a visual exploration tool for raw data files.
 
 \medskip
@@ -804,8 +813,8 @@ In this systematic mapping study we have detailed the method that we followed
 to gather and filter papers related to \emph{data exploration}, searching
 for solutions that tackle big data volumes, stored in a distributed way and with
 a low latency. This process have produced 242 papers, which we have classified
-according to their approach\cite{Idreos2015} on one axis, and to their research
-type\cite{Wieringa2006} on another.
+according to their approach~\cite{Idreos2015} on one axis, and to their research
+type~\cite{Wieringa2006} on another.
 
 The results suggest that  plenty of solutions have been proposed by researchers.
 However, there is rarely any follow up, at least published, on their
