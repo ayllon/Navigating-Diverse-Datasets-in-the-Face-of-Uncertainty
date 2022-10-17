@@ -1,0 +1,188 @@
+As a result of the survey presented in chapter~\ref{chapter:literature_review},
+we realized that most solutions treat files
+separately, leaving it to the end-user to work out how they are related,
+an observation shared by other authors~\cite{Silva2016}.
+These files may have not yet been ingested into a database system and 
+the schema may be unfamiliar and not adequately documented, or even be
+composed of multiple files with heterogeneous schemes~\cite{alawini2016,zhang2015astronomy}.
+Indeed, it seems that Idreo's classification misses a category for this problem.
+We can name this category \emph{Schema Homogenization}, which would belong to
+the \emph{Middleware} layer.
+
+In \emph{Data Mining in Astronomical Databases}, Borne
+describes how data exploration of this kind of diverse datasets is, however,
+relevant since it can drive to serendipitous discoveries~\cite{Borne2001}. He proposes
+two groups of data mining approaches in this respect: event
+based and relationship based:
+
+\begin{itemize}
+    \item \textbf{Event based}
+        \begin{itemize}
+          \item \emph{Known events / known algorithms}
+            Use physical models to locate known phenomena of interest spatially
+            or temporally within a large database.
+          \item \emph{Known events / unknown algorithms}
+            Use pattern recognition and clustering to discover new relationships between known
+            phenomena.
+          \item \emph{Unknown events / known algorithms}
+            Use predictive models to predict the presence of unseen events within a
+            large and complex database.
+          \item \emph{Unknown events / unknown algorithms}
+            Use thresholds to identify transifent or unique events.
+        \end{itemize}
+
+    \item \textbf{Relationship based}
+        \begin{itemize}
+            \item \emph{Spatial}
+                Identify objects in the same location.
+            \item \emph{Temporal}
+                Identify events occurring within the same time period.
+            \item \emph{Coincidence}
+                In general, apply clustering techniques to
+                identify objects that are co-located within a multidimensional space.
+        \end{itemize}
+\end{itemize}
+
+As a complement, Borne then enumerates a list of science requirements for data mining:
+
+\begin{itemize}
+    \item \emph{Object Cross-Identification} between catalogs. Similar to the natural join
+        in relational algebra, but based on spatial or multidimensional co-location.
+    \item \emph{Object Cross-Correlation} comparing sets of attributes over the full set of objects.
+        For instance, identify remote galaxies as those that are \emph{not} present on
+        the ultraviolet spectrum.
+    \item \emph{Nearest-neighbor identification} or, in general, application of clustering
+        algorithms in multidimensional spaces.
+    \item \emph{Systematic Data Exploration} via event- and relationship-based queries to a database
+        hoping to make serendipitous discoveries.
+\end{itemize}
+
+Following the methodology described in chapter 2, we have identified an essential problem:
+exploring multiple files with uncertain numerical data is a neglected aspect in the \gls{IDE}.
+With this insight, we have returned to the clarification stage and used Borne's description
+of data exploration in astronomy~\cite{Borne2001} to better understand data exploration in
+this context. In the following section, we use an existing astronomy database to expand our
+understanding of the task.
+
+\section{Examining real use cases}
+
+We looked for concrete examples of queries mentioning \emph{astronomy} on the
+242 articles classified on the systematic literature mapping from
+chapter~\ref{chapter:literature_review}.
+
+It is soon evident that the datasets published by \gls{SDSS}~\cite{SDSS14} are popular as test
+sets since they are readily available and well documented~\cite{Gray2002}.
+Furthermore, there are sample queries available~\cite{SDSSSamples}, and real ones can also be
+obtained~\cite{SDSSSqlLogs}. Listing~\ref{sql:get_queries} shows an example of how to obtain a list
+of queries performed by users.
+
+\begin{listing}[htbp]
+\begin{minted}[linenos]{sql}
+    SELECT clientIP, seq, statement, elapsed
+    FROM SQLlog
+    WHERE yy=2018 AND mm>=10 AND rows>0 AND dbname LIKE 'BestDR14%'
+\end{minted}
+\caption[Obtaining a list of queries performed by \gls{SDSS} users]{
+    Example of how to obtain a list of queries performed by users during the end of 2018 over the 14th data release
+}\label{sql:get_queries}
+\end{listing}
+
+In total, 25 articles ($10.3\%$) use \gls{SDSS} as a test dataset.
+Table~\ref{tab:sdss_queries_count} classifies these 25 articles following the same schema as described
+in section~\ref{sec:mapping_category}.
+
+\begin{table}[htbp]
+  \begin{center}
+    \begin{tabular}{l r r r}
+      \textbf{Category} & \textbf{Total} & \textbf{SDSS} & \textbf{\%} \\ \hline
+      Exploration Interfaces & 34 & 3 & $8.8\%$ \\
+      Indexes & 58 & 5 & $8.6\%$ \\
+      Storage & 39 & 11 & $28.3\%$ \\
+      Data Visualization & 36 & 2 & $5.6\%$ \\
+      Interactive Performance Optimizations & 48 & 4 & $8.3\%$ \\
+    \end{tabular}
+  \end{center}
+  \caption{Classification of the articles that use the data from the \gls{SDSS}}\label{tab:sdss_queries_count}
+\end{table}
+
+To obtain an overview of the type of usual utilization of this database, we processed
+the results from query~\ref{sql:get_queries}. We extracted the columns, relations,
+and filters usually affected by the queries.
+Table~\ref{tab:most_tables} shows the most frequent queried combinations.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{l r r}
+    \textbf{Tables} & \textbf{Count} & \textbf{Percentage} \\ \hline
+    fGetNearbyObjEq, PhotoPrimary          &  264785 &  37.62\% \\
+    DBObjects\textdagger         &  150458 &  21.37\% \\
+    PhotoTag, fGetObjFromRectEq            &   93094 &  13.23\% \\
+    IndexMap\textdagger          &   41265 &   5.86\% \\
+    Galaxy, fGetNearbyObjEq                &   31130 &   4.42\% \\
+    sppParams, PhotoTag, fGetObjFromRectEq &   29805 &   4.23\% \\
+\end{tabular}
+\caption[Most frequently queried relations from the \gls{SDSS}]{
+    Combination of relations most frequently queried. Tables marked with (\textdagger)
+    are meta-data tables (i.e., describe the schema)
+}\label{tab:most_tables}
+\end{table}
+
+Interestingly, introspection queries are widespread, indicating that users spend considerable time
+familiarizing themselves with a complex schema~\cite{Khoussainova2010}.
+
+\section{Refining objectives}
+\label{sec:objectives}
+
+We can summarize the results of our surveys:
+
+\emph{Support for data distributed across multiple files} is generally neglected by
+\emph{in-situ} data exploration solutions~\cite{Silva2016}. However, indexing, storage, and
+interactivity are well covered, as seen in chapter~\ref{chapter:literature_review}.
+
+\emph{Exploring the database schema} itself, as the \gls{SDSS} query logs suggest, is
+non-negligible user activity. Our observation is consistent with an IBM study that finds
+that even data architects can spend up to 70\% of their time just discovering the metadata of
+databases~\cite{Wu2008}.
+
+Our question is: can we help users to navigate datasets split across multiple
+files, with unknown schema, facilitating relationship-based mining?
+When metadata is present, we could rely on name matching, but when it is not, or if the
+correspondences are not straightforward?
+
+\section{Solution principles}
+\todo{Move here presq / background}
+
+\textsc{ReDiscover}~\cite{alawini2016} is an example of a proposed solution for this problem.
+It uses machine learning techniques, such as Support Vector Machines, to identify matching
+columns between scientific tabular data.
+Yet, this system focuses mainly on the correspondence between \emph{individual columns},
+which is insufficient for spatial and coincidence associations, as they are multidimensional.
+We are left only with a set of pairwise correspondences that may not be enough to cross-match
+tuples between files.
+
+\begin{table}[ht]
+    \centering
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l l l}
+    \hline
+    \multicolumn{3}{l}{\textbf{Middleware}} \\
+    \hline
+    \textit{Schema Homogenization} & Inclusion     \cite{DeMarchi2002,DeMarchi2003zigzag,koeller2002integration} & Complementarity \cite{alawini2016} \\
+    \hline
+    \end{tabular}}
+    \caption{We propose a new Idreos~\cite{Idreos2015}}
+    \label{tab:missing_middleware}
+\end{table}
+\todo{Expand this table}
+
+\section{Proposed solution}
+% Definitive layout?
+In the following chapter we propose a novel algorithm, \PresQ, that can recover
+multidimensional correspondences between datasets with different, undocumented --- or unknown --- schema.
+
+\PresQ relies on statistical tests to accept or discard these correspondences.
+To complement this method, chapter~\ref{chapter:som} describes a multidimensional
+statistical test based on \gls{SOM} that offers additional interpretability. It can be used
+with \PresQ for studying with more details accepted or rejected correspondences;
+or afterward over the merged dataset for clustering or as a pre-processing for nearest-neighbor
+coincidence search~\cite{silva2011som}.
