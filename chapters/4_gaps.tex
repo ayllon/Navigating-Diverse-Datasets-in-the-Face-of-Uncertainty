@@ -211,6 +211,7 @@ of relation R and a set of columns Y of relation S, written $R.X \eqdist S.Y$ or
 $X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
 \label{def:eqdist}
 \end{definition}
+\todo{EDD is a contribution}
 
 The term \emph{arity} refers to the cardinality of the sets of attributes $X$ and $Y$. For instance, if $|X| = 1$, we talk about unary \glspl{EDD}; if $|X| = 2$,
 binary or 2-\glspl{EDD}; and, in general, for $|X| = n$, $n$-ary \glspl{EDD}.
@@ -340,48 +341,49 @@ Finally, \Find maps the search of \glspl{IND} to the search of maximal cliques. 
 using statistical tests will introduce unavoidable false negatives, which would
 translate into missing edges.
 A clique with missing edges is a quasi-clique, and finding quasi-cliques, while at least
-as hard as finding cliques, is doable. This has influenced the approach presented in
-chapter~\ref{chapter:presq}.
+as hard as finding cliques, is doable.
 
 \subsection{Foreign Key Discovery}
 
-We briefly survey this area, however, since we consider it complementary to
-\gls{IND} discovery. A foreign key (FK) constrain on an attribute
-$A$ over a primary key (PK) $B$ implies that all values present on $A$ must also be
+We briefly survey this area since we consider it complementary to
+\gls{IND} discovery. A \gls{FK} constrain on an attribute
+$A$ over a \gls{PK} $B$ implies that all values present on $A$ must also be
 present on $B$.
 Therefore, there exists an inclusion dependency between $A$ and $B$.
 However, the reverse is not necessarily true. For instance, two auto-increment attributes from
-two different relations may have an accidental Inclusion Dependency with no semantic meaning.
+two different relations may have an accidental \gls{IND} with no semantic meaning.
 
 To distinguish between accidental and meaningful \glspl{IND}, Rostin \etal~\cite{Rostin2009} propose to
-train machine learning models over a set of features extracted from positive PK/FK relations and
-negative, non-meaningful \glspl{IND}. However, their proposal is limited to unary \glspl{IND}.
+train machine learning models over a set of features extracted from positive
+\gls{PK}/\gls{FK} relations and negative, non-meaningful \glspl{IND}. However, their proposal
+is limited to unary \glspl{IND}.
 
-Zhang \etal~\cite{Zhang2010} present an algorithm capable of handling multi-column PK/FK relations.
-They define the concept of \emph{Randomness Test}, which assumes that an FK is a representative
-sample of a PK and, therefore, should follow a similar distribution. They use an approximation of the
-Earth-Mover Distance (EMD) ---the cost of transforming one distribution into another--- to measure the
-similarity between PK and FK.
-Their algorithm ranks PK/FK candidates by distance ---closest first--- and selects the top $X\%$,
-where $X$ must be chosen to balance precision and recall.
+Zhang \etal~\cite{Zhang2010} present an algorithm capable of handling multi-column
+\gls{PK}/\gls{FK} relations.
+They define the concept of \emph{Randomness Test}, which assumes that an \gls{FK} is a representative
+sample of a \gls{PK} and, therefore, should follow a similar distribution.
+They use an approximation of the \gls{EMD} ---the cost of transforming one distribution into another---
+to measure the similarity between \gls{PK} and \gls{FK}.
+Their algorithm ranks \gls{PK}/\gls{FK} candidates by distance ---closest first--- and selects
+the top $X\%$, where $X$ must be chosen to balance precision and recall.
 
 More recently, Jian \etal~\cite{jiang_holistic_2020} introduced an approach that identifies
-both PK and FK holistically. They validate Zhang's concept of \emph{Randomness} and propose a simplified
-estimator that treats each attribute separately. They do not need the PKs to be known but require a list of
-\glspl{IND} as input.
+both \gls{PK} and \gls{FK} holistically. They validate Zhang's concept of \emph{Randomness}
+and propose a simplified estimator that treats each attribute separately. They do not need
+the \glspl{PK} to be known but require a list of \glspl{IND} as input.
 
-It is worth noting that even though the latter two publications use the idea of the FK being a random
-sample of the PK, their methods use the \emph{distance} between distributions for
-ranking candidates \cite{Zhang2010} or as a feature \cite{jiang_holistic_2020}.
+It is worth noting that even though the latter two publications use the idea of the
+\gls{FK} being a random sample of the \gls{PK}, their methods use the \emph{distance} between
+distributions for ranking candidates~\cite{Zhang2010} or as a feature~\cite{jiang_holistic_2020}.
 Our method is based, however, on statistical hypothesis testing\footnotemark.
 
-\footnotetext{While the EMD could be used as a test statistic, it would be computationally
+\footnotetext{While the \gls{EMD} could be used as a test statistic, it would be computationally
 expensive~\cite{hallin2021multivariate}.}
 
 \subsection{Complementarity}
 
-\textsc{ReDiscover}~\cite{alawini2016} uses machine learning techniques, such as Support Vector
-Machines, to identify matching columns between scientific tabular data.
+\textsc{ReDiscover}~\cite{alawini2016} uses machine learning techniques, such as
+\glspl{SVM}, to identify matching columns between scientific tabular data.
 The author defines different ways in which datasets may be related:
 containment, partial containment, augmentation, complementation, equality, \ldots
 This solution focus does not only focus on correspondences (i.e., $A$ is a subset of $B$),
@@ -405,7 +407,7 @@ expanding on the result from the literature mapping shown in chapter~\ref{chapte
     \hline
     \textit{Schema \mbox{Homogenization}} &
     \gls{IND}     \cite{DeMarchi2002,DeMarchi2003zigzag,koeller2002integration} &
-    Foreign Key   \cite{Rostin2009,Zhang2010,jiang_holistic_2020} &
+    \gls{FK}      \cite{Rostin2009,Zhang2010,jiang_holistic_2020} &
     Complementarity \cite{alawini2016} \\
     \hline
     \end{tabularx}
@@ -417,7 +419,7 @@ expanding on the result from the literature mapping shown in chapter~\ref{chapte
 \section{Proposed solution}
 In the following chapter, we propose a novel algorithm, \PresQ, that
 can recover multidimensional correspondences between datasets with different,
-undocumented --- or unknown --- schema. \PresQ relies on statistical tests to
+undocumented --- or unknown --- schemas. \PresQ relies on statistical tests to
 accept or discard these correspondences.
 
 To complement this method, chapter~\ref{chapter:som} describes a multidimensional

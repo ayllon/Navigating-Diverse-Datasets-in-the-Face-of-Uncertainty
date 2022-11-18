@@ -199,7 +199,7 @@ a plus rien à retrancher.}}
 \label{chapter:presq}
 \input{chapters/5_presq}
 
-\chapter{\glsfmtlong{SOM} statistical test}
+\chapter{\glsfmtlong{SOM} Statistical Test}
 \label{chapter:som}
 \input{chapters/6_som}
 
@@ -207,21 +207,25 @@ a plus rien à retrancher.}}
 \label{chapter:discussion}
 \include{chapters/7_discussion}
 
-\chapter{Conclusions and future work}
+\chapter{Conclusions and Future Work}
 \label{chapter:conclusions}
 \input{chapters/8_conclusions_future}
 
 % Bibliography
-\printbibliography[heading=bibintoc]
+\printbibliography[heading=bibintoc,segment=0]
 
 % Appendices
 \appendix
-\chapter{\PresQ bench-marking tools}
+\newrefsegment
+
+\chapter{\PresQ Bench-marking Tools}
 \label{appendix:presq_benchmarks}
 \input{chapters/A1_presq_benchmarks}
 
-\chapter{Prototypes overview}
+\chapter{Prototypes Overview}
 \label{appendix:prototypes}
 \input{chapters/A2_prototypes}
+
+\printbibliography[segment=1]
 
 \end{document}
