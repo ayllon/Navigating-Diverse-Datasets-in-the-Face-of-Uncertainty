@@ -2,15 +2,15 @@
 
 \section{Summary}
 
-\emph{In situ} Data Exploration is an active research area that requires
+\emph{In-situ} Data Exploration is an active research area that requires
 a multidisciplinary approach: algorithms, data structures, machine learning,
-statistics,  data visualization, information sciences, and, unavoidably,
+statistics,  data visualization, information sciences, and unavoidably,
 the domain knowledge --- or business understanding ---  provided by an expert.
 
 Going back to the \gls{CRISPDM} model described in  chapter~\ref{chapter:introduction}
 and shown in figure~\ref{fig:crispdm}, our initial objective was to identify
 gaps in the tooling available for experts to understand data coming as a set of
-unprocessed and perhaps inconsistent set of files. These files are not optimized
+unprocessed and perhaps inconsistent sets of files. These files are not optimized
 for access, and any early decision on how to ingest them into a database may be
 counterproductive until the dataset is better understood.
 
@@ -28,7 +28,7 @@ This is particularly important when the data is numerical and uncertain since
 one can not just compare tuples individually but needs to inspect distributions.
 
 In the relational world, the \gls{IND} concept comes close to the objective:
-parts of a relation contained (included) within another. However, this modeling
+Parts of a relation contained (included) within another. However, this modeling
 relies on the attributes' discrete nature, such as name, date of birth, etc.
 
 In chapter~\ref{chapter:presq} we propose a generalization, the \gls{EDD}, that
@@ -43,7 +43,7 @@ level for statistical tests --- can be estimated.
 
 For the experiments used to evaluate \PresQ, described in ~\ref{sec:presq_experiments},
 the statistical test of choice was based on the $k$-nearest neighbors. While this test
-performs well for a wide range of datasets, the resulting trained \emph{model} is not
+performs well for many datasets, the resulting trained \emph{model} is not
 very useful.
 Chapter~\ref{chapter:som} introduces a statistical test based on \gls{SOM}, which provides,
 in addition to a $p$ value, a trained projection that we can later use for binning and
@@ -52,11 +52,41 @@ is also interpretable in case of rejection, which is also helpful in tentative d
 
 \section{Contributions}
 
-% The systematic mapping itself
-% The missing category in Idreos
-% PresQ **algorithm**, then the software is another story
-% SOM test
-% And publications
+We summarize here the main contributions of this thesis:
+
+\subsection{Survey of state of the art}
+Idreos \etal surveyed the state of the art of \gls{IDE} up to the first half of 2015~\cite{Idreos2015}.
+Being an active research area, we performed an exhaustive systematic literature mapping up to mid-2017.
+Almost 60\% of the classified works were published in 2015 and later. The results
+of this survey, presented in chapter~\ref{chapter:literature_review}, are a valuable update on
+the state-of-the-art.
+
+\subsection{New category for Interactive Data Exploration}
+
+The state of the literature at the time of our survey indicated that, within the
+\gls{IDE} research community, querying datasets split over multiple files is arguably
+neglected~\cite{Silva2016}. One could argue that the logical file containing a given
+subset of the data is a detail that can be integrated into an existing index. This is
+true as long as the data layout is similar, but this is not always the case.
+We have proposed a new category within the \emph{Middleware Layer}: \emph{Schema Homogenization}.
+A new set of articles has been classified under this category in table~\ref{tab:missing_middleware}.
+
+\subsection{Algorithms}
+
+Querying data split across multiple files with similar schemas is another active
+area of research within the \emph{Relational Algebra} domain. However, existing solutions
+do not work over attributes defined in the real domain.
+
+In chapter~\ref{chapter:presq} we have presented \PresQ, an algorithm for finding quasi-cliques
+on uniform hypergraphs that can be used to find sets of attributes \gls{EDD}
+between datasets. \PresQ is not limited to \gls{EDD} finding and can potentially be
+of use to other areas that have a strong combinatorial aspect, such as
+chemistry or biology~\cite{Bretto2013}.
+
+In chapter~\ref{chapter:som} we have introduced \SOMA, a two-sample multivariate statistical test based on
+\glspl{SOM} with a performance comparable to tests based on machine learning models. An additional advantage
+of this technique is that it outputs an interpretable projection of the two samples. It can be used
+by itself or in conjunction with \PresQ.
 
 \subsection{Publications}
 \begin{refsection}
@@ -66,13 +96,17 @@ is also interpretable in case of rejection, which is also helpful in tentative d
 \end{refsection}
 
 \subsection{Software}
-\todo{Software (PresQ)}
+\begin{refsection}
+\nocite{PresQ,SOMA}
+
+\printbibliography[heading=none]
+\end{refsection}
 
 \section{Future work}
 
 \begin{itemize}
     \item In chapter~\ref{chapter:presq}, we prove that finding quasi-cliques in hypergraphs
-    is a successful technique to find \gls{EDD}, or \gls{IND} based on approximate heuristics
+    is a successful technique to find \gls{EDD} or \gls{IND} based on approximate heuristics
     between relations. Therefore, a place for further research is to
     \textbf{improve the quasi-clique finding} algorithm, either via novel algorithms or by
     generalizing some of the many existing techniques~\cite{WU2015693}.
@@ -82,7 +116,7 @@ is also interpretable in case of rejection, which is also helpful in tentative d
     sides of the \gls{EDD} is likely to be similar, and it may be possible to leverage
     \textbf{data-aware} algorithms to augment the quasi-clique finding.
     
-    \item Sometimes, the algorithms should not assume equality-of-distribution. For instance, one of the
+    \item Sometimes, the algorithms should not assume equality of distribution. For instance, one of the
     datasets may have been filtered beforehand --- i.e., signal-to-noise, value clipping, etc. This issue affects
     both \gls{EDD} and \gls{IND} algorithms~\cite{koeller2003discovery}. \textbf{Partial inclusion/equality-of-distribution}
     remains an open problem.
@@ -90,13 +124,13 @@ is also interpretable in case of rejection, which is also helpful in tentative d
     \item \PresQ is based on frequentist probability, which does not allow incorporating \textbf{prior beliefs}
     into the algorithm. i.e., a \textbf{domain-expert} has no way of influencing the result based
     on her knowledge of the area.
-    A Bayesian framework could prove helpful in this respect. Furthermore, in relation with the previous point,
+    A Bayesian framework could prove helpful in this respect. Furthermore,
     it can also be used to perform local null hypothesis testing~\cite{soriano2015bayesian}, which could help
     identify partial \glspl{EDD} --- as when a filter has been applied to one of the datasets.
     
     \item Searching for quasi-cliques involves exponential time complexity on the number of nodes.
-    Thus, beforehand, applying a \textbf{dimensionality reduction} would reduce the total
-    run-time and decrease the noise. Nonetheless, a complication arises from the premise that
+    Thus, applying a \textbf{dimensionality reduction} would reduce the total
+    run-time and decrease the noise. Nonetheless, a complication arises because
     we do not know which attributes are shared.
         
     \item Finally, \textbf{finding other types of numerical dependencies} can be of interest.

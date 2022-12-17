@@ -20,7 +20,7 @@ or it could be used later for other purposes, such as directly classifying futur
 \medskip
 
 \gls{SOM} is a technique for dimensionality
-reduction. It is a type of neural network that learns a low dimension representation
+reduction. It is a type of neural network that learns a low-dimension representation
 - generally 2D - of the original high-dimensional space while maintaining the topological
 layout of the original data~\cite{kohonen1982self, Villmann1999}.
 
@@ -29,7 +29,7 @@ and classification tasks if the training data is labeled~\cite{ultsch2005esom,ul
 For instance, the neurons can be labeled according to the training data labels mapped into their
 region. During classification, objects can be labeled according to the label of the neuron
 into which they are mapped.
-Thus, \glspl{SOM} can be used as a building block of an ML-based two-sample test, similarly to
+Thus, \glspl{SOM} can be used as a building block of an ML-based two-sample test, similar to
 \emph{$k$-Nearest Neighbors} or \emph{Neural Network} classifiers, with the valuable addition
 of producing a representation that can be visualized.
 
@@ -40,7 +40,7 @@ $p$ value for $H_0: P = Q$, the test also outputs a trained \gls{SOM} model that
 use for other tasks, such as classification or visualization.
 Our proposal uses a $\chi^2$ statistic to compare the densities of both samples on
 the projected plane instead of relying on a training-testing split. This allows us to fully
-utilize the sample data. To the best of our knowledge, using Self-Organizing Maps
+utilize the sample data. To our knowledge, using Self-Organizing Maps
 to perform multidimensional two-sample testing has not been proposed
 before~\cite{kaski1998bibliography,oja_bibliography_2003,polla_bibliography_2006}.
 
@@ -361,8 +361,7 @@ amount of information fixed. i.e. the \gls{KLD} between both distributions
 should remain constant.
 
 For the location test, this can be achieved by two multivariate Gaussians that only differ
-on the first dimension
-(i.e. $(1, 0, \ldots, 0)$ vs $(0, 0, \ldots, 0)$).
+on the first dimension, i.e. $(1, 0, \ldots, 0)$ vs $(0, 0, \ldots, 0)$.
 
 For completeness, figure~\ref{fig:normal_fair_location} shows the performance of the ML two-sample
 tests being evaluated under this condition. We can see that, indeed, they all fail to improve
