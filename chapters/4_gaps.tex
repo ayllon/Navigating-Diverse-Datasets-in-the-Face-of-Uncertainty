@@ -166,7 +166,7 @@ educated guesses:
         precision~\cite{dawson2008comparing})
 \end{itemize}
 
-In order to help cross-matching the files, the first intuition would be to run a statistical
+To help cross-matching the files, the first intuition would be to run a statistical
 test between all possible pairs of columns,
 such as the Kolmogorov-Smirnov~\cite{Hodges1958} or Wilcoxon~\cite{Wilcoxon1945} tests.
 However, as figure~\ref{fig:pairwise_ind} exemplifies, this information is not enough to 
@@ -211,7 +211,6 @@ of relation R and a set of columns Y of relation S, written $R.X \eqdist S.Y$ or
 $X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
 \label{def:eqdist}
 \end{definition}
-\todo{EDD is a contribution}
 
 The term \emph{arity} refers to the cardinality of the sets of attributes $X$ and $Y$. For instance, if $|X| = 1$, we talk about unary \glspl{EDD}; if $|X| = 2$,
 binary or 2-\glspl{EDD}; and, in general, for $|X| = n$, $n$-ary \glspl{EDD}.
@@ -273,7 +272,7 @@ called specialization~\cite{DeMarchi2002}:
         \item $X$ and $Y$ are sub-sequences of $X'$ and $Y'$, respectively.
     \end{enumerate}
     
-    Equivalently, we can also say that $I_2$ \textbf{generalizes} $I_1$.
+    We can also say that $I_2$ \textbf{generalizes} $I_1$.
 \end{definition}
 
 \begin{example}
@@ -288,8 +287,8 @@ This partial order enables us to structure the search space as a lattice, as exe
 \textsc{Mind}~\cite{DeMarchi2002} is a bottom-up approach: it starts
 from a set of known, satisfied unary \glspl{IND} and builds higher arity candidates
 combining them.
-These new candidates are then validated against the database and those satisfied
-are used for computing the next level candidates until no more candidates are available.
+These new candidates are then validated against the database, and those satisfied
+are used for computing the next-level candidates until no more candidates are available.
 
 \Zigzag~\cite{DeMarchi2003zigzag} starts with a \textsc{Mind} bottom-up approach
 up to a given arity $n \ge 2$. Then, it uses all satisfied \glspl{IND} to initialize a \textit{positive border}
@@ -302,7 +301,7 @@ Invalid candidates are treated depending on how many tuples are different betwee
 Those above a given threshold (too many different tuples) are added to the negative border.
 Those below are top-down traversed, from level $n$ to $n$--1, validated, and then added
 to the positive border if they are satisfied. The algorithm then iterates, building a new
-optimistic border until it is not possible to generate new \glspl{IND}. The optimistic approach
+optimistic border until it is impossible to generate new \glspl{IND}. The optimistic approach
 can prune the search space very aggressively when there are high-arity \glspl{IND},
 but when most arities are low,  \textsc{Mind} may perform better.
 
@@ -326,7 +325,7 @@ can be easily be adapted to the equality-of-distribution statistical tests.
 
 Furthermore, the reference benchmark shows that \Mind, \Find
 and \Zigzag have a comparable run-time, sometimes even
-faster, than the alternatives.
+faster than the alternatives.
 While \textsc{Faida} is generally faster, its
 validation strategy requires computing hashes over the
 attributes and their combinations, which is inapplicable
@@ -385,7 +384,7 @@ expensive~\cite{hallin2021multivariate}.}
 \textsc{ReDiscover}~\cite{alawini2016} uses machine learning techniques, such as
 \glspl{SVM}, to identify matching columns between scientific tabular data.
 The author defines different ways in which datasets may be related:
-containment, partial containment, augmentation, complementation, equality, \ldots
+containment, partial containment, augmentation, completion, equality, \ldots
 This solution focus does not only focus on correspondences (i.e., $A$ is a subset of $B$),
 but it also pays attention to the semantics of the \emph{relationship} (i.e., $A$
 is a selection of $B$).

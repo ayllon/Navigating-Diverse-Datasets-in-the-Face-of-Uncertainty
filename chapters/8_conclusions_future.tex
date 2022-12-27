@@ -71,6 +71,34 @@ true as long as the data layout is similar, but this is not always the case.
 We have proposed a new category within the \emph{Middleware Layer}: \emph{Schema Homogenization}.
 A new set of articles has been classified under this category in table~\ref{tab:missing_middleware}.
 
+\subsection{Definition of \glsxtrlong{EDD}}
+In section \ref{sec:edd}, we have introduced the concept of \glsxtrlong{EDD}, expanding
+the family of data dependencies to four types~\cite{abedjan2015}. We
+summarize the classification in table~\ref{tab:family_dependencies}.
+Note that \gls{EDD} are, by definition, approximate.
+
+\begin{table}[htb]
+\centering
+\begin{tabular}{ll}
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF}                                          & Key Discovery         \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF}                                          & Conditional           \\
+\rowcolor[HTML]{EFEFEF} 
+\multirow{-3}{*}{\cellcolor[HTML]{EFEFEF}Uniqueness}              & (Approximate)         \\
+                                                                  & Foreign key discovery \\
+                                                                  & Conditional           \\
+\multirow{-3}{*}{\glsxtrlong{IND}}                                & (Approximate)         \\
+\rowcolor[HTML]{EFEFEF} 
+\cellcolor[HTML]{EFEFEF}                                          & Conditional           \\
+\rowcolor[HTML]{EFEFEF} 
+\multirow{-2}{*}{\cellcolor[HTML]{EFEFEF}Functional Dependencies} & (Approximate)         \\
+\glsxtrlong{EDD}                                  & (Approximate)        
+\end{tabular}
+\caption{Classification of dependency detection tasks.}
+\label{tab:family_dependencies}
+\end{table}
+
 \subsection{Algorithms}
 
 Querying data split across multiple files with similar schemas is another active
@@ -90,7 +118,7 @@ by itself or in conjunction with \PresQ.
 
 \subsection{Publications}
 \begin{refsection}
-\nocite{Alvarez2019,Alvarez2021inference,AlvarezAyllonPresQ2022}
+\nocite{Alvarez2019,Alvarez2021inference,AlvarezAyllonPresQ2022,Alvarez2022SOM}
 
 \printbibliography[heading=none]
 \end{refsection}

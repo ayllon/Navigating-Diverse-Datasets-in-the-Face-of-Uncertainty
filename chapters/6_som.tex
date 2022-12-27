@@ -33,7 +33,7 @@ Thus, \glspl{SOM} can be used as a building block of an ML-based two-sample test
 \emph{$k$-Nearest Neighbors} or \emph{Neural Network} classifiers, with the valuable addition
 of producing a representation that can be visualized.
 
-\paragraph{Contribution:} In this paper, we propose a multivariate statistical test based on
+In this chapter, we propose a multivariate statistical test based on
 Self-Organizing Maps that shows performance comparable to other techniques based on 
 machine learning models and even superior for medium to big sample sizes. In addition to the 
 $p$ value for $H_0: P = Q$, the test also outputs a trained \gls{SOM} model that can be of
@@ -44,14 +44,13 @@ utilize the sample data. To our knowledge, using Self-Organizing Maps
 to perform multidimensional two-sample testing has not been proposed
 before~\cite{kaski1998bibliography,oja_bibliography_2003,polla_bibliography_2006}.
 
-\paragraph{Motivating example} \PresQ is an algorithm that automatically searches
-for subsets of attributes equally distributed between two datasets, as
-described in chapter~\ref{chapter:presq}.
-It relies on statistical tests. A test based on \gls{SOM} provides, in addition to a $p$ value,
-a trained projection that we can later use for binning and cross-matching both datasets using
-the matching set of features.
+This statistical set can potentially be used with \PresQ to validate
+high-dimensional \glspl{EDD}. The resulting projection can be used to identify objects
+from multiple datasets that are co-located in the matched multidimensional space, satisfying
+two of Borne's science requirements for data mining: \emph{Object Cross-Correlation} and
+\emph{Nearest-neighbor identification}.
 
-\paragraph{Paper organization:} First, in section~\ref{sec:som_chi2}, we describe our proposal
+In section~\ref{sec:som_chi2}, we describe our proposal
 for a multidimensional non-parametric statistical test based on Self-Organizing Maps.
 In section~\ref{sec:som_background}, we introduce previous proposals based on machine-learning
 techniques for non-parametric tests, together with their motivations.

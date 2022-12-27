@@ -1,4 +1,4 @@
-Most of content on this chapter appears in the article
+Most of the content in this chapter appears in the article
 \emph{\textsc{PresQ}: Discovery of Multidimensional Equally-Distributed Dependencies via Quasi-Cliques on Hypergraphs}~\cite{AlvarezAyllonPresQ2022},
 published on \emph{IEEE Transactions on Emerging Topics in Computing}.
 
@@ -6,19 +6,35 @@ published on \emph{IEEE Transactions on Emerging Topics in Computing}.
 % BACKGROUND %
 %%%%%%%%%%%%%%
 
-\todo{Write an interoduction here}
+\todo{Write an introduction here}
+
+- definitive layout
+- statistically robust algorithm for finding them.
+
+In section~\ref{sec:literature_review}, we briefly discuss
+existing work done on IND discovery.
+In section~\ref{sec:background}, we introduce the background for our research. 
+In section~\ref{sec:inferring}, we propose a novel algorithm based on quasi-cliques
+to infer common equally-distributed multidimensional attributes.
+In section~\ref{sec:experiments}, we show experimental results, and in
+section~\ref{sec:discussion}, we discuss our findings. We list the
+threats to the validity of this study in section~\ref{sec:threats}. Finally, in section
+\ref{sec:conclusions}, we compile the conclusions and propose areas for
+further work.
 
 \section{Background}
 \label{sec:background}
+
+Background was moved to gaps. Rename, I don't know... definitions?
 
 \subsection{Equally Distributed Dependencies}
 \label{sec:edd}
 An Inclusion Dependency exists if all combinations of
 values from a given set of attributes in one relation are contained within
 a set of attributes from another.
-However, in the real domain, we will hardly ever find a strict
-subset relation between two attributes. Measurements may have associated uncertainty,
-and even floating-point representation may vary (i.e. 32 vs 64 bits). In general, it is a
+However, we will hardly ever find a strict
+subset relation between two attributes in the real domain. Measurements may have associated uncertainty,
+and even floating-point representation may vary (i.e. 32 vs 64 bits). It is generally a
 flawed idea to compare floating-point numbers with strict equality.
 
 Instead, we can use $R.X \eqdist S.Y$ as an approximation, meaning that the two sets of
