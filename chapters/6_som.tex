@@ -57,7 +57,6 @@ and \glsxtrlong{SOM}.
 In section~\ref{sec:som_exp_setup}, we describe the experimental setup we have used
 to validate our proposal --- including the parametrization of the existing techniques
 evaluated as a baseline ---. In section~\ref{sec:som_results} we present the results.
-Later, in section~\ref{sec:som_discussion}, we discuss our interpretation of the results.
 Finally, in section~\ref{sec:som_conclusions}, we compile our conclusions and propose areas for future
 work.
 
@@ -671,45 +670,6 @@ The \gls{SOM}  test has a run-time penalty due to it being a more complex model 
 However, for the same number of unique EDD found less tests are required. This is likely a consequence of
 the $kNN$ test being slightly more prone to reject the equality of distribution than the \gls{SOM} 
 test, as we can for instance see in figures \ref{fig:normal_location}, \ref{fig:normal_scale}.
-
-\section{Discussion}
-\label{sec:som_discussion}
-The results shown in section~\ref{sec:som_results} prove that the non-parametric,
-two-sample \gls{SOM} test described in section~\ref{sec:som_chi2} generally outperforms,
-in terms of power, other classifier-based two-sample tests, being in some cases even
-comparable to kernel-based methods. It has the added advantage of generating an
-interpretable and usable model: for instance, the resulting \gls{SOM} could be used
-as the basis for a SOM-kNN combined classification model~\cite{silva2011som}.
-
-Like other machine-learning or kernel-based approaches, our method requires some
-initial parameters, such as the \gls{SOM}  size, to be set by the user. From our
-tests, networks of size $O(100)$ neurons generally work well enough, but for more
-precise control, the \gls{SOM} size can be set to the lengths of the two largest
-principal components~\cite{KOHONEN201352}.
-
-\cite{rosenblatt2021better} argues that provable, \emph{proper} test statistics
-should be, in general, preferred over heuristic alternatives. However, our
-proposal is more oriented towards exploring abundant structured data. In this
-case, developing a tailored statistic for all possible combinations is not viable,
-and a pragmatic approach is more suitable~\cite{kim2021classification}.
-
-Finally, if the null hypothesis --- that both samples come from the same underlying
-distribution ---, is rejected, the generated \gls{SOM}  model can be easily visualized
-and examined in more detail.
-In sections~\ref{subsec:som_oulad} and \ref{subsec:som_eye}, we have demonstrated
-that we can reject $H_0$ and obtain valuable information after a bit of exploration
-of the learned model. This exercise would not have been possible with a black-box
-method as a neural network classifier~\cite{friedman2004multivariate}.
-
-
-As a side note, \gls{SOM}  maps can be generalizable to non-vectorial data
---- i.e., strings --- as long as more than one ordering relation is defined~\cite{kohonen1982self, KOHONEN201352}.
-Therefore, our proposed statistical test could also be used to test whether
-two sets of sequences --- i.e., proteins or DNA --- share their origin.
-Unfortunately, since the \gls{SOM}  implementation we have based our implementation
-on~\cite{wittek2013somoclu} only works with real-valued dimensions, we have not been
-able to test this scenario.
-
 
 \section{Conclusions}
 \label{sec:som_conclusions}
