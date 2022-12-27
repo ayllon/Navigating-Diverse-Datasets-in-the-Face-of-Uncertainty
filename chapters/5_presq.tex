@@ -2,30 +2,26 @@ Most of the content in this chapter appears in the article
 \emph{\textsc{PresQ}: Discovery of Multidimensional Equally-Distributed Dependencies via Quasi-Cliques on Hypergraphs}~\cite{AlvarezAyllonPresQ2022},
 published on \emph{IEEE Transactions on Emerging Topics in Computing}.
 
-%%%%%%%%%%%%%%
-% BACKGROUND %
-%%%%%%%%%%%%%%
+\medskip
 
-\todo{Write an introduction here}
+\PresQ is a statistically robust algorithm for finding \glspl{EDD}, as described
+in definition~\ref{def:eqdist}.
 
-- definitive layout
-- statistically robust algorithm for finding them.
+Following the \emph{Engineering Design} process, \PresQ is the \emph{output} of
+the \emph{embodiment design} phase of the design process, and the present chapter
+is its documentation.
+In section~\ref{sec:presq_definitions}, we list the set of rules needed to be able
+to define a search space for \glspl{EDD} and introduce the concepts of
+hypergraph and quasi-clique. In section~\ref{sec:presq_inferring}, we propose
+a novel algorithm based on quasi-cliques to infer common equally-distributed
+multidimensional attributes.
+In section~\ref{sec:presq_experiments}, we show experimental results
+that prove that \PresQ successfully finds dependencies in a reasonable amount of time.
+Finally, in section \ref{sec:presq_conclusions}, we compile the conclusions and
+propose areas for further work.
 
-In section~\ref{sec:literature_review}, we briefly discuss
-existing work done on IND discovery.
-In section~\ref{sec:background}, we introduce the background for our research. 
-In section~\ref{sec:inferring}, we propose a novel algorithm based on quasi-cliques
-to infer common equally-distributed multidimensional attributes.
-In section~\ref{sec:experiments}, we show experimental results, and in
-section~\ref{sec:discussion}, we discuss our findings. We list the
-threats to the validity of this study in section~\ref{sec:threats}. Finally, in section
-\ref{sec:conclusions}, we compile the conclusions and propose areas for
-further work.
-
-\section{Background}
-\label{sec:background}
-
-Background was moved to gaps. Rename, I don't know... definitions?
+\section{Definitions}
+\label{sec:presq_definitions}
 
 \subsection{Equally Distributed Dependencies}
 \label{sec:edd}
@@ -62,7 +58,7 @@ but they translate to the equality of distribution:
         $ R[X] \eqdist S[Y] \land S[Y] \eqdist T[Z] \implies R[X] \eqdist T[Z]$
 \end{description}
 
-The reflexivity, permutation and transitivity rules are well known to hold
+The reflexivity, permutation, and transitivity rules are well-known to hold
 for $\eqdist$ \cite{randles1979introduction}.
 
 %We have proven that the projection rule also holds, as is logical~\cite{Alvarez2021inference}.
@@ -188,13 +184,13 @@ The hyper-clique problem is a particular case when either $\lambda = 1$ or $\gam
 %%%%%%%%%%%%%
 
 \section{Inferring common multidimensional data}
-\label{sec:inferring}
+\label{sec:presq_inferring}
 
 The first required step to find multidimensional \glspl{EDD} is to
 find a set of unary \glspl{EDD}, for which a naive approach would
 mean quadratic complexity. To reduce the complexity, we
 propose an algorithm based on interval trees in
-section \ref{sec:unary}. In section
+section \ref{sec:presq_unary}. In section
 \ref{sec:multidimensional_edd}, we discuss the
 difficulties of the existing adaptable algorithms
 when dealing with uncertainties. Finally, in section
@@ -203,7 +199,7 @@ quasi-cliques, which is more resilient to both false positives
 and false negatives.
 
 \subsection{Uni-dimensional EDDs}
-\label{sec:unary}
+\label{sec:presq_unary}
 
 The first required step for any of the three algorithms is to find a set of valid unary
 \glspl{EDD} on the datasets. i.e., attribute pairs that follow
@@ -360,7 +356,7 @@ seeds found.
 
  Given datasets $R$ and $S$,
 
-(a) Candidate $1$-\glspl{EDD} are found applying the interval-tree as described in section~\ref{sec:unary}.
+(a) Candidate $1$-\glspl{EDD} are found applying the interval-tree as described in section~\ref{sec:presq_unary}.
 
 (b) Those for which the Kolmogorov-Smirnov finds a significant difference are discarded,
     and the rest are mapped to nodes.
@@ -579,7 +575,7 @@ The initialization stage of the test is as follows:
         or only a handful of different values, are dropped. \textsc{Faida} authors followed
         a similar procedure to reduce the number of columns to check \cite{Kruse2017}.
     \item A random sample is taken from both relations (it defaults to 200)
-    \item The algorithm described in section~\ref{sec:unary} is used to find a set of valid
+    \item The algorithm described in section~\ref{sec:presq_unary} is used to find a set of valid
         unary \glspl{EDD}.
     \item \emph{All} possible $n$-EDDs (for $n \in \{2, 3\}$) are generated and validated.
         The tests begin at different arities in order to compare the resiliency of
@@ -902,7 +898,7 @@ match ratio, and the number of unique \glspl{EDD}, we provide the first and thir
 The \emph{precision} column shows a measure of how many candidates are accepted by the
 statistical test. A value of $1$ means that all candidates were valid \glspl{EDD}.
 
-When the search algorithm looks for cliques (first entry for each dataset),
+When the search algorithm looks for cliques (the first entry for each dataset),
 the precision is high since almost all candidates were accepted. However,
 these candidates are, on average, of lower arity. This is visible on the \emph{Match}
 columns. As the potential maximal arity becomes higher ---e.g., \emph{DC2}--- the
@@ -916,7 +912,7 @@ The precision is low, and the search time increases as well.
 Our proposed $\Lambda$ parameter, based on the \emph{expectation} on the number of missing edges,
 is more effective at constraining the set of candidates even when used alone (third entry).
 The precision increases and the run-time is reduced.
-When combined with $\gamma$ (fourth and fifth entries), the precision increases and fewer
+When combined with $\gamma$ (fourth and fifth entries), the precision increases, and fewer
 tests are required.
 
 As an illustration of this balance, let us examine in more detail the consequences of the
@@ -924,7 +920,7 @@ different $\Lambda$ parameterization following the process shown in figure~\ref{
 when running over the DC2 dataset. The first four stages are unaffected by this parameter:
 
 \begin{enumerate}[label=({\alph*}),align=parleft,leftmargin=!,labelwidth=1em]
-\item As described in section~\ref{sec:unary}, an interval tree is built over the attributes
+\item As described in section~\ref{sec:presq_unary}, an interval tree is built over the attributes
     from both relations. Only overlapping ranges are compared,
     reducing by $~27\%$ the number of tests required.
 \item $~810$ KS tests need to be done. $~49$ pairwise combinations are considered equally distributed
