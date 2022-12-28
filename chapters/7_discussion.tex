@@ -124,22 +124,22 @@ The \gls{AFDS} result shown in figure~\ref{fig:afds} is an example of such a cas
 even with a set of files of unknown schema and unknown content, we could infer
 a relation between samples confirmed by the paper that published the data.
 
-\section{\glsfmtlong{SOM}}
+\section{Two-sample test based on \glsfmtlong{SOM}}
 \label{sec:discuss_som}
 The results shown in section~\ref{sec:som_results} prove that the non-parametric,
 two-sample \gls{SOM} test described in section~\ref{sec:som_chi2} generally outperforms,
 in terms of power, other classifier-based two-sample tests, being in some cases
 comparable to kernel-based methods. It has the added advantage of generating an
 interpretable and usable model: for instance, the resulting \gls{SOM} could be used
-as the basis for a SOM-kNN combined classification model~\cite{silva2011som}.
+as the basis for a \gls{SOM}-\gls{kNN} combined classification model~\cite{silva2011som}.
 
 Like other machine-learning or kernel-based approaches, our method requires some
-initial parameters, such as the \gls{SOM}  size, to be set by the user. From our
+initial parameters, such as the \gls{SOM} size, to be set by the user. From our
 tests, networks of size $O(100)$ neurons generally work well enough, but for more
 precise control, the \gls{SOM} size can be set to the lengths of the two largest
 principal components~\cite{KOHONEN201352}.
 
-\cite{rosenblatt2021better} argues that provable, \emph{proper} test statistics
+Rosenblatt \etal~\cite{rosenblatt2021better} argue that provable, \emph{proper} test statistics
 should be, in general, preferred over heuristic alternatives. However, our
 proposal is more oriented toward exploring abundant structured data. In this
 case, developing a tailored statistic for all possible combinations is not viable,
@@ -149,12 +149,14 @@ Finally, if the null hypothesis --- that both samples come from the same underly
 distribution ---, is rejected, the generated \gls{SOM}  model can be easily visualized
 and examined in more detail.
 In sections~\ref{subsec:som_oulad} and \ref{subsec:som_eye}, we have demonstrated
-that we can reject $H_0$ and obtain valuable information after exploring the learned model. This exercise would not have been possible with a black-box
-method as a neural network classifier~\cite{friedman2004multivariate}.
+that we can reject $H_0$ and obtain valuable information after exploring the learned model.
+This exercise would not have been possible with a black-box method such as
+a neural network classifier~\cite{friedman2004multivariate}.
 
 
-As a side note, \gls{SOM}  maps can be generalizable to non-vectorial data
---- i.e., strings --- as long as more than one ordering relation is defined~\cite{kohonen1982self, KOHONEN201352}.
+As a side note, \gls{SOM} maps can be generalizable to non-vectorial data
+--- i.e., strings --- as long as more than one ordering relation is
+defined~\cite{kohonen1982self, KOHONEN201352}.
 Therefore, our proposed statistical test could also be used to test whether
 two sets of sequences --- i.e., proteins or DNA --- share their origin.
 Unfortunately, since the \gls{SOM} implementation we have based our implementation
@@ -165,8 +167,10 @@ able to test this scenario.
 \section{Threats to validity}
 \label{sec:threats}
 
-\textbf{Internal validity:} The results shown in the
-experiments described in section~\ref{sec:presq_experiments} could risk being just a fluctuation,
+\subsection{Internal validity}
+
+The \PresQ results shown in the experiments described in section~\ref{sec:presq_experiments}
+could risk being just a fluctuation,
 not due to an underlying algorithmic improvement. However,
 the experimental design described in section~\ref{sec:experiment_design} significantly reduces
 this possibility, thanks to the randomization of the initial conditions,
@@ -177,8 +181,8 @@ it is evident that, on average, the quasi-clique-based searching algorithm consi
 better both in terms of run-time and ability to find the maximal EDD.
 It has enough runs to make the difference significant.
 It is worth mentioning that there are proposed heuristics~\cite{koeller2003discovery} to find higher
-arity \glspl{EDD}, even when edges are missing, by merging found lower-arity \glspl{EDD} and testing them
-instead.
+arity \glspl{EDD}, even when edges are missing, by merging found lower-arity
+\glspl{EDD} and testing them instead.
 Nonetheless, we consider that the run-time differences are significant enough to make
 the quasi-clique-based search a better approach in those cases.
 Even so, that heuristic can also be applied to the output of our proposed algorithm.
@@ -189,7 +193,13 @@ While there is room for optimizations, both would benefit.
 Since the relative differences would remain similar, we are confident that the gains come from the 
 algorithm rather than its implementation.
 
-\textbf{External validity:} The experiments have been run over four different datasets of
+\medskip
+
+For the proposed two-sample statistical test, the results shown in
+section~\ref{sec:som_results} originate on 
+
+\subsection{External validity}
+The experiments have been run over four different datasets of
 diverse nature and from three separate sources. The chosen statistical tests for
 uni- and multi-dimensional distributions have not been customized to any of them.
 However, a better statistical test can be used if the underlying data distribution is more or
