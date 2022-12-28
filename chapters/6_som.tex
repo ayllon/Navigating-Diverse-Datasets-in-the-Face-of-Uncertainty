@@ -30,7 +30,7 @@ For instance, the neurons can be labeled according to the training data labels m
 region. During classification, objects can be labeled according to the label of the neuron
 into which they are mapped.
 Thus, \glspl{SOM} can be used as a building block of an ML-based two-sample test, similar to
-\emph{$k$-Nearest Neighbors} or \emph{Neural Network} classifiers, with the valuable addition
+\gls{kNN} or \emph{Neural Network} classifiers, with the valuable addition
 of producing a representation that can be visualized.
 
 In this chapter, we propose a multivariate statistical test based on
@@ -155,13 +155,13 @@ unlike other methods, it can provide insights as to how they differ.
 \label{sec:som_chi2}
 
 Thanks to the topology preservation of \glspl{SOM}, a classifier can be trained
-on the output space rather than the input space. For instance, for a $k$-nearest neighbor ($k$NN)
+on the output space rather than the input space. For instance, for a \gls{kNN}
 approach, neurons can be labeled using the training data and a majority rule. Later, test data
-can be assigned the label from its BMU. This is almost equivalent to a $k$NN classifier with $k=1$.
+can be assigned the label from its BMU. This is almost equivalent to a \gls{kNN} classifier with $k=1$.
 Furthermore, neurons belonging to sparse regions can be left unlabeled, so test data projected
 into them can be labeled as \emph{unknown class}~\cite{ultsch2005esom,silva2011som}.
 
-While a \gls{SOM} -based classifier could be used in place of the neural or $k$NN classifiers proposed
+While a \gls{SOM} -based classifier could be used in place of the neural or \gls{kNN} classifiers proposed
 originally~\cite{lopez2016revisiting}, we propose a different approach that does not require
 splitting the input data into training and testing sets and leverages the distribution of the
 data on the output space instead. The intuition behind this is that if two samples are equally
@@ -262,7 +262,7 @@ The distribution of the statistic is empirically obtained applying a permutation
 We have implemented the classifier two-sample test as described in section~\ref{sec:som_classifier2sample}
 using \texttt{scikit-learn}~\cite{scikit-learn} neural
 classifier\footnote{\texttt{sklearn.neural\_network.MLPClassifier}},
-and $k$NN classifier\footnote{\texttt{sklearn.neighbors.KNeighborsClassifier}}
+and \gls{kNN} classifier\footnote{\texttt{sklearn.neighbors.KNeighborsClassifier}}
 with their default parameterization. Table~\ref{tab:classifier_diff} summarizes the differences
 with respect the original proposal. However, these differences should not affect significantly
 the performance~\cite{lopez2016revisiting}.
@@ -438,7 +438,7 @@ tests can use the full sample while the classifiers must split the data into tra
 
 Figure~\ref{fig:dc2_snr} shows the same performance metrics for the SNR cutout. In this case,
 as suggested by the \gls{KLD}, adding dimensions does not help any of the tests.
-However, as the sample size increases, both the $k$NN and \gls{SOM}  tests achieve a good type II error rate,
+However, as the sample size increases, both the \gls{kNN} and \gls{SOM}  tests achieve a good type II error rate,
 while both classifiers remain with a high error rate.
 
 \begin{figure}[htbp]
@@ -640,7 +640,7 @@ obtaining as a result the list of sets of attributes and a trained model that ca
 cross-match the datasets.
 
 We have run two examples from the \PresQ paper using the proposed \gls{SOM}  based test
-instead of the $k$NN statistical test. For each of the examples we measure:
+instead of the \gls{kNN} statistical test. For each of the examples we measure:
 
 \begin{description}
     \item[Ratio] of known shared attributes identified by \PresQ
@@ -650,7 +650,7 @@ instead of the $k$NN statistical test. For each of the examples we measure:
 
 Figure~\ref{fig:presq_som} reports the 95\% confidence interval ($\mu \pm 1.96 \sigma$)
 for the \emph{relative differences} obtained when running with \gls{SOM}  vs
-$k$NN. Their distribution has been estimated using bootstrapping. The parametrization for
+\gls{kNN}. Their distribution has been estimated using bootstrapping. The parametrization for
 \PresQ was $\Lambda = 0.1$, $\gamma=0.95$, $\alpha=0.05$ and a sample size of 1000.
 
 \begin{figure}[ht]

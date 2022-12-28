@@ -22,7 +22,9 @@ datasets --- chapter~\ref{chapter:presq} ---, and a two-sample, machine-learning
 test that can visually assist users in examining how the two samples differ --- 
 chapter~\ref{chapter:som}.
 
-In sections~\ref{sec:discuss_presq} and \ref{sec:discuss_som} we discuss how the
+In section~\ref{sec:discuss_presq} we discuss the behavior, performance and results of
+\PresQ, a tool for the discovery of multidimensional \glspl{EDD} via Quasi-Cliques
+on Hypergraphs. In section~\ref{sec:discuss_som} we discuss how the
 proposed solutions are relevant to the stated objectives. In
 section~\ref{sec:threats}, we list the threats to the validity of this work and
 what measures we have taken to minimize their impact.
@@ -94,8 +96,8 @@ validation of the \glspl{EDD} represented by the quasi-cliques.
 The loss of accuracy introduced by this growing stage is minor when starting at $n = 3$,
 which means that the statistical test could not reject most candidates. However,
 most candidates were rejected for an
-initial $n = 2$. We consider that this is mostly due
-to the lack of power of the $k$NN test for low dimensions, which introduces
+initial $n = 2$. We consider this is mostly due
+to the lack of power of the \gls{kNN} test for low dimensions, which introduces
 many spurious edges.
 
 The overall run-time of the \gls{EDD} finding algorithms is heavily influenced by the
@@ -110,6 +112,17 @@ As a final remark, the set of accepted \glspl{EDD} may contain several false pos
 the multivariate statistical test. A second pass adapted from the foreign key literature can prove helpful.
 For instance, we can envision a ranking based on the previously discussed \emph{randomness}~\cite{Zhang2010}
 to decide which set of \glspl{EDD} is more suitable for cross-matching the datasets.
+
+In conclusion, \PresQ successfully identifies shared sets of attributes
+between multiple data files containing raw, numerical data based \emph{exclusively}
+on their distribution. This can guide users to cross-match datasets with unknown schemas,
+but also to label attributes for which the metadata is lost as long as there is available
+one dataset with properly labeled attributes.
+
+Furthermore, \PresQ can also provide insights that drive serendipitous discoveries.
+The \gls{AFDS} result shown in figure~\ref{fig:afds} is an example of such a case:
+even with a set of files of unknown schema and unknown content, we could infer
+a relation between samples confirmed by the paper that published the data.
 
 \section{\glsfmtlong{SOM}}
 \label{sec:discuss_som}

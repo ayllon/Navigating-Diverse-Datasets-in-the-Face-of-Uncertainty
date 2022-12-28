@@ -1,3 +1,5 @@
+\glsresetall
+
 Most of the content in this chapter appears in the article
 \emph{\textsc{PresQ}: Discovery of Multidimensional Equally-Distributed Dependencies via Quasi-Cliques on Hypergraphs}~\cite{AlvarezAyllonPresQ2022},
 published on \emph{IEEE Transactions on Emerging Topics in Computing}.
@@ -560,7 +562,7 @@ the different parametrizations in table \ref{tab:quasi_params}.
 
 \subsubsection{Real-world datasets}
 For the statistical tests, we use a non-parametric multivariate test based on
-k-Nearest Neighbors (kNN) \cite{Henze1988,Schilling1986b}, but any other multivariate
+\gls{kNN}~\cite{Henze1988,Schilling1986b}, but any other multivariate
 test could be used. However, regardless of the chosen test, there will always
 be a number of false negatives bound by the significance level. In any case, the techniques
 here discussed remain relevant.
@@ -715,7 +717,7 @@ but have different sets of attributes. These datasets are an example of data fus
     multidimensional space.
     These datasets are an example of schema inference/matching and automatic feature discovery.
     
-\emph{Aircraft Fuel Distribution System (AFDS)} comprises five different files,
+\emph{\gls{AFDS}} comprises five different files,
     all sharing the same schema but containing sensor measurement values for different scenarios:
     one nominal, and four abnormal. Our implementations of \Find and \PresQ can process
     the five files at the same time.
@@ -870,7 +872,7 @@ missing true ones. Consequently, the efficiency is improved at the cost of the e
 \PresQ allows us to increase the significance
 level without sacrificing much efficacy.
 
-For the AFDS dataset, when comparing the maximum \gls{EDD} arity found per pair of files,
+For the \gls{AFDS} dataset, when comparing the maximum \gls{EDD} arity found per pair of files,
 scenarios two and three are the most similar, as seen in figure~\ref{fig:afds}.
 We can obtain this insight without even knowing what the schema nor the content of the files are.
 After seeing this result, we checked the original paper from
@@ -882,7 +884,7 @@ We consider this another proof of the utility of the proposed techniques.
     \centering
     \includegraphics[width=0.5\linewidth]{images/5_presq/afds}
     \caption{
-        Pairwise max arity found on the AFDS dataset for each pair of scenarios
+        Pairwise max arity found on the \gls{AFDS} dataset for each pair of scenarios
     }
     \label{fig:afds}
 \end{figure}
@@ -923,7 +925,7 @@ when running over the DC2 dataset. The first four stages are unaffected by this 
 \item $~810$ KS tests need to be done. $~49$ pairwise combinations are considered equally distributed
     (\glspl{uEDD}).
 \item $(n \times (n - 1)) \div 2 ~= 1176$ edges are build combining all \glspl{uEDD} and validated
-    using the $k$NN test. $~612$ edges are considered valid.
+    using the \gls{kNN} test. $~612$ edges are considered valid.
 \item The initial graph has half as many edges as the complete graph.
     Since we know the ground truth, we can extract the sub-graph induced by the set of
     true \gls{uEDD} and find the number of missing edges to be $\approx 0.10$ on average,
@@ -934,7 +936,7 @@ when running over the DC2 dataset. The first four stages are unaffected by this 
 
 The following table exemplifies the consequences of different values of $\Lambda$
 --- see equation~\ref{eq:deg_hyperclique_hypergeom} --- on
-the count and size of the found quasi-cliques (e) and the number validated by the $k$NN test (f).
+the count and size of the found quasi-cliques (e) and the number validated by the \gls{kNN} test (f).
 Those invalid are `decomposed' into candidate $3$-EDDs, validated, and 
 used to build a $3$-hypergraph (d) feedback to the stage (e) for the next iteration.
 
