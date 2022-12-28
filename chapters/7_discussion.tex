@@ -196,19 +196,29 @@ algorithm rather than its implementation.
 \medskip
 
 For the proposed two-sample statistical test, the results shown in
-section~\ref{sec:som_results} originate on 
+section~\ref{sec:som_results} originate from running the tests between 200 and 2000
+randomized samples, which are enough to have significant results.
+The comparisons have been done taking into account the error of our measurements whenever
+available: i.e. for the Gaussian simulations and the DC2 dataset.
 
 \subsection{External validity}
-The experiments have been run over four different datasets of
+The \PresQ experiments have been run over four different datasets of
 diverse nature and from three separate sources. The chosen statistical tests for
 uni- and multi-dimensional distributions have not been customized to any of them.
 However, a better statistical test can be used if the underlying data distribution is more or
 less known (or simply suspected), which may reduce, or even remove, the advantage of the
-quasi-clique approach. Although it is also unlikely that the performance would be any worse,
-since an entire clique is still a quasi-clique, and our algorithm can identify all of them, as
-well as the original \Find algorithm.
+quasi-clique approach. Although it is also unlikely that the performance would be any worse:
+since an entire clique is still a quasi-clique, our algorithm can identify all of them,
+similar to the original \Find algorithm.
 
 One significant caveat of our approach is that it may not find
 any dependencies if prior filtering has been applied to only one of the two relations
 (i.e., signal-to-noise filtering). This is a limitation of the validation
 step. This issue was also recognized on the original \Find proposal \cite{koeller2003discovery}.
+
+\medskip
+
+Similarly, the experiments for the two-sample statistical test based on \gls{SOM}
+have been run over five different datasets and compared with kernel-based and machine-learning-based
+alternatives. Given the performance shown by this test, we are confident in
+its capabilities.
