@@ -34,7 +34,7 @@ Thus, \glspl{SOM} can be used as a building block of an ML-based two-sample test
 of producing a representation that can be visualized.
 
 In this chapter, we propose a multivariate statistical test based on
-Self-Organizing Maps that shows performance comparable to other techniques based on 
+\glspl{SOM} that shows performance comparable to other techniques based on 
 machine learning models and even superior for medium to big sample sizes. In addition to the 
 $p$ value for $H_0: P = Q$, the test also outputs a trained \gls{SOM} model that can be of
 use for other tasks, such as classification or visualization.
@@ -51,7 +51,7 @@ two of Borne's science requirements for data mining: \emph{Object Cross-Correlat
 \emph{Nearest-neighbor identification}.
 
 In section~\ref{sec:som_chi2}, we describe our proposal
-for a multidimensional non-parametric statistical test based on Self-Organizing Maps.
+for a multidimensional non-parametric statistical test based on \glspl{SOM}.
 In section~\ref{sec:som_definitions}, we introduce classifier two-sample tests
 and \glsxtrlong{SOM}.
 In section~\ref{sec:som_exp_setup}, we describe the experimental setup we have used
@@ -78,7 +78,7 @@ $H_0: P = Q$ if $\alpha > P(T \ge \hat t | H_0)$.
 
 When using a binary classifier for performing a statistical test, both samples are pooled
 together $U = \{u_i\}_{i=1}^{n+m} = \{x_i\}_{i=1}^n \cup \{z_i\}_{i=1}^m$.
-The samples originating from $P$ are labeled $y_i=1$ and the samples originating
+The samples originating from $P$ are labeled $y_i=1$, and the samples originating
 from $Q$, $y_i=-1$.
 
 The original proposal trains a classifier on the \emph{complete} pooled sample.
@@ -117,15 +117,15 @@ The initial values $w_i(t_0)$ can be assigned randomly or based on
 Principal Component Analysis~\cite{KOHONEN201352}.
 
 During the training, at each epoch $t$, each point $x$ from the training set
---- or a batch --- is mapped to its \emph{best matching unit} (BMU), which is
+--- or a batch --- is mapped to its \gls{BMU}, which is
 just the neuron whose weight vector is the closest given a distance metric $d$:
 
 \begin{equation}
     \operatorname{bmu}(x) = \underset{w_i \in W}{\operatorname{argmin}} \; d(x, w_i)
 \end{equation}
 
-Once this is done, the BMU and the weight of the neighboring neurons are updated so they become
-\emph{closer} to the input data point:
+Once this is done, the \gls{BMU} and the weight of the neighboring neurons are updated so they become
+closer to the input data point:
 
 \begin{equation}
     w_i(t + 1) = w_i(t) + \alpha h_{i,b}(t) (x - w_b(t))
@@ -139,7 +139,7 @@ that shrinks at each epoch~\cite{Villmann1999,wittek2013somoclu}.
     h_{i,b}(t) = \exp(- \frac{||w_i - w_b||}{\delta(t)})
 \end{equation}
 
-This process can be repeated for multiple epochs, or until convergence.
+This process can be repeated for multiple epochs or until convergence.
 
 \medskip
 
@@ -157,20 +157,20 @@ unlike other methods, it can provide insights as to how they differ.
 Thanks to the topology preservation of \glspl{SOM}, a classifier can be trained
 on the output space rather than the input space. For instance, for a \gls{kNN}
 approach, neurons can be labeled using the training data and a majority rule. Later, test data
-can be assigned the label from its BMU. This is almost equivalent to a \gls{kNN} classifier with $k=1$.
+can be assigned the label from its \gls{BMU}. This is almost equivalent to a \gls{kNN} classifier with $k=1$.
 Furthermore, neurons belonging to sparse regions can be left unlabeled, so test data projected
 into them can be labeled as \emph{unknown class}~\cite{ultsch2005esom,silva2011som}.
 
-While a \gls{SOM} -based classifier could be used in place of the neural or \gls{kNN} classifiers proposed
+While a \gls{SOM}-based classifier could be used in place of the neural or \gls{kNN} classifiers proposed
 originally~\cite{lopez2016revisiting}, we propose a different approach that does not require
-splitting the input data into training and testing sets and leverages the distribution of the
+splitting the input data into training and testing sets, leveraging the distribution of the
 data on the output space instead. The intuition behind this is that if two samples are equally
 distributed on the original space, they must be equally distributed on the output space.
 
 More specifically, our method works as follows:
 
 \begin{enumerate}
-    \item We train a Self-Organizing map $M$ of size $(w, h)$ over $U = X \cup Z$
+    \item We train a \gls{SOM} $M$ of size $(w, h)$ over $U = X \cup Z$
     \item We project $X$ and $Z$ separately over the \gls{SOM}  $M$
     \item We compute how many points from $X$ and how many from $Z$ are mapped to a given neuron $n_i$
 \end{enumerate}
@@ -206,7 +206,7 @@ As with any test based on binning, its main disadvantages are that its results m
 depend on the binning (in this case, size of the \gls{SOM}) and that it requires
 more data points.
 
-On the other hand, since the \gls{SOM}  \textit{adapts} to the topology of the
+On the other hand, since the \gls{SOM} adapts to the topology of the
 original data, it is less susceptible to artifacts than a simple 2D histogram
 due to the binning.
 
@@ -223,20 +223,20 @@ We have implemented our proposal using Somuclu~\cite{wittek2013somoclu}, a paral
 tool for training self-organizing maps on large data sets~\cite{wittek2013somoclu}.
 
 The following section will describe the experimental setup used to evaluate our proposal.
-Later, in section~\ref{sec:som_results} we will report the results of our tests.
+Later, in section~\ref{sec:som_results}, we will report the results of our tests.
 
 \section{Experimental setup}
 \label{sec:som_exp_setup}
 
 \subsection{Evaluated alternatives}
 
-We have considered four different two-samples tests based on machine learning techniques.
+We have considered four different two-sample tests based on machine learning techniques.
 All of them have in common the merging of both samples into a single set $Z$,
 labeled with 1 if the sample comes from $X$ or -1 if comes from $Y$.
 
 \paragraph{Nearest neighbor type coincidences}
 
-The assumption under $H_0$ is that on the neighboring area of any point the number of samples
+The assumption under $H_0$ is that on the neighboring area of any point, the number of samples
 belonging to $X$ and to $Y$ should be similar, while if $f \neq g$, then there will be areas with
 a higher density of objects coming from one of the two sets~\cite{Henze1988,Schilling1986b}.
 
@@ -255,8 +255,8 @@ The statistical test:
     T_{n,k} = \sum_{i=0}^{n}\sum_{r=0}^{k} I_i(r)
 \end{equation}
 
-Where $n$ is the total number of samples, and $k$ the number of neighbors considered.
-The distribution of the statistic is empirically obtained applying a permutation test.
+$n$ is the total number of samples, and $k$ the number of neighbors considered.
+The distribution of the statistic is empirically obtained by applying a permutation test.
  
 \paragraph{Classifier two-sample tests}
 We have implemented the classifier two-sample test as described in section~\ref{sec:som_classifier2sample}
@@ -264,7 +264,7 @@ using \texttt{scikit-learn}~\cite{scikit-learn} neural
 classifier\footnote{\texttt{sklearn.neural\_network.MLPClassifier}},
 and \gls{kNN} classifier\footnote{\texttt{sklearn.neighbors.KNeighborsClassifier}}
 with their default parameterization. Table~\ref{tab:classifier_diff} summarizes the differences
-with respect the original proposal. However, these differences should not affect significantly
+with respect to the original proposal. However, these differences should not affect significantly
 the performance~\cite{lopez2016revisiting}.
 
 \begin{table}[htpb]
@@ -288,13 +288,13 @@ $k$                     & $|X|/2$ & 5 \\
 \end{table}
 
 \paragraph{Kernel Methods}
-Kernel two-sample tests are based on computing the maximum mean discrepancy (MMD) between the samples,
-which is the distance between their expected features in a reproducing kernel Hilbert space (RKHS).
+Kernel two-sample tests are based on computing the \gls{MMD} between the samples,
+which is the distance between their expected features in a Reproducing Kernel Hilbert Space.
 The original proposal~\cite{gretton2012kernel}, however, is computationally
 expensive to compute the test statistic --- $O(N^2)$ --- and to approximate its distribution under
 $H_0$ --- $O(N^2)$ or $O(N^3)$ depending on the method~\cite{zaremba2013b}.
 A proposed alternative, MMD-B~\cite{zaremba2013b}, splits the input data into blocks, computes the original,
-unbiased MMD statistic on each block --- which are i.i.d ---, and averages the results.
+unbiased \gls{MMD} statistic on each block --- which are i.i.d ---, and averages the results.
 Because of the central limit theorem, this average follows asymptotically a normal distribution.
 Song \etal~\cite{song2021fast} propose another test statistic based on MMD-B that allows
 unbalanced sample sizes and is more robust to the chosen kernel bandwidth (i.e., $\sigma$ on a Gaussian kernel).
@@ -305,15 +305,15 @@ unbalanced sample sizes and is more robust to the chosen kernel bandwidth (i.e.,
 We have performed five experiments to evaluate the performance of our \gls{SOM} 
 two-sample test proposal.
 
-For the first three setups - Normal, DC2 and the \emph{Open University Learning Analytics} dataset
-- we set the significance level $\alpha = 0.1$. We then measure the run-time, and empirical 
+For the first three setups - Normal, DC2, and the \emph{Open University Learning Analytics} dataset
+- we set the significance level $\alpha = 0.1$. We then measure the run-time and empirical 
 type I and type II error rates over $200$ repeated tests for all the evaluated
-tests: (1) \gls{SOM}  (our proposal), (2) the kNN permutation test~\cite{Schilling1986b},
-and (3) two classifier tests (kNN and Neural Network)~\cite{lopez2016revisiting}.
-To obtain the $95\%$ confidence interval we have used the Wilson score interval~\cite{Wilson1927}.
+tests: (1) \gls{SOM}  (our proposal), (2) the \gls{kNN} permutation test~\cite{Schilling1986b},
+and (3) two classifier tests (\gls{kNN} and Neural Network)~\cite{lopez2016revisiting}.
+To obtain the $95\%$ confidence interval, we have used the Wilson score interval~\cite{Wilson1927}.
 
 These values are measured for: (1) a fixed sample size of $n = m = 500$ and variable dimension;
-and (2) for variable sample sizes and the full dimensionality.
+and (2) for variable sample sizes and full dimensionality.
 
 We have used a \emph{K-Best} feature selection to decide in which order dimensions are added.
 Therefore, increasing the dimensionality is expected to have a diminishing return.
@@ -326,9 +326,9 @@ Figure~\ref{fig:normal_location} shows the error rates and run-time for a locati
 test of two multivariate Gaussian distributions with $D=1000$. For the first distribution,
 all dimensions have a mean of $0$, while for the second one, all dimensions have a mean of $0$.
 
-All tests are able to easily reject $H_0$ within a reasonable run-time. For
-a high number of samples, however, the kNN permutation test worsens its run-time performance,
-probably due to the imbalance of the KDTree.
+All tests can easily reject $H_0$ within a reasonable run-time. For
+a high number of samples, however, the \gls{kNN} permutation test worsens its run-time performance,
+probably due to the imbalance of the KD-Tree.
 
 \begin{figure}[htpb]
     \centering
@@ -353,7 +353,7 @@ to the other methods.
     \label{fig:normal_scale}
 \end{figure}
 
-Ramdas et al.~\cite{ramdas2015decreasing} have argued that a ``fair'' evaluation of the
+Ramdas \etal~\cite{ramdas2015decreasing} have argued that a ``fair'' evaluation of the
 power of multivariate non-parametric tests as the dimensionality increases is to keep the
 amount of information fixed. i.e. the \gls{KLD} between both distributions
 should remain constant.
@@ -361,8 +361,8 @@ should remain constant.
 For the location test, this can be achieved by two multivariate Gaussians that only differ
 on the first dimension, i.e. $(1, 0, \ldots, 0)$ vs $(0, 0, \ldots, 0)$.
 
-For completeness, figure~\ref{fig:normal_fair_location} shows the performance of the ML two-sample
-tests being evaluated under this condition. We can see that, indeed, they all fail to improve
+For completeness, figure~\ref{fig:normal_fair_location} shows the performance of the classifier
+two-sample tests being evaluated under this condition. We can see that they all fail to improve
 their type II error as the dimensionality increase.
 
 \begin{figure}[htbp]
@@ -373,9 +373,9 @@ their type II error as the dimensionality increase.
 \end{figure}
 
 Finally, figure~\ref{fig:normal_fair_scale} shows the performance of the different
-tests when only the scale of the first dimension differs, as Ramdas et al. propose
-as a fair scale test. In this case it is more evident that the type II error of all
-tests worsen as the number of the dimensions increase.
+tests when only the scale of the first dimension differs, as Ramdas \etal propose
+as a fair scale test. In this case, it is more evident that the type II error of all
+tests worsens as the number of dimensions increases.
 
 \begin{figure}[htbp]
     \centering
@@ -384,30 +384,30 @@ tests worsen as the number of the dimensions increase.
     \label{fig:normal_fair_scale}
 \end{figure}
 
-We consider that Ramdas et al. raise a valid point: given the same amount of available
-information, additional dimensions do not help. However, for our \PresQ use case this is an
+We consider that Ramdas \etal raise a valid point: given the same amount of available
+information, additional dimensions do not help. However, for our \PresQ use case, this is an
 unrealistic scenario: we are \emph{discovering} the matching dimensions, and each additional
-feature will help in discriminating whether two samples follow the same distribution or not.
+feature will help discriminate whether two samples follow the same distribution.
 
 %%%%%%%
 % DC2 %
 %%%%%%%
 \subsection{DC2}
 The datasets from this challenge come from a single catalog of astronomical
-objects, split based on the sky coordinates~\cite{EuclidDesprez2020}.
+objects split based on the sky coordinates~\cite{EuclidDesprez2020}.
 
 We generate three different samples:
 
 \begin{enumerate}
     \item Samples from the full catalog
     \item Samples applying a magnitude cutout ($\text{MAG}_\text{VIS} < 22.)$
-    \item Samples applying a signal-to-noise (SNR) cutout ($\text{VIS} / \text{VIS}_\text{Error} > 10.$)
+    \item Samples applying a \gls{SNR} cutout ($\text{VIS} / \text{VIS}_\text{Error} > 10.$)
 \end{enumerate}
 
-Following Ramdas et al. paper, in figure~\ref{fig:divergence_dc2} we report
+Following Ramdas' paper, in figure~\ref{fig:divergence_dc2}, we report
 the estimated \gls{KLD}~\cite{perez2008kullback} between the datasets for an
 increasing number of dimensions. It can be seen that the amount of available information
-rapidly increases for the magnitude cutout, but barely for the SNR one.
+rapidly increases for the magnitude cutout, but barely for the \gls{SNR} one.
 
 \begin{figure}[htbp]
     \begin{subfigure}[]{0.5\textwidth}
@@ -417,7 +417,7 @@ rapidly increases for the magnitude cutout, but barely for the SNR one.
     \hfill
     \begin{subfigure}[]{0.5\textwidth}
     \includegraphics[width=\textwidth]{images/6_som/divergence/dc2_snr_divergence.eps}
-    \caption{\gls{KLD} for the SNR cutout}
+    \caption{\gls{KLD} for the \gls{SNR} cutout}
     \end{subfigure}
     \caption{\gls{KLD} for the DC2 samples}
     \label{fig:divergence_dc2}
@@ -426,8 +426,8 @@ rapidly increases for the magnitude cutout, but barely for the SNR one.
 Figure~\ref{fig:dc2_mag} shows the measured performances for the DC2 with the magnitude
 cutout. Even for a small sample size, the \gls{SOM}  test achieves very low type II errors, 
 significantly better than the tests based on classifiers.
-This may be due to the fact that the \gls{SOM} and kNN
-tests can use the full sample while the classifiers must split the data into training and testing sets.
+This may be because the \gls{SOM} and \gls{kNN}
+tests can use the full sample, while the classifiers must split the data into training and testing sets.
 
 
 \begin{figure}[htpb]
@@ -437,10 +437,10 @@ tests can use the full sample while the classifiers must split the data into tra
     \label{fig:dc2_mag}
 \end{figure}
 
-Figure~\ref{fig:dc2_snr} shows the same performance metrics for the SNR cutout. In this case,
+Figure~\ref{fig:dc2_snr} shows the same performance metrics for the \gls{SNR} cutout. In this case,
 as suggested by the \gls{KLD}, adding dimensions does not help any of the tests.
-However, as the sample size increases, both the \gls{kNN} and \gls{SOM}  tests achieve a good type II error rate,
-while both classifiers remain with a high error rate.
+However, as the sample size increases, both the \gls{kNN} and \gls{SOM}  tests achieve a good
+type II error rate, while both classifiers remain with a high error rate.
 
 \begin{figure}[htbp]
     \centering
@@ -452,7 +452,7 @@ while both classifiers remain with a high error rate.
 \subsection{Open University Learning Analytics dataset}
 \label{subsec:som_oulad}
 The objective of this experiment is to prove that our proposed test can be successfully
-used to test a hypothesis, providing an interpretable result, useful for further
+used to test a hypothesis, providing an interpretable result useful for further
 investigating the data.
 
 We base our test on the \emph{Open University Learning Analytics}
@@ -462,7 +462,7 @@ Let us consider the case of a researcher with the hypothesis that gender, age, a
 region of origin influence a student's economic situation, or perhaps they could
 be trying to deanonymize the data.
 
-From this dataset, we can use the \emph{Indices of Multiple Deprivations} (IMD) to measure poverty.
+From this dataset, we can use the \gls{IMD} to measure poverty.
 The null hypothesis $H_0$ would be that a sample from the overall population and a sample from
 the poorest segment are indistinguishable, i.e., they come from the same distribution.
 
@@ -480,7 +480,7 @@ between both (right). The ``most different'' cells hint at how they are differen
     \centering
     \includegraphics[width=\textwidth]{images/6_som/imd.eps}
     \caption[Comparing \gls{SOM} density variations]{Density of samples for the general population (left), poorest segment (center) and
-    relative difference (right). Cells with a value of $-1$ do not have any low-income student,
+    relative difference (right). Cells with a value of $-1$ do not have any low-income students,
     while those with a value of $0.5$ show an ``excess'' with respect to the general
     population.}
     \label{fig:oulad_grid}
@@ -488,7 +488,7 @@ between both (right). The ``most different'' cells hint at how they are differen
 
 If we pick one of the cells with the most significant bias towards low-income students,
 we can see it contains only young female students from the \emph{North Western Region}.
-In figure \ref{fig:oulad_hist} we show the distribution of IMD for the overall population (left),
+In figure \ref{fig:oulad_hist}, we show the distribution of \gls{IMD} for the overall population (left)
 and for this subset (right). Indeed, the income distribution for this demographics is
 heavily skewed towards the low end. We could obtain this hindsight without prior knowledge of which
 attributes correlate with the difference, only with the ``hunch'' that
@@ -497,7 +497,7 @@ there is a relation. Thus, we prove that our proposed test can be useful for dat
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{images/6_som/imd_histogram.eps}
-    \caption[Histogram of the Indices of Multiple Deprivations for two populations]{
+    \caption[Histogram of the \gls{IMD} for two populations]{
         \emph{Indices of Multiple Deprivations} for the general population (left) and for
         young female students from the \emph{North Western Region}.
     }
@@ -519,14 +519,14 @@ later purposes.
 To evaluate the power of comparing different sets of measures, we replicate Song's
 set up and run 2000 times\footnotemark the classifiers and \gls{SOM}  tests using a significance
 level of $\alpha = 0.001$ for different sample sizes.
-We report their statistical power on table \ref{tab:eye}. We have extracted the kernel-based
+We report their statistical power in table \ref{tab:eye}. We have extracted the kernel-based
 results from Song \etal paper~\cite{song2021fast}, including the second-best kernel
 based method MMD-B~\cite{zaremba2013b}.
 
 To evaluate the power of comparing different sets of measures, we replicate
 Song's setup, and run 2000 times the classifiers and \gls{SOM}  tests
 using a significance level of $\alpha = 0.001$ for different sample sizes.
-We report their statistical power on table \ref{tab:eye}. The results from Song and
+We report their statistical power in table \ref{tab:eye}. The results from Song and
 MMD-B are extracted from their paper~\cite{song2021fast}.
 
 \footnotetext{Song uses 1000 repetitions.}
@@ -575,7 +575,7 @@ reported on the paper from which the dataset was obtained~\cite{salojarvi2005inf
 
 Finally, as an exercise on interpretability, figure~\ref{fig:eye_distinct_features}
 shows the value of the two most distinct code-book dimensions. These attributes,
-related to the regression (re-reading a word), show a sharp distinction that
+related to the regression (re-reading a word) show a sharp distinction that
 matches the distribution of samples from the Correct and Incorrect samples quite
 well.
 Indeed, this matches the expectations from the original paper that the second-pass
@@ -588,7 +588,8 @@ conscious efforts when choosing a correct answer.
     \caption[Codebook values for the two most distinct features from the Eye dataset.]{
         Codebook values for the two most distinct features from the Eye dataset.
         Darker neurons are more sensitive to the given feature.
-        The lines represent the density estimation for the Correct and \emph{Incorrect} samples over the \gls{SOM} .
+        The lines represent the density estimation for the Correct and \emph{Incorrect} samples
+        over the \gls{SOM}.
         It is visible that the Incorrect category ``wraps'' around long regression distances, while the
         \emph{Correct} category correlates positively with the regression duration.
     }
@@ -603,12 +604,12 @@ to predict the age of the face cutouts. Similarly to Song's experiments~\cite{so
 we have run the neural model over the IMDb faces, extracting the values from
 the last hidden layer (4096 neurons) as the target multivariate distribution.
 
-We then group the samples in age ranges, and verify our proposal comparing
+We then group the samples in age ranges and verify our proposal, comparing
 500 samples from consecutive age groups, and repeat 500 times for each experiment. The
 significance level is also set to $0.001$.
 
 Table \ref{tab:age} shows the results for the \gls{SOM}  test, together
-with the results reported by Song\etal for their kernel based method and for
+with the results reported by Song\etal for their kernel-based method and for
 MMD-B\cite{zaremba2013b}.
 
 \begin{table}[htbp]
@@ -630,18 +631,18 @@ MMD-B\cite{zaremba2013b}.
 \end{table}
 
 For this particular experiment Song's proposal outperforms both MMD-B and the \gls{SOM} 
-test, although our method come second in statistical power.
+test, although our method comes second in statistical power.
 
 %TODO: What about interpretability??
 
-\subsection{\PresQ}
+\subsection{\PresQ results}
 As we have mentioned in the introduction, the motivating example is the unsupervised
 discovery of shared attributes between multiple datasets using \PresQ (chapter~\ref{chapter:presq}),
-obtaining as a result the list of sets of attributes and a trained model that can be used to
+obtaining, as a result, the list of sets of attributes and a trained model that can be used to
 cross-match the datasets.
 
 We have run two examples from the \PresQ paper using the proposed \gls{SOM}  based test
-instead of the \gls{kNN} statistical test. For each of the examples we measure:
+instead of the \gls{kNN} statistical test. For each of the examples, we measure:
 
 \begin{description}
     \item[Ratio] of known shared attributes identified by \PresQ
@@ -667,9 +668,9 @@ for the \emph{relative differences} obtained when running with \gls{SOM}  vs
     \label{fig:presq_som}
 \end{figure}
 
-The \gls{SOM}  test has a run-time penalty due to it being a more complex model to train.
-However, for the same number of unique EDD found less tests are required. This is likely a consequence of
-the $kNN$ test being slightly more prone to reject the equality of distribution than the \gls{SOM} 
+The \gls{SOM}  test has a run-time penalty because it is a more complex model to train.
+However, fewer tests are required for the same number of unique \gls{EDD} found. This is likely a consequence of
+the \gls{kNN} test being slightly more prone to reject the equality of distribution than the \gls{SOM} 
 test, as we can for instance see in figures \ref{fig:normal_location}, \ref{fig:normal_scale}.
 
 \section{Conclusions}
@@ -687,11 +688,11 @@ alternative~\cite{friedman2004multivariate,kim2021classification}.
 
 However, some of these methods, like neural networks, are hard to interpret
 when rejecting the null hypothesis $H_0: P = Q$. In other words, they
-reject that both samples originate from the same underlying distribution,
-but they do not assist the researcher any further.
+reject that both samples originate from the same underlying distribution
+but do not assist the researcher any further.
 Other models, such as random forests, are more  interpretable~\cite{friedman2004multivariate}.
 
-In section~\ref{sec:som_chi2} we have proposed another machine learning
+In section~\ref{sec:som_chi2}, we have proposed another machine learning
 technique based on \glsfmtlongpl{SOM}~\cite{kohonen1982self} that is
 understandable and capable of pointing the researcher to where the differences
 in a multidimensional regime are. After all, \glspl{SOM} were initially
@@ -699,12 +700,12 @@ proposed as visualization aids. Nonetheless, they display interesting
 emergent properties and can be used for clustering or classification as
 well~\cite{ultsch2007emergence}.
 
-In section~\ref{sec:som_results} we have proven that the power of this
+In section~\ref{sec:som_results}, we have proven that the power of this
 technique is comparable to other machine learning techniques and even
 superior for medium-size datasets.
 We have also proven in the experiment~\ref{subsec:som_oulad} that the
-output can guide researchers towards refining a hypothesis. Thus, our
-test can be a valuable asset to the researcher's tool-set, and complementary
+output can guide researchers toward refining a hypothesis. Thus, our
+test can be a valuable asset to the researcher's tool-set and complementary
 to more formal hypothesis testing whenever considered necessary~\cite{rosenblatt2021better}.
 
 For future work, it would be interesting to explore the possibilities of
