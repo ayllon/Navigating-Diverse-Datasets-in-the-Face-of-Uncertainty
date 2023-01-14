@@ -82,7 +82,7 @@ of queries performed by users.
     FROM SQLlog
     WHERE yy=2018 AND mm>=10 AND rows>0 AND dbname LIKE 'BestDR14%'
 \end{minted}
-\caption[Obtaining a list of queries performed by \gls{SDSS} users]{
+\caption[Obtaining a list of queries performed by \glsentrylong{SDSS} users]{
     Example of how to obtain a list of queries performed by users during the end of 2018 over the 14th data release
 }\label{sql:get_queries}
 \end{listing}
@@ -102,7 +102,7 @@ in section~\ref{sec:mapping_category}.
       Interactive Performance Optimizations & 48 & 4 & $8.3\%$ \\
     \end{tabular}
   \end{center}
-  \caption{Classification of the articles that use the data from the \gls{SDSS}}\label{tab:sdss_queries_count}
+  \caption{Classification of the articles that use the data from the \glsentrylong{SDSS}}\label{tab:sdss_queries_count}
 \end{table}
 
 To obtain an overview of the type of usual utilization of this database, we processed
@@ -121,7 +121,7 @@ Table~\ref{tab:most_tables} shows the most frequent queried combinations.
     Galaxy, fGetNearbyObjEq                &   31130 &   4.42\% \\
     sppParams, PhotoTag, fGetObjFromRectEq &   29805 &   4.23\% \\
 \end{tabular}
-\caption[Most frequently queried relations from the \gls{SDSS}]{
+\caption[Most frequently queried relations from the \glsentrylong{SDSS}]{
     Combination of relations most frequently queried. Tables marked with (\textdagger)
     are meta-data tables (i.e., describe the schema)
 }\label{tab:most_tables}
@@ -242,7 +242,7 @@ algorithms evaluated by the authors and discuss their suitability for our needs.
     \centering
     \includegraphics[width=\linewidth]{images/5_presq/lattice}
     \caption[Example structure of the search space as a lattice for an initial set
-        of 4 unary \glspl{IND}.]{
+        of 4 unary \glslongpluralkey {IND}.]{
         Example structure of the search space as a lattice for an initial set
         of 4 unary \glspl{IND}.
         As an illustration, if the 2-INDs surrounded by a solid line were valid,
@@ -410,7 +410,8 @@ expanding on the result from the literature mapping shown in chapter~\ref{chapte
     Complementarity \cite{alawini2016} \\
     \hline
     \end{tabularx}
-    \caption{Expansion of Idreos~\cite{Idreos2015} classification with \emph{Schema Homogenization}}
+    \caption[Articles under Schema Homogenization]{
+    Expansion of Idreos~\cite{Idreos2015} classification with \emph{Schema Homogenization}}
     \label{tab:missing_middleware}
 \end{table}
 

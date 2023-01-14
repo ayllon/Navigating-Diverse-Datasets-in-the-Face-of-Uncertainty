@@ -12,7 +12,7 @@ conda env create
 conda activate matchbox
 \end{minted}
 
-\section{Bench-marking quasi-clique finding}
+\section{Benchmarking quasi-clique finding}
 
 \texttt{benchmark-quasiclique.py} compares the performances of \Find (baseline) and \PresQ
 when searching for a known quasi-clique generated randomly based on an initial parameterization:
@@ -23,7 +23,8 @@ The script snippet~\ref{script:quasi_missing} shows the relevant extract used to
 the capacity of \PresQ to recover from missing edges, as reported in figure~\ref{fig:3hyper_alpha}.
 
 \begin{code}
-\caption{Benchmark quasi-clique search with a set of missing ratios. The comments need to be removed.}\label{script:quasi_missing}
+\caption[Benchmark quasi-clique search with a set of missing ratios.]{
+Benchmark quasi-clique search with a set of missing ratios. The comments need to be removed.}\label{script:quasi_missing}
 \begin{minted}{bash}
 for alpha in 0.05 0.10 0.15 0.20 0.25 0.30; do
   ./bin/benchmark-quasiclique.py \
@@ -61,7 +62,7 @@ done
 \end{minted}
 \end{code}
 
-\section{Bench-marking EDD finding}
+\section{Benchmarking \glsfmtlong{EDD} finding}
 
 \texttt{benchmark.py} is a script that can be used to measure the performance of
 \PresQ and the custom implementation of \Find over datasets available in any of
@@ -97,7 +98,8 @@ datasets \texttt{Ailerons vs Elevators} was executed for table~\ref{tab:ind2_sum
 For completion, it also shows the parameters that kept their default values.
 
 \begin{code}
-\caption{Benchmark \Find vs. \PresQ over the \texttt{Ailerons vs Elevators} datasets. The comments need to be removed.}\label{script:edd_finding}
+\caption[Benchmark \Find vs. \PresQ over the \texttt{Ailerons vs Elevators} datasets.]{
+Benchmark \Find vs. \PresQ over the \texttt{Ailerons vs Elevators} datasets. The comments need to be removed.}\label{script:edd_finding}
 \begin{minted}{bash}
 ID="ailerons_$(date +%Y%m%d)"
 
@@ -120,7 +122,7 @@ ID="ailerons_$(date +%Y%m%d)"
 \end{minted}
 \end{code}
 
-\subsection{Performance wrt. columns}
+\subsection{Scalability}
 
 The snippet~\ref{script:perf_columns} corresponds to the performance evaluation shown
 in figure~\ref{fig:scalability}, where new relations are added incrementally to measure
@@ -130,7 +132,8 @@ originally expected one file per relation; thus, the \texttt{SQLite} back-ends a
 nomenclature for the parameter \texttt{--files}.
 
 \begin{code}
-\caption{Benchmark performance with respect to the number of columns. The comments need to be removed.}\label{script:perf_columns}
+\caption[Benchmark performance with respect to the number of columns.]{
+Benchmark performance with respect to the number of columns. The comments need to be removed.}\label{script:perf_columns}
 \begin{minted}{bash}
 ID="chembl_$(date +%Y%m%d)"
 

@@ -92,7 +92,7 @@ This issue could be fixed by training a binary classifier by file.
     \includegraphics[width=\textwidth]{images/A2_prototypes/mer_multifile_tree.png}
     \caption{With overlap}\label{subfig:mer_multifile}
     \end{subfigure}
-    \caption{
+    \caption[Data sets distributed multiple files based on two spatial coordinates.]{
         Data sets distributed multiple files based on two spatial coordinates.
         Each color corresponds to a single file.
     }
@@ -167,7 +167,8 @@ a considerable portion of the file per prediction.
     & & GB  &  9.13 & 61.00\% & 14.10\% (36820) \\
     
     \end{tabularx}
-    \caption{QR vs GBR over different datasets.
+    \caption[QR vs GBR over different datasets.]{
+    QR vs GBR over different datasets.
     \emph{Time}: Training time
     \emph{Accuracy}: Ratio of predicted ranges that contain the queried tuple.
     \emph{Precision}: Average range size divided by the total file size.}
@@ -226,14 +227,14 @@ attributes changing relative positions or relations being missed.
     \includegraphics[width=\textwidth]{images/A2_prototypes/png_sdss.pdf}
     \caption{\gls{SDSS}}
     \end{subfigure}
-    \caption{Two \glspl{PGN} trained over two different astronomical catalogs.}
+    \caption{Two \glsfmtplural{PGN} trained over two different astronomical catalogs.}
     \label{fig:bayes1}
 \end{figure}
 
 \begin{figure}[htpb]
     \centering
     \includegraphics[width=\textwidth]{images/A2_prototypes/cosmos_bayes.png}
-    \caption{\gls{PGN} trained over \gls{Cosmos}.}
+    \caption{\glsfmtlong{PGN} trained over \glsfmtshort{Cosmos}.}
     \label{fig:bayes2}
 \end{figure}
 
@@ -250,7 +251,8 @@ attributes changing relative positions or relations being missed.
         I & 806 nm  & 149 nm & i, i', Ic, Ie, Ij     & Infrared \\
         Z & 900 nm  &        & z, z'                 & \\
     \end{tabularx}
-    \caption{\href{https://en.wikipedia.org/wiki/Photometric_system}{Subset of
+    \caption[Subset of electromagnetic bands.]{
+    \href{https://en.wikipedia.org/wiki/Photometric_system}{Subset of
             electromagnetic bands}. $\lambda$ corresponds to the wavelength.}
     \label{tab:bandas}
 \end{table}
