@@ -1,17 +1,16 @@
 As a result of the survey presented in chapter~\ref{chapter:literature_review},
 we realized that most solutions treat files
-separately, leaving it to the end-user to work out how they are related,
+as separate, independent, relations, leaving it to the end-user to work out how they are related,
 an observation shared by other authors~\cite{Silva2016}.
 These files may have not yet been ingested into a database system and 
 the schema may be unfamiliar and not adequately documented, or even be
 composed of multiple files with heterogeneous schemes~\cite{alawini2016,zhang2015astronomy}.
-Indeed, it seems that Idreo's classification misses a category for this problem.
-We can name this category \emph{Schema Homogenization}, which would belong to
-the \emph{Middleware} layer.
+We consider that Idreo's classification misses a category for this problem:
+\emph{Schema Homogenization}. This new category belongs to the \emph{Middleware} layer.
 
 In \emph{Data Mining in Astronomical Databases}, Borne
-describes how data exploration of this kind of diverse datasets is, however,
-relevant since it can drive to serendipitous discoveries~\cite{Borne2001}. He proposes
+describes how data exploration of this kind of diverse datasets is
+relevant since it can drive serendipitous discoveries~\cite{Borne2001}. He proposes
 two groups of data mining approaches in this respect: event
 based and relationship based:
 
@@ -28,7 +27,7 @@ based and relationship based:
             Use predictive models to predict the presence of unseen events within a
             large and complex database.
           \item \emph{Unknown events / unknown algorithms}
-            Use thresholds to identify transifent or unique events.
+            Use thresholds to identify transient or unique events.
         \end{itemize}
 
     \item \textbf{Relationship based}
@@ -43,7 +42,7 @@ based and relationship based:
         \end{itemize}
 \end{itemize}
 
-As a complement, Borne then enumerates a list of science requirements for data mining:
+Borne then enumerates a list of science requirements for data mining:
 
 \begin{itemize}
     \item \emph{Object Cross-Identification} between catalogs. Similar to the natural join
@@ -60,20 +59,30 @@ As a complement, Borne then enumerates a list of science requirements for data m
 Following the methodology described in chapter 2, we have identified an essential problem:
 exploring multiple files with uncertain numerical data is a neglected aspect in the \gls{IDE}.
 With this insight, we have returned to the clarification stage and used Borne's description
-of data exploration in astronomy~\cite{Borne2001} to better understand data exploration in
-this context. In the following section, we use an existing astronomy database to expand our
-understanding of the task.
+of data exploration in astronomy to better understand data exploration in
+this context.
+
+
+In section~\ref{sec:real_use_cases} we use an existing astronomy database
+to expand our understanding of how users explore datasets. Then,
+in section~\ref{sec:objectives} we refine and concretize the objectives
+of the present thesis. In section~\ref{sec:gaps/principles} we identify
+solution principles from the literature. Finally, in
+section~\ref{sec:gaps/proposed}, we list two proposals of solution and refer
+to the respective chapters that document them.
 
 \section{Examining real use cases}
+\label{sec:real_use_cases}
 
 We looked for concrete examples of queries mentioning \emph{astronomy} on the
 242 articles classified on the systematic literature mapping from
 chapter~\ref{chapter:literature_review}.
 
-It is soon evident that the datasets published by \gls{SDSS}~\cite{SDSS14} are popular as test
-sets since they are readily available and well documented~\cite{Gray2002}.
-Furthermore, there are sample queries available~\cite{SDSSSamples}, and real ones can also be
-obtained~\cite{SDSSSqlLogs}. Listing~\ref{sql:get_queries} shows an example of how to obtain a list
+It is soon evident that the \gls{SDSS}~\cite{SDSS14} is popular as a test
+set since it is readily available and well documented~\cite{Gray2002}.
+Furthermore, there are easily accessible sample queries~\cite{SDSSSamples}
+and real ones~\cite{SDSSSqlLogs}.
+Listing~\ref{sql:get_queries} shows an example of how to obtain a list
 of queries performed by users.
 
 \begin{listing}[htbp]
@@ -83,7 +92,7 @@ of queries performed by users.
     WHERE yy=2018 AND mm>=10 AND rows>0 AND dbname LIKE 'BestDR14%'
 \end{minted}
 \caption[Obtaining a list of queries performed by \glsentrylong{SDSS} users]{
-    Example of how to obtain a list of queries performed by users during the end of 2018 over the 14th data release
+    Example of how to obtain a list of queries performed by users during the end of 2018 over the 14th data release.
 }\label{sql:get_queries}
 \end{listing}
 
@@ -108,7 +117,8 @@ in section~\ref{sec:mapping_category}.
 To obtain an overview of the type of usual utilization of this database, we processed
 the results from query~\ref{sql:get_queries}. We extracted the columns, relations,
 and filters usually affected by the queries.
-Table~\ref{tab:most_tables} shows the most frequent queried combinations.
+Table~\ref{tab:most_tables} shows the most frequent queried combinations
+of relations.
 
 \begin{table}[htbp]
 \centering
@@ -127,16 +137,19 @@ Table~\ref{tab:most_tables} shows the most frequent queried combinations.
 }\label{tab:most_tables}
 \end{table}
 
-Interestingly, introspection queries are widespread, indicating that users spend a considerable time
-familiarizing themselves with a complex schema~\cite{Khoussainova2010}.
+Interestingly, introspection queries are widespread, indicating that
+users spend a considerable time familiarizing themselves with a complex schema.
+This has led to attempts at reducing this friction by methods such as context-aware auto-completion~\cite{Khoussainova2010}.
 
 \section{Refining objectives}
 \label{sec:objectives}
 
-We can summarize the results of our surveys:
+We summarize here our insights after the literature survey and examination
+of real use cases:
 
 \emph{Support for data distributed across multiple files} is generally neglected by
-\emph{in-situ} data exploration solutions~\cite{Silva2016}. However, indexing, storage, and
+\emph{in-situ} data exploration solutions~\cite{Silva2016,alawini2016}.
+However, indexing, storage, and
 interactivity are well covered, as seen in chapter~\ref{chapter:literature_review}.
 
 \emph{Exploring the database schema} itself, as the \gls{SDSS} query logs suggest, is
@@ -144,26 +157,28 @@ non-negligible user activity. Our observation is consistent with an IBM study th
 that even data architects can spend up to 70\% of their time just discovering the metadata of
 databases~\cite{Wu2008}.
 
-Our question is: can we help users to navigate datasets split across multiple
+Our refined question is: can we help users to navigate datasets split across multiple
 files, with unknown schema, facilitating relationship-based mining?
-When metadata is present, we could rely on name matching, but when it is not, or if the
-correspondences are not straightforward?
+We can rely on name matching when metadata is present, but what can be done when
+it is missing, or if correspondences are not unambiguous?
 
 \section{Solution principles}
 \label{sec:gaps/principles}
 
-Imagine an astronomer facing several data files containing raw astronomical measurements
+Our use case looks like the following: an astronomer facing several
+data files containing raw astronomical measurements
 with little or no explanation about their schema. These files may come from different
-surveys or different sets of observations, and the user can only make the following
-educated guesses:
+surveys or different sets of observations from the same region of the sky,
+and the user can only make the following educated guesses:
 
 \begin{itemize}
-    \item The populations are likely the same, or at least very similar (i.e., stars)
-    \item A subset of the attributes is shared between the relations (i.e., brightness
-        on different electromagnetic bands)
-    \item This measurement has an associated uncertainty~\cite{Stonebraker2009}, either
-        explicitly stated or not (i.e., random errors, instrument precision, floating point 
-        precision~\cite{dawson2008comparing})
+    \item The populations are likely the same, or at least very similar
+    (i.e., stars).
+    \item A subset of the attributes is shared between the relations (i.e.,
+    brightness on different electromagnetic bands).
+    \item The measurements have an associated uncertainty~\cite{Stonebraker2009},
+    either explicitly stated or not (i.e., random errors, instrument precision,
+    floating point precision).
 \end{itemize}
 
 To help cross-matching the files, the first intuition would be to run a statistical
@@ -178,7 +193,7 @@ do a cross-match.
     \caption[Example of a 2D distribution where the pairwise matching is not enough]{
         Example of a 2D distribution where the pairwise matching would not be accurate enough.
         Pairwise tests would tell us that $A$ matches $C$ and $E$; and that $B$ matches $D$ and $F$.
-        However, we $A,B$ does not match $C,D$.
+        However, $A,B$ does not match $C,D$.
     }
     \label{fig:pairwise_ind}
 \end{figure}
@@ -189,8 +204,8 @@ To bridge this gap, we propose the concept of \glspl{EDD}, which is inspired by 
 \glspl{IND} from the relational algebra:
 
 \begin{displayquote}
-An inclusion dependency between column A of relation
-R and column B of relation S, written $R.A \subseteq S.B$, or $A \subseteq B$
+An inclusion dependency between column A of a relation
+R and column B of a relation S, written $R.A \subseteq S.B$, or $A \subseteq B$
 when the relations are clear from the context, asserts that each
 value of A appears in B. Similarly, for two sets of columns X
 and Y , we write $R.X \subseteq S.Y$ , or $X \subseteq Y$ , when each distinct
@@ -198,7 +213,8 @@ combination of values in X appears in Y \cite{abedjan2015}
 \end{displayquote}
 
 The definition of \gls{IND} is based on set theory, which is not directly applicable to
-numeric data where measures are in the real domain (e.g. spatial coordinates) and usually
+numeric data where measures are in the real domain (e.g. spatial coordinates
+or flux measurements) and usually
 have an associated uncertainty that may or may not be explicitly stored.
 
 However, this definition can be naturally reformulated in terms of
@@ -208,14 +224,14 @@ $F_Y$ are the cumulative distribution functions of X and Y, respectively:
 \begin{definition}
 An equally-distributed dependency between a set of columns X from
 of relation R and a set of columns Y of relation S, written $R.X \eqdist S.Y$ or
-$X \eqdist Y$, asserts that the values of X and Y follow the same probability distribution.
+$X \eqdist Y$ asserts that the values of X and Y follow the same probability distribution.
 \label{def:eqdist}
 \end{definition}
 
 The term \emph{arity} refers to the cardinality of the sets of attributes $X$ and $Y$. For instance, if $|X| = 1$, we talk about unary \glspl{EDD}; if $|X| = 2$,
 binary or 2-\glspl{EDD}; and, in general, for $|X| = n$, $n$-ary \glspl{EDD}.
 
-Finding high arity \glspl{IND} is a NP-hard problem \cite{kantola1992}.
+Finding high arity \glspl{IND} is an NP-hard problem~\cite{kantola1992}.
 For instance, for two sets of $n$ attributes in $R$ and $S$,
 there are $n!$ different possible permutations to check.
 In comparison, finding unary \glspl{IND} seems a relatively simple problem,
@@ -226,7 +242,7 @@ finding high arity \glspl{IND} unfeasible. This is because the search space tend
 with the number of one-attribute matches, making unary \glspl{IND} search time much less important
 than reducing the number of false positives.
 
-We used a published experimental evaluation~\cite{Dursch2019} as a starting point for
+We used a published experimental evaluation of \gls{IND} finding techniques~\cite{Dursch2019} as a starting point for
 assessing how adequate existing solutions are for our problem. The authors carried out a
 set of experiments with thirteen \gls{IND} algorithms, of which seven are for unary \glspl{IND},
 four for $n$-ary \glspl{IND}, and two for both types. A more recent survey confirms that this
@@ -236,7 +252,7 @@ Dependencies~\cite{kossmann_data_2022}.
 We will now describe briefly the $n$-ary finding
 algorithms evaluated by the authors and discuss their suitability for our needs.
 
-\subsection{n-INDs finding algorithms}
+\subsection{n-IND finding algorithms}
 \label{sec:nind_finding}
 \begin{figure}[ht]
     \centering
@@ -246,7 +262,7 @@ algorithms evaluated by the authors and discuss their suitability for our needs.
         Example structure of the search space as a lattice for an initial set
         of 4 unary \glspl{IND}.
         As an illustration, if the 2-INDs surrounded by a solid line were valid,
-        a bottom-up traversal would only need checking the validity of the 3-INDs with a 
+        a bottom-up traversal would only need to check the validity of the 3-INDs with a 
         gray background since the others could not be valid.
     }
     \label{fig:lattice}
@@ -395,7 +411,8 @@ tuples between files.
 
 \subsection{Schema Homogenization}
 
-For completeness, table~\ref{tab:missing_middleware} classifies these solutions,
+For completeness, table~\ref{tab:missing_middleware} classifies these solutions
+under the proposed \emph{Schema Homogenization} category,
 expanding on the result from the literature mapping shown in chapter~\ref{chapter:literature_review}.
 
 \begin{table}[ht]
@@ -417,6 +434,7 @@ expanding on the result from the literature mapping shown in chapter~\ref{chapte
 
 
 \section{Proposed solution}
+\label{sec:gaps/proposed}
 In the following chapter, we propose a novel algorithm, \PresQ, that
 can recover multidimensional correspondences between datasets with different,
 undocumented --- or unknown --- schemas. \PresQ relies on statistical tests to

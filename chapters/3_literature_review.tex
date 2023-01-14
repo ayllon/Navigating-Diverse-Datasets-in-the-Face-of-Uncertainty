@@ -1,12 +1,12 @@
 \glsresetall
 
-Following the \emph{Engineering Design Process}, we have defined the task in
-section~\ref{enum:objectives}. For clarification, and as a required step prior
-to identifying the essential problems and solution principles, the natural next
-step is a literature review, one of the initial stages of our process.
+Following the \emph{Engineering Design Process}, the initial objectives
+need to be clarified before searching for the solution principles.
+For this purpose, we performed a literature review to identify the
+state of the art.
 
-This chapter summarizes the results of the \emph{Systematic Mapping of the Literature},
-following the method defined in section~\ref{sec:method_literature_review}.
+We summarize in this chapter the stages and results of the
+\emph{Systematic Mapping of the Literature}, a process described in section~\ref{sec:method_literature_review}.
 
 Since the \emph{Engineering Design Process} is iterative and includes feedback loops, in
 section~\ref{sec:mapping/overview}, we estate the objectives of the
@@ -17,7 +17,7 @@ In section~\ref{sec:mapping/results}, we summarize the results of the literature
 Finally, in section~\ref{sec:mapping/discussion}, we discuss the interpretation of our findings
 and insights.
 
-Part of the content of this chapter appears in the article \emph{Interactive Data Exploration
+The content of this chapter appears in the article \emph{Interactive Data Exploration
 of Distributed Raw Files: A Systematic Mapping Study}~\cite{Alvarez2019},
 published on IEEE Access.
 
@@ -26,28 +26,28 @@ published on IEEE Access.
 \gls{IDE} tools target the Data Understanding phase of \gls{CRISPDM}. They have
 human intuition as a core part of the process, where the user tentatively
 explores the data, iterating and reformulating the queries as
-their knowledge and insight changes with each iteration.
+their knowledge and insight change with each iteration.
 
-A system that is able to be used in such a way needs to be lightweight, adaptive
+A system that can be used in such a way needs to be lightweight, adaptive
 and have reasonably low response times---\cite{Miller1968} considers two seconds
 to be the upper limit for the continuity of thoughts---,
-helping and assisting, without getting in the way of the person involved in
+helping and assisting without getting in the way of the person involved in
 the loop.
 
-Because of this exploratory nature, any early decision on data structure,
-storage and indexing are inappropriate~\cite{Kersten2011}. They introduce latency,
-and optimize for a pattern that only happens for a brief period of time.
+Because of this exploratory nature, early decisions on data structure,
+storage, and indexing are inappropriate~\cite{Kersten2011}. They introduce latency
+and optimize for a pattern that only happens for a brief period.
 
-This problem can be tackled at different levels---from the physical layout on disk,
+This problem can be tackled at different levels---from the physical layout on disk
 to the interface interacting with the user. In 2015, Idreos~\cite{Idreos2015}
 classified several of these solutions depending on which approach they take
 on the issue. This paper originally attracted our attention  due to the potential
 applications in \gls{HEP}\footnotemark, although
-the techniques found can be of interest for other scientific domains.
+the techniques found can be of interest to other scientific domains.
 
 \footnotetext{
     This research was initiated while employed at \gls{CERN},
-    so \gls{HEP} was the original target use case
+    so \gls{HEP} was the original target use case.
 }
 
 In summary, we need to satisfy three main requirements:
@@ -577,8 +577,9 @@ that cover, at least, two out of the three requirements.
 \newcommand{\scidb}[0]{\textsc{SciDB} }
 
 As already mentioned, the only solution that covers the three requirements is
-documented on the paper ``A Distributed In-situ Analysis Method for Large-scale
-Scientific Data''~\cite{Han2017}, classified as ``adaptive loading''.
+documented on the paper
+\textit{A Distributed In-situ Analysis Method for Large-scale
+Scientific Data}~\cite{Han2017}, classified as ``adaptive loading''.
 
 The authors build on top of \scidb~\cite{Stonebraker2011}, a distributed
 array-based scientific database, and focus on \textsc{HDF} files~\cite{HDF}.
