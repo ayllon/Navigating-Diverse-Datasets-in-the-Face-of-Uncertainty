@@ -13,27 +13,28 @@ six fundamental aspects of research, using the mnemonic `6P':
 
 \paragraph{Purpose}
 \label{method:purpose}
-A research project needs a well-defined objective in order to be able
+A research project needs a well-defined objective to be able
 to define what means for it to succeed --- either totally or partially.
 
-To be honest, the final objective of this project is \emph{obtaining the
-degree of Doctor in Computer Engineering}. This is important to define
-a hierarchy of objectives, from the most general to the most specific. 
-
-With this objective in mind, the current research project must
-\emph{increase the body of knowledge} of its area. Had we not been honest
-about the final objective, we could have risked a purely technical approach.
-
-Nevertheless, we want to \emph{solve an existing problem}. In our case,
-as discussed on chapter~\ref{chapter:introduction}, we target the
+First, a \emph{PhD} thesis must \emph{increase the body of knowledge}
+of the chosen research area. Second, we want to \emph{solve an existing problem}:
+In our case, as discussed in chapter~\ref{chapter:introduction}, we target the
 \gls{IDE} research area.
 
 \paragraph{Products}
 \label{method:products}
 Oates lists five different types of contributions to the body of knowledge, based on
-an existing classification from Davis \& Parker\cite{Oates2006,Davis1997}:
-evidence, methodology, analysis, theories, and computer-based products. Note
-that an improvement of an existing product is still considered a contribution.
+an existing classification from Davis \& Parker~\cite{Oates2006,Davis1997}:
+
+\begin{itemize}
+    \item Evidence
+    \item Methodology
+    \item Analysis
+    \item Theories
+    \item Computer-based products
+\end{itemize}
+
+Note that improvements are also considered a contribution under this classification.
 
 For the current thesis, we aim to produce a new computer-based product
 for \gls{IDE}, understanding as such novel algorithms and techniques.
@@ -50,12 +51,13 @@ The literature review is also a contribution (analysis).
 \end{figure}
 
 Figure~\ref{fig:method_process_model} shows the model of the research process.
-The time working at \gls{CERN} and at the \emph{Astronomy Department of the University of Geneva}
-set up the experiences and motivations for this research: \gls{IDE} on physical measurements,
+The time working at \gls{CERN} and the \emph{Astronomy Department of the University of Geneva}
+set up the \emph{experiences and motivations} for this research:
+\gls{IDE} on physical measurements,
 which have an intrinsic uncertainty. In chapter~\ref{chapter:introduction} we have
 introduced the research questions for this thesis.
 We will be shortly defining the methodology for the literature review,
-the research strategy, the data generation methods, and data analysis.
+the research strategy, the data generation methods, and the data analysis.
 
 \paragraph{Participants}
 \label{method:participants}
@@ -65,17 +67,21 @@ the thesis director. Journal editors and reviewers are indirect participants.
 \paragraph{Paradigm}
 \label{method:paradigm}
 The paradigm is the philosophical model that frames the research.
-It defines what the researcher believes\footnotemark on the nature
+It defines what the researcher believes on the nature
 of reality (\emph{ontology}), how the researcher interacts with
 knowledge (\emph{epistemology}), and how knowledge is acquired
-(\emph{methodology})~\cite{Guba1990}.
-\footnotetext{By definition, this framework can not be proven~\cite{Guba1994}.}
+(\emph{methodology}). By definition, this framework can not be proven~\cite{Guba1990,Guba1994}.
 
 We can find different classifications of different paradigms depending on
 their views on these questions. For instance, Oates and Chua~\cite{Chua1986}
-consider three branches: `positivism' (reality is objective and the researcher neutral),
-`interpretative' (truth is subjective and subject to the context), and
-`critic research' (the social structure is the main focus).
+consider three branches:
+
+\begin{itemize}
+    \item \emph{Positivism}, where reality is objective and the researcher neutral.
+    \item \emph{Interpretative}, where truth is subjective and subject to the context.
+    \item \emph{Critic research}, where the social structure is the main focus.
+\end{itemize}
+
 Shull \etal~\cite{Shull2008} extends this classification with a fourth paradigm:
 the \emph{pragmatism}. In this paradigm, knowledge is evaluated based on its
 utility and is considered, in any case, approximate.
@@ -91,9 +97,9 @@ All the relevant source code is publicly available.
 
 \section{Literature review}
 \label{sec:method_literature_review}
-A systematic mapping study is a process for the exploration of the
-situation of a wide research area with a high level of granularity,
-allowing us to identify areas in the domain where it may be interesting to
+A systematic mapping study is a process for the exploration of
+the situation of a wide research area with a high level of granularity,
+allowing us to identify areas in the domain that may be interesting to
 explore in more detail~\cite{Kitchenham2007}. Because we are trying to obtain
 an overview of the situation of the research on data exploration techniques
 and identify where additional work may be required, we have decided to follow this
@@ -115,9 +121,8 @@ Petersen \etal.
 From the list of strategies shown in figure~\ref{fig:method_process_model},
 we follow \emph{Design and Creation} and \emph{Experiments}.
 
-\paragraph{Design and Creation} Is an adequate strategy since we aim for a
-computer-based product. The resulting artifacts should be carefully studied
-and developed and result from a careful engineering approach.
+\textbf{Design and Creation} is an adequate strategy since we aim for a
+computer-based product. The resulting artifacts should be carefully studied and developed and result from a careful engineering approach.
 Thus, we follow \emph{Engineering Design}:
     
 \begin{displayquote}
@@ -146,12 +151,12 @@ them into the final deliverable. Thus, experiments are a central aspect of this 
 
 %Research question introduction (chap.1), literature review chap.3 (link with methodology here).
 %Data generation, observations (experiments), Data Analysis quantitative and qualitative (SOM),
-%link with chapter about discussion/results?
+%link with the chapter about discussion/results?
 %Documentation is the thesis itself.
 %Insist on the feedback loop!
 
 %Task -> Specification -> Concept -> Preliminary chap 4 (bridge, plus preliminary excuse for dead ends)
-%Definitive layout 5 and 6 (presq and som).
+%Definitive layouts 5 and 6 (presq and som).
 
 
 \section{Data generation methods}
@@ -171,17 +176,16 @@ This research adheres to the \emph{Open Science} principles~\cite{oro44719}.
 \begin{itemize}
     \item \textbf{Open Access} Papers are published either on \emph{Open Access} journals,
         or made accessible on pre-print servers.
-    \item \textbf{Open Data} The results from our experiments are uploaded to a public
-        server (such as \textsc{GitHub}, together with the source code, using \texttt{git-lfs}).
+    \item \textbf{Open Data} The results from our experiments are uploaded to a public server together with the source code.
     \item \textbf{Open Reproducible Research} 
         \begin{itemize}
             \item \textbf{Open Notebooks} Notebooks used to summarize the results are
                 included next to the source code.
             \item \textbf{Open Source} The source code is under a permissive free software license
                 (MIT\footnote{\url{https://opensource.org/licenses/MIT}}).
-            \item \textbf{Reproducibility Guidelines} Even if the original results become
+            \item \textbf{Reproducibility Guidelines} Even if our results become
             inaccessible, the repositories include a list of the required dependencies so the
-            environment can be replicated. The procedure followed to generate our results is documented.
+            environment can be replicated. The procedure followed to generate our results is documented in appendix~\ref{appendix:presq_benchmarks}.
         \end{itemize}
     \item \textbf{Open Repositories} All the delivered software is in \textsc{GitHub},
         and a copy archived in \href{https://zenodo.org/}{\textsc{Zenodo}}~\cite{zenodo} with an
