@@ -4,8 +4,8 @@
 
 \emph{In-situ} Data Exploration is an active research area that requires
 a multidisciplinary approach: algorithms, data structures, machine learning,
-statistics,  data visualization, information sciences, and unavoidably,
-the domain knowledge --- or business understanding ---  provided by an expert.
+statistics,  data visualization, information sciences, and the domain knowledge
+--- or business understanding ---  provided by an expert.
 
 Going back to the \gls{CRISPDM} model described in  chapter~\ref{chapter:introduction}
 and shown in figure~\ref{fig:crispdm}, our initial objective was to identify
@@ -15,11 +15,11 @@ for access, and any early decision on how to ingest them into a database may be
 counterproductive until the dataset is better understood.
 
 The literature survey from chapter~\ref{chapter:literature_review} showed that
-solutions for visualization, optimizations, indexing, storage,\ldots abound.
+solutions for visualization, optimizations, indexing and physical layout abound.
 Still, there is little to no mention of assisting users on \emph{understanding}
 data schema, especially when it comes to multiple files from diverse origins or
 when meta-data is incomplete or inconsistent.
-In chapter~\ref{chapter:diverse}, we have seen that users spend a non-negligible
+In chapter~\ref{chapter:diverse}, we have confirmed that users spend a non-negligible
 amount of resources just examining the data structure and layout.
 
 The question that followed was: can we leverage the data \emph{distribution} to
@@ -42,10 +42,9 @@ The only requirement is that the expectation of false negatives --- i.e., signif
 level for statistical tests --- can be estimated.
 
 For the experiments used to evaluate \PresQ, described in ~\ref{sec:presq_experiments},
-the statistical test of choice was based on the $k$-nearest neighbors. While this test
-performs well for many datasets, the resulting trained \emph{model} is not
-very useful.
-Chapter~\ref{chapter:som} introduces a statistical test based on \gls{SOM}, which provides,
+the statistical test of choice was based on \gls{kNN}. While this test
+performs well for many datasets, the resulting trained model can not be easily reused.
+In chapter~\ref{chapter:som}, we introduce a statistical test based on \gls{SOM}, which provides,
 in addition to a $p$ value, a trained projection that we can later use for binning and
 cross-matching both datasets using the matching set of features. The resulting \gls{SOM}
 is also interpretable in case of rejection, which is also helpful in tentative data exploration.
@@ -64,7 +63,7 @@ the state-of-the-art.
 \subsection{New category for Interactive Data Exploration}
 
 The state of the literature at the time of our survey indicated that, within the
-\gls{IDE} research community, querying datasets split over multiple files is arguably
+\gls{IDE} research community, querying datasets split over multiple files is
 neglected~\cite{Silva2016}. One could argue that the logical file containing a given
 subset of the data is a detail that can be integrated into an existing index. This is
 true as long as the data layout is similar, but this is not always the case.
@@ -111,7 +110,7 @@ between datasets. \PresQ is not limited to \gls{EDD} finding and can potentially
 of use to other areas that have a strong combinatorial aspect, such as
 chemistry or biology~\cite{Bretto2013}.
 
-In chapter~\ref{chapter:som}, we have introduced \SOMA, a two-sample multivariate statistical test based on
+In chapter~\ref{chapter:som}, we have introduced a two-sample multivariate statistical test based on
 \glspl{SOM} with a performance comparable to tests based on machine learning models. An additional advantage
 of this technique is that it outputs an interpretable projection of the two samples. It can be used
 by itself or in conjunction with \PresQ.
@@ -139,10 +138,10 @@ by itself or in conjunction with \PresQ.
     \textbf{improve the quasi-clique finding} algorithm, either via novel algorithms or by
     generalizing some of the many existing techniques~\cite{WU2015693}.
             
-    \item On the other hand, the existing algorithms based on quasi-clique search forget
-    about certain aspects of the datasets. For instance, the correlation matrix on both
-    sides of the \gls{EDD} is likely to be similar, and it may be possible to leverage
-    \textbf{data-aware} algorithms to augment the quasi-clique finding.
+    \item On the other hand, the existing algorithms based on clique and quasi-clique search
+    decouple the data --- only used during validation -- from the candidate generation.
+    An interesting research strategy can be making clique and quasi-clique finding algorithms \textbf{data-aware},
+    leveraging data features during the generation of candidates.
     
     \item Sometimes, the algorithms should not assume equality of distribution. For instance, one of the
     datasets may have been filtered beforehand --- i.e., signal-to-noise, value clipping, etc. This issue affects
@@ -161,12 +160,9 @@ by itself or in conjunction with \PresQ.
     run-time and decrease the noise. Nonetheless, a complication arises because
     we do not know which attributes are shared.
         
-    \item Finally, \textbf{finding other types of numerical dependencies} can be of interest.
-    For instance, a single dataset may be split between multiple files based on the values
-    from a given set of attributes, which may or may not overlap.
-    As an example, figure~\ref{subfig:tu_multifile} shows an example where a single dataset is
-    cleanly cut using two spatial dimensions, which can be easily \emph{learned} by a decision tree.
-    Figure~\ref{subfig:mer_multifile} shows another dataset also cut using the same two
-    coordinates, but where there exists an overlap between some of the files.
+    \item Finally, \textbf{multidimensional \emph{complementarity}} is another interesting
+    area for further research. For instance, a single dataset may be split between multiple files
+    based on the values from a given set of attributes (i.e., coordinates), which may or may not overlap.
+    Being able to merge complementary datasets would be a powerful addition to \gls{EDD} finding.
 \end{itemize}
 

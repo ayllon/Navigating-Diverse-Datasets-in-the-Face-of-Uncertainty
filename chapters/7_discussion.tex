@@ -1,30 +1,22 @@
-% Original (main) objective
 \glsresetall
-
-% TODO:
-% - SOM helps with serendipitous discovery
-% - PresQ also helps with serendipitous discovery (AFDS)
-% - threats to discovery, should I tackle both at the same time? The measures are
-%   the same: i.e., multiple distribution, number of tests, etc.
 
 In section~\ref{sec:main_objective}, we defined that the main objective of this thesis
 was \emph{to assist users during the exploration of unprocessed,
-numerical, raw data distributed across multiple files,
-based solely on its intrinsic distribution}. After a systematic literature mapping,
+numerical, raw data distributed across multiple files}.
+After a systematic literature mapping,
 described in detail in chapter~\ref{chapter:literature_review}, in section~\ref{sec:objectives} we
-narrowed the objectives to the \emph{multiple files with unknown, heterogeneous schemas} aspect,
-the area with fewer solution proposals.
+narrowed the objectives to the \emph{multiple files with unknown, heterogeneous schemas, using solely the intrinsic data distribution}.
 
-With this objective in mind, we have proposed the concept of \gls{EDD}
---- definition ~\ref{def:eqdist} ---,
+With this objective in mind, in chapter~\ref{chapter:discussion}
+we have proposed the concept of \gls{EDD},
 proposed a novel algorithm, \PresQ, to mine these dependencies between multiple
 datasets --- chapter~\ref{chapter:presq} ---, and a two-sample, machine-learning statistical
 test that can visually assist users in examining how the two samples differ --- 
 chapter~\ref{chapter:som}.
 
-In section~\ref{sec:discuss_presq} we discuss the behavior, performance and results of
+In section~\ref{sec:discuss_presq}, we discuss the behavior, performance, and results of
 \PresQ, a tool for the discovery of multidimensional \glspl{EDD} via Quasi-Cliques
-on Hypergraphs. In section~\ref{sec:discuss_som} we discuss how the
+on Hypergraphs. In section~\ref{sec:discuss_som}, we argue how the
 proposed solutions are relevant to the stated objectives. In
 section~\ref{sec:threats}, we list the threats to the validity of this work and
 what measures we have taken to minimize their impact.
@@ -146,21 +138,20 @@ case, developing a tailored statistic for all possible combinations is not viabl
 and a pragmatic approach is more suitable~\cite{kim2021classification}.
 
 Finally, if the null hypothesis --- that both samples come from the same underlying
-distribution ---, is rejected, the generated \gls{SOM}  model can be easily visualized
+distribution --- is rejected, the generated \gls{SOM}  model can be easily visualized
 and examined in more detail.
 In sections~\ref{subsec:som_oulad} and \ref{subsec:som_eye}, we have demonstrated
 that we can reject $H_0$ and obtain valuable information after exploring the learned model.
 This exercise would not have been possible with a black-box method such as
 a neural network classifier~\cite{friedman2004multivariate}.
 
-
-As a side note, \gls{SOM} maps can be generalizable to non-vectorial data
+As a final note, \gls{SOM} maps can be generalizable to non-vectorial data
 --- i.e., strings --- as long as more than one ordering relation is
 defined~\cite{kohonen1982self, KOHONEN201352}.
-Therefore, our proposed statistical test could also be used to test whether
+Therefore, our proposed statistical test could also be used to verify whether
 two sets of sequences --- i.e., proteins or DNA --- share their origin.
-Unfortunately, since the \gls{SOM} implementation we have based our implementation
-on~\cite{wittek2013somoclu} only works with real-valued dimensions, we have not been
+Unfortunately, since the \gls{SOM} implementation on which we have based our implementation
+only works with real-valued dimensions~\cite{wittek2013somoclu}, we have not been
 able to test this scenario.
 
 
@@ -173,16 +164,17 @@ The \PresQ results shown in the experiments described in section~\ref{sec:presq_
 could risk being just a fluctuation,
 not due to an underlying algorithmic improvement. However,
 the experimental design described in section~\ref{sec:experiment_design} significantly reduces
-this possibility, thanks to the randomization of the initial conditions,
-and the number of measurements.
+this possibility, thanks to the randomization of the initial conditions
+and the number of measurements. In any event, we have made explicit the uncertainties
+of our results --- using 95\% confidence intervals or reporting distribution quartiles.
 
-Looking at the results summarized in table~\ref{tab:ind2_summary},
-it is evident that, on average, the quasi-clique-based searching algorithm consistently performs
-better both in terms of run-time and ability to find the maximal EDD.
+The results summarized in table~\ref{tab:ind2_summary} show that, on average, the
+quasi-clique-based searching algorithm consistently performs
+better both in terms of run-time and ability to find the maximal \gls{EDD}.
 It has enough runs to make the difference significant.
 It is worth mentioning that there are proposed heuristics~\cite{koeller2003discovery} to find higher
 arity \glspl{EDD}, even when edges are missing, by merging found lower-arity
-\glspl{EDD} and testing them instead.
+\glspl{EDD} and testing the resulting \gls{EDD} candidate.
 Nonetheless, we consider that the run-time differences are significant enough to make
 the quasi-clique-based search a better approach in those cases.
 Even so, that heuristic can also be applied to the output of our proposed algorithm.
@@ -197,9 +189,9 @@ algorithm rather than its implementation.
 
 For the proposed two-sample statistical test, the results shown in
 section~\ref{sec:som_results} originate from running the tests between 200 and 2000
-randomized samples, which are enough to have significant results.
-The comparisons have been done taking into account the error of our measurements whenever
-available: i.e. for the Gaussian simulations and the DC2 dataset.
+times, with independent randomized samples.
+Again, the comparisons have been done taking into account the error of our measurements,
+making it easier to assess their significance.
 
 \subsection{External validity}
 The \PresQ experiments have been run over four different datasets of
