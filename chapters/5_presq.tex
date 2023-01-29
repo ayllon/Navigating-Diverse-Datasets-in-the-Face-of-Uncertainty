@@ -538,8 +538,8 @@ the different parametrizations in table \ref{tab:quasi_params}.
         $J(Q, Q') = {|Q \cap Q'| \div |Q \cup Q'|}$.
         From all the obtained values, we report the maximum. A value of
         $1$ signals a perfect match. \\
-        \emph{Time}           & Wall-clock time \\
-        \emph{Timeouts}       & How many runs exceeded the timeout \\
+        \emph{Time}           & Wall-clock time. \\
+        \emph{Timeouts}       & How many runs exceeded the timeout. \\
     \end{tabular}
 \end{table}
 
@@ -574,7 +574,7 @@ The initialization stage of the test is as follows:
     \item The constant columns, where every tuple has the same value ---including \emph{null}---
         or only a handful of different values, are dropped. \textsc{Faida} authors followed
         a similar procedure to reduce the number of columns to check \cite{Kruse2017}.
-    \item A random sample is taken from both relations (it defaults to 200)
+    \item A random sample is taken from both relations (it defaults to 200).
     \item The algorithm described in section~\ref{sec:presq_unary} is used to find a set of valid
         unary \glspl{EDD}.
     \item \emph{All} possible $n$-EDDs (for $n \in \{2, 3\}$) are generated and validated.
@@ -612,16 +612,16 @@ and \ref{tab:derived_measurements}.
     \centering
     \begin{tabular}{p{0.28\linewidth} p{0.63\linewidth}}
         \emph{Time}  & Wall-clock time, without accounting for the initialization stage,
-                       as this is shared \\
+                       as this is shared. \\
         \emph{Number of tests} & Time spent looking for quasi-cliques and validating the
                                    candidates.
                                    Tests can be potentially expensive, so we measure how many
                                    statistical tests are necessary. \\
-        \emph{EDD count} & Without removing non-maximal \glspl{EDD} \\
-        \emph{Maximal EDD count} & Removing non-maximal \glspl{EDD} \\
+        \emph{EDD count} & Without removing non-maximal \glspl{EDD}. \\
+        \emph{Maximal EDD count} & Removing non-maximal \glspl{EDD}. \\
         \emph{Timeouts} & The execution time has a time limit of 3000 seconds. We report the
          percentage of runs that could not finish within the allocated time window. \\
-        \emph{Highest arity} & The maximum \gls{EDD} arity found \\
+        \emph{Highest arity} & The maximum \gls{EDD} arity found. \\
     \end{tabular}
 \end{table}
 
@@ -1114,7 +1114,7 @@ The high number of $2$-EDDs makes the growing stage eventually impractical.
 
 For the \emph{ChEMBL} databases, we have used a naive random sampling that only requires a single
 pass over the entire database. Even then, the reading time is small with respect to the rest of the EDD
-finding algorithm. The number of $1$-EDDs increments steadily as relations are added, but $2$
+finding algorithm. The number of $1$-EDDs steadily increments as relations are added, but $2$
 and $n$-EDDs remain relatively stable ---the corresponding error bars overlap---, and so does the run-time.
 The arities are lower than those from KEEL, the maximum being 6 for the tables \texttt{molecule\_dictionary}
 and \texttt{compound\_properties}. The interval tree saves 57.9\% tests for 1-EDDs.
@@ -1127,8 +1127,7 @@ dense and noisy initial graph with many possible quasi-cliques.
 
 From these experiments, we can conclude that the algorithm scales well in relation with the number of
 relations and columns and that the sampling has a low impact even for big datasets.
-However, when the statistical test has low power for the input data, the run-time degrades
-significantly even for moderate input sizes since the search space is combinatorial and little
+However, when the statistical test has low power for the input data, the run-time significantly degrades even for moderate input sizes since the search space is combinatorial and little
 pruning is possible. Then the user can choose a different test or increase the sample size to increase the
 power. Figure~\ref{fig:scalability_sample_size} exemplifies the effect the sample size has on the result
 set and, therefore, run-time for the complete Waveform dataset. The power of the test is low for low

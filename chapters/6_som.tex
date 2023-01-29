@@ -36,7 +36,7 @@ the projected plane instead of relying on a training-testing split. This allows 
 utilize the sample data. To our knowledge, and based on the results from three
 exhaustive surveys, using Self-Organizing Maps
 to perform multidimensional two-sample testing has not been proposed
-before~\cite{kaski1998bibliography,oja_bibliography_2003,polla_bibliography_2006}.
+before~\cite{kaski1998bibliography,Oja2003,Polla2006}.
 
 This statistical set can potentially be used with \PresQ to validate
 high-dimensional \glspl{EDD}. The resulting projection can be used to identify objects
@@ -88,7 +88,7 @@ Alternatively, a permutation test can be used~\cite{kim2021classification}.
 Two disadvantages of these kinds of tests are that they can not use the whole sample
 for computing the test statistic --- therefore, they are not suitable for small
 datasets --- and they are underpowered due to the discrete nature of the test
-statistic~\cite{rosenblatt2021better}.
+statistic~\cite{rosenblatt2019better}.
 
 \textbf{\glsfmtlong{SOM}s}
 is an unsupervised machine-learning algorithm that learns
@@ -107,7 +107,7 @@ its size, and whether the map \emph{wraps around} (toroidal maps).
 Each neuron $i$ from the model has an associated weight vector with the same
 dimensionality as the input space, $w_{i}(t)$, where $t$ corresponds to the
 \emph{epoch} of the training stage.
-The initial values $w_i(t_0)$ can be assigned randomly or based on
+The initial values $w_i(t_0)$ can be randomly assigned or based on
 Principal Component Analysis~\cite{KOHONEN201352}.
 
 During the training, at each epoch $t$, each point $x$ from the training set
@@ -126,7 +126,7 @@ Once this is done, the \gls{BMU} and the weight of the neighboring neurons are u
 
 Where $0 \le \alpha \le 1$ is a learning factor that may or may not depend on $t$,
 and $0 \le h_{i,b} \le 1$ is the neighborhood function, with usually a Gaussian shape
-that shrinks at each epoch~\cite{Villmann1999,wittek2013somoclu}.
+that shrinks at each epoch~\cite{Villmann1999,wittek_somoclu_2017}.
 
 \begin{equation}
     h_{i,b}(t) = \exp(- \frac{||w_i - w_b||}{\delta(t)})
@@ -211,8 +211,8 @@ for computing the statistic~\cite{kirchler2020two}. Additionally, thanks to the
 regularization terms shown in equation \ref{eq:k1k2}, it also works with
 unbalanced sample sizes, an advantage over most kernel-based methods~\cite{song2021fast}.
 
-We have implemented our proposal using Somuclu, a parallel
-tool for training self-organizing maps on large data sets~\cite{wittek2013somoclu}.
+We have implemented our proposal using \textsc{Somuclu}, a parallel
+tool for training self-organizing maps on large data sets~\cite{wittek_somoclu_2017}.
 
 In the following section we describe the experimental setup used to
 evaluate our proposal.
@@ -284,7 +284,7 @@ expensive to compute the test statistic --- $O(N^2)$ --- and to approximate its 
 $H_0$ --- $O(N^2)$ or $O(N^3)$ depending on the method~\cite{zaremba2013b}.
 A proposed alternative, MMD-B~\cite{zaremba2013b}, splits the input data into blocks, computes the original,
 unbiased \gls{MMD} statistic on each block --- which are i.i.d ---, and averages the results.
-Because of the central limit theorem, this average follows asymptotically a normal distribution.
+Because of the central limit theorem, this average asymptotically follows a normal distribution.
 Song \etal~\cite{song2021fast} propose another test statistic based on MMD-B that allows
 unbalanced sample sizes and is more robust to the chosen kernel bandwidth (i.e., $\sigma$ on a Gaussian kernel).
 
@@ -516,7 +516,7 @@ start-of-the-art proposals, with the benefit of providing a trained model useful
 later purposes.
 
 To evaluate the power of comparing different sets of measures, we replicate Song's
-set up and run 2000 times\footnotemark the classifiers and \gls{SOM}  tests using a significance
+set up and run 2000 times\footnotemark  the classifiers and \gls{SOM}  tests using a significance
 level of $\alpha = 0.001$ for different sample sizes.
 We report their statistical power in table \ref{tab:eye}.
 The results from Song and MMD-B are extracted from Song's paper~\cite{song2021fast}.
@@ -594,7 +594,7 @@ therefore, correlate with conscious efforts when choosing a correct answer.
 
 
 \subsection{Age (IMDb Faces)}
-The IMDb-WIKI dataset~\cite{rothe2018deep} contains 460,723 face images
+The IMDb-WIKI dataset~\cite{rothe2016deep} contains 460,723 face images
 extracted from IMDb. The authors additionally provide a neural network pre-trained
 to predict the age of the face cutouts. Similarly to Song's experiments~\cite{song2021fast},
 we have run the neural model over the IMDb faces, extracting the values from
@@ -641,9 +641,9 @@ We have run two examples from the \PresQ paper using the proposed \gls{SOM}  bas
 instead of the \gls{kNN} statistical test. For each of the examples, we measure:
 
 \begin{description}
-    \item[Ratio] of known shared attributes identified by \PresQ
-    \item[Overhead] Number of tests per unique Equally-Distributed Dependency found
-    \item[Time] that took \PresQ to finish, including the time taken for serializing the \gls{SOM}  models
+    \item[Ratio] of known shared attributes identified by \PresQ.
+    \item[Overhead] Number of tests per unique Equally-Distributed Dependency found.
+    \item[Time] that took \PresQ to finish, including the time taken for serializing the \gls{SOM}  models.
 \end{description}
 
 Figure~\ref{fig:presq_som} reports the 95\% confidence interval ($\mu \pm 1.96 \sigma$)
@@ -702,7 +702,7 @@ superior for medium-size datasets.
 We have also proven in the experiment~\ref{subsec:som_oulad} that the
 output can guide researchers toward refining a hypothesis. Thus, our
 test can be a valuable asset to the researcher's tool-set, and complementary
-to more formal hypothesis testing whenever considered necessary~\cite{rosenblatt2021better}.
+to more formal hypothesis testing whenever considered necessary~\cite{rosenblatt2019better}.
 
 For future work, it would be interesting to explore the possibilities of
 properties of emergent Self-Organizing Maps to assist the researcher

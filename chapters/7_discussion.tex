@@ -37,8 +37,8 @@ However, its ability --- and of most, if not all, of the existing algorithms ---
 high arity \glspl{EDD} will be impaired by the false rejections.
 
 A lower rejection threshold could compensate for this. Yet, it increases the number
-of false detections, which is a known factor that degrades
-its performance significantly, similar to other hypergraph-based methods' \cite{koeller2006heuristic}.
+of false detections, which is a known factor that significantly degrades
+its performance, similar to other hypergraph-based methods' \cite{koeller2006heuristic}.
 We have experimentally confirmed this problem in section \ref{sec:result_quasi_search}.
 
 We propose a new algorithm based on quasi-cliques, where a candidate is accepted
@@ -65,7 +65,7 @@ while being more stable and predictable.
 For real datasets, the ratio of missing edges can be intuitive to configure
 (simply $\gamma = 1 - \alpha$, where $\alpha$ is the test significance level), 
 but $\lambda$ can be harder to interpret. We propose instead an intuitive and statistically
-interpretable method to adapt the threshold to the degree dynamically, which is expected
+interpretable method to dynamically adapt the threshold to the degree, which is expected
 to follow a hypergeometric distribution and can be adjusted based on the quasi-clique
 itself, as shown in equation~\ref{eq:deg_hyperclique_hypergeom}.
 
@@ -131,7 +131,7 @@ tests, networks of size $O(100)$ neurons generally work well enough, but for mor
 precise control, the \gls{SOM} size can be set to the lengths of the two largest
 principal components~\cite{KOHONEN201352}.
 
-Rosenblatt \etal~\cite{rosenblatt2021better} argue that provable, \emph{proper} test statistics
+Rosenblatt \etal~\cite{rosenblatt2019better} argue that provable, \emph{proper} test statistics
 should be, in general, preferred over heuristic alternatives. However, our
 proposal is more oriented toward exploring abundant structured data. In this
 case, developing a tailored statistic for all possible combinations is not viable,
@@ -151,7 +151,7 @@ defined~\cite{kohonen1982self, KOHONEN201352}.
 Therefore, our proposed statistical test could also be used to verify whether
 two sets of sequences --- i.e., proteins or DNA --- share their origin.
 Unfortunately, since the \gls{SOM} implementation on which we have based our implementation
-only works with real-valued dimensions~\cite{wittek2013somoclu}, we have not been
+only works with real-valued dimensions~\cite{wittek_somoclu_2017}, we have not been
 able to test this scenario.
 
 

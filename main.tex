@@ -38,6 +38,17 @@
     citecolor=blue
 }
 
+% URL if DOI not present
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map[overwrite]{
+      \step[fieldsource=doi, final]
+      \step[fieldset=url, null]
+      \step[fieldset=eprint, null]
+    }  
+  }
+}
+
 %\usepackage[acronym,toc]{glossaries}
 \usepackage[acronym]{glossaries-extra}
 \setabbreviationstyle[acronym]{long-short}

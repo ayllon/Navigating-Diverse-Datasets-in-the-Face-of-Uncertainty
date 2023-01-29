@@ -8,7 +8,7 @@ the development of this thesis that did not prove successful.
 
 \section{Types of Data Correlation}
 
-In 2017, \cite{Kraska2017} proposed a novel idea: an index over a dataset
+In 2017, \cite{kraska_case_2018} proposed a novel idea: an index over a dataset
 is just a model. This model takes as input a value, or a range of values,
 and ``predicts'' the physical location of the corresponding tuples.
 In this work, Kraska \etal propose \emph{learned} alternatives to well-known data
@@ -26,7 +26,7 @@ or \emph{dependencies}:
 \begin{itemize}
     \item \textbf{File Correlation} Dependence between values and containing file.
     \item \textbf{Offset Correlation} Dependence between values and offset within the
-        file~\cite{Kraska2017}.
+        file~\cite{kraska_case_2018}.
     \item \textbf{Tuple Correlation} Dependence between the attribute values of a tuple.
 \end{itemize}
 
@@ -194,7 +194,7 @@ as a directed acyclic graph, we can expect that graphs trained over different
 datasets containing the same information should contain isomorphic sub-graphs.
 
 For validating the idea, we have trained three Bayesian networks using\linebreak
-\textsc{Pomegranate}~\cite{schreiber2018pomegranate} over the catalogs
+\textsc{Pomegranate}~\cite{schreiber_pomegranate_2017} over the catalogs
 \gls{SDSS}, \gls{KiDS} and \gls{Cosmos}. Figure~\ref{fig:bayes1} shows the
 resulting graphs for the first two, and figure~\ref{fig:bayes2} for the last.
 
