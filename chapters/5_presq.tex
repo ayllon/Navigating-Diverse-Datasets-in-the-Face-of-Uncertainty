@@ -1,4 +1,3 @@
-\glsresetall
 
 Most of the content in this chapter appears in the article
 \emph{\textsc{PresQ}: Discovery of Multidimensional Equally-Distributed Dependencies via Quasi-Cliques on Hypergraphs}~\cite{AlvarezAyllonPresQ2022},
@@ -96,7 +95,7 @@ Thanks to the validity of these rules, particularly the permutation and projecti
 we can use the specialization relation seen in definition \ref{def:specialization}
 when dealing with distributions.
 
-With these rules we have defined the search space similar to the one from \gls{IND} discovery.
+With these rules, we have defined the search space similar to the one from \gls{IND} discovery.
 The last requirement is a property that allows the pruning of the
 search space as illustrated in figure~\ref{fig:lattice}.
 
@@ -186,7 +185,7 @@ The hyper-clique problem is a particular case when either $\lambda = 1$ or $\gam
 \section{Inferring common multidimensional data}
 \label{sec:presq_inferring}
 
-The first required step to find multidimensional \glspl{EDD} is to
+The first required step to identify multidimensional \glspl{EDD} is to
 find a set of unary \glspl{EDD}, for which a naive approach would
 mean quadratic complexity. To reduce the complexity, we
 propose an algorithm based on interval trees in
@@ -219,7 +218,7 @@ of tests by the quadratic expression $(N \times (N - 1)) / 2$.
 We propose using an interval tree built over the complete dataset to reduce the number of tests.
 The building of the tree can be performed in $O(N \log(N))$ time, and each query done in
 $O(\log(N) + m)$, where $m$ is the number of overlapping intervals for a given attribute.
-When $m \ll N$, which we expect to be generally the case, the number of operations can be thus
+In case of $N$ being much higher than $m$, which we expect to be generally the case, the number of operations can be thus
 reduced to $O(N \log(N) + M)$, where $M$ is the total number of overlapping pair of attributes.
 Note that $M \le (N \times (N - 1)) / 2$, so the worst-case remains quadratic.
 
@@ -233,7 +232,7 @@ will considerably increase the cost at later stages.
 Once we have a set of unary matches, we need to find which, if any, higher dimensional
 sets of attributes are shared between each pair of relations. As discussed in section
 \ref{sec:gaps/principles}, only three of the existing \gls{IND} finding solutions are not strongly
-dependent on discrete types: \Mind, \Zigzag and \Find.
+dependent on discrete types: \Mind, \Zigzag, and \Find.
 However, replacing the \emph{inclusion} tests with statistical tests affects their behavior.
 
 \Mind traverses the search space bottom-up. Thus, for two relations with a single
@@ -320,7 +319,7 @@ if and only if $K' \backslash K = {v^*(K')}$, i.e a quasi-clique $K'$ is a child
 of $K$ if it has one additional
 node that is the first node when sorted in ascending order by degree and index.
 This defines a strict parent-to-child relationship between quasi-cliques,
-which can be modelled and traversed like a tree.
+which can be modeled and traversed like a tree.
 
 The original algorithm \cite{uno_efficient_2010} is exclusively oriented towards
 $\gamma$-quasi-cliques, and
@@ -331,7 +330,7 @@ $K'$ should have, so that $K'$ is a $\lambda$-quasi-clique.
 When adding a node, the expected minimum degree may increase.
 By knowing this value, we can ignore all nodes with a degree lower than the threshold
 \emph{in the input graph}, as no matter how many more nodes we were to add
-afterwards, no child candidate would satisfy the $\lambda$ threshold.
+afterward, no child candidate would satisfy the $\lambda$ threshold.
 
 This step successfully increases the number of quasi-cliques found.
 However, the number of maximal cliques is bound in general by an exponential expression of the form
@@ -406,7 +405,7 @@ This is equivalent to setting the threshold for equation~\ref{eq:edge_hypercliqu
 Adjusting $\lambda$ is less straightforward: a high threshold
 will reject good candidates. A low one will accept spurious ones, triggering
 unnecessary tests. Even worse, the spurious quasi-cliques tend to have a high cardinality.
-Once rejected, they will cascade and cause an increase on lower-arity \glspl{EDD}
+Once rejected, they will cascade and cause an increase in lower-arity \glspl{EDD}
 to be tested as much as $\binom{n}{k+1}$, where $n$ is the arity of the \gls{EDD} candidate,
 and $k$ is the current level of the bottom-up exploration.
 
@@ -592,13 +591,13 @@ model and understand how many missing edges are expected as a function of $\alph
 
 The input for both search algorithms is, thus, identical at every run. However, since
 there is an unavoidable effect of the randomization of the sampling in step 3 and the
-$N$-dimensional permutation tests, we have repeated the experiment.
+$N$-dimensional permutation tests, we repeated the experiment.
 As a result, we are confident that the difference is significant and not due to chance.
 
 While \Find has no parameters beyond the initial set of \glspl{EDD},
 \PresQ requires a value for both $\gamma$ and $\Lambda$. As we mentioned earlier,
 it makes sense to bind $\gamma$ to the expected number of missing edges
-(false negatives): $\gamma = 1 - \alpha$. For $\Lambda$, we have tested with the
+(false negatives): $\gamma = 1 - \alpha$. For $\Lambda$, we tested with the
 values 0.05 and 0.1 since lower values yield too many accidental quasi-cliques,
 while higher values defeat the tolerance introduced by $\gamma$.
 
@@ -635,7 +634,7 @@ and \ref{tab:derived_measurements}.
         each separate run.
         This \emph{truth} is solely based on attribute names. The algorithms can
         find higher arity \glspl{EDD} when the values are taken into account.
-        This is a proof of success: the metadata would not have sufficed to capture
+        This is proof of success: the metadata would not have sufficed to capture
         this trait. \\
         
         \emph{Accuracy} & Measured as the number of total returned \glspl{EDD}, divided by
@@ -662,13 +661,13 @@ but it proves the capacity of finding maximal quasi-cliques.
 
 It is important to note that some of these measures are interdependent. For instance,
 if a maximal \gls{EDD} with a higher arity is found, the number of \glspl{EDD} should generally decrease.
-Conversely, if a true, high arity candidate is rejected, multiple generalizations will be considered
+Conversely, if a true, high-arity candidate is rejected, multiple generalizations will be considered
 and possibly accepted, increasing the number of unique \glspl{EDD}.
 Similarly, finding more maximal \glspl{EDD} implies running more statistical
 tests, so the run-time will be worse. Ultimately, it is up to the user to decide what is
 more important and parameterize the algorithm accordingly.
 
-We have run the tests disabling the limitation on the degree ($\Lambda = 0$) and
+We ran the tests disabling the limitation on the degree ($\Lambda = 0$) and
 the limitation on the total number of edges ($\gamma = 0$). In this manner, we can
 evaluate if there is any difference when using one, the other, or both.
 
@@ -676,7 +675,7 @@ evaluate if there is any difference when using one, the other, or both.
     \caption{Summary of the datasets used for validation.}
     \label{tab:dataset_summary}
     \centering
-    \begin{tabular}{l c c r r}
+    \begin{tabular}{l c r r r}
         \textbf{Dataset}   & \textbf{Tables} & \textbf{Rows} & \textbf{Columns} & \textbf{1-EDD} \\
         Mortgage/Treasury  & 2               &   1k + 1k   & 16 + 16 &  26 \\
         Ailerons/Elevators & 2               &  14k + 17k  & 41 + 19 &  44  \\
@@ -688,7 +687,7 @@ evaluate if there is any difference when using one, the other, or both.
     \end{tabular}
 \end{table}
 
-\textbf{Datasets:} To test the algorithms, we have run them over two pairs of relations from the KEEL
+\textbf{Datasets:} To test the algorithms, we ran them over two pairs of relations from the KEEL
 regression datasets \cite{alcala2011keel}, the training and test catalog from the
 \textit{Euclid photometric-redshift challenge} \cite{EuclidDesprez2020},
 and a set of sensor measurements from an aircraft fuel distribution
@@ -699,19 +698,20 @@ and versions 29 and 30 of the ChEMBL database~\cite{gaulton_chembl_2016}.
 
 Some statistics about these datasets are summarized in table~\ref{tab:dataset_summary}.
 
-\emph{Mortgage / Treasury} contain the same data, permuted by rows and by columns.
-These datasets are an example of data de-duplication.
+\emph{Mortgage / Treasury}, from KEEL, contain the same data, permuted by rows and by 
+columns. These datasets are an example of data de-duplication.
 
-\emph{Ailerons /Elevators} share their origin (control of an F16 aircraft)
-but have different sets of attributes. These datasets are an example of data fusion.
+\emph{Ailerons / Elevators}, also from KEEL, share their origin (control of an F16 
+aircraft) but have different sets of attributes. These datasets are an example of 
+data fusion.
 
 \emph{DC2} comes from a single catalog of astronomical
-    objects, split based on the sky coordinates.
+    objects split based on the sky coordinates.
     The authors masked some of the attributes of the training set (i.e., coordinates and the
-    target attributes: red-shift). 
-    Therefore, both catalogs share some of the attributes but for different sources.
+    target attributes red-shift). 
+    Therefore, both catalogs share some of the attributes but from different sources.
     A naive one-to-one schema matching will
-    easily mistake these attributes for small sample sizes. In contrast, for bigger samples
+    easily mistake these attributes for small sample sizes. In contrast, for bigger samples,
     some true correspondences will be falsely rejected.
     These datasets require some more resilient methods capable of working on a
     multidimensional space.
@@ -748,19 +748,19 @@ running on a standard CentOS Linux 7.9. The default memory allocation per core w
 
 For the (quasi-)clique search, we submitted one job with as many tasks as
 parameter combinations described in table \ref{tab:quasi_params} and 1 CPU per task,
-for cliques of size $10, 20$ and $30$.  We chose the time limit based on the measured
+for cliques of size $10, 20$, and $30$.  We chose the time limit based on the measured
 run-time from early test runs.
 
 For the real dataset tests, we submitted jobs with 8 tasks and 1 CPU per task,
 limited to 24 hours. The objective of concurrent runs was to increase the number
-of data points since the code has not been parallelized.
+of data points since the code was not parallelized.
 
 Finally, we executed ten randomized runs for each increment on the number of columns for the scalability tests.
 
 \subsection{Results}
 \label{sec:results}
 
-In this section, we will summarize the results from our test setup.
+In this section, we summarize the results of our test setup.
 
 \subsubsection{(Quasi-) clique search}
 \label{sec:result_quasi_search}
@@ -771,13 +771,13 @@ The \emph{timeout} is measured by counting how many runs fail to find a quasi-cl
 the allocated time window.
 
 While the \emph{wall-time} distribution is far from Gaussian, we consider that randomizing the
-input, pruning the long-running cases, and averaging the results of a few short-running
-iterations is a valid usage of the algorithms. This makes comparing the means a reasonable
-assessment.
+input, pruning the long-running cases, and averaging the results of a few
+short-running iterations is a valid usage of the algorithms.
+This makes comparing the means a reasonable assessment.
 
 \textbf{Influence of spurious edges:}
 We show in figure~\ref{fig:3hyper_beta} the performance of the algorithms for $3$-hypergraphs
-and different ratio of spurious edges. The exponential worst-case
+and different ratios of spurious edges. The exponential worst-case
 complexity becomes more apparent the more connected nodes there are.
 \Find is the most affected, but at some point, \PresQ performance also degrades significantly and eventually also fails to finish on time.
 These results confirm that spurious edges influence the
@@ -789,7 +789,7 @@ These results confirm that spurious edges influence the
     \caption[Recovery ratio and run-times for cliques on uniform $3$-hypergraphs for different ratios of spurious edges.]{
         Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
         for different ratios of spurious edges ($\beta$).
-        Each data-point corresponds to 15 runs.
+        Each data point corresponds to 15 runs.
     }
     \label{fig:3hyper_beta}
 \end{figure}
@@ -800,7 +800,7 @@ generalizes for hypergraphs. \PresQ with the growing stage enabled, oscillates v
 to the original clique even when $30\%$ of the edges are missing. However, the number of
 timeouts increases given that the algorithm needs to traverse more levels from the seed to the maximal
 quasi-clique. Interestingly, there is an inverse correlation between the number
-of missing edges and run-time.
+of missing edges and run time.
 
 \begin{figure}[ht]
     \centering
@@ -808,23 +808,23 @@ of missing edges and run-time.
     \caption[Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
     for different ratios of missing edges.]{Recovery ratio and run-times for cliques on uniform $3$-hypergraphs
     for different ratios of missing edges ($\alpha$).
-    Each data-point corresponds to 15 runs.}
+    Each data point corresponds to 15 runs.}
     \label{fig:3hyper_alpha}
 \end{figure}
 
 \textbf{Influence of correlated ratios:}
 In a more realistic scenario --- i.e., when using statistical tests --- as the number of missing edges
 increases, the number of spurious edges should decrease.
-We have run tests with the growing stage enabled for different parametrization on the node degree
+We have run tests with the growing stage enabled for different parametrizations on the node degree
 threshold. This includes a regular $\lambda$ parameter with a value of $0.8$ chosen based on
 good empirical results we obtained during early iterations of this work.
 The correlation between $\beta$ and $\alpha$ is based on the empirical statistical power of the
-kNN test as a location test on $k$ dimensions and a sample size of 100.
+\gls{kNN} test as a location test on $k$ dimensions and a sample size of 100.
 In all cases, $\gamma = 1 - \alpha$.
 
 Figure~\ref{fig:hyper_ab_corr} summarizes the results. A hand-picked parameter of $\lambda = 0.8$ can
 perform well for some hypergraphs but quickly underperforms as the hypergraphs become noisier.
-To the contrary, our proposal based on the hypergeometric distribution remains stable.
+On the contrary, our proposal based on the hypergeometric distribution remains stable.
 However, disabling the degree limitation performs better for this particular setup.
 This makes sense since there is no correlation between missing edges.
 
@@ -833,7 +833,7 @@ This makes sense since there is no correlation between missing edges.
     \includegraphics{images/5_presq/quasi_corr_20}
     \caption[Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.]{
     Recovery ratio and run-times for cliques of size 20 on uniform $(2,3,4)$-hypergraphs.
-    In this setup there were no timeouts. Each data-point corresponds to 5 runs.
+    In this setup, there were no timeouts. Each data point corresponds to 5 runs.
     }
     \label{fig:hyper_ab_corr}
 \end{figure}
@@ -858,16 +858,34 @@ $\hat{\phi}$ can be estimated using bootstrapping.
 In this manner, we obtain the estimated population mean and standard deviation. Finally,
 we compute the $95\%$ confidence interval $\hat{\mu_\phi} \pm 1.96 \hat{\sigma_\phi}$
 
-Figure \ref{fig:results_summary} shows this confidence interval for match ratio, unique \glspl{EDD},
+Figure~\ref{fig:results_summary} shows this confidence interval for match ratio, unique \glspl{EDD},
 number of tests and wall time (columns) for a significance level of $0.10$, against the
 different datasets (rows).
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=\linewidth]{images/5_presq/all}
+    \caption[$95\%$ confidence intervals for the percent difference between \Find and \PresQ.]{
+        $95\%$ confidence intervals for the percent difference
+        (equation \ref{eq:percent_difference}) between \Find and
+        three parameterizations of \PresQ for the DC2, Ailerons vs. Elevator, and
+        Mortgage vs. Treasury datasets.
+        Intervals that do not intersect the horizontal dashed line at $0\%$  show a statistically
+        significant result.
+        For ratio, higher is better. For tests and run-time, lower is better. Unique is harder to
+        assess since the results also depend on the statistical power of the chosen test.
+        Since the growing stage can generate many candidates, a low-powered test will accept
+        many false \glspl{EDD}.
+    }
+    \label{fig:results_summary}
+\end{figure}
 
 The DC2 case is particularly interesting. The attributes of the datasets
 are relatively numerous ---compared to the others--- and very similar in their distributions.
 A low initial significance level will generate very dense graphs, with a few missing edges, and
 many spurious, which impacts the performance considerably.
 This is a known issue of \Find~\cite{koeller2006heuristic}.
-Increasing the significance level reduces the number of spurious edges, at the cost of
+Increasing the significance level reduces the number of spurious edges at the cost of
 missing true ones. Consequently, the efficiency is improved at the cost of the efficacy.
 \PresQ allows us to increase the significance
 level without sacrificing much efficacy.
@@ -880,6 +898,7 @@ where the dataset was obtained, verifying that, indeed, they are
 ``two closely related scenarios'' \cite{Gheraibia2019}.
 We consider this another proof of the utility of the proposed techniques.
 
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.5\linewidth]{images/5_presq/afds}
@@ -889,12 +908,13 @@ We consider this another proof of the utility of the proposed techniques.
     \label{fig:afds}
 \end{figure}
 
-Table~\ref{tab:ind2_summary} summarizes the overall results when
+Table~\ref{tab:ind2_summary} (page \pageref{tab:ind2_summary}) summarizes
+the overall results when
 we execute our tests over the datasets \emph{Mortage vs Treasury},
 \emph{Ailerons vs Elevators} and \emph{DC2} for different values of $\gamma$ and $\Lambda$ ---
-note that \Find is equivalent to either one of the two parameters set to $1.$. For run-time,
+note that \Find is equivalent to either of the two parameters set to $1.0$. For run-time,
 match ratio, and the number of unique \glspl{EDD}, we provide the first and third quartiles.
-The \emph{precision} column shows a measure of how many candidates are accepted by the
+The \emph{precision} column shows how many candidates are accepted by the
 statistical test. A value of $1$ means that all candidates were valid \glspl{EDD}.
 
 When the search algorithm looks for cliques (the first entry for each dataset),
@@ -903,16 +923,16 @@ these candidates are, on average, of lower arity. This is visible on the \emph{M
 columns. As the potential maximal arity becomes higher ---e.g., \emph{DC2}--- the
 chance of having missing edges increases, thus making the search more resource intensive.
 
-On the other hand, in a too permissive setup where only $\gamma$ constrains the quasi-cliques
+On the other hand, in a too-permissive setup where only $\gamma$ constrains the quasi-cliques
 (second entry), the algorithm is too eager and accepts \gls{EDD} candidates later rejected either
 by the statistical test or by the limitation of not accepting duplicated columns.
 The precision is low, and the search time increases as well.
 
 Our proposed $\Lambda$ parameter, based on the \emph{expectation} on the number of missing edges,
 is more effective at constraining the set of candidates even when used alone (third entry).
-The precision increases and the run-time is reduced.
-When combined with $\gamma$ (fourth and fifth entries), the precision increases, and fewer
-tests are required.
+The precision increases and the run time is reduced.
+When combined with $\gamma$ (fourth and fifth entries), the precision increases
+and fewer tests are required.
 
 As an illustration of this balance, let us examine in more detail the consequences of the
 different $\Lambda$ parameterization following the process shown in figure~\ref{fig:presq_pipeline}
@@ -938,14 +958,16 @@ The following table exemplifies the consequences of different values of $\Lambda
 --- see equation~\ref{eq:deg_hyperclique_hypergeom} --- on
 the count and size of the found quasi-cliques (e) and the number validated by the \gls{kNN} test (f).
 Those invalid are `decomposed' into candidate $3$-EDDs, validated, and 
-used to build a $3$-hypergraph (d) feedback to the stage (e) for the next iteration.
+used to build a $3$-hypergraph (d) feedback to stage (e) for the next iteration.
 
+\begin{center}
 \begin{tabular}{lrrr}
                    & \thead{Quasicliques} & \thead{Valid} & \thead{Median size} \\
 $\Lambda = 0.00$   & 2385                 & 292       & 19        \\
 $\Lambda = 0.05$   & 107                  & 64        & 12        \\
-$\Lambda = 1.00$\footnotemark   & 53053   & 52291     &  6         \\
+$\Lambda = 1.00$\footnotemark & \numprint{53 053} & \numprint{52 291} &  6         \\
 \end{tabular}
+\end{center}
 
 \footnotetext{Equivalent to clique finding}
 
@@ -954,35 +976,17 @@ $\Lambda = 1.00$\footnotemark   & 53053   & 52291     &  6         \\
 For $\Lambda = 0$, the search algorithm is too greedy and accepts quasi-cliques that are poor candidates.
 Too many are invalid and need to be feedback to the algorithm, increasing run-time.
 For $\Lambda = 1$, the search algorithm is too restrictive. Its precision is high,
-but it spends much time enumerating small cliques. $\Lambda = 0.05$ provides the right balance,
-improving the result and performance.
+but it spends a long time enumerating small cliques. $\Lambda = 0.05$ provides
+the right balance, improving the result and performance.
 
 Finally, the growing stage increases the number of candidates of all arities.
 This requires a more exhaustive traversal of the search space and the execution of more tests,
 increasing the total run-time. While we run the growing stage over
-\emph{all} found seeds this stage could be restricted only
+\emph{all} found seeds, this stage could be restricted only
 to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=\linewidth]{images/5_presq/all}
-    \caption[$95\%$ confidence intervals for the percent difference between \Find and \PresQ.]{
-        $95\%$ confidence intervals for the percent difference
-        (equation \ref{eq:percent_difference}) between \Find and
-        three parameterizations of \PresQ for the DC2, Ailerons vs. Elevator, and
-        Mortgage vs. Treasury datasets.
-        Intervals that do not intersect the horizontal dashed line at $0\%$  show a statistically
-        significant result.
-        For ratio, higher is better. For tests and run-time, lower is better. Unique is harder to
-        assess since the results also depend on the statistical power of the chosen test.
-        Since the growing stage can generate many candidates, a low-powered test will accept
-        many false \glspl{EDD}.
-    }
-    \label{fig:results_summary}
-\end{figure*}
-
 % Results starting arity 2
-\begin{table*}[htb]
+\begin{table}[htbp]
     \caption[Summary of run-time, matching ratio, and number of maximal quasi-cliques found.]{
         Summary of run-time, matching ratio (based on name), and number of maximal quasi-cliques found
         accepted by the statistical test.
@@ -1030,10 +1034,10 @@ to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
     \PresQ  &           0.10 &           0.9 &   18.61 &  144.98 & 0.76 & 0.87 &  42 &  98 & 0.18 &  52 & 23.1\% \\
     \PresQG &           0.05 &           0.9 &  458.26 & 1881.02 & 0.81 & 0.93 & 518 & 798 & 0.23 &  52 & 50.0\% \\
     \end{tabular}}
-\end{table*}
+\end{table}
 
 % Results starting at arity 3
-\begin{table*}[htpb]
+\begin{table}[htpb]
     \caption[Summary of run-time, matching ratio, and number of maximal quasi-cliques found with an initial arity $k = 3$.]{
         Summary of run-time, matching ratio (based on name), and number of maximal quasi-cliques found.
         Significance level is $\alpha = 0.1$, initial arity $k = 3$.
@@ -1082,13 +1086,13 @@ to a subset of the most interesting \emph{seeds} ---e.g., highest cardinality.
     \PresQG  &           0.05 &           0.9 &  340.72 &  599.10 & 1.02 & 1.21 & 775 & 888 & 1.00 & 80 &  97.5\% \\
     \PresQG  &           0.10 &           0.9 &  413.58 &  670.53 & 1.00 & 1.13 & 808 & 947 & 1.00 & 76 &  97.4\% \\
     \end{tabular}}
-\end{table*}
+\end{table}
 
-Table~\ref{tab:ind3_summary} summarizes the performance measures when \Find and \PresQ are run over an initial
+Table~\ref{tab:ind3_summary} (page \pageref{tab:ind3_summary})
+summarizes the performance measures when \Find and \PresQ are run over an initial
 3-hypergraph. The precision is considerably higher than when starting on a 2-hypergraph.
 This is due to the higher power of the statistical test at dimension 3, so fewer spurious edges are introduced.
-However, the overall run-time suffers because the number of edges on an hypergraph is determined by the expression
-$\binom{|V|}{k}$ where $|V|$ is the number of nodes and $k$ the rank of the hypergraph.
+However, the overall run-time suffers because the number of edges on a hypergraph is $\binom{|V|}{k}$ where $|V|$ is the number of nodes and $k$ the rank of the hypergraph.
 Therefore, for a fixed number of nodes, the number of edges is generally higher for hypergraphs of higher rank.
 
 \subsubsection{Scalability tests}
@@ -1100,38 +1104,37 @@ tree.
 In all cases the chosen parameterization is $\alpha=0.1$, $\Lambda = 0.05$,
 $\gamma = 1 - \alpha$ and 200 samples. We set the run-time limit at 3000 seconds.
 The relations and their attributes are consistently added in alphanumeric order.
-Figure~\ref{fig:scalability} summarizes our results.
-
 The accepted $1$-EDDs are used to compute all the possible $2$-EDDs, while the accepted $2$-EDDs
 define the initial edges for the $n$-EDD finding.
+Figure~\ref{fig:scalability} (page~\pageref{fig:scalability}) summarizes our results.
 
 
 The \emph{KEEL} dataset contains 43 different relations. The interval tree saves around 45\% of
 the tests since many columns do not overlap. The number of \glspl{EDD} increments in `bursts' when a
 relation that matches a previous one enters the pool. This is due to the existence of
-high arity \glspl{EDD} (16, 12, 7 and 6).
+high arity \glspl{EDD} (16, 12, 7, and 6).
 The high number of $2$-EDDs makes the growing stage eventually impractical.
 
 For the \emph{ChEMBL} databases, we have used a naive random sampling that only requires a single
-pass over the entire database. Even then, the reading time is small with respect to the rest of the EDD
+pass over the entire database. Even then, the reading time is little with respect to the rest of the EDD
 finding algorithm. The number of $1$-EDDs steadily increments as relations are added, but $2$
 and $n$-EDDs remain relatively stable ---the corresponding error bars overlap---, and so does the run-time.
 The arities are lower than those from KEEL, the maximum being 6 for the tables \texttt{molecule\_dictionary}
-and \texttt{compound\_properties}. The interval tree saves 57.9\% tests for 1-EDDs.
+and \texttt{compound\_properties}. The interval tree saves 57.9\% of tests for 1-EDDs.
 
-Finally, while the \emph{Waveform Generator} datasets are the smallest, it is the case for which the
-algorithm shows the worst performance. This is due to the high arity possible (up to 20), and 
-because the attributes are hard to distinguish ---the interval tree can not save even one test. The
+Finally, while the \emph{Waveform Generator} datasets are the smallest in size,
+it is the dataset for which the
+algorithm shows the worst performance. This is due to the maximum arity possible (up to 20) and 
+because their attributes are hard to distinguish --- the interval tree can not save even one test. The
 number of $2$-EDDs grows super-linearly with respect to the number of attributes, resulting in a very
 dense and noisy initial graph with many possible quasi-cliques.
 
-From these experiments, we can conclude that the algorithm scales well in relation with the number of
-relations and columns and that the sampling has a low impact even for big datasets.
+From these experiments, we can conclude that the algorithm scales well 
+with respect to the number of relations and columns and that the sampling has a low impact even for big datasets.
 However, when the statistical test has low power for the input data, the run-time significantly degrades even for moderate input sizes since the search space is combinatorial and little
-pruning is possible. Then the user can choose a different test or increase the sample size to increase the
+pruning is possible. In this case, the user can choose a different test or increase the sample size to maximize the
 power. Figure~\ref{fig:scalability_sample_size} exemplifies the effect the sample size has on the result
-set and, therefore, run-time for the complete Waveform dataset. The power of the test is low for low
-dimensionality, and the initial graph becomes very dense.
+set and, therefore, run-time for the complete Waveform dataset. The power of the test is low when considering only a few attributes, and the initial graph becomes rather dense.
 
 \begin{figure*}[htb]
     \centering
@@ -1142,7 +1145,7 @@ dimensionality, and the initial graph becomes very dense.
         The middle row shows the time spent on each stage: sampling, searching, and testing for the different arities.
         Note that the two n-EDDs variants are stacked over the previous stages, displaying the total run-time.
         The last row shows the percentage of runs timed out at 50 minutes.
-        Each data-point summarizes between 10 and 13 randomized runs.
+        Each data point summarizes between 10 and 13 randomized runs.
     }
     \label{fig:scalability}
 \end{figure*}
@@ -1152,8 +1155,8 @@ dimensionality, and the initial graph becomes very dense.
     \includegraphics{images/5_presq/scalability_sample_wave}
     \caption[Scalability of \PresQ with respect to the number of samples.]{
         Scalability of \PresQ with respect to the number of samples for the Waveform datasets.
-        Note that for the top row the $y$ axis is linear between $0$ and $100$, and
-        logarithmic afterwards. Each data-point summarizes 10 randomized runs.
+        Note that for the top row, the $y$ axis is linear between $0$ and $100$, and
+        logarithmic afterward. Each data point summarizes 10 randomized runs.
     }
     \label{fig:scalability_sample_size}
 \end{figure}
@@ -1170,15 +1173,15 @@ their finding more complicated and considerably degrade the performance of exist
 This problem can be mapped to finding quasi-cliques, as the \gls{IND} problem can be
 mapped to finding full cliques.
 
-In this chapter, we have introduced the concept of EDD, similar to the \gls{IND} from
-the relational domain. We have proposed \PresQ, a new algorithm based on the search of
-maximal quasi-cliques on hyper-graphs. We have proven that by limiting the quasi-cliques
-by the number of missing edges, and the degree of the nodes, our algorithm can successfully
+In this chapter, we introduced the concept of EDD, similar to the \gls{IND} from
+the relational domain. We proposed \PresQ, a new algorithm based on the search of
+maximal quasi-cliques on hyper-graphs. We proved that by limiting the quasi-cliques
+by the number of missing edges and the degree of the nodes, \PresQ can successfully
 identify shared sets of attributes.
 
 In general, comprehensive approaches will be needed to find very high arity \glspl{EDD},
 given the complexity of the \gls{IND}/\gls{EDD} discovery problem.
-In chapter~\ref{chapter:conclusions} we discuss some possible directions for future research.
+In chapter~\ref{chapter:conclusions}, we discuss possible future research directions.
 
 All the necessary code to reproduce our tests, our
 measurements, and figures, are publicly available\footnote{\url{https://doi.org/10.5281/zenodo.6865856}}.

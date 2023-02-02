@@ -1,9 +1,10 @@
+
 As a result of the survey presented in chapter~\ref{chapter:literature_review},
 we realized that most solutions treat files
-as separate, independent, relations, leaving it to the end-user to work out how they are related,
+as separate, independent relations, leaving it to the end-user to work out how they are related,
 an observation shared by other authors~\cite{Silva2016}.
-These files may have not yet been ingested into a database system and 
-the schema may be unfamiliar and not adequately documented, or even be
+These files may not have yet been ingested into a database system and 
+the schema may be unfamiliar and not adequately documented or even be
 composed of multiple files with heterogeneous schemes~\cite{alawini2016,zhang2015astronomy}.
 We consider that Idreo's classification misses a category for this problem:
 \emph{Schema Homogenization}. This new category belongs to the \emph{Middleware} layer.
@@ -63,9 +64,9 @@ of data exploration in astronomy to better understand data exploration in
 this context.
 
 
-In section~\ref{sec:real_use_cases} we use an existing astronomy database
+In section~\ref{sec:real_use_cases}, we use an existing astronomy database
 to expand our understanding of how users explore datasets. Then,
-in section~\ref{sec:objectives} we refine and concretize the objectives
+in section~\ref{sec:objectives}, we refine and concretize the objectives
 of the present thesis. In section~\ref{sec:gaps/principles} we identify
 solution principles from the literature. Finally, in
 section~\ref{sec:gaps/proposed}, we list two proposals of solution and refer
@@ -124,12 +125,12 @@ of relations.
 \centering
 \begin{tabular}{l r r}
     \textbf{Tables} & \textbf{Count} & \textbf{Percentage} \\ \hline
-    fGetNearbyObjEq, PhotoPrimary          &  264785 &  37.62\% \\
-    DBObjects\textdagger         &  150458 &  21.37\% \\
-    PhotoTag, fGetObjFromRectEq            &   93094 &  13.23\% \\
-    IndexMap\textdagger          &   41265 &   5.86\% \\
-    Galaxy, fGetNearbyObjEq                &   31130 &   4.42\% \\
-    sppParams, PhotoTag, fGetObjFromRectEq &   29805 &   4.23\% \\
+    fGetNearbyObjEq, PhotoPrimary          & \numprint{264 785} &  37.62\% \\
+    DBObjects\textdagger                   & \numprint{150 458} &  21.37\% \\
+    PhotoTag, fGetObjFromRectEq            & \numprint{ 93 094} &  13.23\% \\
+    IndexMap\textdagger                    & \numprint{ 41 265} &   5.86\% \\
+    Galaxy, fGetNearbyObjEq                & \numprint{ 31 130} &   4.42\% \\
+    sppParams, PhotoTag, fGetObjFromRectEq & \numprint{ 29 805} &   4.23\% \\
 \end{tabular}
 \caption[Most frequently queried relations from the \glsentrylong{SDSS}]{
     Combination of relations most frequently queried. Tables marked with (\textdagger)
@@ -177,7 +178,7 @@ and the user can only make the following educated guesses:
     \item A subset of the attributes is shared between the relations (i.e.,
     brightness on different electromagnetic bands).
     \item The measurements have an associated uncertainty~\cite{Stonebraker2009},
-    either explicitly stated or not (i.e., random errors, instrument precision,
+    either explicitly stated or not (i.e., random errors, instrument accuracy,
     floating point precision).
 \end{itemize}
 
@@ -207,7 +208,7 @@ To bridge this gap, we propose the concept of \glspl{EDD}, which is inspired by 
 An inclusion dependency between column A of a relation
 R and column B of a relation S, written $R.A \subseteq S.B$, or $A \subseteq B$
 when the relations are clear from the context, asserts that each
-value of A appears in B. Similarly, for two sets of columns X
+value of A appears in B. Similarly, for two sets of columns, X
 and Y , we write $R.X \subseteq S.Y$ , or $X \subseteq Y$ , when each distinct
 combination of values in X appears in Y \cite{abedjan2015}
 \end{displayquote}
@@ -303,7 +304,7 @@ This partial order enables us to structure the search space as a lattice, as exe
 \textsc{Mind}~\cite{DeMarchi2002} is a bottom-up approach: it starts
 from a set of known, satisfied unary \glspl{IND} and builds higher arity candidates
 combining them.
-These new candidates are then validated against the database, and those satisfied
+These new candidates are then validated against the database and those satisfied
 are used for computing the next-level candidates until no more candidates are available.
 
 \Zigzag~\cite{DeMarchi2003zigzag} starts with a \textsc{Mind} bottom-up approach
@@ -337,7 +338,7 @@ traversal.
 While these three algorithms were evaluated on \glspl{IND} between relational datasets
 and with attributes that can be directly compared (i.e. from discrete domains), their
 traversal of the search space and their validation steps are well decoupled. They
-can be easily be adapted to the equality-of-distribution statistical tests.
+can be easily adapted to the equality-of-distribution statistical tests.
 
 Furthermore, the reference benchmark shows that \Mind, \Find
 and \Zigzag have a comparable run-time, sometimes even
