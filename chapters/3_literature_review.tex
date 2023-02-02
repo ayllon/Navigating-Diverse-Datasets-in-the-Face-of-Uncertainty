@@ -1,4 +1,3 @@
-\glsresetall
 
 Following the \emph{Engineering Design Process}, the initial objectives
 need to be clarified before searching for the solution principles.
@@ -36,11 +35,11 @@ the loop.
 
 Because of this exploratory nature, early decisions on data structure,
 storage, and indexing are inappropriate~\cite{Kersten2011}. They introduce latency
-and optimize for a pattern that only happens for a brief period.
+and optimize for a pattern that only holds for a brief period of time.
 
 This problem can be tackled at different levels---from the physical layout on disk
 to the interface interacting with the user. In 2015, Idreos~\cite{Idreos2015}
-classified several of these solutions depending on which approach they take
+classified several of these solutions depending on their take
 on the issue. This paper originally attracted our attention  due to the potential
 applications in \gls{HEP}\footnotemark, although
 the techniques found can be of interest to other scientific domains.
@@ -71,8 +70,8 @@ several files.
 
 Idreos \etal~\cite{Idreos2015} propose a classification of different possible approaches
 to our problem.
-This study provides an excellent introduction but we wanted to expand on it by answering
-two questions that were not covered by the original paper and we also wished to survey
+This study provides an excellent introduction, but we wanted to expand on it by answering
+two questions that were not covered by the original paper, and we also wished to survey
 the subsequent evolution of the domain.
 
 \subsection{Research questions}
@@ -88,14 +87,13 @@ How has it evolved since 2015?
 How many complete and reliable solutions are available?
 Are they successfully implemented in practice?
 How do they improve the users' experience? Identifying publications is not enough,
-we also want to assess in what part of the software life-cycle they focus.
+we also want to assess what part of the software life cycle they focus on.
 
 \subsubsection{RQ3. How far are we from a tool that solves our three requirements?}
 The final target of this research is to identify solutions that cover our three
 requirements.
 Even though Idreos closed their tutorial by
-mentioning the importance of interconnection research~\cite{Idreos2015}, they do not provide
-any references or study on this area.
+mentioning the importance of interconnection research~\cite{Idreos2015}, they do not provide any references or study on this area.
 
 \subsection{Search strategy}
 \label{sec:mapping/search_strategy}
@@ -131,7 +129,7 @@ Given the fast pace at which the field moves, older papers have been probably
 superseded or, if still relevant, we expect them to be already included in \cite{Idreos2015}.
 Consequently, we have limited the scope in time to studies published from 2010 onwards.
 
-All of the references obtained by any of the previous method were imported into
+All references obtained by any previous method were imported into
 a group in the \emph{Mendeley Reference Manager}. Any obviously non-interesting entry
 ---such as book or proceeding indexes---were removed at this stage.
 The definitive list can be found on a public group in
@@ -143,9 +141,9 @@ The definitive list can be found on a public group in
 }
 
 \subsection{Study selection criteria}
-We based the initial screening of studies on title, abstract, and keywords.
+We based the initial screening of studies on titles, abstracts, and keywords.
 In some cases, when the information provided by these fields was
-insufficient to take a decision, we also considered their conclusions
+insufficient to make a decision, we also considered their conclusions
 or read the complete study.
 
 We have focused here on finding primary studies related to data exploration.
@@ -153,24 +151,23 @@ The filtering was performed using the following exclusion criteria:
 
 \begin{itemize}
   \item \emph{Unsupported language} Studies written in a language different than
-  English, Spanish or French
+  English, Spanish, or French
   \item \emph{Incomplete publication} Abstract only, or presentations were excluded
   \item \emph{Off topic} Out of the data exploration domain
   \item \emph{Not a primary study} Secondary, tertiary and surveys
   \item \emph{Duplication} In case of duplication or high similarity for the same
-  set of authors, only the most complete or the most recent was
+  set of authors, only the most complete or the most recent one was
   taken into account.
 \end{itemize}
 
-Those publications that passed the inclusion criteria were reviewed to make
-sure all their fields were correct. Normally, this should have been done during
+Those publications that passed the inclusion criteria were reviewed to ensure all their fields were correct. Normally, this should have been done during
 the previous stage but due to the sheer volume of publications yielded by the
-search strategy this step was postponed until the filtering was done. Because only
-title and abstract were used for the filtering, this did not affect the end
+search strategy, this step was postponed until the filtering was done. Because only
+title and abstract were used for the filtering, this did not affect the final
 result.
 
 \subsection{Classification}
-Publications that pass the selection criteria will be classified into two axes:
+Publications that pass the selection criteria were classified into two axes:
 data exploration facet and research type.
 
 \subsubsection{Category}
@@ -180,8 +177,8 @@ the classification done by Idreos \etal~\cite{Idreos2015}, which is included for
 convenience in table~\ref{tab:mapping/clustering}. For more details, we refer the
 interested reader to Idreos' tutorial.
 
-For our purposes, we have assigned one single category to each work covered
-by our study, choosing the most prominent topic when more than one category
+For our purposes, we assigned one single category to each work covered
+In our study, choosing the most prominent topic when more than one category
 could fit.
 
 \begin{table}[hptb]
@@ -209,13 +206,12 @@ could fit.
 To answer our second research question---the maturity of the area---we follow
 the classification of research approaches done by \cite{Wieringa2006},
 as our guidelines for systematic mapping do~\cite{Petersen2007}.
-
 We summarize the different research types in table~\ref{tab:mapping/research_type}.
 
 As per this classification, we expect mature solutions that have been
 implemented in practice to be covered by one or more \emph{Evaluation Research}
-studies. If, on the contrary, they are on very early stages, then most
-related studies will fall into the \emph{Philosophical} or
+studies. If, on the contrary, they are in very early stages, then the majority
+of the related studies will fall into the \emph{Philosophical} or
 \emph{Opinion} categories.
 
 \begin{table}[hptb]
@@ -231,8 +227,8 @@ related studies will fall into the \emph{Philosophical} or
       has not yet been implemented in practice. \\
     \textit{Philosophical papers} & These papers sketch a new way of looking at things, a conceptual
       framework, etc. \\
-    \textit{Opinion papers} & These paper contain the author's opinion. \\
-    \textit{Personal experience papers} & These paper should contain a list of lessons learned by the
+    \textit{Opinion papers} & These papers contain the author's opinion. \\
+    \textit{Personal experience papers} & These papers should contain a list of lessons learned by the
       author from his or her own experience. The evidence can be anecdotal. \\
   \end{tabularx}
   \caption{Research type for the Systematic Mapping}\label{tab:mapping/research_type}
@@ -245,19 +241,19 @@ the obtained data in a way that is useful to answer our research questions.
 To answer \emph{RQ1}, we focused on the counting of each category
 and their visualization on a time series plot.
 
-To answer \emph{RQ2}, a bubble plot can help to more easily identify
-the most frequent research type per category. In this way, we can identify if
-one area is more mature than other. Additionally, we also counted and displayed
+To answer \emph{RQ2}, a bubble plot can help identify
+the most frequent research type per category. In this way, we can distinguish if
+one area is more mature than another. Additionally, we counted and displayed
 how many publications include some sort of user study, which should prove
-if any particular solution is successful at improving the integration of a
+if any particular solution successfully improves the integration of a
 human on the loop.
 
 Finally, for \emph{RQ3}, we flag interesting papers classified under
 \emph{Proposal of Solution} with the three requirements separately, if stated
 on their abstract or conclusions.
 
-Additionally, while it was not in the original research questions, we can
-also extract which publication forums are the most prominent on our results.
+Additionally, while it was not in the original research questions, we
+extract which publication forums are the most prominent in our results.
 
 \section{Results}
 \label{sec:mapping/results}
@@ -270,15 +266,14 @@ from those that pass the selection criteria.
 
 Table \ref{tab:mapping/searches} displays the search queries that were used for
 each digital library.
-All searches were done on May 16, 2017 and they yielded a total of \numprint{5 525} articles.
+All searches were done on May 16th, 2017, and they yielded a total of \numprint{5 525} articles.
+Additionally, Idreos' tutorial provided 47 papers, and the forward snowballing provided 116.
 
-Idreos' tutorial provided 47 papers and the forward snowballing provided 116.
-
-From this total of \numprint{5 688}, only \numprint{242}---4.25\%--were accepted, the details are
-shown in table \ref{tab:mapping/acceptance}. This rather low hit ratio
-mostly comes from the on-line searching of digital libraries
-because the lack of well defined, or univocal, keywords makes it difficult to decide what
-to search for. We do not seem to be alone in this respect~\cite{Kitchenham2013,Jorgensen2007}.
+From this total of \numprint{5 688}, only \numprint{242}---4.25\%--were accepted.
+The details are shown in table \ref{tab:mapping/acceptance}. This rather low hit ratio
+mostly comes from the online searching of digital libraries
+because the lack of well-defined, or univocal, keywords makes it difficult to decide 
+what to search for. We do not seem alone in this respect~\cite{Kitchenham2013,Jorgensen2007}.
 
 Even once defined, and because we must use different search engines, there are
 few or no commonalities between the way queries can be written and handled
@@ -323,11 +318,11 @@ Figure \ref{fig:mapping/layer_vs_type} displays the frequency of each major clus
 against the research type count for each one. In table~\ref{tab:mapping/publication},
 we display the publication forums where more than one study has been published.
 While there are two main forums, summing 30.58\% of all the publications,
-most of the papers are spread out on different conferences and journals.
+most of the papers are spread out in different conferences and journals.
 
 It is worth noting that this table includes gray literature; that is, outside of the
 formal academic publishing.
-While one may argue that this papers have not been yet subject of a peer
+While one may argue that these papers have not yet been subject to a peer
 review, they are still included because gray literature can be, and is, a useful
 source of knowledge for information users~\cite{Lawrence2015}. In fact,
 Kitchenham \etal~\cite{Kitchenham2007} recommended in their guidelines for systematic
@@ -405,7 +400,8 @@ reviews to include gray literature in searches.
   \caption{Frequency of papers by publication forum} \label{tab:mapping/publication}
 \end{table}
 
-We refer to our published work~\cite{Alvarez2019} for the complete list of classified publications.
+The full result of the systematic mapping of the literature is publicly
+available online\footnote{\url{https://www.zotero.org/groups/4517638/ide-in-science/library}}.
 
 \section{Discussion}
 \label{sec:mapping/discussion}
@@ -448,21 +444,21 @@ The vast majority of papers considered by this study---79.35\%---fall within the
 Meanwhile, \emph{evaluation} and \emph{validation} research are represented
 just by a \numprint[\%]{11} and \numprint[\%]{6.07}, respectively.
 Only 32 documents (\numprint[\%]{13}) include some sort of user study:
-24 for `User Interaction', 4 for `Database  Layer' and 2 for `Middleware'.
+24 for `User Interaction', 4 for `Database  Layer', and 2 for `Middleware'.
 Research on how different solutions ---either existing or proposed--- perform in
 practice is lacking.
 
 These figures are hardly surprising because they seem to have been commonplace
 in computer science for a long time now~\cite{TICHY1995,ZELKOWITZ1997,Sjoberg2005}.
 For instance, Sjøberg \etal survey the status of controlled experiments
-in software engineering and the numbers they find are equally low, with
+in software engineering, and the numbers they find are equally low, with
 only 113 controlled experiments found on \numprint{5 453} papers~\cite{Sjoberg2005}.
 
 It is hard and also out of the scope of this study to make some inferences from these
 results. Tichy \etal~\cite{TICHY1995} mention some potential reasons and measures
-to improve this situation, namely: difficulty on performing experiments where humans
-are involved, the lack of common benchmarks, or even that empirical work is not
-encouraged by the journals and conferences of this area.
+to improve this situation, namely: difficulty in performing experiments where humans
+are involved, the lack of common benchmarks or even that empirical work is not
+encouraged by the journals and conferences in this area.
 
 \subsubsection{RQ3. How far are we from a tool that solves our three requirements?}
 
@@ -473,8 +469,7 @@ encouraged by the journals and conferences of this area.
     \label{fig:mapping/venn_requirements}
 \end{figure}
 
-In figure \ref{fig:mapping/venn_requirements} we display a Venn diagram with our three
-requirements. We can see there is a single study that covers the three requirements:
+We display a Venn diagram with our three requirements in figure \ref{fig:mapping/venn_requirements}. We can see there is a single study that covers the three requirements:
 \textit{{A} {D}istributed {I}n-situ {A}nalysis {M}ethod for {L}arge-scale
 {S}cientific {D}ata}, by D.Han \etal~\cite{Han2017}. While they mention the
 access over raw files and the fact that it is distributed, they do not
@@ -483,8 +478,8 @@ for selective queries that they report are in the order of a few seconds. Conseq
 decided to consider it to be suitable for interactive usage.
 
 The tests they perform use datasets that are close
-to the memory available on the system and, therefore, more tests with bigger dataset sizes
-could be needed.
+to the main memory available on the system and, therefore, more tests with bigger 
+dataset sizes could be needed.
 
 Aside from this paper, no other study combines access to raw data with low
 response times.
@@ -494,16 +489,16 @@ summarized in more detail in section~\ref{sec:mapping/details}.
 
 \subsection{Study insights}
 \label{sec:mapping/insights}
-Research in data exploration is very active and there has been---and there is---
-a myriad of solutions proposed. In fact, this should not come as a surprise:
-in 2005 Stonebraker~\cite{Stonebraker2005} had already predicted this was bound to
-happen and predicted that there would be an increase of domain-specific tools.
-This would explain why, of the all classified studies, only one tool satisfies our
+Research in data exploration is very active, and there has been---and there is---
+a myriad of solutions proposed. This should not come as a surprise:
+in 2005 Stonebraker~\cite{Stonebraker2005} had already stated this was bound to
+happen and predicted that there would be an increase in domain-specific tools.
+This would explain why, of all the classified studies, only one tool satisfies our
 three prerequisites.
 
-In general, several different systems and approaches have been proposed, which could,
+In general, several systems and approaches have been proposed, which could,
 perhaps, be seen as building blocks. Not all combinations necessarily make sense
-but it seems that there are research opportunities in this direction, depending
+, but there seem to be research opportunities in this direction, depending
 on the specific needs to be covered.
 
 For instance, in our particular case, we could consider combining distributed
@@ -511,21 +506,21 @@ access over raw files, as Han~\cite{Han2017} does, but using approximate query
 processing to reduce the response times.
 
 Code generation is a popular approach for querying raw data files
-and approximation aware code generation has been noted as a challenge
-that is yet to be addressed~\cite{Mozafari2017AQP}. Consequently, more work on this
-particular overlap of approaches may provide interesting results.
+, and approximation-aware code generation has been noted as a challenge
+yet to be addressed~\cite{Mozafari2017AQP}. Consequently, more work on this
+overlap of approaches may provide interesting results.
 
-On a orthogonal consideration, since the generation of data volume will likely
+On an orthogonal consideration, since the generation of data volume will likely
 not slow down, the trend for more tools covering specific
-niches is probably going to continue. This diversity of tools is a
-challenge in itself in many respects, for example: How do we choose the right solution? What is
+niches will probably continue. This diversity of tools is a
+challenge in many respects, for example: How do we choose the right solution? What is
 the cost of making the wrong choice? What happens if the chosen tool goes
 unmaintained in the future and there is no community around it? Will it
 be hard to maintain? Of course, these questions are not new in software
-engineering but typically there are not many choices when it comes to decide
+engineering, but typically there are not many choices when deciding
 on traditional data storage systems, such as DBMS.
-In the last decade, there has been an increase of available options
-(relational, object oriented, schema-less, key-value, \ldots) and, while opting
+In the last decade, there has been an increase in available options
+(relational, object-oriented, schema-less, key-value, \ldots) and, while opting
 for a DBMS has become harder, it has remained rather manageable. However, looking at the
 results of this study, the difficulty for users to decide will likely become
 more challenging.
@@ -534,7 +529,7 @@ more challenging.
 \label{sec:mapping/threats}
 \subsubsection{Search bias}
 The gaps identified may be covered in
-journals and conferences associated with the user domain---e.g. astrophysics---,
+journals and conferences associated with the user domain---e.g., astrophysics---,
 rather than with computer science and engineering. The forward snowballing
 step reduces this risk because these hypothetical publications would most likely
 cite the original proposal of solution. However, considering that our research method has
@@ -542,11 +537,11 @@ allowed us to find even gray literature, we consider this risk to be low.
 
 \subsubsection{Filtering of articles}
 Given the huge number of papers that resulted from the search,
-a first filtering was done just based on title and abstract.
+a first filtering was done just based on the title and abstract.
 This is a difficult challenge. Unlike in other disciplines, sometimes abstracts
-do not contain enough information about the paper and keywords can be inconsistent
+do not contain enough information about the paper, and keywords can be inconsistent
 between journals and authors~\cite{Budgen2008,Brereton2007,Jalali2012}.
-As recommended by \cite{Brereton2007}, we have also taken into consideration
+As recommended by \cite{Brereton2007}, we took into consideration
 the conclusions to cover this issue.
 
 \subsubsection{Classification}
@@ -560,8 +555,7 @@ study, although some misclassification may still exist.
 
 Additionally, it can be hard to identify if a solution covers or not one of the
 three predefined requirements based just on a paper. They may not have been
-explicitly mentioned if the authors did not consider them relevant for the
-purposes of their publication. Therefore, there may have been false negatives.
+explicitly mentioned if the authors did not consider them relevant for their publication. Therefore, there may have been false negatives.
 
 The present paper documents our process and the resulting
 publication list has been made publicly available---see
@@ -571,7 +565,7 @@ replicate and/or validate our results.
 \section{Discussion of relevant methods}
 \label{sec:mapping/details}
 Included for completeness is a summary of each of the nine publications 
-that cover, at least, two out of the three requirements.
+that cover at least two out of the three requirements.
 
 \subsection{All three requirements}
 \newcommand{\scidb}[0]{\textsc{SciDB} }
@@ -584,46 +578,44 @@ Scientific Data}~\cite{Han2017}, classified as ``adaptive loading''.
 The authors build on top of \scidb~\cite{Stonebraker2011}, a distributed
 array-based scientific database, and focus on \textsc{HDF} files~\cite{HDF}.
 To avoid the overhead of data pre-loading, they leverage the flexible
-architecture of this database engine, providing their own scan operator to read
+architecture of this database engine, providing their scan operator to read
 the data directly from the raw files when needed, which needs to be adapted
 to the internal representation of \scidb.
-
-This adaptation is done in two different stages: local and global mapping.
+This adaptation is made in two different stages: local and global mapping.
 
 During the local mapping, they read on demand the data that matches the filters 
 associated to the query, adapting it to the \scidb chunk representation: pieces 
-of array data that are distributed together based on some policy - e.g hashing, 
+of array data that are distributed together based on some policy - e.g., hashing, 
 range partitioning.
 
 At the global mapping stage, the resulting chunks are redistributed across the 
 storage nodes following the \scidb policies.
 
-Although not relevant for our use case, it is worth mentioning that they also
-merge small files together to reduce the performance penalty of processing many
-small files.
-
+Although not relevant to our use case, it is worth mentioning that they also
+merge small files to reduce the performance penalty of processing
+of them.
 This approach is interesting as it compartmentalizes well the logic
 required to access the raw data from the file distribution and the query engine.
 
 However, the paper notably misses information about the network traffic caused 
-by their global mapping stage, since the network overhead depends on how the 
+by their global mapping stage since the network overhead depends on how the 
 actual data distribution matches \scidb expectations.
 
 
 \subsection{Distributed access to raw files}
 \textbf{\textsc{DiNoDB}}~\cite{Tian2014} is oriented towards the interactive development
-of data aggregation algorithms, where the user needs to move quickly between 
+of data aggregation algorithms, where the user needs to quickly move between 
 the batch processing stage and the interactive evaluation of the quality of 
 the results.
 
-It is deployed together with \textsc{Hadoop} and it generates the auxiliary metadata 
-using user defined functions executed by the reducers during the batch 
-processing stage. Therefore, the metadata ends up stored together with the raw 
+It is deployed with \textsc{Hadoop}, and it generates the auxiliary metadata 
+using user-defined functions executed by the reducers during the batch-processing
+stage. Therefore, the metadata ends up stored together with the raw 
 data - the output of the reducers, and will also be replicated by the \textsc{Hadoop} 
 Distributed File System (\textsc{HDFS}) across the cluster. Additionally, the output 
 data may be cached optionally in memory - via ramfs or the filesystem cache.
 
-For the interactive stage, on each HDFS Data Node it is deployed an 
+For the interactive stage, on each HDFS Data Node, it is deployed an 
 instance of a customized \textsc{PostgresRaw}~\cite{Alagiannis2012Adaptive}
 database, a modified version of \textsc{PostgreSQL} with additional support for 
 raw files based on positional maps - positions of attributes within the file.
@@ -643,40 +635,40 @@ fully fit into memory.
 probably has the most strict requirement set of all the analyzed papers. Its 
 authors need to access raw data generated during the execution of a 
 workflow and collect their provenance with high granularity. While other 
-tools keep track of the data provenance at the file level - leaving to the user 
-the cross-match of records stored in different files - they are able to 
+tools keep track of the data provenance at the file level - leaving it to the user 
+the cross-match of records stored in different files - they can 
 associate related data entries contained in the raw data files at the record 
 level.
 
 To do so, the authors formally define two additional workflow 
 algebraic data operators~\cite{Ogasawara2011}, which allows to address 
-specific records stored on a file within a data-flow: \emph{Raw Data Extraction} 
+specific records stored on a file within a data flow: \emph{Raw Data Extraction} 
 - read, tokenize, filter, parse - and \emph{Raw Data Indexing}. These 
 operators can be composed with the existing ones, as \emph{Map} or 
 \emph{Filter} - for instance, a user could map a list of file names to their 
 content and then filter records with a specific threshold, keeping track of 
-the provenance of the data during all the process.
+the provenance of the data during the process.
 
 The indexing can rely on external tools, and two implementations are provided:
 one based on bitmap indexes generated by FastBit~\cite{Wu2009},
 and another one on positional maps, implemented following RAW's 
 approach~\cite{Karpathiotakis2014}.
 
-Since this study particularly focus on raw data access during simulations, the 
+Since this study particularly focuses on raw data access during simulations, the 
 interactivity only applies to the queries made to the provenance database. 
 
 \subsection{Distributed and interactive}
 This combination is the one with the most matching methods. Five 
-out of the six ones are classified as ``query approximation'', and the 
-remaining one, even though labeled as ``visual optimization'', relies heavily 
-on query approximation as well.
+out of the six proposals are classified as ``query approximation'', and the 
+remaining one, even though labeled as ``visual optimization'',
+relies heavily on query approximation as well.
 
-It would seem that to get fast responses some compromises on the precision 
-have to be made. This makes sense intuitively as processing less 
+It would seem that to get fast responses, some compromises on precision 
+must be made. This makes sense intuitively as processing fewer 
 data will reduce the processing time at the cost of less accuracy. 
-Additionally, on a distributed system, some nodes may be offline, 
-unresponsive or overloaded. In order to keep the latency low, the results 
-need to be aggregated within a reasonable deadline, even if parts of the system 
+Additionally, some nodes may be offline, 
+unresponsive, or overloaded on a distributed system. The results 
+need to be aggregated within a reasonable deadline to keep the latency low, even if parts of the system 
 have not responded yet.
 
 It is worth noting that most of these papers also match the ``sampling''
@@ -705,12 +697,12 @@ queries issued by the user and uses the statistics computed by the database
 back-end to evaluate in advance the expected size of the result set. If this 
 size is above a given threshold, the query is rewritten to either aggregate, 
 sample or filter the data, generating a smaller approximate response that can be 
-displayed more performantly.
+more performantly displayed.
 
 Although their solution is back-end agnostic, their proposed implementation 
 relies on \scidb~\cite{Stonebraker2011}. It quickly comes to mind that this could 
 potentially be integrated with the previous method by Han \etal~\cite{Han2017}, 
-resulting on a visual exploration tool for raw data files.
+resulting in a visual exploration tool for raw data files.
 
 \medskip
 
@@ -729,11 +721,11 @@ restricts the possible number of ``transitions'' from the current state
 for a session.
 
 The predicted queries are then ranked based on their likelihood and 
-accuracy gain, and those that are most likely and provide the most accuracy gain 
-will be speculatively executed in advance, populating the cache. When the final 
-query arrives, the response can be built from the content of the cache if the 
-predictions were successful. Otherwise, it will be scheduled to the underlying 
-nodes.
+accuracy gain. Those most likely and providing the highest accuracy gain 
+will be speculatively executed in advance, populating the cache. This way,
+when the final  query arrives, the response can be built from the content of
+the cache if the  predictions were successful. Otherwise, it will be scheduled
+to the underlying nodes.
 
 For more information about ``data cubes'', we refer to the DICE paper,
 or the original proposal~\cite{Gray1997}.
@@ -741,19 +733,19 @@ or the original proposal~\cite{Gray1997}.
 \medskip
 
 \textbf{AccuracyTrader}~\cite{Han2016} is a distributed approximate processing 
-system comprised of two components: one online and one offline.
+system comprised of two components: one online and another offline.
 
 First, the offline part reduces the dimensionality of the original data using 
 Single Value Decomposition - so it only supports numerical values. 
 Then, it groups similar entries using an R-Tree, where each node represents an 
 aggregated data point, and all nodes at the same level correspond to a 
 ``synopsis''. This tree is flattened into an index at a level that balances 
-between the number of leaves under each aggregated data point and the 
+the number of leaves under each aggregated data point and the 
 selectivity of the tree at that level. Finally, it aggregates the data for 
 each index entry using the original dimensions of the indexed points and stores 
-this aggregated data into the ``synopsis''.
+this aggregated data in the ``synopsis''.
 
-When a query arrives, the online part uses these ``synopsis'' to produce 
+When a query arrives, the online part uses these ``synopses'' to produce 
 an approximate result with an accuracy estimation. It then iterates 
 using the detailed data points to improve the response accuracy until the
 deadline specified by the user expires.
@@ -771,7 +763,7 @@ query processing. It generates both vertical (column) and horizontal (row)
 samples, and re-writes the queries to use these samples instead of the original 
 data. However, it is hard to assess the technical soundness of this 
 solution, since the paper is very short - 2 pages including citations -
-and we have not been able to find any later citations nor do the authors cite 
+and we have not been able to find any later citations, nor do the authors cite 
 other papers about the same tool.
 
 \medskip
@@ -780,47 +772,47 @@ Finally, Wang \etal~\cite{WangYi2015} introduce a framework based on the
 map-reduce paradigm. Instead of the traditional batch processing approach 
 where the analysis is performed on big chunks of data, their system executes the 
 analysis logic iteratively on samples, updating an estimator in each round 
-until a stop condition is satisfied - both estimator and condition provided by 
+until a stop condition is satisfied - both the estimator and condition are provided by 
 the user. When the termination condition is satisfied, the remaining jobs are 
 canceled, saving computing cycles and reducing the latency. Similarly to other 
 analyzed solutions, they use a stratified sampling to ensure a good accuracy and 
-the coverage of rare cases. 
-The sampling is done without replacement, so in each iteration new data points 
+coverage of rare cases. 
+The sampling is done without replacement, so in each iteration, new data points 
 are taken into account, improving the selectivity of the method.
 
 \subsection{Summary}
-We can see some commonalities looking at the underlying techniques used by the 
+We can see some commonalities by looking at the underlying techniques used by the 
 solutions described above:
 
-First, for providing access to raw files, code generation and positional 
+First, for providing access to raw files, code generation, and positional 
 mapping seem to provide a good solution. Both are implemented either directly - 
 PostgresRaw - or used via integration with an existing implementation - DiNoDB. 
 Isolating the raw data access as a database operator composes well for all 
 studied solutions regardless of the framework of reference - workflow, 
 PostgreSQL or \scidb.
 
-Second, to provide the interactivity on a distributed system, the engine 
+Second, to provide interactivity on a distributed system, the engine 
 needs to approximate the results using a deadline or an accuracy requirement as 
 a stop condition. The resiliency and the low latency are achieved by 
-being capable of processing only parts of the data, via sampling - BlinkDB -, 
+being capable of processing only parts of the data via sampling - BlinkDB -, 
 pre-computed summaries - AccuracyTrader - or both. In either case, error 
 estimation becomes an important part of the system, both internally and as 
 part of the interface exposed to the user.
 
 \section{Conclusions}
 \label{sec:conclusions}
-In this systematic mapping study we have detailed the method that we followed
+In this systematic mapping study, we have detailed the method that we followed
 to gather and filter papers related to \emph{data exploration}, searching
-for solutions that tackle big data volumes, stored in a distributed way and with
+for solutions that tackle big data volumes stored in a distributed way and with
 a low latency. This process have produced 242 papers, which we have classified
-according to their approach~\cite{Idreos2015} on one axis, and to their research
+according to their approach~\cite{Idreos2015} on one axis and to their research
 type~\cite{Wieringa2006} on another.
 
 The results suggest that  plenty of solutions have been proposed by researchers.
-However, there is rarely any follow up, at least published, on their
+However, there is rarely any follow-up, at least published, on their
 practical implementation, be it to confirm a successful introduction to users
 or to evaluate other tools already in place.
-Unfortunately, this is not different to the state of other areas of the computing sciences.
+Unfortunately, this is not different from the state of other areas of the computing sciences.
 
 We have found evidence that code generation is a well-proven approach for
 accessing raw data files, although most solutions have not been generalized

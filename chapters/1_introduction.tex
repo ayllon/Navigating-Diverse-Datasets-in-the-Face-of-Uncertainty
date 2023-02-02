@@ -4,7 +4,7 @@ Nowadays, it is not uncommon for many types of users
 training, from finance to physics --- to dive into overwhelming
 data sets looking for any relevant pattern they can find. This data
 may consist of files that have not yet been ingested into a
-database system. The researcher must first curate
+database system. The researcher must curate
 these files, understand and sieve their content, and 
 extract information. This data-intensive way of doing science is considered
 a new paradigm of scientific exploration, the fourth after the experimental, theoretical, and computer-simulation paradigms~\cite{bell2009beyond,hey2009the}.
@@ -13,8 +13,8 @@ The activity of data exploration is usually referred to as \gls{KDD}
 because ``knowledge'' is the product of this process
 \parencite{Piatetsky-Shapiro1991,Fayyad1996a}.
 \emph{Data Mining} is sometimes used as a synonym or as an integral
-part \parencite{Fayyad1996a,Reinartz1999}, which is
-the preferred interpretation for this work.
+part, as shown in figure~\ref{fig:kdd} \cite{Fayyad1996a,Reinartz1999}.
+The latter interpretation is preferred for this work. 
 
 \begin{figure}[htbp]
     \centering
@@ -38,7 +38,7 @@ mining step, composed of six phases, shown in figure~\ref{fig:crispdm}:
     objectives.
     \item[Deployment] The new knowledge has to be useful and actionable.
     Depending on the original objectives, the model can be integrated 
-    o transformed into an automatic system; or ``simply'' summarized into a report.
+    or transformed into an automatic system; or ``simply'' summarized into a report.
 \end{description}
 
 \begin{figure}[htb]
@@ -49,11 +49,9 @@ mining step, composed of six phases, shown in figure~\ref{fig:crispdm}:
 \end{figure}
 
 In this thesis, we will focus on the \textbf{Data Understanding} phase, where the user interactively
-explores the data, gaining insight and generating hypotheses during the process.
+explores the data, gaining insight, and generating hypotheses during the process.
 
-When starting the initial analysis, the data may be in a \emph{raw} format: unprocessed files not
-optimized for access. Even worse, the design may be inconsistent or poorly documented, and files may
-originate from different sources. These factors combined difficult the task of the data scientist:
+When starting the initial analysis, the data may be in a \emph{raw} format: unprocessed files not optimized for access. Even worse, their schema may be inconsistent or poorly documented, and they may originate from different sources. These factors combined difficult the task of the data scientist:
 
 \begin{itemize}
     \item Ingestion into a ``proper'' database introduces latency. Since the data is not well
@@ -64,6 +62,10 @@ originate from different sources. These factors combined difficult the task of t
         follow the same schema~\cite{Alawini2014}. Data profiling and schema-matching tools
         can be helpful for this type of problem.
 \end{itemize}
+
+Unfortunately, \emph{in-situ} techniques leave out schema-matching, while the existing
+data profiling approaches require either relational data from discrete domains or they are restricted to matching based on a single attribute. This motivates our
+research.
 
 \section{Objectives}
 \label{sec:main_objective}
@@ -78,7 +80,7 @@ object, we need to:
     \item Find and evaluate existing techniques that could help users to
     understand the data files \emph{in-situ}.
     \item Identify gaps in the coverage of the existing techniques.
-    \item Design algorithms tailored to numerical and uncertain data.
+    \item To reduce these gaps, design algorithms tailored to numerical and uncertain data.
     \item Evaluate their performance.
 \end{enumerate}
 \label{enum:objectives}
@@ -91,10 +93,10 @@ of the \emph{in-situ} processing of scientific data.
 Then, chapter~\ref{chapter:diverse} identifies gaps in the literature regarding
 the exploration of diverse numerical datasets and summarizes some initial prototypes
 that remain open for further research.
-Chapter~\ref{chapter:presq} describes an algorithm suitable for schema matching
+Chapter~\ref{chapter:presq} proposes an algorithm suitable for schema matching
 tailored to scientific data. Chapter~\ref{chapter:som} outlines a statistical
 test based on \glspl{SOM}, which can bridge the gap between schema matching and
 \emph{in-situ} access.
-Chapter~\ref{chapter:discussion} discuss our contributions
+Chapter~\ref{chapter:discussion} discusses our contributions
 and analyses the threats to the validity of the present thesis.
 Finally, chapter~\ref{chapter:conclusions} summarizes our findings and contributions and proposes potential future lines of work.

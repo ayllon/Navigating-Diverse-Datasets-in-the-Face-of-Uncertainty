@@ -1,6 +1,8 @@
-We use \emph{Researching Information Systems and Computing}~\cite{Oates2006} as the
-general framework for defining the methodology for our research. On it, Oates describes
-six fundamental aspects of research, using the mnemonic `6P':
+
+For defining the methodology of our research, we follow the guidelines
+from \emph{Researching Information Systems and Computing}~\cite{Oates2006},
+a well-regarded reference text in information systems and computing research areas.
+Oates describes six fundamental aspects of research using the mnemonic `6P':
 
 %\begin{itemize}
     %\item \textbf{Purpose}: The reason for doing the research.
@@ -11,36 +13,31 @@ six fundamental aspects of research, using the mnemonic `6P':
     %\item \textbf{Presentation}: Dissemination and explanation of the research.
 %\end{itemize}
 
-\paragraph{Purpose}
+\textbf{Purpose}
 \label{method:purpose}
 A research project needs a well-defined objective to be able
-to define what means for it to succeed --- either totally or partially.
+to define what it means to succeed --- either totally or partially.
 
 First, a \emph{PhD} thesis must \emph{increase the body of knowledge}
-of the chosen research area. Second, we want to \emph{solve an existing problem}:
+of the chosen research area. Second, we want to \emph{contribute to the solution
+of an existing problem}:
 In our case, as discussed in chapter~\ref{chapter:introduction}, we target the
 \gls{IDE} research area.
 
-\paragraph{Products}
+\textbf{Products}
 \label{method:products}
-Oates lists five different types of contributions to the body of knowledge, based on
+Oates lists five different types of contributions to the body of knowledge based on
 an existing classification from Davis \& Parker~\cite{Oates2006,Davis1997}:
-
-\begin{itemize}
-    \item Evidence.
-    \item Methodology.
-    \item Analysis.
-    \item Theories.
-    \item Computer-based products.
-\end{itemize}
+Evidence, Methodology, Analysis, Theories, and Computer-based products.
 
 Note that improvements are also considered a contribution under this classification.
 
-For the current thesis, we aim to produce a new computer-based product
-for \gls{IDE}, understanding as such novel algorithms and techniques.
-The literature review is also a contribution (analysis).
+For the current thesis, we aim to produce a new solution --- which encompasses
+multiple contributions such as theories and computer-based products --- for \gls{IDE}, understanding as such novel
+algorithms and techniques.
+Additionally, the literature review is also a contribution (analysis).
 
-\paragraph{Process}
+\textbf{Process}
 \label{method:process}
 
 \begin{figure}[htpb]
@@ -54,25 +51,25 @@ Figure~\ref{fig:method_process_model} shows the model of the research process.
 The time working at \gls{CERN} and the \emph{Astronomy Department of the University of Geneva}
 set up the \emph{experiences and motivations} for this research:
 \gls{IDE} on physical measurements,
-which have an intrinsic uncertainty. In chapter~\ref{chapter:introduction} we have
+which have an intrinsic uncertainty. In chapter~\ref{chapter:introduction}, we have
 introduced the research questions for this thesis.
 We will be shortly defining the methodology for the literature review,
 the research strategy, the data generation methods, and the data analysis.
 
-\paragraph{Participants}
+\textbf{Participants}
 \label{method:participants}
-The direct participants of the current research will be the researcher, the tutor, and
-the thesis director. Journal editors and reviewers are indirect participants.
+The direct participants of the current research will be the researcher, the tutors,
+and the thesis supervisors. Journal editors and reviewers are indirect participants.
 
-\paragraph{Paradigm}
+\textbf{Paradigm}
 \label{method:paradigm}
 The paradigm is the philosophical model that frames the research.
-It defines what the researcher believes on the nature
+It defines what the researcher considers the nature
 of reality (\emph{ontology}), how the researcher interacts with
 knowledge (\emph{epistemology}), and how knowledge is acquired
 (\emph{methodology}). By definition, this framework can not be proven~\cite{Guba1990,guba_competing_1994}.
 
-We can find different classifications of different paradigms depending on
+We can find different classifications of several paradigms depending on
 their views on these questions. For instance, Oates and Chua~\cite{Chua1986}
 consider three branches:
 
@@ -89,7 +86,7 @@ utility and is considered, in any case, approximate.
 Considering our purpose and objective, and given the restricted list of
 participants, we will follow the paradigm of \emph{pragmatism} for this research project.
 
-\paragraph{Presentation}
+\textbf{Presentation}
 \label{method:presentation}
 The main results from our research are compiled into the present thesis
 and published in peer-reviewed journals. Drafts have been published in \texttt{arXiv}.
@@ -99,7 +96,7 @@ All the relevant source code is publicly available.
 \label{sec:method_literature_review}
 A systematic mapping study is a process for the exploration of
 the situation of a wide research area with a high level of granularity,
-allowing us to identify areas in the domain that may be interesting to
+allowing us to identify parts of the domain that may be interesting to
 explore in more detail~\cite{Kitchenham2007}. Because we are trying to obtain
 an overview of the situation of the research on data exploration techniques
 and identify where additional work may be required, we have decided to follow this
@@ -118,7 +115,7 @@ Petersen \etal.
 
 \section{Research strategy}
 \label{sec:method_strategy}
-From the list of strategies shown in figure~\ref{fig:method_process_model},
+From the list of strategies previously shown in figure~\ref{fig:method_process_model},
 we follow \emph{Design and Creation} and \emph{Experiments}.
 
 \textbf{Design and Creation} is an adequate strategy since we aim for a
@@ -132,10 +129,10 @@ Thus, we follow \emph{Engineering Design}:
 \end{displayquote}
 
 Figure~\ref{fig:engineering_design} summarizes the different stages for this method.
-We want to emphasize that this method is inherently iterative since each stage
+We want to emphasize that this method is inherently iterative since each step
 provides feedback to the precedent stages. This work results from many such
 iterations: the research plan defined the initial task: \gls{IDE} of raw scientific data.
-We performed a systematic literature mapping to identify solution principles and existing problems.
+We performed a systematic literature mapping to identify solution principles and possible use cases.
 As a result of this literature review, we refined the initial task: data exploration of multiple files with related raw scientific data but incomplete metadata.
 
 \begin{figure}[htbp]
@@ -145,7 +142,7 @@ As a result of this literature review, we refined the initial task: data explora
   \label{fig:engineering_design}
 \end{figure}
 
-\paragraph{Experiments} \emph{Engineering Design} incorporates the development of
+\textbf{Experiments} \emph{Engineering Design} incorporates the development of
 multiple preliminary products, which need to be compared and evaluated before refining
 them into the final deliverable. Thus, experiments are a central aspect of this method.
 
