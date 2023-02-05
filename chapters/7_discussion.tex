@@ -1,14 +1,13 @@
-\glsresetall
 
 In section~\ref{sec:main_objective}, we defined that the main objective of this thesis
 was \emph{to assist users during the exploration of unprocessed,
 numerical, raw data distributed across multiple files}.
 After a systematic literature mapping,
 described in detail in chapter~\ref{chapter:literature_review}, in section~\ref{sec:objectives} we
-narrowed the objectives to the \emph{multiple files with unknown, heterogeneous schemas, using solely the intrinsic data distribution}.
+narrowed the objectives to the \emph{multiple files with unknown, heterogeneous schemas, solely using the intrinsic data distribution}.
 
-With this objective in mind, in chapter~\ref{chapter:discussion}
-we have proposed the concept of \gls{EDD},
+With this objective in mind, in chapter~\ref{chapter:diverse}
+we proposed the concept of \gls{EDD},
 proposed a novel algorithm, \PresQ, to mine these dependencies between multiple
 datasets --- chapter~\ref{chapter:presq} ---, and a two-sample, machine-learning statistical
 test that can visually assist users in examining how the two samples differ --- 
@@ -32,14 +31,13 @@ This uncertainty reflects as falsely rejected \glspl{EDD} and falsely accepted \
 
 \Find is an algorithm that maps inclusion dependencies to hyper-cliques,
 which generally performs  at least as well as the alternatives \cite{Dursch2019}.
-It is not strongly coupled to the discrete nature of the underlying data.
+It is loosely coupled with the discrete nature of the underlying data.
 However, its ability --- and of most, if not all, of the existing algorithms --- to find
-high arity \glspl{EDD} will be impaired by the false rejections.
-
-A lower rejection threshold could compensate for this. Yet, it increases the number
-of false detections, which is a known factor that significantly degrades
-its performance, similar to other hypergraph-based methods' \cite{koeller2006heuristic}.
-We have experimentally confirmed this problem in section \ref{sec:result_quasi_search}.
+high arity \glspl{EDD} will be impaired by the number of false rejections,
+which a lower rejection threshold could compensate for. Yet, this
+solution increases the number of false detections, which is a known factor that 
+significantly degrades its performance, similar to other hypergraph-based methods' \cite{koeller2006heuristic}.
+We experimentally confirmed this problem in section \ref{sec:result_quasi_search}.
 
 We propose a new algorithm based on quasi-cliques, where a candidate is accepted
 even if some edges are missing. This algorithm has three parameters:
@@ -65,7 +63,7 @@ while being more stable and predictable.
 For real datasets, the ratio of missing edges can be intuitive to configure
 (simply $\gamma = 1 - \alpha$, where $\alpha$ is the test significance level), 
 but $\lambda$ can be harder to interpret. We propose instead an intuitive and statistically
-interpretable method to dynamically adapt the threshold to the degree, which is expected
+interpretable method to dynamically adapt the threshold to the degree which is expected
 to follow a hypergeometric distribution and can be adjusted based on the quasi-clique
 itself, as shown in equation~\ref{eq:deg_hyperclique_hypergeom}.
 
@@ -100,13 +98,14 @@ quasi-clique candidates. Yet, the statistical test will likely reject them, caus
 into an exponential number of newer, smaller candidates.
 Generally, a balanced parametrization based on $\gamma$ and $\Lambda$ is more predictable.
 
-As a final remark, the set of accepted \glspl{EDD} may contain several false positives depending on the power of
-the multivariate statistical test. A second pass adapted from the foreign key literature can prove helpful.
+As a final remark, the set of accepted \glspl{EDD} may contain several
+false positives depending on the power of the multivariate statistical test.
+A second, more detailed pass can refine this original set.
 For instance, we can envision a ranking based on the previously discussed \emph{randomness}~\cite{Zhang2010}
 to decide which set of \glspl{EDD} is more suitable for cross-matching the datasets.
 
 In conclusion, \PresQ successfully identifies shared sets of attributes
-between multiple data files containing raw, numerical data based \emph{exclusively}
+between multiple data files containing raw, numerical data \emph{exclusively} based
 on their distribution. This can guide users to cross-match datasets with unknown schemas,
 but also to label attributes for which the metadata is lost as long as there is available
 one dataset with properly labeled attributes.
@@ -154,9 +153,12 @@ Unfortunately, since the \gls{SOM} implementation on which we have based our imp
 only works with real-valued dimensions~\cite{wittek_somoclu_2017}, we have not been
 able to test this scenario.
 
-
 \section{Threats to validity}
 \label{sec:threats}
+
+We now identify the internal and external
+threats to the validity of our research, and the measures we took to
+counteract their effect.
 
 \subsection{Internal validity}
 
@@ -190,15 +192,15 @@ algorithm rather than its implementation.
 For the proposed two-sample statistical test, the results shown in
 section~\ref{sec:som_results} originate from running the tests between 200 and 2000
 times, with independent randomized samples.
-Again, the comparisons have been done taking into account the error of our measurements,
+Again, the comparisons took into account the error in our measurements,
 making it easier to assess their significance.
 
 \subsection{External validity}
-The \PresQ experiments have been run over four different datasets of
+The \PresQ experiments were run over four different datasets of
 diverse nature and from three separate sources. The chosen statistical tests for
-uni- and multi-dimensional distributions have not been customized to any of them.
+uni- and multi-dimensional distributions were not customized to any of them.
 However, a better statistical test can be used if the underlying data distribution is more or
-less known (or simply suspected), which may reduce, or even remove, the advantage of the
+less known (or suspected), which may reduce, or even remove, the advantage of the
 quasi-clique approach. Although it is also unlikely that the performance would be any worse:
 since an entire clique is still a quasi-clique, our algorithm can identify all of them,
 similar to the original \Find algorithm.
@@ -211,6 +213,6 @@ step. This issue was also recognized on the original \Find proposal \cite{koelle
 \medskip
 
 Similarly, the experiments for the two-sample statistical test based on \gls{SOM}
-have been run over five different datasets and compared with kernel-based and machine-learning-based
+were run over five different datasets and compared with kernel-based and machine-learning-based
 alternatives. Given the performance shown by this test, we are confident in
 its capabilities.
