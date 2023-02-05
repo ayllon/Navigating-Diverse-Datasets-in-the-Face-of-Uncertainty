@@ -4,22 +4,18 @@ A classification task can be seen as a sort of two-sample statistical test.
 If a classifier trained over two samples can effectively distinguish between
 them with better-than-chance performance, the classifier rejects the null
 hypothesis that both samples come from the same distribution~\cite{friedman2004multivariate}.
-
 While a formal statistical test can be more suitable when the alternative
 hypothesis is known, machine learning classifiers can be a good alternative
 when the data is complex and abundant~\cite{kirchler2020two,kim2021classification,pmlr-v119-liu20m}.
-
 Furthermore, the representation ``learned'' by some classifiers can be helpful
 to examine how the samples differ~\cite{friedman2004multivariate,lopez2016revisiting},
 or it could be used later for other purposes, such as directly classifying future samples.
 
-\medskip
 
 \gls{SOM} is a technique for dimensionality
 reduction. It is a type of neural network that learns a low-dimension representation
 - generally 2D - of the original high-dimensional space while maintaining the topological
 layout of the original data~\cite{kohonen1982self, Villmann1999}.
-
 The learned map can be directly used for unsupervised clustering
 and classification tasks if the training data is labeled~\cite{ultsch2005esom,ultsch2007emergence}.
 Thus, \glspl{SOM} can be used as a building block of an ML-based two-sample test, similar to
@@ -28,9 +24,9 @@ of producing a representation that can be visualized.
 
 In this chapter, we propose a multivariate statistical test based on
 \glspl{SOM} that shows performance comparable to other techniques based on 
-machine learning models and even superior for medium to big sample sizes. In addition to the 
-$p$ value for $H_0: P = Q$, the test also outputs a trained \gls{SOM} model that can be of
-use for other tasks, such as classification or visualization.
+machine learning models and even better for medium to big sample sizes.
+In addition to the 
+$p$ value for $H_0: P = Q$, the test also outputs a trained \gls{SOM} model that can be used for other tasks, such as classification or visualization.
 Our proposal uses a $\chi^2$ statistic to compare the densities of both samples on
 the projected plane instead of relying on a training-testing split. This allows us to fully
 utilize the sample data. To our knowledge, and based on the results from three
@@ -67,7 +63,7 @@ population~\cite{friedman2004multivariate}.
 More formally, let $X = \{x_0,x_1,\ldots,x_n\}$  be a sample from $P$, and \linebreak
 $Z = \{z_1,z_2,\ldots,z_m\}$ a sample from $Q$. A test statistic $\hat t \sim T$ is used to
 ``summarize'' the difference between both samples and, depending on a pre-established
-significance level $\alpha$, used to reject the null hypothesis
+significance level $\alpha$ used to reject the null hypothesis
 $H_0: P = Q$ if $\alpha > P(T \ge \hat t | H_0)$.
 
 When using a binary classifier for performing a statistical test, both samples are pooled
@@ -125,16 +121,15 @@ Once this is done, the \gls{BMU} and the weight of the neighboring neurons are u
 \end{equation}
 
 Where $0 \le \alpha \le 1$ is a learning factor that may or may not depend on $t$,
-and $0 \le h_{i,b} \le 1$ is the neighborhood function, with usually a Gaussian shape
-that shrinks at each epoch~\cite{Villmann1999,wittek_somoclu_2017}.
+and $0 \le h_{i,b} \le 1$ is the neighborhood function, usually with a Gaussian shape
+that shrinks at each epoch, such as the function shown in equation~\ref{eq:neighborhood_func}~\cite{Villmann1999,wittek_somoclu_2017}.
+This process can be repeated for multiple epochs or until convergence.
 
 \begin{equation}
     h_{i,b}(t) = \exp(- \frac{||w_i - w_b||}{\delta(t)})
+    \label{eq:neighborhood_func}
 \end{equation}
 
-This process can be repeated for multiple epochs or until convergence.
-
-\medskip
 
 Thanks to the preservation of topology, \glspl{SOM} display emergent properties
 when the grid is large enough: they can be directly used for clustering,
@@ -156,7 +151,7 @@ into them can be labeled as \emph{unknown class}~\cite{ultsch2005esom,silva2011s
 While a \gls{SOM}-based classifier could be used in place of the neural or \gls{kNN} classifiers proposed
 originally~\cite{lopez2016revisiting}, we propose a different approach that does not require
 splitting the input data into training and testing sets, leveraging the distribution of the
-data on the output space instead. The intuition behind is that if two samples are equally
+data on the output space instead. The intuition behind this is that if two samples are equally
 distributed on the input space, they must be equally distributed on the output space.
 
 More specifically, our method works as follows:
@@ -188,7 +183,7 @@ Where $K_1$ and $K_2$ are two constants used to adjust for different sample size
     \label{eq:k1k2} K_1 = \sqrt{\frac{|Y|}{|X|}} && K_2 = \sqrt{\frac{|X|}{|Y|}}
 \end{align}
 
-Note that we ignore the bins where there are 0 objects. Under the null hypothesis,
+Note that we ignore the neurons where no objects are mapped. Under the null hypothesis,
 the test statistic $\chi^2$ follows a $\chi^2$
 distribution with $k - c$ degrees of freedom, where $k$ is the number of cells
 where ${R_i + S_i > 0}$, and $c = 1$ if the sample sizes are equal, or $c = 0$
@@ -197,7 +192,6 @@ otherwise~\cite{press1993numerical}.
 As with any test based on binning, its main disadvantages are that its results may
 depend on the binning (in this case, size of the \gls{SOM}) and that it requires
 more data points.
-
 On the other hand, since the \gls{SOM} adapts to the topology of the
 original data, it is less susceptible to artifacts than a simple 2D histogram
 due to the binning.
@@ -205,7 +199,6 @@ due to the binning.
 As with the classifier tests, as a side effect of the test, we are left with a
 trained model that can be used for (1) visualization; and (2) for big enough
 \gls{SOM}  and samples, even for clustering~\cite{ultsch2005esom}.
-
 Unlike other classifier tests, with our proposal, the whole dataset can be used
 for computing the statistic~\cite{kirchler2020two}. Additionally, thanks to the
 regularization terms shown in equation \ref{eq:k1k2}, it also works with
@@ -213,8 +206,7 @@ unbalanced sample sizes, an advantage over most kernel-based methods~\cite{song2
 
 We have implemented our proposal using \textsc{Somuclu}, a parallel
 tool for training self-organizing maps on large data sets~\cite{wittek_somoclu_2017}.
-
-In the following section we describe the experimental setup used to
+In the following section, we describe the experimental setup used to
 evaluate our proposal.
 Later, in section~\ref{sec:som_results}, we report the results of our tests.
 
@@ -225,7 +217,7 @@ Later, in section~\ref{sec:som_results}, we report the results of our tests.
 
 We have considered four different two-sample tests based on machine learning techniques.
 All of them have in common the merging of both samples into a single set $Z$,
-labeled with 1 if the sample comes from $X$ or -1 if comes from $Y$.
+labeled with 1 if the sample comes from $X$ or -1 if it comes from $Y$.
 
 \textbf{Nearest neighbor type coincidences.}
 The assumption under $H_0$ is that on the neighboring area of any point, the number of samples
@@ -251,7 +243,7 @@ $n$ is the total number of samples, and $k$ the number of neighbors considered.
 The distribution of the statistic is empirically obtained by applying a permutation test.
  
 \textbf{Classifier two-sample tests.}
-We have implemented the classifier two-sample test as described in section~\ref{sec:som_classifier2sample}
+We implemented the classifier two-sample test as described in section~\ref{sec:som_classifier2sample}
 using \texttt{scikit-learn}~\cite{scikit-learn} neural
 classifier\footnote{\texttt{sklearn.neural\_network.MLPClassifier}},
 and \gls{kNN} classifier\footnote{\texttt{sklearn.neighbors.KNeighborsClassifier}}
@@ -291,7 +283,7 @@ unbalanced sample sizes and is more robust to the chosen kernel bandwidth (i.e.,
 \section{Results}
 \label{sec:som_results}
 
-We have performed five experiments to evaluate the performance of our \gls{SOM} 
+We performed five experiments to evaluate the performance of our \gls{SOM} 
 two-sample test proposal.
 
 For the first three setups - Normal, DC2, and the \emph{Open University Learning Analytics} dataset
@@ -310,10 +302,11 @@ Therefore, increasing the dimensionality is expected to have a diminishing retur
 %%%%%%%%%%
 % NORMAL %
 %%%%%%%%%%
-\subsection{Normal}
+\subsection{Normal distribution}
 Figure~\ref{fig:normal_location} shows the error rates and run-time for a location
-test of two multivariate Gaussian distributions with $D=1000$. For the first distribution,
-all dimensions have a mean of $0$, while for the second one, all dimensions have a mean of $0$.
+test of two multivariate Gaussian distributions with $D=1000$. For the first 
+distribution, all dimensions have a mean of $0$, while for the second distribution,
+the first dimension has a mean of $1$, and the rest have a mean of $0$.
 
 All tests can easily reject $H_0$ within a reasonable run-time. For
 a high number of samples, however, the \gls{kNN} permutation test worsens its run-time performance,
@@ -323,7 +316,7 @@ probably due to the imbalance of the KD-Tree.
     \centering
     \includegraphics{images/6_som/normal_location}
     \caption[Location test for two multivariate Gaussian distributions.]{
-    Location test for two multivariate Gaussian distributions with $D=1000$
+    Location test for two multivariate Gaussian distributions with $D=1000$.
     }
     \label{fig:normal_location}
 \end{figure}
@@ -339,7 +332,7 @@ to the other methods.
     \centering
     \includegraphics{images/6_som/normal_scale}
     \caption[Scale test for two multivariate Gaussian distributions.]{
-    Scale test for two multivariate Gaussian distributions with $D=1000$}
+    Scale test for two multivariate Gaussian distributions with $D=1000$.}
     \label{fig:normal_scale}
 \end{figure}
 
@@ -347,22 +340,12 @@ Ramdas \etal~\cite{ramdas2015decreasing} have argued that a ``fair'' evaluation 
 power of multivariate non-parametric tests as the dimensionality increases is to keep the
 amount of information fixed. i.e. the \gls{KLD} between both distributions
 should remain constant.
-
 For the location test, this can be achieved by two multivariate Gaussians that only differ
 on the first dimension, i.e. $(1, 0, \ldots, 0)$ vs $(0, 0, \ldots, 0)$.
 
 For completeness, figure~\ref{fig:normal_fair_location} shows the performance of the classifier
 two-sample tests being evaluated under this condition. We can see that they all fail to improve
 their type II error as the dimensionality increase.
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics{images/6_som/normal_location_fair}
-    \caption[Fair location test for two multivariate Gaussian distributions.]{
-    Fair location test for two multivariate Gaussian distributions with $D=1000$}
-    \label{fig:normal_fair_location}
-\end{figure}
-
 Finally, figure~\ref{fig:normal_fair_scale} shows the performance of the different
 tests when only the scale of the first dimension differs, as Ramdas \etal propose
 for a fair scale test. In this case, it is more evident that the type II error of all
@@ -370,9 +353,19 @@ tests worsens as the number of dimensions increases.
 
 \begin{figure}[htbp]
     \centering
+    \includegraphics{images/6_som/normal_location_fair}
+    \caption[Fair location test for two multivariate Gaussian distributions.]{
+    Fair location test for two multivariate Gaussian distributions with $D=1000$.}
+    \label{fig:normal_fair_location}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+    \centering
     \includegraphics{images/6_som/normal_scale_fair}
     \caption[Fair scale test for two multivariate Gaussian distributions.]{
-    Fair scale test for two multivariate Gaussian distributions with $D=1000$}
+    Fair scale test for two multivariate Gaussian distributions with $D=1000$.}
     \label{fig:normal_fair_scale}
 \end{figure}
 
@@ -384,7 +377,7 @@ feature will help discriminate whether two samples follow the same distribution.
 %%%%%%%
 % DC2 %
 %%%%%%%
-\subsection{DC2}
+\subsection{DC2 Dataset}
 The datasets from this challenge come from a single catalog of astronomical
 objects split based on the sky coordinates~\cite{EuclidDesprez2020}.
 
@@ -401,8 +394,8 @@ the estimated \gls{KLD} --- computed using a \gls{kNN} density estimation~\cite{
 increasing number of dimensions.
 It can be seen that the amount of available information
 rapidly increases for the magnitude cutout but barely for the \gls{SNR} filter,
-probably because, for the latter, the means of the distributions do not change, only
-their dispersion.
+probably because, for the latter, the means of the distributions barely change,
+but their dispersion significantly does.
 
 \begin{figure}[htbp]
     \begin{subfigure}[]{0.5\textwidth}
@@ -448,15 +441,14 @@ the classifier-based tests.
     \label{fig:dc2_snr}
 \end{figure}
 
-\subsection{Open University Learning Analytics dataset}
+\subsection{Open University Learning Analytics Dataset}
 \label{subsec:som_oulad}
 The objective of this experiment is to prove that our proposed test can be successfully
-used to test a hypothesis, providing an interpretable result useful for further
+used to contrast a hypothesis, providing an interpretable result useful for further
 investigating the data.
 
 We base our test on the \emph{Open University Learning Analytics}
 dataset, which contains anonymized data about student demographics~\cite{kuzilek_open_2017}.
-
 Let us consider the case of a researcher with the hypothesis that gender, age, and
 region of origin influence a student's economic situation, or perhaps they could
 be trying to deanonymize the data.
@@ -464,7 +456,6 @@ be trying to deanonymize the data.
 From this dataset, we can use the \gls{IMD} to measure poverty.
 The null hypothesis $H_0$ would be that a sample from the overall population and a sample from
 the poorest segment are indistinguishable, i.e., they come from the same distribution.
-
 We take all students from the lower end of the poverty line and a sample of the same size
 from the general population to test this hypothesis. We run the test using a \gls{SOM}  of size
 $20\times20$. The null hypothesis is rejected with a p-value of $0$.
@@ -503,7 +494,7 @@ there is a relation. Thus, we prove that our proposed test can be useful for dat
     \label{fig:oulad_hist}
 \end{figure}
 
-\subsection{Eye Movements}
+\subsection{Eye Movements Dataset}
 \label{subsec:som_eye}
 For generating this dataset, 11 subjects were shown a question and a list of ten 
 associated sentences, of which one was the correct answer (C), four relevant (R), and five
@@ -575,14 +566,14 @@ related to the regression (re-reading a word) show a sharp distinction that
 matches the distribution of samples from the Correct and Incorrect samples quite
 well.
 This matches the expectations from the original paper that regression features
-indicate a high-level cognitive processing and,
+indicate high-level cognitive processing and,
 therefore, correlate with conscious efforts when choosing a correct answer.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=\textwidth]{images/6_som/eye_regress.eps}
-    \caption[Codebook values for the two most distinct features from the Eye dataset.]{
-        Codebook values for the two most distinct features from the Eye dataset.
+    \caption[Code-book values for the two most distinct features from the Eye dataset.]{
+        Code-book values for the two most distinct features from the Eye dataset.
         Darker neurons are more sensitive to the given feature.
         The lines represent the density estimation for the Correct and \emph{Incorrect} samples
         over the \gls{SOM}.
@@ -593,20 +584,20 @@ therefore, correlate with conscious efforts when choosing a correct answer.
 \end{figure}
 
 
-\subsection{Age (IMDb Faces)}
+\subsection{Age (IMDb Faces) Dataset}
 The IMDb-WIKI dataset~\cite{rothe2016deep} contains 460,723 face images
 extracted from IMDb. The authors additionally provide a neural network pre-trained
 to predict the age of the face cutouts. Similarly to Song's experiments~\cite{song2021fast},
-we have run the neural model over the IMDb faces, extracting the values from
+we ran the neural model over the IMDb faces, extracting the values from
 the last hidden layer (4096 neurons) as the target multivariate distribution.
-
 We then group the samples in age ranges and verify our proposal, comparing
 500 samples from consecutive age groups, and repeat 500 times for each experiment. The
 significance level is also set to $0.001$.
 
 Table \ref{tab:age} shows the results for the \gls{SOM}  test, together
 with the results reported by Song\etal for their kernel-based method and for
-MMD-B\cite{zaremba2013b}.
+MMD-B\cite{zaremba2013b}. For this particular experiment, Song's proposal outperforms 
+both MMD-B and the \gls{SOM}  test, although our method comes second in statistical power.
 
 \begin{table}[htbp]
     \centering
@@ -622,23 +613,20 @@ MMD-B\cite{zaremba2013b}.
     40-45 vs. 45-50 & 0.930 & 0.400 & 0.812 & 0.606 \\
     \hline
     \end{tabular}
-    \caption{Statistical performances for the Age dataset}
+    \caption{Statistical performances for the Age dataset.}
     \label{tab:age}
 \end{table}
-
-For this particular experiment Song's proposal outperforms both MMD-B and the \gls{SOM} 
-test, although our method comes second in statistical power.
 
 %TODO: What about interpretability??
 
 \subsection{\PresQ results}
-As we have mentioned in the introduction, the motivating example is the unsupervised
+As we mentioned in the introduction, the motivating example is the unsupervised
 discovery of shared attributes between multiple datasets using \PresQ (chapter~\ref{chapter:presq}),
 obtaining, as a result, the list of sets of attributes and a trained model that can be used to
 cross-match the datasets.
 
-We have run two examples from the \PresQ paper using the proposed \gls{SOM}  based test
-instead of the \gls{kNN} statistical test. For each of the examples, we measure:
+We run two examples from the \PresQ paper using the proposed \gls{SOM}  based test
+instead of the \gls{kNN} statistical test. For each of the examples, we measure the following:
 
 \begin{description}
     \item[Ratio] of known shared attributes identified by \PresQ.
@@ -675,7 +663,7 @@ As part of interactive data exploration, researchers may need to
 compare multiple datasets.
 These datasets can originate from multiple independent files or
 generative models that need to be compared with reality. When these
-datasets are of high dimensionality, specially if the exploration is
+datasets are of high dimensionality, especially if the exploration is
 tentative, developing tailored statistical tests can become impractical.
 In those cases, relying on heuristic approaches based on machine
 learning techniques, as classifiers, to decide whether two samples are
@@ -688,7 +676,7 @@ reject that both samples originate from the same underlying distribution
 but do not further assist the researcher.
 Other models, such as random forests, are more  interpretable~\cite{friedman2004multivariate}.
 
-In section~\ref{sec:som_chi2}, we have proposed another machine learning
+In section~\ref{sec:som_chi2}, we proposed another machine learning
 technique based on \glsfmtlongpl{SOM}~\cite{kohonen1982self} that is
 understandable and capable of pointing the researcher to where the differences
 in a multidimensional space are. After all, \glspl{SOM} were initially
@@ -696,12 +684,12 @@ proposed as visualization aids. Nonetheless, they display interesting
 emergent properties and can be used for clustering or classification as
 well~\cite{ultsch2007emergence}.
 
-In section~\ref{sec:som_results}, we have proven that the power of this
+In section~\ref{sec:som_results}, we proved that the power of this
 technique is comparable to other machine learning techniques and even
 superior for medium-size datasets.
-We have also proven in the experiment~\ref{subsec:som_oulad} that the
-output can guide researchers toward refining a hypothesis. Thus, our
-test can be a valuable asset to the researcher's tool-set, and complementary
+We also proved in the experiment~\ref{subsec:som_oulad} that the
+output could guide researchers toward refining a hypothesis. Thus, our
+test can be a valuable asset to the researcher's tool-set and complementary
 to more formal hypothesis testing whenever considered necessary~\cite{rosenblatt2019better}.
 
 For future work, it would be interesting to explore the possibilities of
