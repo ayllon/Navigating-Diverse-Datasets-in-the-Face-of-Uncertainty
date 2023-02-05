@@ -1,5 +1,3 @@
-\glsresetall
-
 \section{Summary}
 
 \emph{In-situ} Data Exploration is an active research area that requires
@@ -19,14 +17,13 @@ solutions for visualization, optimizations, indexing and physical layout abound.
 Still, there is little to no mention of assisting users on \emph{understanding}
 data schema, especially when it comes to multiple files from diverse origins or
 when meta-data is incomplete or inconsistent.
-In chapter~\ref{chapter:diverse}, we have confirmed that users spend a non-negligible
+In chapter~\ref{chapter:diverse}, we confirmed that users spend a non-negligible
 amount of resources just examining the data structure and layout.
 
 The question that followed was: can we leverage the data \emph{distribution} to
 assist users in understanding the schema, on seeing how different datasets may come together?
 This is particularly important when the data is numerical and uncertain since
 one can not just compare tuples individually but needs to inspect distributions.
-
 In the relational world, the \gls{IND} concept comes close to the objective:
 Parts of a relation contained (included) within another. However, this modeling
 relies on the attributes' discrete nature, such as name, date of birth, etc.
@@ -71,7 +68,7 @@ We have proposed a new category within the \emph{Middleware Layer}: \emph{Schema
 A new set of articles has been classified under this category in table~\ref{tab:missing_middleware}.
 
 \subsection{Definition of \glsentrylong{EDD}}
-In section \ref{sec:edd}, we have introduced the concept of \glsxtrlong{EDD}, expanding
+In section \ref{sec:edd}, we introduced the concept of \glsxtrlong{EDD}, expanding
 the family of data dependencies to four types~\cite{abedjan2015}. We
 summarize the classification in table~\ref{tab:family_dependencies}.
 Note that \gls{EDD} are, by definition, approximate.
@@ -104,18 +101,22 @@ Querying data split across multiple files with similar schemas is another active
 area of research within the \emph{Relational Algebra} domain. However, existing solutions
 do not work over attributes defined in the real domain.
 
-In chapter~\ref{chapter:presq} we have presented \PresQ, an algorithm for finding quasi-cliques
+In chapter~\ref{chapter:presq} we presented \PresQ, an algorithm for finding quasi-cliques
 on uniform hypergraphs that can be used to find sets of attributes \gls{EDD}
 between datasets. \PresQ is not limited to \gls{EDD} finding and can potentially be
 of use to other areas that have a strong combinatorial aspect, such as
 chemistry or biology~\cite{Bretto2013}.
 
-In chapter~\ref{chapter:som}, we have introduced a two-sample multivariate statistical test based on
+In chapter~\ref{chapter:som}, we introduced a two-sample multivariate statistical test based on
 \glspl{SOM} with a performance comparable to tests based on machine learning models. An additional advantage
 of this technique is that it outputs an interpretable projection of the two samples. It can be used
 by itself or in conjunction with \PresQ.
 
 \subsection{Publications}
+
+The contributions from this thesis have been published in the following
+papers:
+
 \begin{refsection}
 \nocite{Alvarez2019,Alvarez2021inference,AlvarezAyllonPresQ2022,Alvarez2022SOM}
 
@@ -123,6 +124,10 @@ by itself or in conjunction with \PresQ.
 \end{refsection}
 
 \subsection{Software}
+
+The software generated and used in our tests are archived and publicly
+available in Zenodo:
+
 \begin{refsection}
 \nocite{PresQ,SOMA}
 
@@ -130,6 +135,10 @@ by itself or in conjunction with \PresQ.
 \end{refsection}
 
 \section{Future work}
+
+Finally, we enumerate some interesting research paths that can further improve
+the current state of the art, adding valuable algorithms to the tool-sets
+available for data scientists:
 
 \begin{itemize}
     \item In chapter~\ref{chapter:presq}, we prove that finding quasi-cliques in hypergraphs
@@ -163,6 +172,6 @@ by itself or in conjunction with \PresQ.
     \item Finally, \textbf{multidimensional \emph{complementarity}} is another interesting
     area for further research. For instance, a single dataset may be split between multiple files
     based on the values from a given set of attributes (i.e., coordinates), which may or may not overlap.
-    Being able to merge complementary datasets would be a powerful addition to \gls{EDD} finding.
+    Combining complementary datasets would be a powerful addition to \gls{EDD} finding.
 \end{itemize}
 
