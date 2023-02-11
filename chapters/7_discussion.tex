@@ -139,9 +139,9 @@ and a pragmatic approach is more suitable~\cite{kim2021classification}.
 Finally, if the null hypothesis --- that both samples come from the same underlying
 distribution --- is rejected, the generated \gls{SOM}  model can be easily visualized
 and examined in more detail.
-In sections~\ref{subsec:som_oulad} and \ref{subsec:som_eye}, we have demonstrated
+In sections~\ref{subsec:som_oulad} and \ref{subsec:som_eye}, we demonstrated
 that we can reject $H_0$ and obtain valuable information after exploring the learned model.
-This exercise would not have been possible with a black-box method such as
+This exercise would not be possible with a black-box method such as
 a neural network classifier~\cite{friedman2004multivariate}.
 
 As a final note, \gls{SOM} maps can be generalizable to non-vectorial data
@@ -149,8 +149,8 @@ As a final note, \gls{SOM} maps can be generalizable to non-vectorial data
 defined~\cite{kohonen1982self, KOHONEN201352}.
 Therefore, our proposed statistical test could also be used to verify whether
 two sets of sequences --- i.e., proteins or DNA --- share their origin.
-Unfortunately, since the \gls{SOM} implementation on which we have based our implementation
-only works with real-valued dimensions~\cite{wittek_somoclu_2017}, we have not been
+Unfortunately, since the \gls{SOM} implementation on which we based our implementation
+only works with real-valued dimensions~\cite{wittek_somoclu_2017}, we were not
 able to test this scenario.
 
 \section{Threats to validity}
@@ -167,7 +167,7 @@ could risk being just a fluctuation,
 not due to an underlying algorithmic improvement. However,
 the experimental design described in section~\ref{sec:experiment_design} significantly reduces
 this possibility, thanks to the randomization of the initial conditions
-and the number of measurements. In any event, we have made explicit the uncertainties
+and the number of measurements. In any event, we made explicit the uncertainties
 of our results --- using 95\% confidence intervals or reporting distribution quartiles.
 
 The results summarized in table~\ref{tab:ind2_summary} show that, on average, the
@@ -181,7 +181,7 @@ Nonetheless, we consider that the run-time differences are significant enough to
 the quasi-clique-based search a better approach in those cases.
 Even so, that heuristic can also be applied to the output of our proposed algorithm.
 
-We have implemented \Find and \PresQ from scratch, sharing 
+We implemented \Find and \PresQ from scratch, sharing 
 many parts of the code --- i.e., data structures, statistical tests, etc.
 While there is room for optimizations, both would benefit.
 Since the relative differences would remain similar, we are confident that the gains come from the 

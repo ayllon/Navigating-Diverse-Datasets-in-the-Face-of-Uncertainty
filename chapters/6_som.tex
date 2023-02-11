@@ -43,7 +43,7 @@ two of Borne's science requirements for data mining: \emph{Object Cross-Correlat
 In section~\ref{sec:som_definitions}, we introduce classifier two-sample tests
 and \glsxtrlong{SOM}. Then, in section~\ref{sec:som_chi2}, we describe our proposal
 for a multidimensional non-parametric statistical test based on \glspl{SOM}.
-In section~\ref{sec:som_exp_setup}, we describe the experimental setup we have used
+In section~\ref{sec:som_exp_setup}, we describe the experimental setup we used
 to validate our proposal --- including the parametrization of the existing techniques
 evaluated as a baseline ---. In section~\ref{sec:som_results}, we present the 
 results.
@@ -204,7 +204,7 @@ for computing the statistic~\cite{kirchler2020two}. Additionally, thanks to the
 regularization terms shown in equation \ref{eq:k1k2}, it also works with
 unbalanced sample sizes, an advantage over most kernel-based methods~\cite{song2021fast}.
 
-We have implemented our proposal using \textsc{Somuclu}, a parallel
+We implemented our proposal using \textsc{Somuclu}, a parallel
 tool for training self-organizing maps on large data sets~\cite{wittek_somoclu_2017}.
 In the following section, we describe the experimental setup used to
 evaluate our proposal.
@@ -215,7 +215,7 @@ Later, in section~\ref{sec:som_results}, we report the results of our tests.
 
 \subsection{Evaluated alternatives}
 
-We have considered four different two-sample tests based on machine learning techniques.
+We considered four different two-sample tests based on machine learning techniques.
 All of them have in common the merging of both samples into a single set $Z$,
 labeled with 1 if the sample comes from $X$ or -1 if it comes from $Y$.
 
@@ -291,12 +291,12 @@ For the first three setups - Normal, DC2, and the \emph{Open University Learning
 type I and type II error rates over $200$ repeated tests for all the evaluated
 tests: (1) \gls{SOM}  (our proposal), (2) the \gls{kNN} permutation test~\cite{Schilling1986b},
 and (3) two classifier tests (\gls{kNN} and Neural Network)~\cite{lopez2016revisiting}.
-To obtain the $95\%$ confidence interval, we have used the Wilson score interval~\cite{Wilson1927}.
+To obtain the $95\%$ confidence interval, we used the Wilson score interval~\cite{Wilson1927}.
 
 These values are measured for: (1) a fixed sample size of $n = m = 500$ and variable dimension;
 and (2) for variable sample sizes and full dimensionality.
 
-We have used a \emph{K-Best} feature selection to decide the order in which dimensions are added, from more to less informative.
+We used a \emph{K-Best} feature selection to decide the order in which dimensions are added, from more to less informative.
 Therefore, increasing the dimensionality is expected to have a diminishing return.
 
 %%%%%%%%%%
