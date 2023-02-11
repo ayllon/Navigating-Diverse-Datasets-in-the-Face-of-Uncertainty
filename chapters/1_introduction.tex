@@ -6,10 +6,13 @@ data sets looking for any relevant pattern they can find. This data
 may consist of files that have not yet been ingested into a
 database system. The researcher must curate
 these files, understand and sieve their content, and 
-extract information. This data-intensive way of doing science is considered
-a new paradigm of scientific exploration, the fourth after the experimental, theoretical, and computer-simulation paradigms~\cite{bell2009beyond,hey2009the}.
+extract and communicate information. This activity
+is known as \emph{data exploration}, and it is an integral part
+of a new, data-intensive process of doing science that
+can be considered a new paradigm of scientific exploration,
+the fourth after the experimental, theoretical, and computer-simulation paradigms~\cite{bell2009beyond,hey2009the}.
 
-The activity of data exploration is usually referred to as \gls{KDD}
+Data exploration is also known as \gls{KDD}
 because ``knowledge'' is the product of this process
 \parencite{Piatetsky-Shapiro1991,Fayyad1996a}.
 \emph{Data Mining} is sometimes used as a synonym or as an integral
@@ -51,7 +54,10 @@ mining step, composed of six phases, shown in figure~\ref{fig:crispdm}:
 In this thesis, we focus on the \textbf{Data Understanding} phase, where the user interactively
 explores the data, gaining insight, and generating hypotheses during the process.
 
-When starting the initial analysis, the data may be in a \emph{raw} format: unprocessed files not optimized for access. Even worse, their schema may be inconsistent or poorly documented, and they may originate from different sources. These factors combined difficult the task of the data scientist:
+When starting the initial analysis, the data may be in a \emph{raw} format: unprocessed files not 
+optimized for access. Even worse, their schema may be inconsistent or poorly documented, and they may
+originate from different sources. These factors combined make the task of the data scientist more
+difficult:
 
 \begin{itemize}
     \item Ingestion into a ``proper'' database introduces latency. Since the data is not well
@@ -71,17 +77,30 @@ research.
 \label{sec:main_objective}
 
 Given the problem stated above, the main objective of this
-thesis is \emph{to assist users during the exploration of unprocessed,
-numerical, raw data distributed across multiple files,
-based solely on its intrinsic distribution}. For this
-object, we need to:
+thesis is:
+
+\begin{quote}
+    To assist data scientists during the exploration of 
+    unprocessed, numerical, raw data distributed across
+    multiple files based solely on its intrinsic distribution.
+\end{quote}
+
+To make this objective attainable, we define the following sub-objectives:
 
 \begin{enumerate}
-    \item Find and evaluate existing techniques that could help users to
-    understand the data files \emph{in-situ}.
-    \item Identify gaps in the coverage of the existing techniques.
-    \item To reduce these gaps, design algorithms tailored to numerical and uncertain data.
-    \item Evaluate their performance.
+    \item \textbf{Find existing techniques} that help users
+        to  explore the data \emph{in-situ}. A survey of the 
+        literature help users by directing them to algorithms
+        and tools suitable for their use case.
+        
+    \item \textbf{Identify gaps in the coverage of the existing
+        techniques}, helping to direct the effort of this,
+        and future, research into areas that need better
+        coverage, widening the options available to users.
+
+    \item \textbf{Design new algorithms} tailored to numerical 
+    and uncertain data that cover part of the identified gaps,
+    putting new tools at the disposal of data scientists.
 \end{enumerate}
 \label{enum:objectives}
 
