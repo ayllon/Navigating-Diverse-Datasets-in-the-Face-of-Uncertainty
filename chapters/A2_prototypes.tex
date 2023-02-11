@@ -81,12 +81,12 @@ This issue could be fixed by training a binary classifier by file.
 \begin{figure}[htbp]
     \begin{subfigure}[]{0.5\textwidth}
     \includegraphics[width=\textwidth]{images/A2_prototypes/tu_multifile_tree.png}
-    \caption{Without overlap}\label{subfig:tu_multifile}
+    \caption{Without overlap.}\label{subfig:tu_multifile}
     \end{subfigure}
     \hfill
     \begin{subfigure}[]{0.5\textwidth}
     \includegraphics[width=\textwidth]{images/A2_prototypes/mer_multifile_tree.png}
-    \caption{With overlap}\label{subfig:mer_multifile}
+    \caption{With overlap.}\label{subfig:mer_multifile}
     \end{subfigure}
     \caption[Data sets distributed multiple files based on two spatial coordinates.]{
         Data sets distributed multiple files based on two spatial coordinates.
@@ -123,7 +123,7 @@ block_size = os.statvfs("/path/to/files").f_bsize
 row_size = np.array(table[0:1]).nbytes
 page = (np.arange(len(table)) * row_size) // block_size
 \end{minted}
-\caption{Computation of the page offset}
+\caption{Computation of the page offset.}
 \label{code:page}
 \end{listing}
 
@@ -213,11 +213,11 @@ attributes changing relative positions or relations being missed.
     \centering
     \begin{subfigure}[]{\textwidth}
     \includegraphics[width=\textwidth]{images/A2_prototypes/png_kids.pdf}
-    \caption{\gls{KiDS}}
+    \caption{\gls{KiDS}.}
     \end{subfigure}
     \begin{subfigure}[]{0.5\textwidth}
     \includegraphics[width=\textwidth]{images/A2_prototypes/png_sdss.pdf}
-    \caption{\gls{SDSS}}
+    \caption{\gls{SDSS}.}
     \end{subfigure}
     \caption{Two \glsfmtplural{PGN} trained over two different astronomical catalogs.}
     \label{fig:bayes1}
