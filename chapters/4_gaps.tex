@@ -438,10 +438,19 @@ expanding on the result from the literature mapping shown in chapter~\ref{chapte
 
 \section{Proposed solution}
 \label{sec:gaps/proposed}
+The algorithms described in section~\ref{sec:nind_finding} require
+discrete data, and they often need to be able to answer definitely whether
+a given \gls{IND} is satisfied --- i.e., \Mind, \Zigzag, \Find.
+While there has been proposals to enhance \Find with approximate,
+heuristic methods, the data is still expected
+to be discrete, and the probabilistic aspect of the validation is decoupled
+from the inference of new \glspl{IND} from known \glspl{IND}.
 In the following chapter, we propose a novel algorithm, \PresQ, that
 can recover multidimensional correspondences between datasets with different,
-undocumented --- or unknown --- schemas. \PresQ relies on statistical tests to
-accept or discard these correspondences.
+undocumented --- or unknown --- schemas. \PresQ relies on statistical tests 
+to accept or discard these correspondences and takes into account the 
+uncertainty when inferring new \glspl{IND}, generalizing
+the problem of \gls{IND} finding, and making it applicable to new domains.
 
 To complement this method, chapter~\ref{chapter:som} describes a multidimensional
 statistical test based on \gls{SOM} offering additional interpretability. It can be
