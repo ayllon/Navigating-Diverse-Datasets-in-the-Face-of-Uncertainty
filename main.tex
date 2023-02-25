@@ -104,6 +104,7 @@
 
 % Bibliography
 \addbibresource{references.bib}
+\addbibresource[label=ide-update]{ide-in-science-update.bib}
 
 % Glossary
 \input{glossary}
@@ -224,7 +225,7 @@ a plus rien à retrancher.}}
 
 % Appendices
 \appendix
-\newrefsegment
+\begin{refsection}
 
 \chapter{\PresQ Benchmarking Tools}
 \label{appendix:presq_benchmarks}
@@ -234,6 +235,11 @@ a plus rien à retrancher.}}
 \label{appendix:prototypes}
 \input{chapters/A2_prototypes}
 
-\printbibliography[segment=1]
+\printbibliography[segment=\therefsegment]
+\end{refsection}
+
+\chapter{\glsfmtlong{IDE} Update}
+\label{chapter:ide_update}
+\input{chapters/A3_ide_update}
 
 \end{document}
