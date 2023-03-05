@@ -299,8 +299,13 @@ other fields, which can be as low as 0.3\%~\cite{Oakley2003}.
     \small
     \begin{tabularx}{\textwidth}{r r r r r r} \hline
     \bf Accepted & \bf Duplicated & \bf Not Primary & \bf Off Topic & \bf Too Old & \bf Total \\ \hline
+    \multicolumn{6}{c}{\textbf{2017}} \\
     242 & 9 & 16 & \numprint{5 295} & 126 & \numprint{5 688} \\
-    \numprint[\%]{4.25} & \numprint[\%]{0.16} & \numprint[\%]{0.28} & \numprint[\%]{93.09} & \numprint[\%]{2.22} & \numprint[\%]{100}
+    \numprint[\%]{4.25} & \numprint[\%]{0.16} & \numprint[\%]{0.28} & \numprint[\%]{93.09} & \numprint[\%]{2.22} & \numprint[\%]{100} \\
+    \\
+    \multicolumn{6}{c}{\textbf{2023}} \\
+    89 & 1 & 19 & \numprint{2359} & 0 & \numprint{2468} \\
+    \numprint[\%]{3.61} & \numprint[\%]{0.04} & \numprint[\%]{0.77} & \numprint[\%]{95.58} & \numprint[\%]{0.00} & \numprint[\%]{100} \\
   \end{tabularx}
   \caption{Accepted and rejected papers count.}\label{tab:mapping/acceptance}
 \end{table}
@@ -329,27 +334,27 @@ reviews to include gray literature in searches.
 
 \begin{table}[hptb]
   \small
-  \begin{tabularx}{\textwidth}{X r} \hline
-    \textbf{Category} & \textbf{Count} \\ \hline
-    \textbf{User Interaction} & \textbf{86} \\
-      \hspace{0.5em} Assisted Query Formulation & 28 \\
-      \hspace{0.5em} Visual Optimizations & 25 \\
-      \hspace{0.5em} Novel Query Interfaces & 14 \\
-      \hspace{0.5em} Visualization Tools & 11 \\
-      \hspace{0.5em} Automatic Exploration & 7 \\
-      \hspace{0.5em} Exploration Interfaces & 1 \\
-    \textbf{Middleware} & \textbf{48} \\
-      \hspace{0.5em} Query Approximation & 34 \\
-      \hspace{0.5em} Data Prefetching & 14 \\
-    \textbf{Database Layer} & \textbf{108} \\
-      \hspace{0.5em} Adaptive Indexing & 26 \\
-      \hspace{0.5em} Flexible Engines & 16 \\
-      \hspace{0.5em} Time Series & 16 \\
-      \hspace{0.5em} Sampling & 15 \\
-      \hspace{0.5em} Adaptive Storage & 14 \\
-      \hspace{0.5em} Adaptive Loading & 10 \\
-      \hspace{0.5em} Spatial Query & 6 \\
-      \hspace{0.5em} Other & 5
+  \begin{tabularx}{\textwidth}{X r r} \hline
+    \textbf{Category} & \textbf{2017} & \textbf{2023} \\ \hline
+    \textbf{User Interaction}                   & \textbf{86} & \textbf{20} \\
+      \hspace{0.5em} Assisted Query Formulation & 28 & 2 \\
+      \hspace{0.5em} Visual Optimizations       & 25 & 8 \\
+      \hspace{0.5em} Novel Query Interfaces     & 14 & 2 \\
+      \hspace{0.5em} Visualization Tools        & 11 & 7 \\
+      \hspace{0.5em} Automatic Exploration      &  7 & 1 \\
+      \hspace{0.5em} Exploration Interfaces     &  1 & 0 \\
+    \textbf{Middleware}                         & \textbf{48} & \textbf{43} \\
+      \hspace{0.5em} Query Approximation        & 34 & 40 \\
+      \hspace{0.5em} Data Prefetching           & 14 &  3 \\
+    \textbf{Database Layer}                     & \textbf{108} & \textbf{27} \\
+      \hspace{0.5em} Adaptive Indexing          & 26 & 5 \\
+      \hspace{0.5em} Flexible Engines           & 16 & 8 \\
+      \hspace{0.5em} Time Series                & 16 & 3 \\
+      \hspace{0.5em} Sampling                   & 15 & 5 \\
+      \hspace{0.5em} Adaptive Storage           & 14 & 2 \\
+      \hspace{0.5em} Adaptive Loading           & 10 & 1 \\
+      \hspace{0.5em} Spatial Query              &  6 & 0 \\
+      \hspace{0.5em} Other                      &  5 & 3
   \end{tabularx}
   \caption{Frequency of \glsentrylong{IDE} papers by category.}\label{tab:mapping/category_summary}
 \end{table}
@@ -363,44 +368,48 @@ reviews to include gray literature in searches.
 
 \begin{table}[hptb]
   \small
-  \begin{tabularx}{\textwidth}{X r} \hline
-    \textbf{Publication} & \textbf{Count} \\ \hline
-    \textbf{Journal} & \textbf{55} \\
-      \hspace{0.5em} The VLDB Journal & 11 \\
-      \hspace{0.5em} IEEE Transactions on Knowledge and Data Engineering & 3 \\
-      \hspace{0.5em} IEEE Transactions on Visualization and Computer Graphics & 3 \\
-      \hspace{0.5em} International Journal of Cooperative Information Systems & 3 \\
-      \hspace{0.5em} Journal of Big Data & 3 \\
-      \hspace{0.5em} ACM Transactions on Database Systems & 2 \\
-      \hspace{0.5em} Future Generation Computer Systems & 2 \\
-      \hspace{0.5em} SIGMOD Record & 2 \\
-      \hspace{0.5em} Others & 26 \\
-    \textbf{Conference} & \textbf{181} \\
-      \hspace{0.5em} ACM International Conference on Management of Data (SIGMOD) & 33 \\
-      \hspace{0.5em} Proceedings of the VLDB Endowment & 30 \\
-      \hspace{0.5em} IEEE International Conference on Data Engineering & 11 \\
-      \hspace{0.5em} Conference on Innovative Data Systems Research (CIDR) & 9 \\
-      \hspace{0.5em} Database Systems for Advanced Applications & 5 \\
-      \hspace{0.5em} International Conference on Scientific and Statistical Database Management & 5 \\
-      \hspace{0.5em} IEEE International Conference on Big Data & 4 \\
-      \hspace{0.5em} International Conference on Extending Database Technology & 3 \\
-      \hspace{0.5em} International Workshop on Data Management on New Hardware & 3 \\
-      \hspace{0.5em} ACM SIGMOD Symposium on Principles of Database Systems (PODS) & 2 \\
-      \hspace{0.5em} Advances in Visual Computing & 2 \\
-      \hspace{0.5em} Big Data Analytics & 2 \\
-      \hspace{0.5em} Database and Expert Systems Applications & 2 \\
-      \hspace{0.5em} IEEE International Conference on Mobile Data Management & 2 \\
-      \hspace{0.5em} Intelligent Information and Database Systems & 2 \\
-      \hspace{0.5em} International Conference on Advanced Cloud and Big Data & 2 \\
-      \hspace{0.5em} Workshop on Human-In-the-Loop Data Analytics & 2 \\
-      \hspace{0.5em} Others & 62 \\
-    \textbf{Gray literature} & \textbf{6}
+  \begin{tabularx}{\textwidth}{X r r} \hline
+    \textbf{Publication} & \textbf{2017} & \textbf{2023} \\ \hline
+    \textbf{Journal}     & \textbf{55} & \textbf{15} \\
+      \hspace{0.5em} The VLDB Journal                                         & 11 & 3 \\
+      \hspace{0.5em} IEEE Transactions on Knowledge and Data Engineering      &  3 & 1 \\
+      \hspace{0.5em} IEEE Transactions on Visualization and Computer Graphics &  3 & 4 \\
+      \hspace{0.5em} International Journal of Cooperative Information Systems &  3 & \\
+      \hspace{0.5em} Journal of Big Data                                      &  3 & \\
+      \hspace{0.5em} ACM Transactions on Database Systems                     &  2 & 1 \\
+      \hspace{0.5em} Future Generation Computer Systems                       &  2 & \\
+      \hspace{0.5em} SIGMOD Record                                            &  2 & \\
+      \hspace{0.5em} Others                                                   & 26 & 3 \\
+    \textbf{Conference} & \textbf{181} & \textbf{73} \\
+      \hspace{0.5em} ACM International Conference on Management of Data          & 33 & 12 \\
+      \hspace{0.5em} Proceedings of the VLDB Endowment                           & 30 & 26 \\
+      \hspace{0.5em} IEEE International Conference on Data Engineering           & 11 &  4 \\
+      \hspace{0.5em} Conference on Innovative Data Systems Research              &  9 &    \\
+      \hspace{0.5em} Database Systems for Advanced Applications                  &  5 &  3 \\
+      \hspace{0.5em} International Conference on Scientific and Statistical Database Management & 5 & 2 \\
+      \hspace{0.5em} IEEE International Conference on Big Data                     &  4 & 3 \\
+      \hspace{0.5em} International Conference on Extending Database Technology     &  3 & \\
+      \hspace{0.5em} International Workshop on Data Management on New Hardware     &  3 & \\
+      \hspace{0.5em} ACM SIGMOD Symposium on Principles of Database Systems        &  2 & \\
+      \hspace{0.5em} Advances in Visual Computing                                  &  2 & \\
+      \hspace{0.5em} Big Data Analytics                                            &  2 & \\
+      \hspace{0.5em} Database and Expert Systems Applications                      &  2 & \\
+      \hspace{0.5em} IEEE International Conference on Mobile Data Management       &  2 & \\
+      \hspace{0.5em} Intelligent Information and Database Systems                  &  2 & \\
+      \hspace{0.5em} International Conference on Advanced Cloud and Big Data       &  2 & \\
+      \hspace{0.5em} Workshop on Human-In-the-Loop Data Analytics                  &  2 &  1 \\
+      \hspace{0.5em} Others                                                        & 62 & 22 \\
+    \textbf{Gray literature} & \textbf{6} & \textbf{1}
   \end{tabularx}
   \caption{Frequency of papers by publication forum.}\label{tab:mapping/publication}
 \end{table}
 
 The full result of the systematic mapping of the literature is publicly
-available online\footnote{\url{https://www.zotero.org/groups/4517638/ide-in-science/library}}.
+available online\footnote{
+\url{https://www.zotero.org/groups/4517638/ide-in-science/library}
+
+\url{https://www.zotero.org/groups/4966770/ide-in-science-update/library}
+}.
 
 \section{Discussion}
 \label{sec:mapping/discussion}
