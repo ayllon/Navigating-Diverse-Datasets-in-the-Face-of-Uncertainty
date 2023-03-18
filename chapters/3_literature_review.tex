@@ -495,9 +495,9 @@ decided to consider it to be suitable for interactive usage.
 
 The 2022 update yielded two additional works that target \emph{interactive access}
 to \emph{raw data}: \textit{{FlashView}: {A}n {I}nteractive {V}isual {E}xplorer
-for {R}aw {D}ata}~\cite{10.14778/3137765.3137796} and
+for {R}aw {D}ata}~\cite{pang_flashview_2017} and
 \textit{{R}esource-{A}ware {A}daptive {I}ndexing for in {S}itu {V}isual {E}xploration
-and {A}nalytics}~\cite{maroulis_resource-aware_2023}.
+and {A}nalytics}~\cite{maroulis_resourceaware_2023}.
 
 
 In section~\ref{sec:mapping/details}, we summarize the most interesting set of
@@ -525,10 +525,11 @@ Code generation is a popular approach for querying raw data files, and \linebrea
 approximation-aware code generation has been noted as a challenge
 yet to be addressed~\cite{Mozafari2017AQP}. Another trend
 for \gls{AQP} research is Deep Learning. As examples, we can find
-Recurrent Neural Networks~\cite{10020614,10.1145/3442338} for predicting future queries,
-Long Short-Term Memory networks for learning the relationship between query elements
-and query results, optimizations for querying Deep Neural Network models~\cite{10.14778/3476249.3476285},
-or deep generative models for aggregate queries~\cite{9101822}.
+Recurrent Neural Networks~\cite{shahrivari_workload_2022,meduri_evaluation_2021}
+for predicting future queries, Long Short-Term Memory networks for learning the
+relationship between query elements and query results, optimizations for
+querying Deep Neural Network models~\cite{kang_accelerating_2021},
+or deep generative models for aggregate queries~\cite{thirumuruganathan_approximate_2020}.
 
 On an orthogonal consideration, since the generation of data volume will likely
 not slow down, the trend for more tools covering specific
@@ -679,14 +680,14 @@ interactivity only applies to the queries made to the provenance database.
 
 \medskip
 
-\textbf{\textsc{QUIS}}~\cite{10.14778/3137765.3137798} is a \emph{flexible engine} that
+\textbf{\textsc{QUIS}}~\cite{chamanara_quis_2017} is a \emph{flexible engine} that
 provides its own query language as an extension of SQL, a set of adapters for a variety of
 data sources --- \gls{CSV}, MS Excel, \gls{DBMS}, etc. --- and a query engine. The SQL
 extensions allow the user to specify the data sources and their schema.
 
 \medskip
 
-\textbf{\textsc{ArrayUDF}}~\cite{10.1145/3078597.3078599}. User-Defined Functions (UDF)
+\textbf{\textsc{ArrayUDF}}~\cite{dong_arrayudf_2017}. User-Defined Functions (UDF)
 allow developers to specify operations on \emph{single} elements of a dataset: a tuple within
 a table or a cell in an array. \textsc{ArrayUDF} extends this possibility to functions over
 a neighboring range of elements, where the neighboring relationship can be flexibly specified
@@ -696,7 +697,7 @@ in order to maximize locality.
 
 \medskip
 
-\textbf{\textsc{Diraq}}~\cite{10.1145/2462902.2465527} integrates indexing and compression of floating
+\textbf{\textsc{Diraq}}~\cite{lakshminarasimhan_scalable_2018} integrates indexing and compression of floating
 point numerical data, improving the efficiency of range queries and reducing the storage footprint
 at the same time. It does so exploiting the IEEE floating point format, where the leading bytes
 ---containing sign, exponent and most significant bits of the mantissa--- generally exhibit low
@@ -728,7 +729,7 @@ contribute and will weight it accordingly for the sampling.
 
 \subsection{Interactive access to raw files}
 
-\textbf{\textsc{FlashView}: An interactive visual explorer for raw data}~\cite{10.14778/3137765.3137796}
+\textbf{\textsc{FlashView}: An interactive visual explorer for raw data}~\cite{pang_flashview_2017}
 is a \emph{visualization tool} that does not aim at fully replacing \gls{DBMS}, but rather
 at helping the user decide which data is worth loading into one. The user needs to provide
 a description of the data schema, which \textsc{FlashView} uses to sample the file when the first query
@@ -741,7 +742,7 @@ the hierarchy, building indexes as the queries are being processed, similar to t
 \medskip
 
 \textbf{Resource-aware adaptive indexing for in situ visual exploration and
-analytics}~\cite{maroulis_resource-aware_2023} proposes two novel adaptive indexing techniques
+analytics}~\cite{maroulis_resourceaware_2023} proposes two novel adaptive indexing techniques
 to improve the performance for visual exploration of raw data:
 \textit{Categorical Exploration Tree} (CET) for categorical attributes, and \textit{Visual Exploration
 Tile-Tree Index} (VETI) that combines CET and tiling based on numerical or spatial attributes.
@@ -879,7 +880,7 @@ are taken into account, improving the selectivity of the method.
 
 \medskip
 
-\textbf{\textsc{Kayak}}~\cite{10.14778/3137765.3137792} is a framework that defines its own
+\textbf{\textsc{Kayak}}~\cite{maccioni_crossing_2017} is a framework that defines its own
 set of \textit{primitives} --- insert dataset, search dataset, outlier detection --- composed of 
 reusable \textit{tasks}, etc. --- profiling, joinability computation, etc. Finally, tasks
 are decomposed in atomic \textit{steps}.
@@ -914,9 +915,9 @@ on Google Scholar --- indicates steady interest and relevance of sampling techni
 
 Finally, since Deep Learning excels at pattern recognition and data summarization,
 these techniques are becoming more popular for \gls{AQP}: for estimating the 
-answer~\cite{regev_approximating_2021,9101822}, predicting
-future queries~\cite{10020614,10.1145/3442338}, query optimization~\cite{bi_learning-based_2022},
-etc.
+answer~\cite{regev_approximating_2021,thirumuruganathan_approximate_2020}, predicting
+future queries~\cite{shahrivari_workload_2022,meduri_evaluation_2021}, query
+optimization~\cite{bi_learningbased_2022}, etc.
 
 \section{Conclusions}
 \label{sec:conclusions}
@@ -941,6 +942,6 @@ popular in \gls{AQP}, given its summarization and pattern identification capabil
 Finally, and as the main takeaway, we realized that most solutions treat files as separate,
 independent relations, leaving it to the end-user to work out how they are related,
 an observation shared by other authors~\cite{Silva2016}. One exception is
-\textsc{Kayak}~\cite{10.14778/3137765.3137792}, which integrates \textsc{Metanome}~\cite{papenbrock2015data}
+\textsc{Kayak}~\cite{maccioni_crossing_2017}, which integrates \textsc{Metanome}~\cite{papenbrock2015data}
 to extract metadata useful to link relations. Nevertheless, as we will see in the next chapter,
 the techniques from \textsc{Metanome} are not sufficient for numeric, uncertain data.
