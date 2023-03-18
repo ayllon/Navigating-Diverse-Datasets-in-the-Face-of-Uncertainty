@@ -16,8 +16,8 @@ In section~\ref{sec:mapping/results}, we summarize the results of the literature
 Finally, in section~\ref{sec:mapping/discussion}, we discuss the interpretation of our findings
 and insights.
 
-The content of this chapter appears in the article \emph{Interactive Data Exploration
-of Distributed Raw Files: A Systematic Mapping Study}~\cite{Alvarez2019},
+Two surveys were done in mid-2017 and at the end of 2022. The results from the 2017 survey appear in the
+article \emph{Interactive Data Exploration of Distributed Raw Files: A Systematic Mapping Study}~\cite{Alvarez2019},
 published on IEEE Access.
 
 \section{Overview}
@@ -61,9 +61,8 @@ In summary, we need to satisfy three main requirements:
 \end{enumerate}
 
 The granularity of the access has to be higher than \emph{file level} because
-scientists normally care about datasets that are defined by the data origin,
-year, conditions, etc\ldots, and one dataset may be distributed across
-several files.
+scientists normally care about datasets that are defined by the origin of the data --- i.e. experiment and year ---,
+and one dataset may be distributed across several files.
 
 \section{Method}
 \label{sec:mapping/method}
@@ -71,7 +70,7 @@ several files.
 Idreos \etal~\cite{Idreos2015} propose a classification of different possible approaches
 to our problem.
 This study provides an excellent introduction, but we wanted to expand on it by answering
-two questions that were not covered by the original paper, and we also wished to survey
+three questions that were not covered by the original paper, and we also wished to survey
 the subsequent evolution of the domain.
 
 \subsection{Research questions}
@@ -99,8 +98,8 @@ mentioning the importance of interconnection research~\cite{Idreos2015}, they do
 \label{sec:mapping/search_strategy}
 
 For the retrieval of studies, it is necessary to clearly define
-how the search is going to be performed. This work combines
-three different strategies, as follows:
+how the search is going to be performed. The \emph{2017} survey combined
+three different strategies:
 
 \begin{itemize}
   \item Set of known works obtained from \cite{Idreos2015} because our RQ2 is
@@ -129,15 +128,19 @@ Given the fast pace at which the field moves, older papers have been probably
 superseded or, if still relevant, we expect them to be already included in \cite{Idreos2015}.
 Consequently, we have limited the scope in time to studies published from 2010 onwards.
 
-All references obtained by any previous method were imported into
-a group in the \emph{Mendeley Reference Manager}. Any obviously non-interesting entry
----such as book or proceeding indexes---were removed at this stage.
-The definitive list can be found on a public group in
-\href{https://www.zotero.org/groups/4517638/ide-in-science/library}{Zotero.org}\footnotemark.
 
-\footnotetext{
-    \url{https://www.zotero.org/groups/4517638/ide-in-science/library}
-}
+For the \emph{2022 update} we applied forward-snowballing from the most interesting works
+identified in the 2017 survey, plus a search in \emph{ACM Digital Library}.
+
+
+All references obtained by any previous method were imported into
+the \emph{Zotero Reference Manager}. The definitive lists can be found on two public groups in
+\textsc{Zotero.org}:
+
+\begin{itemize}
+    \item \emph{Mid-2017} \href{https://www.zotero.org/groups/4517638/ide-in-science/library}{\texttt{4517638/ide-in-science}}
+    \item \emph{End of 2022} \href{https://www.zotero.org/groups/4966770/ide-in-science-update/library}{\texttt{4966770/ide-in-science-update}}
+\end{itemize}
 
 \subsection{Study selection criteria}
 We based the initial screening of studies on titles, abstracts, and keywords.
@@ -242,8 +245,8 @@ and their visualization on a time series plot.
 
 To answer \emph{RQ2}, a bubble plot can help identify
 the most frequent research type per category. In this way, we can distinguish if
-one area is more mature than another. Additionally, we counted and displayed
-how many publications include some sort of user study, which should prove
+one area is more mature than another. Additionally, we labeled
+publications including some sort of user study, which should prove
 if any particular solution successfully improves the integration of a
 human on the loop.
 
@@ -259,26 +262,36 @@ extract which publication forums are the most prominent in our results.
 In this section, we describe the outcome of each stage of the systematic mapping.
 
 \subsection{Study selection}
-As previously described, we have three different sources of papers:
-the references from \cite{Idreos2015}, search engines, and forward snowballing
-from those that pass the selection criteria.
-
 Table \ref{tab:mapping/searches} displays the search queries that were used for
-each digital library.
-All searches were done on May 16th, 2017, and they yielded a total of \numprint{5 525} articles.
-Additionally, Idreos' tutorial provided 47 papers, and the forward snowballing provided 116.
+each digital library. Note that for the end-of-2022 update only the \emph{ACM Digital Library}
+was queried since it indexes the most relevant journals and conferences from 2017 ---
+see table~\ref{tab:mapping/publication}.
 
-From this total of \numprint{5 688}, only \numprint{242}---4.25\%--were accepted.
-The details are shown in table \ref{tab:mapping/acceptance}. This rather low hit ratio
+For the 2017 survey, all searches were done on May 16th, 2017, and they yielded a total of \numprint{5 525} articles.
+Additionally, Idreos' tutorial provided 47 papers, and the forward snowballing provided 116.
+From this total of \numprint{5 688}, only \numprint{242} ---4.25\%--- were accepted.
+
+For the 2022 survey, all searches were done on the 25th of February 2023, limiting the results 
+to those published between the 1st of June 2017 and the 31st of December 2022. For the \emph{ACM
+Digital Library search}, we explicitly filtered non-primary studies, although some still were found.
+Due to limitations of the search engine, only \numprint{2000} articles were found, later reduced to 
+\numprint{1884} after de-duplication\footnotemark. Forward snowballing provided \numprint{584} articles, 
+of which \numprint{452} are articles referencing \textsc{BlinkDB}~\cite{Agarwal2013}!
+From this total of \numprint{2 468} articles, \numprint{89} --- 3.61\% --- were accepted.
+
+\footnotetext{
+    De-duplication of \emph{the same} article appearing multiple times on the search results.
+}
+
+The details are shown in table \ref{tab:mapping/acceptance}. The rather low hit ratio
 mostly comes from the online searching of digital libraries
 because the lack of well-defined, or univocal, keywords makes it difficult to decide 
 what to search for. We do not seem alone in this respect~\cite{Kitchenham2013,Jorgensen2007}.
-
-Even once defined, and because we must use different search engines, there are
+Even with the keywords defined, and because we must use different search engines, there are
 few or no commonalities between the way queries can be written and handled
 between different archives~\cite{Bailey2007, Brereton2007}.
 
-This yield is no smaller than those of systematic studies in
+The yield of our systematic mapping is no smaller than those of systematic studies in
 other fields, which can be as low as 0.3\%~\cite{Oakley2003}.
 
 \begin{table}[hptb]
@@ -303,7 +316,7 @@ other fields, which can be as low as 0.3\%~\cite{Oakley2003}.
     242 & 9 & 16 & \numprint{5 295} & 126 & \numprint{5 688} \\
     \numprint[\%]{4.25} & \numprint[\%]{0.16} & \numprint[\%]{0.28} & \numprint[\%]{93.09} & \numprint[\%]{2.22} & \numprint[\%]{100} \\
     \\
-    \multicolumn{6}{c}{\textbf{2023}} \\
+    \multicolumn{6}{c}{\textbf{2022}} \\
     89 & 1 & 19 & \numprint{2359} & 0 & \numprint{2468} \\
     \numprint[\%]{3.61} & \numprint[\%]{0.04} & \numprint[\%]{0.77} & \numprint[\%]{95.58} & \numprint[\%]{0.00} & \numprint[\%]{100} \\
   \end{tabularx}
@@ -321,7 +334,7 @@ evaluation of different techniques~\cite{Siddiqa2017,Zoumpatianos2015,Palpanas20
 Figure \ref{fig:mapping/layer_vs_type} displays the frequency of each major cluster
 against the research type count for each one. In table~\ref{tab:mapping/publication},
 we display the publication forums where more than one study has been published.
-While there are two main forums, summing 30.58\% of all the publications,
+While there are two main forums, summing \numprint[\%]{40.18} of all the publications,
 most of the papers are spread out in different conferences and journals.
 
 It is worth noting that this table includes gray literature; that is, outside of the
@@ -335,7 +348,7 @@ reviews to include gray literature in searches.
 \begin{table}[hptb]
   \small
   \begin{tabularx}{\textwidth}{X r r} \hline
-    \textbf{Category} & \textbf{2017} & \textbf{2023} \\ \hline
+    \textbf{Category} & \textbf{2017} & \textbf{2022} \\ \hline
     \textbf{User Interaction}                   & \textbf{86} & \textbf{20} \\
       \hspace{0.5em} Assisted Query Formulation & 28 & 2 \\
       \hspace{0.5em} Visual Optimizations       & 25 & 8 \\
@@ -353,15 +366,15 @@ reviews to include gray literature in searches.
       \hspace{0.5em} Sampling                   & 15 & 5 \\
       \hspace{0.5em} Adaptive Storage           & 14 & 2 \\
       \hspace{0.5em} Adaptive Loading           & 10 & 1 \\
-      \hspace{0.5em} Spatial Query              &  6 & 0 \\
-      \hspace{0.5em} Other                      &  5 & 3
+      %\hspace{0.5em} Spatial Query              &  6 & 0 \\
+      \hspace{0.5em} Other                      & 11 & 3
   \end{tabularx}
   \caption{Frequency of \glsentrylong{IDE} papers by category.}\label{tab:mapping/category_summary}
 \end{table}
 
 \begin{figure}[hptb]
     \centering
-    \includegraphics[width=\textwidth]{images/3_mapping/layer_vs_type}
+    \includegraphics{images/3_mapping/layer_vs_type}
     \caption{\glsfmtlong{IDE} Layer vs Study research type.}
     \label{fig:mapping/layer_vs_type}
 \end{figure}
@@ -369,7 +382,7 @@ reviews to include gray literature in searches.
 \begin{table}[hptb]
   \small
   \begin{tabularx}{\textwidth}{X r r} \hline
-    \textbf{Publication} & \textbf{2017} & \textbf{2023} \\ \hline
+    \textbf{Publication} & \textbf{2017} & \textbf{2022} \\ \hline
     \textbf{Journal}     & \textbf{55} & \textbf{15} \\
       \hspace{0.5em} The VLDB Journal                                         & 11 & 3 \\
       \hspace{0.5em} IEEE Transactions on Knowledge and Data Engineering      &  3 & 1 \\
@@ -404,13 +417,6 @@ reviews to include gray literature in searches.
   \caption{Frequency of papers by publication forum.}\label{tab:mapping/publication}
 \end{table}
 
-The full result of the systematic mapping of the literature is publicly
-available online\footnote{
-\url{https://www.zotero.org/groups/4517638/ide-in-science/library}
-
-\url{https://www.zotero.org/groups/4966770/ide-in-science-update/library}
-}.
-
 \section{Discussion}
 \label{sec:mapping/discussion}
 
@@ -432,29 +438,30 @@ Considering our search strategy, most of the
 results are posterior to 2012. Different approaches seem to be, in general, well
 balanced---we refer again to table \ref{tab:mapping/category_summary}---, although there
 is space for more works focused on \emph{exploration interfaces} and
-\emph{automatic exploration}, which are the less frequent published approaches.
+\emph{automatic exploration}, which are the less frequent published approaches. Interestingly,
+studies in the \emph{Middleware Layer} have increase in relative popularity.
 
 \begin{figure}[hptb]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/3_mapping/layer_histogram}
+    \includegraphics{images/3_mapping/layer_histogram}
     \caption[Number of studies per \glsfmtlong{IDE} layer and year.]{
         Number of papers per layer and year.
-        Note that the drop during 2017 is because the search was done in May 2017.
+        The red line in 2017 separate the original survey from the update.
     }
     \label{fig:mapping/layers_histogram}
 \end{figure}
 
 \subsubsection{RQ2. What is the maturity level of the existing solutions?}
 We can use the figure~\ref{fig:mapping/layer_vs_type} to answer this question.
-The vast majority of papers considered by this study---79.35\%---fall within the
+The vast majority of papers considered by this study---\numprint[\%]{83.69}---fall within the
 \emph{proposal of solution} research type.
 
 Meanwhile, \emph{evaluation} and \emph{validation} research are represented
-just by a \numprint[\%]{11} and \numprint[\%]{6.07}, respectively.
-Only 32 documents (\numprint[\%]{13}) include some sort of user study:
-24 for `User Interaction', 4 for `Database  Layer', and 2 for `Middleware'.
+just by a \numprint[\%]{7.85} and \numprint[\%]{5.14}, respectively.
+Only 37 documents (\numprint[\%]{11.2}) include some sort of user study:
+25 for `User Interaction', 5 for `Database  Layer', and 5 for `Middleware'.
 Research on how different solutions ---either existing or proposed--- perform in
-practice is lacking.
+practice is lacking. This observation is true for both the original survey and the update.
 
 These figures are hardly surprising because they seem to have been commonplace
 in computer science for a long time now~\cite{TICHY1995,ZELKOWITZ1997,Sjoberg2005}.
@@ -472,7 +479,7 @@ encouraged by the journals and conferences in this area.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{images/3_mapping/venn}
+    \includegraphics{images/3_mapping/venn}
     \caption{Venn diagram with satisfied initial requirements.}
     \label{fig:mapping/venn_requirements}
 \end{figure}
@@ -485,15 +492,15 @@ explicitly state anything about their interactivity. However, the measured times
 for selective queries that they report are in the order of a few seconds. Consequently, we
 decided to consider it to be suitable for interactive usage.
 
-The tests they perform use datasets that are close
-to the main memory available on the system and, therefore, more tests with bigger 
-dataset sizes could be needed.
+The 2022 update yielded two additional works that target \emph{interactive access}
+to \emph{raw data}: \textit{{FlashView}: {A}n {I}nteractive {V}isual {E}xplorer
+for {R}aw {D}ata}~\cite{10.14778/3137765.3137796} and
+\textit{{R}esource-{A}ware {A}daptive {I}ndexing for in {S}itu {V}isual {E}xploration
+and {A}nalytics}~\cite{maroulis_resource-aware_2023}.
 
-Aside from this paper, no other study combines access to raw data with low
-response times.
 
-The solutions that cover at least two out of the three requirements are 
-summarized in more detail in section~\ref{sec:mapping/details}.
+In section~\ref{sec:mapping/details}, we summarize the most interesting set of
+proposals found on our literature mapping.
 
 \subsection{Study insights}
 \label{sec:mapping/insights}
@@ -505,18 +512,22 @@ This would explain why, of all the classified studies, only one tool satisfies o
 three prerequisites.
 
 In general, several systems and approaches have been proposed, which could,
-perhaps, be seen as building blocks. Not all combinations necessarily make sense
-, but there seem to be research opportunities in this direction, depending
+perhaps, be seen as building blocks. Not all combinations necessarily make sense,
+but there seem to be research opportunities in this direction, depending
 on the specific needs to be covered.
 
 For instance, in our particular case, we could consider combining distributed
 access over raw files, as Han~\cite{Han2017} does, but using approximate query
 processing to reduce the response times.
 
-Code generation is a popular approach for querying raw data files
-, and approximation-aware code generation has been noted as a challenge
-yet to be addressed~\cite{Mozafari2017AQP}. Consequently, more work on this
-overlap of approaches may provide interesting results.
+Code generation is a popular approach for querying raw data files, and \linebreak
+approximation-aware code generation has been noted as a challenge
+yet to be addressed~\cite{Mozafari2017AQP}. Another trend
+for \gls{AQP} research is Deep Learning. As examples, we can find
+Recurrent Neural Networks~\cite{10020614,10.1145/3442338} for predicting future queries,
+Long Short-Term Memory networks for learning the relationship between query elements
+and query results, optimizations for querying Deep Neural Network models~\cite{10.14778/3476249.3476285},
+or deep generative models for aggregate queries~\cite{9101822}.
 
 On an orthogonal consideration, since the generation of data volume will likely
 not slow down, the trend for more tools covering specific
@@ -540,7 +551,7 @@ The gaps identified may be covered in
 journals and conferences associated with the user domain---e.g., astrophysics---,
 rather than with computer science and engineering. The forward snowballing
 step reduces this risk because these hypothetical publications would most likely
-cite the original proposal of solution. However, considering that our research method has
+cite the original proposal of solution. Considering that our research method has
 allowed us to find even gray literature, we consider this risk to be low.
 
 \subsubsection{Filtering of articles}
@@ -639,7 +650,7 @@ fully fit into memory.
 
 \medskip
 
-\textbf{ARMFUL}  (Analysis of Raw data from Multiple Files)~\cite{Silva2017}, 
+\textbf{\textsc{ARMFUL}}  (Analysis of Raw data from Multiple Files)~\cite{Silva2017}, 
 probably has the most strict requirement set of all the analyzed papers. Its 
 authors need to access raw data generated during the execution of a 
 workflow and collect their provenance with high granularity. While other 
@@ -659,16 +670,93 @@ the provenance of the data during the process.
 
 The indexing can rely on external tools, and two implementations are provided:
 one based on bitmap indexes generated by FastBit~\cite{Wu2009},
-and another one on positional maps, implemented following RAW's 
+and another one on positional maps, implemented following \textsc{RAW}'s 
 approach~\cite{Karpathiotakis2014}.
 
 Since this study particularly focuses on raw data access during simulations, the 
-interactivity only applies to the queries made to the provenance database. 
+interactivity only applies to the queries made to the provenance database.
+
+\medskip
+
+\textbf{\textsc{QUIS}}~\cite{10.14778/3137765.3137798} is a \emph{flexible engine} that
+provides its own query language as an extension of SQL, a set of adapters for a variety of
+data sources --- \gls{CSV}, MS Excel, \gls{DBMS}, etc. --- and a query engine. The SQL
+extensions allow the user to specify the data sources and their schema.
+
+\medskip
+
+\textbf{\textsc{ArrayUDF}}~\cite{10.1145/3078597.3078599}. User-Defined Functions (UDF)
+allow developers to specify operations on \emph{single} elements of a dataset: a tuple within
+a table or a cell in an array. \textsc{ArrayUDF} extends this possibility to functions over
+a neighboring range of elements, where the neighboring relationship can be flexibly specified
+--- i.e. not limited to a rectangular window. The system is aware of the physical layout of the data
+and takes it into account when scheduling the operations across multiple parallel processing elements
+in order to maximize locality.
+
+\medskip
+
+\textbf{\textsc{Diraq}}~\cite{10.1145/2462902.2465527} integrates indexing and compression of floating
+point numerical data, improving the efficiency of range queries and reducing the storage footprint
+at the same time. It does so exploiting the IEEE floating point format, where the leading bytes
+---containing sign, exponent and most significant bits of the mantissa--- generally exhibit low
+cardinality, and can be efficiently used for binning. When the system is comprised of multiple systems,
+an index is computed per \emph{group of cores}, as a well-balanced compromise between a per-core and a
+per-cluster index.
+
+\medskip
+
+In \textbf{Distributed caching for processing raw arrays}~\cite{zhao_distributed_2018}, its
+authors propose a distributed caching system aware of the necessary data locality for performant
+query computation: i.e. tuples from multiple, distributed, raw files are cached together and close
+to a compute node if it is likely that it will run future queries that need that data.
+
+\medskip
+
+\newcommand{\PScube}{PS\textsuperscript{3}\xspace}
+
+\textbf{\PScube} (Partition Selection with Summary Statistics)~\cite{rong_approximate_2020}
+improves the performance and accuracy of \gls{AQP} using summary statistics to perform weighted sampling
+of the raw datasets: instead of randomly sampling the data, \PScube builds sketches for each data
+partition, using them at query time to select which set of partitions to sample maximizing the accuracy
+while reducing the overhead. At initialization, the system samples a set of known, existing queries,
+and compute some summary statistics and the contribution of each partition to the answer. With this information,
+\PScube trains a model that learns which subset of statistics best discriminate the contribution
+of a given partition. With this, given a query, the system can predict how much a given partition will
+contribute and will weight it accordingly for the sampling.
+
+
+\subsection{Interactive access to raw files}
+
+\textbf{\textsc{FlashView}: An interactive visual explorer for raw data}~\cite{10.14778/3137765.3137796}
+is a \emph{visualization tool} that does not aim at fully replacing \gls{DBMS}, but rather
+at helping the user decide which data is worth loading into one. The user needs to provide
+a description of the data schema, which \textsc{FlashView} uses to sample the file when the first query
+arrives. Queries are treated hierarchically: samples obtained for an already processed query can be
+used to provide a first approximation of a new query if it is derived ---i.e. additional filtering---,
+while the system takes additional samples. These new samples are streamed into the running queries following
+the hierarchy, building indexes as the queries are being processed, similar to the database
+\emph{cracking} techniques~\cite{Idreos2007}.
+
+\medskip
+
+\textbf{Resource-aware adaptive indexing for in situ visual exploration and
+analytics}~\cite{maroulis_resource-aware_2023} proposes two novel adaptive indexing techniques
+to improve the performance for visual exploration of raw data:
+\textit{Categorical Exploration Tree} (CET) for categorical attributes, and \textit{Visual Exploration
+Tile-Tree Index} (VETI) that combines CET and tiling based on numerical or spatial attributes.
+On the first query, the file is parsed, and each tuple is assigned to a tile and indexed with VETI
+--- the attributes used for the spatial partitioning need to be known. The categorical attributes
+of the tuples within a tile are indexed with a CET. During exploration, tiles may be split or merged
+to improve performance. The most interesting aspect is that to keep the index size within
+the allocated resources, the indexing is treated as an optimization problem. Roughly speaking,
+tiles and attributes are assigned an expectation of \textit{utility} based on their probability of
+being requested by a future query, and CET trees are assigned a \textit{cost} based on their memory
+requirement. Finally, there is an available \textit{budget} for building the index.
+The problem can be finally mapped to the Knapsack Problem.
 
 \subsection{Distributed and interactive}
-This combination is the one with the most matching methods. Five 
-out of the six proposals are classified as ``query approximation'', and the 
-remaining one, even though labeled as ``visual optimization'',
+Six out of the seven proposals are classified as ``query approximation'', and the 
+remaining, even though labeled as ``visual optimization'',
 relies heavily on query approximation as well.
 
 It would seem that to get fast responses, some compromises on precision 
@@ -686,19 +774,19 @@ decided to classify them as such.
 
 \medskip
 
-\textbf{BlinkDB}~\cite{Agarwal2013} allows users to perform SQL-like aggregation 
+\textbf{\textsc{BlinkDB}}~\cite{Agarwal2013} allows users to perform SQL-like aggregation 
 queries on data stored on HDFS, specifying time or error constraints. First, 
 the authors base their system on the assumption - supported by evidence - that 
 the column sets used for the aggregation queries are predictable, regardless of 
 the actual grouping value. With this information, they perform a stratified 
 sampling~\cite{Lohr2009} to avoid the under-representation of rare subgroups. 
-Finally, the system chooses the suitable samples based on the query constraints 
+Finally, the system chooses suitable samples based on the query constraints 
 provided by the user, profiling them at run time so it can improve the 
 execution plan for later queries.
 
 \medskip
 
-\textbf{ScalaR}~\cite{Battle2013} improves the performance of the visualization 
+\textbf{\textsc{ScalaR}}~\cite{Battle2013} improves the performance of the visualization 
 of big data sets dynamically reducing the size of the response returned to the 
 front-end layer. Its authors provide an intermediate layer that consumes the 
 queries issued by the user and uses the statistics computed by the database 
@@ -714,7 +802,7 @@ resulting in a visual exploration tool for raw data files.
 
 \medskip
 
-The authors of \textbf{DICE} (Distributed and Interactive Cube 
+The authors of \textbf{\textsc{DICE}} (Distributed and Interactive Cube 
 Exploration)~\cite{Kamat2014} attack the problem on three fronts: speculative 
 query execution, online data sampling, and an exploration model - 
 \textit{faceted} cube exploration - that limits the number of possible queries, 
@@ -740,7 +828,7 @@ or the original proposal~\cite{Gray1997}.
 
 \medskip
 
-\textbf{AccuracyTrader}~\cite{Han2016} is a distributed approximate processing 
+\textbf{\textsc{AccuracyTrader}}~\cite{Han2016} is a distributed approximate processing 
 system comprised of two components: one online and another offline.
 
 First, the offline part reduces the dimensionality of the original data using 
@@ -765,7 +853,7 @@ the synopsis beforehand.
 
 \medskip
 
-\textbf{KIWI}~\cite{Kim2015} is a SQL front-end built on top of Hadoop that aims 
+\textbf{\textsc{KIWI}}~\cite{Kim2015} is a SQL front-end built on top of Hadoop that aims 
 to provide both batch processing and interactive analytics via approximate
 query processing. It generates both vertical (column) and horizontal (row) 
 samples, and re-writes the queries to use these samples instead of the original 
@@ -776,26 +864,39 @@ other papers about the same tool.
 
 \medskip
 
-Finally, Wang \etal~\cite{WangYi2015} introduce a framework based on the 
+Wang \etal~\cite{WangYi2015} introduce a framework based on the 
 map-reduce paradigm. Instead of the traditional batch processing approach 
 where the analysis is performed on big chunks of data, their system executes the 
 analysis logic iteratively on samples, updating an estimator in each round 
 until a stop condition is satisfied - both the estimator and condition are provided by 
 the user. When the termination condition is satisfied, the remaining jobs are 
 canceled, saving computing cycles and reducing the latency. Similarly to other 
-analyzed solutions, they use a stratified sampling to ensure a good accuracy and 
+analyzed solutions, they use stratified sampling to ensure good accuracy and 
 coverage of rare cases. 
 The sampling is done without replacement, so in each iteration, new data points 
 are taken into account, improving the selectivity of the method.
 
+\medskip
+
+\textbf{\textsc{Kayak}}~\cite{10.14778/3137765.3137792} is a framework that defines its own
+set of \textit{primitives} --- insert dataset, search dataset, outlier detection --- composed of 
+reusable \textit{tasks}, etc. --- profiling, joinability computation, etc. Finally, tasks
+are decomposed in atomic \textit{steps}.
+Individual steps have an associated cost function, and they can be executed to provide exact
+or approximate answers together with a confidence value. When the user performs a query, they can
+specify an acceptable error range. Knowing the system load, the target tolerance, and the estimated
+cost of each individual step, \textsc{Kayak} can use different strategies to optimize for confidence,
+time-to-first response, etc.
+\textsc{Kayak} leverages \textsc{Apache Spark} for the processing of
+large datasets, and \textsc{Metanome}~\cite{papenbrock2015data} for data profiling.
 
 \subsection{Summary}
 We can see some commonalities by looking at the underlying techniques used by the 
 solutions described above:
 
-First, for providing access to raw files, code generation, and positional 
-mapping seem to provide a good solution. Both are implemented either directly - 
-PostgresRaw - or used via integration with an existing implementation - DiNoDB. 
+First, for providing access to raw files, code generation and positional 
+mapping seem to provide a good solution. Both are implemented either directly --- 
+\textsc{PostgresRaw} --- or used via integration with an existing implementation --- \textsc{DiNoDB}.
 Isolating the raw data access as a database operator composes well for all 
 studied solutions regardless of the framework of reference - workflow, 
 PostgreSQL or \scidb.
@@ -803,17 +904,25 @@ PostgreSQL or \scidb.
 Second, to provide interactivity on a distributed system, the engine 
 needs to approximate the results using a deadline or an accuracy requirement as 
 a stop condition. The resiliency and the low latency are achieved by 
-being capable of processing only parts of the data via sampling - BlinkDB -, 
-pre-computed summaries - AccuracyTrader - or both. In either case, error 
+being capable of processing only parts of the data via sampling --- \textsc{BlinkDB} ---, 
+pre-computed summaries --- \textsc{AccuracyTrader} --- or both. In either case, error 
 estimation becomes an important part of the system, both internally and as 
 part of the interface exposed to the user.
+Looking at the 2022 update of the survey, \textsc{BlinkDB}'s popularity --- 867 citing papers
+on Google Scholar --- indicates steady interest and relevance of sampling techniques for \gls{AQP}.
+
+Finally, since Deep Learning excels at pattern recognition and data summarization,
+these techniques are becoming more popular for \gls{AQP}: for estimating the 
+answer~\cite{regev_approximating_2021,9101822}, predicting
+future queries~\cite{10020614,10.1145/3442338}, query optimization~\cite{bi_learning-based_2022},
+etc.
 
 \section{Conclusions}
 \label{sec:conclusions}
 In this systematic mapping study, we have detailed the method that we followed
 to gather and filter papers related to \emph{data exploration}, searching
 for solutions that tackle big data volumes stored in a distributed way and with
-a low latency. This process have produced 242 papers, which we have classified
+a low latency. This process has produced 242 papers, which we have classified
 according to their approach~\cite{Idreos2015} on one axis and to their research
 type~\cite{Wieringa2006} on another.
 
@@ -825,4 +934,12 @@ Unfortunately, this is not different from the state of other areas of the comput
 
 We have found evidence that code generation is a well-proven approach for
 accessing raw data files, although most solutions have not been generalized
-onto a distributed environment.
+onto a distributed environment. Additionally, Deep Learning is becoming increasingly
+popular in \gls{AQP}, given its summarization and pattern identification capabilities.
+
+Finally, and as the main takeaway, we realized that most solutions treat files as separate,
+independent relations, leaving it to the end-user to work out how they are related,
+an observation shared by other authors~\cite{Silva2016}. One exception is
+\textsc{Kayak}~\cite{10.14778/3137765.3137792}, which integrates \textsc{Metanome}~\cite{papenbrock2015data}
+to extract metadata useful to link relations. Nevertheless, as we will see in the next chapter,
+the techniques from \textsc{Metanome} are not sufficient for numeric, uncertain data.

@@ -1,8 +1,7 @@
 
 As a result of the survey presented in chapter~\ref{chapter:literature_review},
-we realized that most solutions treat files
-as separate, independent relations, leaving it to the end-user to work out how they are related,
-an observation shared by other authors~\cite{Silva2016}.
+we found that most solutions treat files
+as separate, independent relations.
 These files may not have yet been ingested into a database system and 
 the schema may be unfamiliar and not adequately documented or even be
 composed of multiple files with heterogeneous schemes~\cite{alawini2016,zhang2015astronomy}.
@@ -244,12 +243,14 @@ finding high arity \glspl{IND} unfeasible. This is because the search space tend
 with the number of one-attribute matches, making unary \glspl{IND} search time much less important
 than reducing the number of false positives.
 
-We used a published experimental evaluation of \gls{IND} finding techniques~\cite{Dursch2019} as a starting point for
+We used a published experimental evaluation of \gls{IND} finding techniques~\cite{Dursch2019}
+as a starting point for
 assessing how adequate existing solutions are for our problem. The authors carried out a
 set of experiments with thirteen \gls{IND} algorithms, of which seven are for unary \glspl{IND},
 four for $n$-ary \glspl{IND}, and two for both types. A more recent survey confirms that this
 work contains the current state-of-the-art for Inclusion
-Dependencies~\cite{kossmann_data_2022}.
+Dependencies~\cite{kossmann_data_2022}. It is worth mentioning that this evaluation is based on
+\textsc{Metanome}, the library used by \textsc{Kayak} to profile the datasets.
 
 We now briefly describe the $n$-ary finding
 algorithms evaluated by the authors and discuss their suitability for our needs.
