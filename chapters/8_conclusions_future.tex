@@ -176,13 +176,23 @@ available for data scientists:
     run-time and decrease the noise. Nonetheless, a complication arises because
     we do not know which attributes are shared.
         
-    \item Finally, \textbf{multidimensional \emph{complementarity}} is another interesting
+    \item Finally, \textbf{Multidimensional \emph{complementarity}} is another interesting
     area for further research. For instance, a single dataset may be split between multiple files
     based on the values from a given set of attributes (i.e., coordinates), which may or may not overlap.
     Combining complementary datasets would be a powerful addition to \gls{EDD} finding.
 \end{itemize}
 
-\newpage
+Future research can also be directed toward novel applications of the algorithms presented in this work,
+particularly in privacy preserving data mining.
+For instance, \PresQ is designed to \emph{link} multiple datasets containing noise, errors, and uncertainty.
+It can be interesting to evaluate its capabilities to perform \emph{linking} (re-identification)
+attacks~\cite{Chen2009} on anonymized datasets. Additionally, the results of our tests on the
+two-sample test based on \gls{SOM}, particularly the example shown in section~\ref{subsec:som_oulad},
+ hint at the possibility of using this technique in order to achieve \emph{attribute disclosure}:
+ the attackers improve their knowledge of a set of attributes for a given individual~\cite{ENISA2015}.
+Should these algorithms prove useful in performing this kind of attack, researchers could
+use them to guide their efforts towards new defense models.
+
 
 \section*{Acknowledgments}
 
