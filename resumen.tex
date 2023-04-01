@@ -1,3 +1,37 @@
 \begin{otherlanguage}{spanish}
-\lipsum[1-2]
+{\fontsize{11}{11}\selectfont
+Uno de los mayores problemas del \textit{big data} es el origen diverso de los datos.
+Un investigador puede estar interesado en agregar datos provenientes de múltiples
+ficheros que aún no han sido pre-procesados e insertados en un sistema de bases de datos,
+debiendo depurar y filtrar el contenido antes de poder extraer conocimiento.
+
+La exploración directa de estos ficheros mostrará serios problemas de rendimiento.
+Por un lado, examinar archivos sin ningún tipo de preparación ni indexación puede ser ineficiente tanto
+en términos de almacenamiento como de ejecución. Por otro lado, procesar los datos antes de entenderlos
+introduce latencia y trabajo potencialmente redundante si el esquema
+elegido no se ajusta a las consultas ejecutadas. Afortunadamente, nuestra revisión del estado del arte
+demuestra que existen múltiples posibles soluciones para explorar datos \emph{in-situ} de manera efectiva.
+
+Otra gran dificultad es la gestión de archivos de diversas procedencias, ya que su esquema y disposición pueden
+no ser compatibles, o no estar correctamente documentados. La mayoría de las soluciones encontradas
+pasan por alto esta problemática, especialmente en lo referente a datos numéricos e inciertos,
+como, por ejemplo, aquellos relacionados con atributos físicos generados en campos como la astronomía.
+
+Nuestro objetivo principal es ayudar a los investigadores a explorar este tipo de datos sin
+procesamiento previo, almacenados en múltiples archivos, y empleando únicamente su distribución intrínseca.
+
+En esta tesis primero introducimos el concepto de \textit{Equally-Distributed Dependencies}
+(Dependencias de Igualdad de Distribución), estableciendo las bases necesarias para ser capaz
+de emparejar conjuntos de datos con esquemas diferentes, pero con atributos en común.
+Luego, presentamos \PresQ, un nuevo algoritmo probabilístico de búsqueda de \textit{quasi-cliques} en hiper-grafos.
+El enfoque estadístico de \PresQ permite corresponder el problema de búsqueda de EDD con el de búsqueda
+de quasi-cliques.
+
+Finalmente, proponemos una prueba estadística basada en \textit{Self-Organizing Maps} (Mapa autoorganizado).
+Este método puede superar, en términos de poder estadístico, otras técnicas
+basadas en clasificadores, siendo en algunos casos comparable a métodos basados en \textit{kernels},
+con la ventaja adicional de ser interpretable.
+
+Tanto \PresQ como la prueba estadística basada en SOM pueden impulsar descubrimientos serendípicos.
+}
 \end{otherlanguage}
