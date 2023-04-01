@@ -1,1 +1,43 @@
-\lipsum[1-2]
+% Follow thesis structure
+{\fontsize{11}{11}\selectfont
+% Intro (Research questions!)
+When exploring big volumes of data, one of the challenging aspects
+is their diversity of origin. Multiple files that have not yet been ingested into a
+database system may contain information of interest to a researcher,
+who must curate, understand and sieve their content before being able to 
+extract \emph{knowledge}.
+
+% Review + Gaps
+Performance is one of the greatest difficulties for \emph{exploring} these datasets.
+On the one hand, examining non-indexed, unprocessed files can be inefficient. On the
+other hand, any processing before its \emph{understanding} introduces latency and
+potentially unnecessary work if the chosen schema matches poorly the data.
+We have surveyed the state-of-the-art and, fortunately, there exist multiple
+proposal of solutions to handle data \emph{in-situ} performantly.
+
+% Objective
+Another major difficulty is matching files from multiple origins since their
+schema and layout may not be compatible or properly documented. Most surveyed solutions overlook this problem, especially for numeric, uncertain data, as is typical
+in fields like astronomy.
+
+The main objective of our research is to assist data scientists during the exploration of 
+unprocessed, numerical, raw data distributed across multiple files based solely on its
+intrinsic distribution.
+
+In this thesis, we first introduce the concept of \emph{Equally-Distributed Dependencies}, which
+provides the foundations to match this kind of dataset.
+% PresQ
+We propose \PresQ, a novel algorithm that finds quasi-cliques on hypergraphs based
+on their expected statistical properties. The probabilistic approach of \PresQ can be
+successfully exploited to mine EDD between diverse datasets when the underlying populations
+can be assumed to be the same.
+
+% SOM
+Finally, we propose a two-sample statistical test based on Self-Organizing Maps,
+a novel machine-learning-based technique for hypothesis testing. This method
+can outperform, in terms of power, other classifier-based two-sample tests, being in some cases
+comparable to kernel-based methods, with the advantage of being interpretable.
+
+% Discussion + Conclusions (Results!)
+Both \PresQ and the SOM-based statistical test can provide insights that drive serendipitous discoveries.
+}
