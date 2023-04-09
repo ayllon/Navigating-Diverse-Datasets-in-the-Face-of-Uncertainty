@@ -1,4 +1,10 @@
+In this chapter, we first summarize our research in section~\ref{sec:conclusions_summary}.
+Then, in section~\ref{sec:conclusions_contributions}, we enumerate the main contributions
+of this thesis. Finally, in section~\ref{sec:conclusions_future}, we suggest possible
+future lines of work to either improve or build upon the contributions from the present work.
+
 \section{Summary}
+\label{sec:conclusions_summary}
 
 \emph{In-situ} Data Exploration is an active research area that requires
 a multidisciplinary approach: algorithms, data structures, machine learning,
@@ -13,7 +19,7 @@ for access, and any early decision on how to ingest them into a database may be
 counterproductive until the dataset is better understood.
 
 The literature survey from chapter~\ref{chapter:literature_review} showed that
-solutions for visualization, optimizations, indexing and physical layout abound.
+solutions for visualization, optimizations, indexing, and physical layout abound.
 Still, there is little to no mention of assisting users on \emph{understanding}
 data schema, especially when it comes to multiple files from diverse origins or
 when meta-data is incomplete or inconsistent.
@@ -47,32 +53,39 @@ cross-matching both datasets using the matching set of features. The resulting \
 is also interpretable in case of rejection, which is also helpful in tentative data exploration.
 
 \section{Contributions}
+\label{sec:conclusions_contributions}
 
 We summarize here the main contributions of this thesis:
 
 \subsection{Survey of state of the art}
 Idreos \etal surveyed the state of the art of \gls{IDE} up to the first half of 2015~\cite{Idreos2015}.
 Being an active research area, we performed an exhaustive systematic literature mapping up to mid-2017.
-Almost 60\% of the classified works were published in 2015 and later. The results
-of this survey, presented in chapter~\ref{chapter:literature_review}, are a valuable update on
-the state-of-the-art, and contribute to the first sub-objective: finding existing techniques that help users
-to explore the data in-situ.
+Almost 60\% of the classified works were published in 2015 and later.
+
+By the end of 2022, we updated our survey to check on the evolution of the research. This second
+round showed that sampling techniques for \gls{AQP} remain a popular and evolving
+area of research. Additionally, Deep Learning is becoming more popular in this domain thanks to its
+capabilities of pattern recognition and data summarization.
+
+The results of this survey, presented in chapter~\ref{chapter:literature_review}, are a valuable update on
+the state-of-the-art and contribute to the first sub-objective: finding existing techniques that help users
+to explore the data in situ.
 
 \subsection{New category for Interactive Data Exploration}
-The state of the literature at the time of our survey indicated that, within the
-\gls{IDE} research community, querying datasets split over multiple files is
+The state of the literature at the time of our survey indicated that within the
+\gls{IDE} research community, querying datasets split over multiple files is often
 neglected~\cite{Silva2016}. One could argue that the logical file containing a given
 subset of the data is a detail that can be integrated into an existing index. This is
 true as long as the data layout is similar, but this is not always the case.
 We proposed a new category within the \emph{Middleware Layer}: \emph{Schema Homogenization}.
 A new set of articles has been classified under this category in table~\ref{tab:missing_middleware}.
-This new categorization contributes to the first and second --- identify gaps in the coverage --- sub-objectives.
+This new categorization contributes to the first and second sub-objectives: identify gaps in the coverage.
 
 \subsection{Definition of \glsentrylong{EDD}}
 In section \ref{sec:edd}, we introduced the concept of \glsxtrlong{EDD}, expanding
 the family of data dependencies to four types~\cite{abedjan2015}. We
 summarize the classification in table~\ref{tab:family_dependencies}.
-Note that \gls{EDD} are, by definition, approximate.
+Note that \gls{EDD} are always, by definition, approximate.
 
 \begin{table}[htb]
 \centering
@@ -112,7 +125,8 @@ of use to other areas that have a strong combinatorial aspect, such as
 chemistry or biology~\cite{Bretto2013}.
 
 In chapter~\ref{chapter:som}, we introduced a two-sample multivariate statistical test based on
-\glspl{SOM} with a performance comparable to tests based on machine learning models. An additional advantage
+\glspl{SOM} with a statistical performance comparable to tests based on machine learning models.
+An additional advantage
 of this technique is that it outputs an interpretable projection of the two samples. It can be used
 by itself or in conjunction with \PresQ.
 
@@ -142,6 +156,7 @@ available in Zenodo:
 \end{refsection}
 
 \section{Future work}
+\label{sec:conclusions_future}
 
 Finally, we enumerate some interesting research paths that can further improve
 the current state of the art, adding valuable algorithms to the tool-sets
@@ -183,7 +198,7 @@ available for data scientists:
 \end{itemize}
 
 Future research can also be directed toward novel applications of the algorithms presented in this work,
-particularly in privacy preserving data mining.
+particularly in privacy-preserving data mining.
 For instance, \PresQ is designed to \emph{link} multiple datasets containing noise, errors, and uncertainty.
 It can be interesting to evaluate its capabilities to perform \emph{linking} (re-identification)
 attacks~\cite{Chen2009} on anonymized datasets. Additionally, the results of our tests on the
@@ -191,7 +206,7 @@ two-sample test based on \gls{SOM}, particularly the example shown in section~\r
  hint at the possibility of using this technique in order to achieve \emph{attribute disclosure}:
  the attackers improve their knowledge of a set of attributes for a given individual~\cite{ENISA2015}.
 Should these algorithms prove useful in performing this kind of attack, researchers could
-use them to guide their efforts towards new defense models.
+use them to guide their efforts toward new defense models.
 
 
 \section*{Acknowledgments}
