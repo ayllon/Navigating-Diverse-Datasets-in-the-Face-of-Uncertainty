@@ -1,4 +1,834 @@
 
+@article{ma_omics_2017,
+	title = {Omics informatics: {From} scattered individual software tools to integrated workflow management systems},
+	volume = {14},
+	issn = {1545-5963},
+	url = {https://doi.org/10.1109/TCBB.2016.2535251},
+	doi = {10.1109/TCBB.2016.2535251},
+	abstract = {Omic data analyses pose great informatics challenges. As an emerging subfield of bioinformatics, omics informatics focuses on analyzing multi-omic data efficiently and effectively, and is gaining momentum. There are two underlying trends in the expansion of omics informatics landscape: the explosion of scattered individual omics informatics tools with each of which focuses on a specific task in both single- and multi- omic settings, and the fast-evolving integrated software platforms such as workflow management systems that can assemble multiple tools into pipelines and streamline integrative analysis for complicated tasks. In this survey, we give a holistic view of omics informatics, from scattered individual informatics tools to integrated workflow management systems. We not only outline the landscape and challenges of omics informatics, but also sample a number of widely used and cutting-edge algorithms in omics data analysis to give readers a fine-grained view. We survey various workflow management systems WMSs, classify them into three levels of WMSs from simple software toolkits to integrated multi-omic analytical platforms, and point out the emerging needs for developing intelligent workflow management systems. We also discuss the challenges, strategies and some existing work in systematic evaluation of omics informatics tools. We conclude by providing future perspectives of emerging fields and new frontiers in omics informatics.},
+	number = {4},
+	journal = {IEEE/ACM Transactions on Computational Biology and Bioinformatics},
+	author = {Ma, Tianle and Zhang, Aidong},
+	month = jul,
+	year = {2017},
+	note = {Number of pages: 21
+Place: Washington, DC, USA
+Publisher: IEEE Computer Society Press},
+	pages = {926--946},
+}
+
+@article{orr_probabilistic_2017,
+	title = {Probabilistic database summarization for interactive data exploration},
+	volume = {10},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3115404.3115419},
+	doi = {10.14778/3115404.3115419},
+	abstract = {We present a probabilistic approach to generate a small, query-able summary of a dataset for interactive data exploration. Departing from traditional summarization techniques, we use the Principle of Maximum Entropy to generate a probabilistic representation of the data that can be used to give approximate query answers. We develop the theoretical framework and formulation of our probabilistic representation and show how to use it to answer queries. We then present solving techniques and give three critical optimizations to improve preprocessing time and query accuracy. Lastly, we experimentally evaluate our work using a 5 GB dataset of flights within the United States and a 210 GB dataset from an astronomy particle simulation. While our current work only supports linear queries, we show that our technique can successfully answer queries faster than sampling while introducing, on average, no more error than sampling and can better distinguish between rare and nonexistent values.},
+	number = {10},
+	journal = {Proc. VLDB Endow.},
+	author = {Orr, Laurel and Balazinska, Magdalena and Suciu, Dan},
+	month = jun,
+	year = {2017},
+	note = {Number of pages: 12
+Publisher: VLDB Endowment},
+	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {1154--1165},
+}
+
+@article{muller_improved_2018,
+	title = {Improved selectivity estimation by combining knowledge from sampling and synopses},
+	volume = {11},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3213880.3213882},
+	doi = {10.14778/3213880.3213882},
+	abstract = {Estimating selectivities remains a critical task in query processing. Optimizers rely on the accuracy of selectivities when generating execution plans and, in approximate query answering, estimated selectivities affect the quality of the result. Many systems maintain synopses, e.g., histograms, and, in addition, provide sampling facilities. In this paper, we present a novel approach to combine knowledge from synopses and sampling for the purpose of selectivity estimation for conjunctive queries. We first show how to extract information from synopses and sampling such that they are mutually consistent. In a second step, we show how to combine them and decide on an admissible selectivity estimate. We compare our approach to state-of-the-art methods and evaluate the strengths and limitations of each approach.},
+	number = {9},
+	journal = {Proc. VLDB Endow.},
+	author = {Müller, Magnus and Moerkotte, Guido and Kolb, Oliver},
+	month = may,
+	year = {2018},
+	note = {Number of pages: 13
+Publisher: VLDB Endowment},
+	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {1016--1028},
+}
+
+@article{palkar_filter_2018,
+	title = {Filter before you parse: {Faster} analytics on raw data with sparser},
+	volume = {11},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3236187.3236207},
+	doi = {10.14778/3236187.3236207},
+	abstract = {Exploratory big data applications often run on raw unstructured or semi-structured data formats, such as JSON files or text logs. These applications can spend 80–90\% of their execution time parsing the data. In this paper, we propose a new approach for reducing this overhead: apply filters on the data's raw bytestream before parsing. This technique, which we call raw filtering, leverages the features of modern hardware and the high selectivity of queries found in many exploratory applications. With raw filtering, a user-specified query predicate is compiled into a set of filtering primitives called raw filters (RFs). RFs are fast, SIMD-based operators that occasionally yield false positives, but never false negatives. We combine multiple RFs into an RF cascade to decrease the false positive rate and maximize parsing throughput. Because the best RF cascade is data-dependent, we propose an optimizer that dynamically selects the combination of RFs with the best expected throughput, achieving within 10\% of the global optimum cascade while adding less than 1.2\% overhead. We implement these techniques in a system called Sparser, which automatically manages a parsing cascade given a data stream in a supported format (e.g., JSON, Avro, Parquet) and a user query. We show that many real-world applications are highly selective and benefit from Sparser. Across diverse workloads, Sparser accelerates state-of-the-art parsers such as Mison by up to 22 × and improves end-to-end application performance by up to 9 ×.},
+	number = {11},
+	journal = {Proc. VLDB Endow.},
+	author = {Palkar, Shoumik and Abuzaid, Firas and Bailis, Peter and Zaharia, Matei},
+	month = jul,
+	year = {2018},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {RRaw: Yes, cluster:Flexible Engines, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
+	pages = {1576--1589},
+}
+
+@article{rossi_interactive_2018,
+	title = {Interactive visual graph mining and learning},
+	volume = {9},
+	issn = {2157-6904},
+	url = {https://doi.org/10.1145/3200764},
+	doi = {10.1145/3200764},
+	abstract = {This article presents a platform for interactive graph mining and relational machine learning called GraphVis. The platform combines interactive visual representations with state-of-the-art graph mining and relational machine learning techniques to aid in revealing important insights quickly as well as learning an appropriate and highly predictive model for a particular task (e.g., classification, link prediction, discovering the roles of nodes, and finding influential nodes). Visual representations and interaction techniques and tools are developed for simple, fast, and intuitive real-time interactive exploration, mining, and modeling of graph data. In particular, we propose techniques for interactive relational learning (e.g., node/link classification), interactive link prediction and weighting, role discovery and community detection, higher-order network analysis (via graphlets, network motifs), among others. GraphVis also allows for the refinement and tuning of graph mining and relational learning methods for specific application domains and constraints via an end-to-end interactive visual analytic pipeline that learns, infers, and provides rapid interactive visualization with immediate feedback at each change/prediction in real-time. Other key aspects include interactive filtering, querying, ranking, manipulating, exporting, as well as tools for dynamic network analysis and visualization, interactive graph generators (including new block model approaches), and a variety of multi-level network analysis techniques.},
+	number = {5},
+	journal = {ACM Transactions on Intelligent Systems and Technology},
+	author = {Rossi, Ryan A. and Ahmed, Nesreen K. and Zhou, Rong and Eldardiry, Hoda},
+	month = jul,
+	year = {2018},
+	note = {Number of pages: 25
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {RInteractive: Yes, cluster:Visual Tools, layer:User Interaction, supercluster:Data Visualization, type:Proposal of Solution},
+}
+
+@article{steindorfer_tomany_2018,
+	title = {To-many or to-{One}? {All}-in-one! {Efficient} purely functional multi-maps with type-heterogeneous hash-tries},
+	volume = {53},
+	issn = {0362-1340},
+	url = {https://doi.org/10.1145/3296979.3192420},
+	doi = {10.1145/3296979.3192420},
+	abstract = {An immutable multi-map is a many-to-many map data structure with expected fast insert and lookup operations. This data structure is used for applications processing graphs or many-to-many relations as applied in compilers, runtimes of programming languages, or in static analysis of object-oriented systems. Collection data structures are assumed to carefully balance execution time of operations with memory consumption characteristics and need to scale gracefully from a few elements to multiple gigabytes at least. When processing larger in-memory data sets the overhead of the data structure encoding itself becomes a memory usage bottleneck, dominating the overall performance. In this paper we propose AXIOM, a novel hash-trie data structure that allows for a highly efficient and type-safe multi-map encoding by distinguishing inlined values of singleton sets from nested sets of multi-mappings. AXIOM strictly generalizes over previous hash-trie data structures by supporting the processing of fine-grained type-heterogeneous content on the implementation level (while API and language support for type-heterogeneity are not scope of this paper). We detail the design and optimizations of AXIOM and further compare it against state-of-the-art immutable maps and multi-maps in Java, Scala and Clojure. We isolate key differences using microbenchmarks and validate the resulting conclusions on a case study in static analysis. AXIOM reduces the key-value storage overhead by 1.87x; with specializing and inlining across collection boundaries it improves by 5.1x.},
+	number = {4},
+	journal = {SIGPLAN Not.},
+	author = {Steindorfer, Michael J. and Vinju, Jurgen J.},
+	month = jun,
+	year = {2018},
+	note = {Number of pages: 13
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {Data structures, JVM, functional programming, graph, hashtable, many-to-many relation, multi-map, optimization, performance, persistent data structures},
+	pages = {283--295},
+}
+
+@article{wang_rcindex_2018,
+	title = {{RC}-{Index}: {Diversifying} answers to range queries},
+	volume = {11},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3192965.3192969},
+	doi = {10.14778/3192965.3192969},
+	abstract = {Query result diversification is widely used in data exploration, Web search, and recommendation systems. The problem of returning diversified query results consists of finding a small subset of valid query answers that are representative and different from one another, usually quantified by a diversity score. Most existing techniques for query diversification first compute all valid query results and then find a diverse subset. These techniques are inefficient when the set of valid query results is large. Other work has proposed efficient solutions for restricted application settings, where results are shared across multiple queries. In this paper, our goal is to support result diversification for general range queries over a single relation. We propose the RC-Index, a novel index structure that achieves efficiency by reducing the number of items that must be retrieved by the database to form a diverse set of the desired size (about 1 second for a dataset of 1 million items). Further, we prove that an RC-Index offers strong approximation guarantees. To the best of our knowledge, this is the first index-based diversification method with a guaranteed approximation ratio for range queries.},
+	number = {7},
+	journal = {Proc. VLDB Endow.},
+	author = {Wang, Yue and Meliou, Alexandra and Miklau, Gerome},
+	month = mar,
+	year = {2018},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+	pages = {773--786},
+}
+
+@article{olma_adaptive_2019,
+	title = {Adaptive partitioning and indexing for in situ query processing},
+	volume = {29},
+	issn = {1066-8888},
+	url = {https://doi.org/10.1007/s00778-019-00580-x},
+	doi = {10.1007/s00778-019-00580-x},
+	abstract = {The constant flux of data and queries alike has been pushing the boundaries of data analysis systems. The increasing size of raw data files has made data loading an expensive operation that delays the data-to-insight time. To alleviate the loading cost, in situ query processing systems operate directly over raw data and offer instant access to data. At the same time, analytical workloads have increasing number of queries. Typically, each query focuses on a constantly shifting—yet small—range. As a result, minimizing the workload latency requires the benefits of indexing in in situ query processing. In this paper, we present an online partitioning and indexing scheme, along with a partitioning and indexing tuner tailored for in situ querying engines. The proposed system design improves query execution time by taking into account user query patterns, to (i) partition raw data files logically and (ii) build lightweight partition-specific indexes for each partition. We build an in situ query engine called Slalom to showcase the impact of our design. Slalom employs adaptive partitioning and builds non-obtrusive indexes in different partitions on-the-fly based on lightweight query access pattern monitoring. As a result of its lightweight nature, Slalom achieves efficient query processing over raw data with minimal memory consumption. Our experimentation with both microbenchmarks and real-life workloads shows that Slalom outperforms state-of-the-art in situ engines and achieves comparable query response times with fully indexed DBMS, offering lower cumulative query execution times for query workloads with increasing size and unpredictable access patterns.},
+	number = {1},
+	journal = {The VLDB Journal},
+	author = {Olma, Matthaios and Karpathiotakis, Manos and Alagiannis, Ioannis and Athanassoulis, Manos and Ailamaki, Anastasia},
+	month = nov,
+	year = {2019},
+	note = {Number of pages: 23
+Place: Berlin, Heidelberg
+Publisher: Springer-Verlag},
+	keywords = {RRaw: Yes, cluster:Adaptive Indexing, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+	pages = {569--591},
+}
+
+@article{qin_making_2019,
+	title = {Making data visualization more efficient and effective: {A} survey},
+	volume = {29},
+	issn = {1066-8888},
+	url = {https://doi.org/10.1007/s00778-019-00588-3},
+	doi = {10.1007/s00778-019-00588-3},
+	abstract = {Data visualization is crucial in today’s data-driven business world, which has been widely used for helping decision making that is closely related to major revenues of many industrial companies. However, due to the high demand of data processing w.r.t. the volume, velocity, and veracity of data, there is an emerging need for database experts to help for efficient and effective data visualization. In response to this demand, this article surveys techniques that make data visualization more efficient and effective. (1) Visualization specifications define how the users can specify their requirements for generating visualizations. (2) Efficient approaches for data visualization process the data and a given visualization specification, which then produce visualizations with the primary target to be efficient and scalable at an interactive speed. (3) Data visualization recommendation is to auto-complete an incomplete specification, or to discover more interesting visualizations based on a reference visualization.},
+	number = {1},
+	journal = {The VLDB Journal},
+	author = {Qin, Xuedi and Luo, Yuyu and Tang, Nan and Li, Guoliang},
+	month = nov,
+	year = {2019},
+	note = {Number of pages: 25
+Place: Berlin, Heidelberg
+Publisher: Springer-Verlag},
+	keywords = {Data visualization, Data visualization recommendation, Efficient data visualization, Visualization languages},
+	pages = {93--117},
+}
+
+@article{rahman_evaluating_2019,
+	title = {Evaluating interactive data systems: {Survey} and case studies},
+	volume = {29},
+	issn = {1066-8888},
+	url = {https://doi.org/10.1007/s00778-019-00589-2},
+	doi = {10.1007/s00778-019-00589-2},
+	abstract = {Interactive query interfaces have become a popular tool for ad hoc data analysis and exploration. Compared with traditional systems that are optimized for throughput or batched performance, these systems focus more on user-centric interactivity. This poses a new class of performance challenges to the backend, which are further exacerbated by the advent of new interaction modes\&nbsp;(e.g., touch, gesture) and query interface paradigms\&nbsp;(e.g., sliders, maps). There is, thus, a need to clearly articulate the evaluation space for interactive systems. In this paper, we extensively survey the literature to guide the development and evaluation of interactive data systems. We highlight unique characteristics of interactive workloads, discuss confounding factors when conducting user studies, and catalog popular metrics for evaluation. We further delineate certain behaviors not captured by these metrics and propose complementary ones to provide a complete picture of interactivity. We demonstrate how to analyze and employ user behavior for system enhancements through three case studies. Our survey and case studies motivate the need for behavior-driven evaluation and optimizations when building interactive interfaces.},
+	number = {1},
+	journal = {The VLDB Journal},
+	author = {Rahman, Protiva and Jiang, Lilong and Nandi, Arnab},
+	month = nov,
+	year = {2019},
+	note = {Number of pages: 28
+Place: Berlin, Heidelberg
+Publisher: Springer-Verlag},
+	keywords = {Benchmark, Evaluation, Gestural devices, Human-in-the-loop, Interactive systems, Survey, Touch-screen},
+	pages = {119--146},
+}
+
+@article{walenz_learning_2019,
+	title = {Learning to sample: {Counting} with complex queries},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3368289.3368302},
+	doi = {10.14778/3368289.3368302},
+	abstract = {We study the problem of efficiently estimating counts for queries involving complex filters, such as user-defined functions, or predicates involving self-joins and correlated subqueries. For such queries, traditional sampling techniques may not be applicable due to the complexity of the filter preventing sampling over joins, and sampling after the join may not be feasible due to the cost of computing the full join. The other natural approach of training and using an inexpensive classifier to estimate the count instead of the expensive predicate suffers from the difficulties in training a good classifier and giving meaningful confidence intervals. In this paper we propose a new method of learning to sample where we combine the best of both worlds by using sampling in two phases. First, we use samples to learn a probabilistic classifier, and then use the classifier to design a stratified sampling method to obtain the final estimates. We theoretically analyze algorithms for obtaining an optimal stratification, and compare our approach with a suite of natural alternatives like quantification learning, weighted and stratified sampling, and other techniques from the literature. We also provide extensive experiments in diverse use cases using multiple real and synthetic datasets to evaluate the quality, efficiency, and robustness of our approach.},
+	number = {3},
+	journal = {Proc. VLDB Endow.},
+	author = {Walenz, Brett and Sintos, Stavros and Roy, Sudeepa and Yang, Jun},
+	month = nov,
+	year = {2019},
+	note = {Number of pages: 13
+Publisher: VLDB Endowment},
+	keywords = {cluster:Sampling, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
+	pages = {390--402},
+}
+
+@article{hameed_data_2020,
+	title = {Data preparation: {A} survey of commercial tools},
+	volume = {49},
+	issn = {0163-5808},
+	url = {https://doi.org/10.1145/3444831.3444835},
+	doi = {10.1145/3444831.3444835},
+	abstract = {Raw data are often messy: they follow different encodings, records are not well structured, values do not adhere to patterns, etc. Such data are in general not fit to be ingested by downstream applications, such as data analytics tools, or even by data management systems. The act of obtaining information from raw data relies on some data preparation process. Data preparation is integral to advanced data analysis and data management, not only for data science but for any data-driven applications. Existing data preparation tools are operational and useful, but there is still room for improvement and optimization. With increasing data volume and its messy nature, the demand for prepared data increases day by day.To cater to this demand, companies and researchers are developing techniques and tools for data preparation. To better understand the available data preparation systems, we have conducted a survey to investigate (1) prominent data preparation tools, (2) distinctive tool features, (3) the need for preliminary data processing even for these tools and, (4) features and abilities that are still lacking. We conclude with an argument in support of automatic and intelligent data preparation beyond traditional and simplistic techniques.},
+	number = {3},
+	journal = {Sigmod Record},
+	author = {Hameed, Mazhar and Naumann, Felix},
+	month = dec,
+	year = {2020},
+	note = {Number of pages: 12
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {data cleaning, data quality, data wrangling},
+	pages = {18--29},
+}
+
+@article{lin_plato_2020,
+	title = {Plato: {Approximate} analytics over compressed time series with tight deterministic error guarantees},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3384345.3384357},
+	doi = {10.14778/3384345.3384357},
+	abstract = {Plato provides fast approximate analytics on time series, by precomputing and storing compressed time series. Plato's key novelty is the delivery of tight deterministic error guarantees for the linear algebra operators over vectors/time series, the inner product operator and arithmetic operators. Composing them allows for evaluating common statistics, such as correlation and cross-correlation. In the offline processing phase, Plato (i) segments each time series into several disjoint segmentations using known fixed-length or variable-length segmentation algorithms; (ii) compresses each segment by a compression function that is coming from a user-chosen compression function family; and (iii) associates to each segment 1 to 3 precomputed error measures. In the online query processing phase, Plato uses the error measures to compute the error guarantees. Importantly, we identify certain compression function families that lead to theoretically and experimentally higher quality guarantees.},
+	number = {7},
+	journal = {Proc. VLDB Endow.},
+	author = {Lin, Chunbin and Boursier, Etienne and Papakonstantinou, Yannis},
+	month = mar,
+	year = {2020},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {cluster:Time Series, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+	pages = {1105--1118},
+}
+
+@article{trummer_demonstrating_2020,
+	title = {Demonstrating the voice-based exploration of large data sets with {CiceroDB}-{Zero}},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3415478.3415496},
+	doi = {10.14778/3415478.3415496},
+	abstract = {This demonstration enables participants to explore large data sets via voice interfaces. The focus of the demonstration is on methods generating concise speech descriptions of query results, specified by users via voice input. The technical novelty of the demonstrated system lies in the fact that processing overheads are mostly moved into a pre-processing phase, generating speeches for batches of queries defined via templates. Visitors can access the demo via smart speakers on-site or via their own smart phones. They will be able to customize the generated voice descriptions and to tune voice output methods.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Trummer, Immanuel},
+	month = sep,
+	year = {2020},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {cluster:Novel Query Interfaces, layer:User Interaction, supercluster:Exploration Interfaces, type:Proposal of Solution},
+	pages = {2869--2872},
+}
+
+@article{yu_tabula_2020,
+	title = {Tabula in action: {A} sampling middleware for interactive geospatial visualization dashboards},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3415478.3415510},
+	doi = {10.14778/3415478.3415510},
+	abstract = {In this paper, we demonstrate Tabula, a middleware that sits between the data system and the geospatial visualization dashboard to increase user interactivity. The proposed system adopts a sampling cube approach that stores prematerialized spatial samples and allows data scientists to define their own accuracy loss function such that the produced samples can be used for various user-defined visualization tasks. The system ensures that the difference between the sample fed into the dashboard and the raw query answer never exceeds the user-specified loss threshold. For demonstration purposes, we connect Apache Zeppelin, a visualization dashboard, to the system and show how Tabula accelerates interactive visualizations on NYC Taxi Trip data, Yelp review data and San Diego Smart Streetlights data.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Yu, Jia and Chowdhury, Kanchan and Sarwat, Mohamed},
+	month = sep,
+	year = {2020},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {2925--2928},
+}
+
+@article{bellavista_decentralised_2021,
+	title = {Decentralised learning in federated deployment environments: {A} system-level survey},
+	volume = {54},
+	issn = {0360-0300},
+	url = {https://doi.org/10.1145/3429252},
+	doi = {10.1145/3429252},
+	abstract = {Decentralised learning is attracting more and more interest because it embodies the principles of data minimisation and focused data collection, while favouring the transparency of purpose specification (i.e., the objective for which a model is built). Cloud-centric-only processing and deep learning are no longer strict necessities to train high-fidelity models; edge devices can actively participate in the decentralised learning process by exchanging meta-level information in place of raw data, thus paving the way for better privacy guarantees. In addition, these new possibilities can relieve the network backbone from unnecessary data transfer and allow it to meet strict low-latency requirements by leveraging on-device model inference. This survey provides a detailed and up-to-date overview of the most recent contributions available in the state-of-the-art decentralised learning literature. In particular, it originally provides the reader audience with a clear presentation of the peculiarities of federated settings, with a novel taxonomy of decentralised learning approaches, and with a detailed description of the most relevant and specific system-level contributions of the surveyed solutions for privacy, communication efficiency, non-IIDness, device heterogeneity, and poisoning defense.},
+	number = {1},
+	journal = {Acm Computing Surveys},
+	author = {Bellavista, Paolo and Foschini, Luca and Mora, Alessio},
+	month = feb,
+	year = {2021},
+	note = {Number of pages: 38
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {Decentralised learning, communication efficiency, federated deployment, poisoning defense, privacy},
+}
+
+@article{blazquez-garcia_review_2021,
+	title = {A review on {Outlier}/{Anomaly} detection in time series data},
+	volume = {54},
+	issn = {0360-0300},
+	url = {https://doi.org/10.1145/3444690},
+	doi = {10.1145/3444690},
+	abstract = {Recent advances in technology have brought major breakthroughs in data collection, enabling a large amount of data to be gathered over time and thus generating time series. Mining this data has become an important task for researchers and practitioners in the past few years, including the detection of outliers or anomalies that may represent errors or events of interest. This review aims to provide a structured and comprehensive state-of-the-art on unsupervised outlier detection techniques in the context of time series. To this end, a taxonomy is presented based on the main aspects that characterize an outlier detection technique.},
+	number = {3},
+	journal = {Acm Computing Surveys},
+	author = {Blázquez-García, Ane and Conde, Angel and Mori, Usue and Lozano, Jose A.},
+	month = apr,
+	year = {2021},
+	note = {Number of pages: 33
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {Outlier detection, anomaly detection, data mining, software, taxonomy, time series},
+}
+
+@article{cai_generative_2021,
+	title = {Generative adversarial networks: {A} survey toward private and secure applications},
+	volume = {54},
+	issn = {0360-0300},
+	url = {https://doi.org/10.1145/3459992},
+	doi = {10.1145/3459992},
+	abstract = {Generative Adversarial Networks (GANs) have promoted a variety of applications in computer vision and natural language processing, among others, due to its generative model’s compelling ability to generate realistic examples plausibly drawn from an existing distribution of samples. GAN not only provides impressive performance on data generation-based tasks but also stimulates fertilization for privacy and security oriented research because of its game theoretic optimization strategy. Unfortunately, there are no comprehensive surveys on GAN in privacy and security, which motivates this survey to summarize systematically. The existing works are classified into proper categories based on privacy and security functions, and this survey conducts a comprehensive analysis of their advantages and drawbacks. Considering that GAN in privacy and security is still at a very initial stage and has imposed unique challenges that are yet to be well addressed, this article also sheds light on some potential privacy and security applications with GAN and elaborates on some future research directions.},
+	number = {6},
+	journal = {Acm Computing Surveys},
+	author = {Cai, Zhipeng and Xiong, Zuobin and Xu, Honghui and Wang, Peng and Li, Wei and Pan, Yi},
+	month = jul,
+	year = {2021},
+	note = {Number of pages: 38
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {Generative adversarial networks, deep learning, privacy and security},
+}
+
+@article{celes_mobility_2021,
+	title = {Mobility trace analysis for intelligent vehicular networks: {Methods}, models, and applications},
+	volume = {54},
+	issn = {0360-0300},
+	url = {https://doi.org/10.1145/3446679},
+	doi = {10.1145/3446679},
+	abstract = {Intelligent vehicular networks emerge as a promising technology to provide efficient data communication in transportation systems and smart cities. At the same time, the popularization of devices with attached sensors has allowed the obtaining of a large volume of data with spatiotemporal information from different entities. In this sense, we are faced with a large volume of vehicular mobility traces being recorded. Those traces provide unprecedented opportunities to understand the dynamics of vehicular mobility and provide data-driven solutions. In this article, we give an overview of the main publicly available vehicular mobility traces; then, we present the main issues for preprocessing these traces. Also, we present the methods used to characterize and model mobility data. Finally, we review existing proposals that apply the hidden knowledge extracted from the mobility trace for vehicular networks. This article provides a survey on studies that use vehicular mobility traces and provides a guideline for the proposition of data-driven solutions in the domain of vehicular networks. Moreover, we discuss open research problems and give some directions to undertake them.},
+	number = {3},
+	journal = {Acm Computing Surveys},
+	author = {Celes, Clayson and Boukerche, Azzedine and Loureiro, Antonio A. F.},
+	month = apr,
+	year = {2021},
+	note = {Number of pages: 38
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {Vehicular networks, data analysis, data mining, mobility, routing, survey, topology, vanet},
+}
+
+@article{gu_serverbased_2021,
+	title = {From server-based to client-based machine learning: {A} comprehensive survey},
+	volume = {54},
+	issn = {0360-0300},
+	url = {https://doi.org/10.1145/3424660},
+	doi = {10.1145/3424660},
+	abstract = {In recent years, mobile devices have gained increasing development with stronger computation capability and larger storage space. Some of the computation-intensive machine learning tasks can now be run on mobile devices. To exploit the resources available on mobile devices and preserve personal privacy, the concept of client-based machine learning has been proposed. It leverages the users’ local hardware and local data to solve machine learning sub-problems on mobile devices and only uploads computation results rather than the original data for the optimization of the global model. Such an architecture can not only relieve computation and storage burdens on servers but also protect the users’ sensitive information. Another benefit is the bandwidth reduction because various kinds of local data can be involved in the training process without being uploaded. In this article, we provide a literature review on the progressive development of machine learning from server based to client based. We revisit a number of widely used server-based and client-based machine learning methods and applications. We also extensively discuss the challenges and future directions in this area. We believe that this survey will give a clear overview of client-based machine learning and provide guidelines on applying client-based machine learning to practice.},
+	number = {1},
+	journal = {Acm Computing Surveys},
+	author = {Gu, Renjie and Niu, Chaoyue and Wu, Fan and Chen, Guihai and Hu, Chun and Lyu, Chengfei and Wu, Zhihua},
+	month = jan,
+	year = {2021},
+	note = {Number of pages: 36
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {Mobile intelligence, decentralized training, distributed system, federated learning, machine learning},
+}
+
+@article{peng_fast_2021,
+	title = {Fast data series indexing for in-memory data},
+	volume = {30},
+	issn = {1066-8888},
+	url = {https://doi.org/10.1007/s00778-021-00677-2},
+	doi = {10.1007/s00778-021-00677-2},
+	abstract = {Data series similarity search is a core operation for several data series analysis applications across many different domains. However, the state-of-the-art techniques fail to deliver the time performance required for interactive exploration, or analysis of large data series collections. In this work, we propose MESSI, the first data series index designed for in-memory operation on modern hardware. Our index takes advantage of the modern hardware parallelization opportunities (i.e., SIMD instructions, multi-socket and multi-core architectures), in order to accelerate both index construction and similarity search processing times. Moreover, it benefits from a careful design in the setup and coordination of the parallel workers and data structures, so that it maximizes its performance for in-memory operations. MESSI supports similarity search using both the Euclidean and dynamic time warping (DTW) distances. Our experiments with synthetic and real datasets demonstrate that overall MESSI is up to 4x faster at index construction and up to 11x faster at query answering than the state-of-the-art parallel approach. MESSI is the first to answer exact similarity search queries on 100GB datasets in ∼50\&nbsp;ms (30–75\&nbsp;ms across diverse datasets), which enables real-time, interactive data exploration on very large data series collections.},
+	number = {6},
+	journal = {The VLDB Journal},
+	author = {Peng, Botao and Fatourou, Panagiota and Palpanas, Themis},
+	month = jun,
+	year = {2021},
+	note = {Number of pages: 27
+Place: Berlin, Heidelberg
+Publisher: Springer-Verlag},
+	keywords = {RInteractive: Yes, cluster:Time Series, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+	pages = {1041--1067},
+}
+
+@article{wang_are_2021,
+	title = {Are we ready for learned cardinality estimation?},
+	volume = {14},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3461535.3461552},
+	doi = {10.14778/3461535.3461552},
+	abstract = {Cardinality estimation is a fundamental but long unresolved problem in query optimization. Recently, multiple papers from different research groups consistently report that learned models have the potential to replace existing cardinality estimators. In this paper, we ask a forward-thinking question: Are we ready to deploy these learned cardinality models in production? Our study consists of three main parts. Firstly, we focus on the static environment (i.e., no data updates) and compare five new learned methods with nine traditional methods on four real-world datasets under a unified workload setting. The results show that learned models are indeed more accurate than traditional methods, but they often suffer from high training and inference costs. Secondly, we explore whether these learned models are ready for dynamic environments (i.e., frequent data updates). We find that they cannot catch up with fast data updates and return large errors for different reasons. For less frequent updates, they can perform better but there is no clear winner among themselves. Thirdly, we take a deeper look into learned models and explore when they may go wrong. Our results show that the performance of learned methods can be greatly affected by the changes in correlation, skewness, or domain size. More importantly, their behaviors are much harder to interpret and often unpredictable. Based on these findings, we identify two promising research directions (control the cost of learned models and make learned models trustworthy) and suggest a number of research opportunities. We hope that our study can guide researchers and practitioners to work together to eventually push learned cardinality estimators into real database systems.},
+	number = {9},
+	journal = {Proc. VLDB Endow.},
+	author = {Wang, Xiaoying and Qu, Changbo and Wu, Weiyuan and Wang, Jiannan and Zhou, Qingqing},
+	month = oct,
+	year = {2021},
+	note = {Number of pages: 15
+Publisher: VLDB Endowment},
+	keywords = {layer:Database Layer, supercluster:Indexes, type:Validation Research},
+	pages = {1640--1654},
+}
+
+@article{wang_survey_2021,
+	title = {Survey on deep multi-modal data analytics: {Collaboration}, rivalry, and fusion},
+	volume = {17},
+	issn = {1551-6857},
+	url = {https://doi.org/10.1145/3408317},
+	doi = {10.1145/3408317},
+	abstract = {With the development of web technology, multi-modal or multi-view data has surged as a major stream for big data, where each modal/view encodes individual property of data objects. Often, different modalities are complementary to each other. This fact motivated a lot of research attention on fusing the multi-modal feature spaces to comprehensively characterize the data objects. Most of the existing state-of-the-arts focused on how to fuse the energy or information from multi-modal spaces to deliver a superior performance over their counterparts with single modal. Recently, deep neural networks have been exhibited as a powerful architecture to well capture the nonlinear distribution of high-dimensional multimedia data, so naturally does for multi-modal data. Substantial empirical studies are carried out to demonstrate its advantages that are benefited from deep multi-modal methods, which can essentially deepen the fusion from multi-modal deep feature spaces. In this article, we provide a substantial overview of the existing state-of-the-arts in the field of multi-modal data analytics from shallow to deep spaces. Throughout this survey, we further indicate that the critical components for this field go to collaboration, adversarial competition, and fusion over multi-modal spaces. Finally, we share our viewpoints regarding some future directions in this field.},
+	number = {1s},
+	journal = {ACM Transactions on Multimedia Computing Communications and Applications},
+	author = {Wang, Yang},
+	month = mar,
+	year = {2021},
+	note = {Number of pages: 25
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {Multi-modal data, deep neural networks},
+}
+
+@article{dasilva_fog_2022,
+	title = {Fog computing platforms for smart city applications: {A} survey},
+	volume = {22},
+	issn = {1533-5399},
+	url = {https://doi.org/10.1145/3488585},
+	doi = {10.1145/3488585},
+	abstract = {Emerging IoT applications with stringent requirements on latency and data processing have posed many challenges to cloud-centric platforms for Smart Cities. Recently, Fog Computing has been advocated as a promising approach to support such new applications and handle the increasing volume of IoT data and devices. The Fog Computing paradigm is characterized by a horizontal system-level architecture where devices close to end-users and IoT devices are used for processing, storage, and networking functions. Fog Computing platforms aim to facilitate the development of applications and systems for Smart Cities by providing services and abstractions designed to integrate data from IoT devices and various information systems deployed in the city. Despite the potential of the Fog Computing paradigm, the literature still lacks a broad, comprehensive overview of what has been investigated on the use of such paradigm in platforms for Smart Cities and open issues to be addressed in future research and development. In this paper, a systematic mapping study was performed and we present a comprehensive understanding of the use of the Fog Computing paradigm in Smart Cities platforms, providing an overview of the current state of research on this topic, and identifying important gaps in the existing approaches and promising research directions.},
+	number = {4},
+	journal = {ACM Transactions on Internet Technology},
+	author = {Da Silva, Thiago Pereira and Batista, Thais and Lopes, Frederico and Neto, Aluizio Rocha and Delicato, Flávia C. and Pires, Paulo F. and Da Rocha, Atslands R.},
+	month = dec,
+	year = {2022},
+	note = {Number of pages: 32
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {Fog computing, edge computing, smart cities},
+}
+
+@inproceedings{li_informative_2022,
+	address = {New York, NY, USA},
+	series = {{MMAsia} '22},
+	title = {Informative sample-aware proxy for deep metric learning},
+	isbn = {978-1-4503-9478-9},
+	url = {https://doi.org/10.1145/3551626.3564942},
+	doi = {10.1145/3551626.3564942},
+	abstract = {Among various supervised deep metric learning methods proxy-based approaches have achieved high retrieval accuracies. Proxies, which are class-representative points in an embedding space, receive updates based on proxy-sample similarities in a similar manner to sample representations. In existing methods, a relatively small number of samples can produce large gradient magnitudes (i.e., hard samples), and a relatively large number of samples can produce small gradient magnitudes (i.e., easy samples); these can play a major part in updates. Assuming that acquiring too much sensitivity to such extreme sets of samples would deteriorate the generalizability of a method, we propose a novel proxy-based method called Informative Sample-Aware Proxy (Proxy-ISA), which directly modifies a gradient weighting factor for each sample using a scheduled threshold function, so that the model is more sensitive to the informative samples. Extensive experiments on the CUB-200-2011, Cars-196, Stanford Online Products and In-shop Clothes Retrieval datasets demonstrate the superiority of Proxy-ISA compared with the state-of-the-art methods.},
+	booktitle = {Proceedings of the 4th {ACM} international conference on multimedia in asia},
+	publisher = {Association for Computing Machinery},
+	author = {Li, Aoyu and Sato, Ikuro and Ishikawa, Kohta and Kawakami, Rei and Yokota, Rio},
+	year = {2022},
+	note = {Number of pages: 11
+Place: Tokyo, Japan},
+	keywords = {cluster:Sampling, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
+}
+
+@article{personnaz_eda4sum_2022,
+	title = {{EDA4SUM}: {Guided} exploration of data summaries},
+	volume = {15},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3554821.3554851},
+	doi = {10.14778/3554821.3554851},
+	abstract = {We demonstrate EDA4Sum, a framework dedicated to generating guided multi-step data summarization pipelines for very large datasets. Data summarization is the process of producing interpretable and representative subsets of an input dataset. It is usually performed following a one-shot process with the purpose of finding the best summary. EDA4Sum leverages Exploratory Data Analysis (EDA) to produce connected summaries in multiple steps, with the goal of maximizing their cumulative utility. A useful summary contains k individually uniform sets that are collectively diverse to be representative of the input data. EDA4Sum accommodates datasets with different characteristics by providing the ability to tune the weights of uniformity, diversity and novelty when generating multi-step summaries. We demonstrate the superiority of multi-step EDA summarization over single-step summarization for summarizing very large data, and the need to provide guidance to domain experts, by interacting with the VLDB'22 participants who will act as data analysts. The application is avilable at https://bit.ly/eda4sumₐpplication.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Personnaz, Aurélien and Youngmann, Brit and Amer-Yahia, Sihem},
+	month = sep,
+	year = {2022},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {cluster:Assisted Query Formulation, layer:User Interaction, supercluster:Exploration Interfaces, type:Proposal of Solution},
+	pages = {3590--3593},
+}
+
+@article{kraska_northstar_2018,
+	title = {Northstar: {An} interactive data science system},
+	volume = {11},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3229863.3240493},
+	doi = {10.14778/3229863.3240493},
+	abstract = {In order to democratize data science, we need to fundamentally rethink the current analytics stack, from the user interface to the "guts." Most importantly, enabling a broader range of users to unfold the potential of (their) data requires a change in the interface and the "protection" we offer them. On the one hand, visual interfaces for data science have to be intuitive, easy, and interactive to reach users without a strong background in computer science or statistics. On the other hand, we need to protect users from making false discoveries. Furthermore, it requires that technically involved (and often boring) tasks have to be automatically done by the system so that the user can focus on contributing their domain expertise to the problem. In this paper, we present Northstar, the Interactive Data Science System, which we have developed over the last 4 years to explore designs that make advanced analytics and model building more accessible.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Kraska, Tim},
+	month = aug,
+	year = {2018},
+	note = {Number of pages: 15
+Publisher: VLDB Endowment},
+	keywords = {Full Stack, RInteractive: Yes, cluster:Query Approximation, cluster:Visual Tools, layer:Middleware, layer:User Interaction, supercluster:Data Visualization, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {2150--2164},
+}
+
+@article{kondylakis_coconut_2019,
+	title = {Coconut: {A} scalable bottom-up approach for building data series indexes},
+	volume = {11},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3199517.3199519},
+	doi = {10.14778/3199517.3199519},
+	abstract = {Many modern applications produce massive amounts of data series that need to be analyzed, requiring efficient similarity search operations. However, the state-of-the-art data series indexes that are used for this purpose do not scale well for massive datasets in terms of performance, or storage costs. We pinpoint the problem to the fact that existing summarizations of data series used for indexing cannot be sorted while keeping similar data series close to each other in the sorted order. This leads to two design problems. First, traditional bulk-loading algorithms based on sorting cannot be used. Instead, index construction takes place through slow top-down insertions, which create a non-contiguous index that results in many random I/Os. Second, data series cannot be sorted and split across nodes evenly based on their median value; thus, most leaf nodes are in practice nearly empty. This further slows down query speed and amplifies storage costs. To address these problems, we present Coconut. The first innovation in Coconut is an inverted, sortable data series summarization that organizes data series based on a z-order curve, keeping similar series close to each other in the sorted order. As a result, Coconut is able to use bulk-loading techniques that rely on sorting to quickly build a contiguous index using large sequential disk I/Os. We then explore prefix-based and median-based splitting policies for bottom-up bulk-loading, showing that median-based splitting outperforms the state of the art, ensuring that all nodes are densely populated. Overall, we show analytically and empirically that Coconut dominates the state-of-the-art data series indexes in terms of construction speed, query speed, and storage costs.},
+	number = {6},
+	journal = {Proc. VLDB Endow.},
+	author = {Kondylakis, Haridimos and Dayan, Niv and Zoumpatianos, Kostas and Palpanas, Themis},
+	month = jan,
+	year = {2019},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {cluster:Time Series, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
+	pages = {677--690},
+}
+
+@inproceedings{kamat_unified_2017,
+	address = {New York, NY, USA},
+	series = {{SSDBM} '17},
+	title = {A unified correlation-based approach to sampling over joins},
+	isbn = {978-1-4503-5282-6},
+	url = {https://doi.org/10.1145/3085504.3085524},
+	doi = {10.1145/3085504.3085524},
+	abstract = {Supporting sampling in the presence of joins is an important problem in data analysis, but is inherently challenging due to the need to avoid correlation between output tuples. Current solutions provide either correlated or non-correlated samples. Sampling might not always be feasible in the non-correlated sampling-based approaches – the sample size or intermediate data size might be exceedingly large. On the other hand, a correlated sample may not be representative of the join. This paper presents a unified strategy towards join sampling, while considering sample correlation every step of the way. We provide two key contributions. First, in the case where a correlated sample is acceptable, we provide techniques, for all join types, to sample base relations so that their join is as random as possible. Second, in the case where a correlated sample is not acceptable, we provide enhancements to the state-of-the-art algorithms to reduce their execution time and intermediate data size.},
+	booktitle = {Proceedings of the 29th international conference on scientific and statistical database management},
+	publisher = {Association for Computing Machinery},
+	author = {Kamat, Niranjan and Nandi, Arnab},
+	year = {2017},
+	note = {Number of pages: 12
+Place: Chicago, IL, USA},
+	keywords = {cluster:Sampling, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
+}
+
+@inproceedings{kim_optimally_2018,
+	address = {New York, NY, USA},
+	series = {{HILDA}'18},
+	title = {Optimally leveraging density and locality for exploratory browsing and sampling},
+	isbn = {978-1-4503-5827-9},
+	url = {https://doi.org/10.1145/3209900.3209903},
+	doi = {10.1145/3209900.3209903},
+	abstract = {Exploratory data analysis often involves repeatedly browsing a small sample of records that satisfy certain predicates. We propose a fast query evaluation engine, called NeedleTail, aimed at letting analysts browse a subset of the query result on large datasets as quickly as possible, independent of the overall size of the result. NeedleTail introduces DensityMaps, a lightweight in-memory indexing structure, and a set of efficient and theoretically sound algorithms to quickly locate promising blocks, trading off locality and density. In settings where the samples are used to compute aggregates, we extend techniques from survey sampling to mitigate the bias in our samples. Our experimental results demonstrate that NeedleTail returns results 7× faster on average on HDDs while occupying up to 23× less memory than existing techniques.},
+	booktitle = {Proceedings of the workshop on human-in-the-loop data analytics},
+	publisher = {Association for Computing Machinery},
+	author = {Kim, Albert and Xu, Liqi and Siddiqui, Tarique and Huang, Silu and Madden, Samuel and Parameswaran, Aditya},
+	year = {2018},
+	note = {Number of pages: 7
+Place: Houston, TX, USA},
+	keywords = {RInteractive: Yes, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+}
+
+@article{kang_approximate_2020,
+	title = {Approximate selection with guarantees using proxies},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3407790.3407804},
+	doi = {10.14778/3407790.3407804},
+	abstract = {Due to the falling costs of data acquisition and storage, researchers and industry analysts often want to find all instances of rare events in large datasets. For instance, scientists can cheaply capture thousands of hours of video, but are limited by the need to manually inspect long videos to identify relevant objects and events. To reduce this cost, recent work proposes to use cheap proxy models, such as image classifiers, to identify an approximate set of data points satisfying a data selection filter. Unfortunately, this recent work does not provide the statistical accuracy guarantees necessary in scientific and production settings.In this work, we introduce novel algorithms for approximate selection queries with statistical accuracy guarantees. Namely, given a limited number of exact identifications from an oracle, often a human or an expensive machine learning model, our algorithms meet a minimum precision or recall target with high probability. In contrast, existing approaches can catastrophically fail in satisfying these recall and precision targets. We show that our algorithms can improve query result quality by up to 30 x for both the precision and recall targets in both real and synthetic datasets.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Kang, Daniel and Gan, Edward and Bailis, Peter and Hashimoto, Tatsunori and Zaharia, Matei},
+	month = sep,
+	year = {2020},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {1990--2003},
+}
+
+@article{jo_demonstration_2020,
+	title = {Demonstration of {ScroogeDB}: {Getting} more bang for the buck with deterministic approximation in the cloud},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3415478.3415519},
+	doi = {10.14778/3415478.3415519},
+	abstract = {We demonstrate ScroogeDB which aims at minimizing monetary cost of processing aggregation queries in the Cloud. It runs on top of a Cloud database that offers pay-as-you-go query processing where users pay according to the number of bytes processed. ScroogeDB exploits deterministic approximate query processing (DAQ) to achieve monetary savings. That is, ScroogeDB provides deterministic bounds, i.e., bounds that contain the true value with a 100\% probability. ScroogeDB creates small synopses of the database and uses these synopses to answer aggregation queries. By rewriting a query on base tables into a query on smaller synopses, we significantly reduce the amount of processed data. We do not pre-compute synopses in advance of an analysis session. Instead, we generate them on the fly, interleaving synopsis generation with query execution.In our demonstration, we show that our system realizes impressive monetary savings with little precision loss. We run our system on top of the Google BigQuery Cloud platform and provide users with a graphical interface that visualizes deterministic bounds. The graphical interface also provides information regarding the generated synopses and how they contribute to monetary savings.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Jo, Saehan and Pei, Jialing and Trummer, Immanuel},
+	month = sep,
+	year = {2020},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {UserStudy: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Validation Research},
+	pages = {2961--2964},
+}
+
+@article{hilprecht_deepdb_2020,
+	title = {{DeepDB}: {Learn} from data, not from queries!},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3384345.3384349},
+	doi = {10.14778/3384345.3384349},
+	abstract = {The typical approach for learned DBMS components is to capture the behavior by running a representative set of queries and use the observations to train a machine learning model. This workload-driven approach, however, has two major downsides. First, collecting the training data can be very expensive, since all queries need to be executed on potentially large databases. Second, training data has to be recollected when the workload or the database changes. To overcome these limitations, we take a different route and propose a new data-driven approach for learned DBMS components which directly supports changes of the workload and data without the need of retraining. Indeed, one may now expect that this comes at a price of lower accuracy since workload-driven approaches can make use of more information. However, this is not the case. The results of our empirical evaluation demonstrate that our data-driven approach not only provides better accuracy than state-ofthe- art learned components but also generalizes better to unseen queries.},
+	number = {7},
+	journal = {Proc. VLDB Endow.},
+	author = {Hilprecht, Benjamin and Schmidt, Andreas and Kulessa, Moritz and Molina, Alejandro and Kersting, Kristian and Binnig, Carsten},
+	month = mar,
+	year = {2020},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {992--1005},
+}
+
+@article{grulich_babelfish_2022,
+	title = {Babelfish: {Efficient} execution of polyglot queries},
+	volume = {15},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3489496.3489501},
+	doi = {10.14778/3489496.3489501},
+	abstract = {Today's users of data processing systems come from different domains, have different levels of expertise, and prefer different programming languages. As a result, analytical workload requirements shifted from relational to polyglot queries involving user-defined functions (UDFs). Although some data processing systems support polyglot queries, they often embed third-party language runtimes. This embedding induces a high performance overhead, as it causes additional data materialization between execution engines.In this paper, we present Babelfish, a novel data processing engine designed for polyglot queries. Babelfish introduces an intermediate representation that unifies queries from different implementation languages. This enables new, holistic optimizations across operator and language boundaries, e.g., operator fusion and workload specialization. As a result, Babelfish avoids data transfers and enables efficient utilization of hardware resources. Our evaluation shows that Babelfish outperforms state-of-the-art data processing systems by up to one order of magnitude and reaches the performance of handwritten code. With Babelfish, we bridge the performance gap between relational and multi-language UDFs and lay the foundation for the efficient execution of future polyglot workloads.},
+	number = {2},
+	journal = {Proc. VLDB Endow.},
+	author = {Grulich, Philipp Marian and Zeuch, Steffen and Markl, Volker},
+	month = feb,
+	year = {2022},
+	note = {Number of pages: 15
+Publisher: VLDB Endowment},
+	keywords = {cluster:Flexible Engines, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+	pages = {196--210},
+}
+
+@article{gan_coopstore_2020,
+	title = {{CoopStore}: {Optimizing} precomputed summaries for aggregation},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3407790.3407817},
+	doi = {10.14778/3407790.3407817},
+	abstract = {An emerging class of data systems partition their data and precompute approximate summaries (i.e., sketches and samples) for each segment to reduce query costs. They can then aggregate and combine the segment summaries to estimate results without scanning the raw data. However, given limited storage space each summary introduces approximation errors that affect query accuracy. For instance, systems that use existing mergeable summaries cannot reduce query error below the error of an individual precomputed summary. We introduce CoopStore, a query system that optimizes item frequency and quantile summaries for accuracy when aggregating over multiple segments. Compared to conventional mergeable summaries, CoopStore leverages additional memory available for summary construction and aggregation to derive a more precise combined result. This reduces error by up to 25 x over interval aggregations and 4.5 x over data cube aggregations on industrial datasets compared to standard summarization methods, with provable worst-case error guarantees.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Gan, Edward and Bailis, Peter and Charikar, Moses},
+	month = sep,
+	year = {2020},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {2174--2187},
+}
+
+@article{gan_momentbased_2018,
+	title = {Moment-based quantile sketches for efficient high cardinality aggregation queries},
+	volume = {11},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3236187.3236212},
+	doi = {10.14778/3236187.3236212},
+	abstract = {Interactive analytics increasingly involves querying for quantiles over sub-populations of high cardinality datasets. Data processing engines such as Druid and Spark use mergeable summaries to estimate quantiles, but summary merge times can be a bottleneck during aggregation. We show how a compact and efficiently mergeable quantile sketch can support aggregation workloads. This data structure, which we refer to as the moments sketch, operates with a small memory footprint (200 bytes) and computationally efficient (50ns) merges by tracking only a set of summary statistics, notably the sample moments. We demonstrate how we can efficiently estimate quantiles using the method of moments and the maximum entropy principle, and show how the use of a cascade further improves query time for threshold predicates. Empirical evaluation shows that the moments sketch can achieve less than 1 percent quantile error with 15× less overhead than comparable summaries, improving end query time in the MacroBase engine by up to 7× and the Druid engine by up to 60×.},
+	number = {11},
+	journal = {Proc. VLDB Endow.},
+	author = {Gan, Edward and Ding, Jialin and Tai, Kai Sheng and Sharan, Vatsal and Bailis, Peter},
+	month = jul,
+	year = {2018},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {1647--1660},
+}
+
+@article{echihabi_hercules_2022,
+	title = {Hercules against data series similarity search},
+	volume = {15},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3547305.3547308},
+	doi = {10.14778/3547305.3547308},
+	abstract = {We propose Hercules, a parallel tree-based technique for exact similarity search on massive disk-based data series collections. We present novel index construction and query answering algorithms that leverage different summarization techniques, carefully schedule costly operations, optimize memory and disk accesses, and exploit the multi-threading and SIMD capabilities of modern hardware to perform CPU-intensive calculations. We demonstrate the superiority and robustness of Hercules with an extensive experimental evaluation against state-of-the-art techniques, using many synthetic and real datasets, and query workloads of varying difficulty. The results show that Hercules performs up to one order of magnitude faster than the best competitor (which is not always the same). Moreover, Hercules is the only index that outperforms the optimized scan on all scenarios, including the hard query workloads on disk-based datasets.},
+	number = {10},
+	journal = {Proc. VLDB Endow.},
+	author = {Echihabi, Karima and Fatourou, Panagiota and Zoumpatianos, Kostas and Palpanas, Themis and Benbrahim, Houda},
+	month = sep,
+	year = {2022},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {cluster:Adaptive Indexing, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+	pages = {2005--2018},
+}
+
+@article{chandramouli_fishstore_2019,
+	title = {{FishStore}: {Fast} ingestion and indexing of raw data},
+	volume = {12},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3352063.3352100},
+	doi = {10.14778/3352063.3352100},
+	abstract = {The last decade has witnessed a huge increase in data being ingested into the cloud from a variety of data sources. The ingested data takes various forms such as JSON, CSV, and binary formats. Traditionally, data is either ingested into storage in raw form, indexed ad-hoc using range indices, or cooked into analytics-friendly columnar formats. None of these solutions is able to handle modern requirements on storage: making the data available immediately for ad-hoc and streaming queries while ingesting at extremely high throughputs. We demonstrate FishStore, our open-source concurrent latch-free storage layer for data with flexible schema. FishStore builds on recent advances in parsing and indexing techniques, and is based on multi-chain hash indexing of dynamically registered predicated subsets of data. We find predicated subset hashing to be a powerful primitive that supports a broad range of queries on ingested data and admits a higher performance (by up to an order of magnitude) implementation than current alternatives.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Chandramouli, Badrish and Xie, Dong and Li, Yinan and Kossmann, Donald},
+	month = aug,
+	year = {2019},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {RRaw: Yes, cluster:Flexible Engines, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+	pages = {1922--1925},
+}
+
+@article{berg_progressivedb_2019,
+	title = {{ProgressiveDB}: {Progressive} data analytics as a middleware},
+	volume = {12},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3352063.3352073},
+	doi = {10.14778/3352063.3352073},
+	abstract = {ProgressiveDB transforms any standard SQL database into a progressive database capable of continuous, approximate query processing. It introduces a few small extensions to the SQL query language that allow clients to express progressive analytical queries. These extensions are processed in the ProgressiveDB middleware that sits between a database application and the underlying database providing interactive query processing as well as query steering capabilities to the user. In our demo, we show how this system allows a database application with a graphical user interface to interact with different backends, while providing the user with immediate feedback during exploratory data exploration of an on-time flight database. ProgressiveDB also supports efficient query steering by providing a new technique, called progressive views, which allows the intermediate results of one progressive query to be shared and reused by multiple concurrent progressive queries with refined scope.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Berg, Lukas and Ziegler, Tobias and Binnig, Carsten and Röhm, Uwe},
+	month = aug,
+	year = {2019},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {1814--1817},
+}
+
+@inproceedings{zhao_distributed_2018,
+	address = {New York, NY, USA},
+	series = {{SSDBM} '18},
+	title = {Distributed caching for processing raw arrays},
+	isbn = {978-1-4503-6505-5},
+	url = {https://doi.org/10.1145/3221269.3221295},
+	doi = {10.1145/3221269.3221295},
+	abstract = {As applications continue to generate multi-dimensional data at exponentially increasing rates, fast analytics to extract meaningful results is becoming extremely important. The database community has developed array databases that alleviate this problem through a series of techniques. In-situ mechanisms provide direct access to raw data in the original format—without loading and partitioning. Parallel processing scales to the largest datasets. In-memory caching reduces latency when the same data are accessed across a workload of queries. However, we are not aware of any work on distributed caching of multi-dimensional raw arrays. In this paper, we introduce a distributed framework for cost-based caching of multi-dimensional arrays in native format. Given a set of files that contain portions of an array and an online query workload, the framework computes an effective caching plan in two stages. First, the plan identifies the cells to be cached locally from each of the input files by continuously refining an evolving R-tree index. In the second stage, an optimal assignment of cells to nodes that collocates dependent cells in order to minimize the overall data transfer is determined. We design cache eviction and placement heuristic algorithms that consider the historical query workload. A thorough experimental evaluation over two real datasets in three file formats confirms the superiority - by as much as two orders of magnitude - of the proposed framework over existing techniques in terms of cache overhead and workload execution time.},
+	booktitle = {Proceedings of the 30th international conference on scientific and statistical database management},
+	publisher = {Association for Computing Machinery},
+	author = {Zhao, Weijie and Rusu, Florin and Dong, Bin and Wu, Kesheng and Ho, Anna Y. Q. and Nugent, Peter},
+	year = {2018},
+	note = {Number of pages: 12
+Place: Bozen-Bolzano, Italy},
+	keywords = {RDistributed: Yes, RRaw: Yes, cluster:Data Prefetching, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+}
+
+@article{rong_approximate_2020,
+	title = {Approximate partition selection for big-data workloads using summary statistics},
+	volume = {13},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3407790.3407848},
+	doi = {10.14778/3407790.3407848},
+	abstract = {Many big-data clusters store data in large partitions that support access at a coarse, partition-level granularity. As a result, approximate query processing via row-level sampling is inefficient, often requiring reads of many partitions. In this work, we seek to answer queries quickly and approximately by reading a subset of the data partitions and combining partial answers in a weighted manner without modifying the data layout. We illustrate how to efficiently perform this query processing using a set of pre-computed summary statistics, which inform the choice of partitions and weights. We develop novel means of using the statistics to assess the similarity and importance of partitions. Our experiments on several datasets and data layouts demonstrate that to achieve the same relative error compared to uniform partition sampling, our techniques offer from 2.7x to 70x reduction in the number of partitions read, and the statistics stored per partition require fewer than 100KB.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Rong, Kexin and Lu, Yao and Bailis, Peter and Kandula, Srikanth and Levis, Philip},
+	month = sep,
+	year = {2020},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {RDistributed: Yes, RRaw: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {2606--2619},
+}
+
+@article{pang_flashview_2017,
+	title = {{FlashView}: {An} interactive visual explorer for raw data},
+	volume = {10},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3137765.3137796},
+	doi = {10.14778/3137765.3137796},
+	abstract = {New data has been generated in an unexpected high speed. To get insight of those data, data analysts will perform a thorough study using state-of-the-art big data analytical tools. Before the analysis starts, a preprocessing is conducted, where data analyst tends to issue a few ad-hoc queries on a new dataset to explore and gain a better understanding. However, it is costly to perform such ad-hoc queries on large scale data using traditional data management systems, e.g., DBMS, because data loading and indexing are very expensive. In this demo, we propose a novel visual data explorer system, FlashView, which omits the loading process by directly querying raw data. FlashView applies approximate query processing technique to achieve real-time query results. It builds both in-memory index and disk index to facilitate the data scanning. It also supports tracking and updating multiple queries concurrently. Note that FlashView is not designed as a replacement of full-fledged DBMS. Instead, it tries to help the analysts quickly understand the characteristics of data, so he/she can selectively load data into the DBMS to do more sophisticated analysis.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Pang, Zhifei and Wu, Sai and Chen, Gang and Chen, Ke and Shou, Lidan},
+	month = aug,
+	year = {2017},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {RInteractive: Yes, RRaw: Yes, cluster:Visual Tools, layer:User Interaction, supercluster:Data Visualization, type:Proposal of Solution},
+	pages = {1869--1872},
+}
+
+@article{meduri_evaluation_2021,
+	title = {Evaluation of machine learning algorithms in predicting the next {SQL} query from the future},
+	volume = {46},
+	issn = {0362-5915},
+	url = {https://doi.org/10.1145/3442338},
+	doi = {10.1145/3442338},
+	abstract = {Prediction of the next SQL query from the user, given her sequence of queries until the current timestep, during an ongoing interaction session of the user with the database, can help in speculative query processing and increased interactivity. While existing machine learning– (ML) based approaches use recommender systems to suggest relevant queries to a user, there has been no exhaustive study on applying temporal predictors to predict the next user issued query.In this work, we experimentally compare ML algorithms in predicting the immediate next future query in an interaction workload, given the current user query or the sequence of queries in a user session thus far. As a part of this, we propose the adaptation of two powerful temporal predictors: (a) Recurrent Neural Networks (RNNs) and (b) a Reinforcement Learning approach called Q-Learning that uses Markov Decision Processes. We represent each query as a comprehensive set of fragment embeddings that not only captures the SQL operators, attributes, and relations but also the arithmetic comparison operators and constants that occur in the query. Our experiments on two real-world datasets show the effectiveness of temporal predictors against the baseline recommender systems in predicting the structural fragments in a query w.r.t. both quality and time. Besides showing that RNNs can be used to synthesize novel queries, we find that exact Q-Learning outperforms RNNs despite predicting the next query entirely from the historical query logs.},
+	number = {1},
+	journal = {ACM Transactions on Database Systems},
+	author = {Meduri, Venkata Vamsikrishna and Chowdhury, Kanchan and Sarwat, Mohamed},
+	month = mar,
+	year = {2021},
+	note = {Number of pages: 46
+Place: New York, NY, USA
+Publisher: Association for Computing Machinery},
+	keywords = {cluster:Data Prefetching, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+}
+
+@article{kang_accelerating_2021,
+	title = {Accelerating approximate aggregation queries with expensive predicates},
+	volume = {14},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3476249.3476285},
+	doi = {10.14778/3476249.3476285},
+	abstract = {Researchers and industry analysts are increasingly interested in computing aggregation queries over large, unstructured datasets with selective predicates that are computed using expensive deep neural networks (DNNs). As these DNNs are expensive and because many applications can tolerate approximate answers, analysts are interested in accelerating these queries via approximations. Unfortunately, standard approximate query processing techniques to accelerate such queries are not applicable because they assume the result of the predicates are available ahead of time. Furthermore, recent work using cheap approximations (i.e., proxies) do not support aggregation queries with predicates.To accelerate aggregation queries with expensive predicates, we develop and analyze a query processing algorithm that leverages proxies (ABAE). ABAE must account for the key challenge that it may sample records that do not satisfy the predicate. To address this challenge, we first use the proxy to group records into strata so that records satisfying the predicate are ideally grouped into few strata. Given these strata, ABAE uses pilot sampling and plugin estimates to sample according to the optimal allocation. We show that ABAE converges at an optimal rate in a novel analysis of stratified sampling with draws that may not satisfy the predicate. We further show that ABAE outperforms on baselines on six real-world datasets, reducing labeling costs by up to 2.3X.},
+	number = {11},
+	journal = {Proc. VLDB Endow.},
+	author = {Kang, Daniel and Guibas, John and Bailis, Peter and Hashimoto, Tatsunori and Sun, Yi and Zaharia, Matei},
+	month = oct,
+	year = {2021},
+	note = {Number of pages: 14
+Publisher: VLDB Endowment},
+	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {2341--2354},
+}
+
+@article{chamanara_quis_2017,
+	title = {{QUIS}: {In}-situ heterogeneous data source querying},
+	volume = {10},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3137765.3137798},
+	doi = {10.14778/3137765.3137798},
+	abstract = {Existing data integration frameworks are poorly suited for the special requirements of scientists. To answer a specific research question, often, excerpts of data from different sources need to be integrated. The relevant parts and the set of underlying sources may differ from query to query. The analyses also oftentimes involve frequently changing data and exploratory querying. Additionally, The data sources not only store data in different formats, but also provide inconsistent data access functionality. The classic Extract-Transform-Load (ETL) approach seems too complex and time-consuming and does not fit well with interest and expertise of the scientists.With QUIS (QUery In-Situ), we provide a solution for this problem. QUIS is an open source heterogeneous in-situ data querying system. It utilizes a federated query virtualization approach that is built upon plugged-in adapters. QUIS takes a user query and transforms appropriate portions of it into the corresponding computation model on individual data sources and executes it. It complements the segments of the query that the target data sources can not execute. Hence, it guarantees full syntax and semantic support for its language on all data sources. QUIS's in-situ querying facility almost eliminates the time to prepare the data while maintaining a competitive performance and steady scalability.The present demonstration illustrates interesting features of the system: virtual Schemas, heterogeneous joins, and visual query results. We provide a realistic data processing scenario to examine the system's features. Users can interact with QUIS using its desktop workbench, command line interface, or from any R client including RStudio Server.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Chamanara, Javad and König-Ries, Birgitta and Jagadish, H. V.},
+	month = aug,
+	year = {2017},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {RDistributed: Yes, RRaw: Yes, cluster:Flexible Engines, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
+	pages = {1877--1880},
+}
+
+@article{maccioni_crossing_2017,
+	title = {Crossing the finish line faster when paddling the data lake with {KAYAK}},
+	volume = {10},
+	issn = {2150-8097},
+	url = {https://doi.org/10.14778/3137765.3137792},
+	doi = {10.14778/3137765.3137792},
+	abstract = {Paddling in a data lake is strenuous for a data scientist. Being a loosely-structured collection of raw data with little or no meta-information available, the difficulties of extracting insights from a data lake start from the initial phases of data analysis. Indeed, data preparation, which involves many complex operations (such as source and feature selection, exploratory analysis, data profiling, and data curation), is a long and involved activity for navigating the lake before getting precious insights at the finish line.In this framework, we demonstrate KAYAK, a framework that supports data preparation in a data lake with ad-hoc primitives and allows data scientists to cross the finish line sooner. KAYAK takes into account the tolerance of the user in waiting for the primitives' results and it uses incremental execution strategies to produce informative previews of these results. The framework is based on a wise management of metadata and on features that limit human intervention, thus scaling smoothly when the data lake evolves.},
+	number = {12},
+	journal = {Proc. VLDB Endow.},
+	author = {Maccioni, Antonio and Torlone, Riccardo},
+	month = aug,
+	year = {2017},
+	note = {Number of pages: 4
+Publisher: VLDB Endowment},
+	keywords = {RDistributed: Yes, RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
+	pages = {1853--1856},
+}
+
 @inproceedings{shahrivari_workload_2022,
 	title = {Workload prediction for adaptive approximate query processing},
 	doi = {10.1109/BigData55660.2022.10020614},
@@ -164,26 +994,6 @@ Place: Houston, TX, USA},
 	pages = {1394--1407},
 }
 
-@article{steindorfer_tomany_2018,
-	title = {To-many or to-{One}? {All}-in-one! {Efficient} purely functional multi-maps with type-heterogeneous hash-tries},
-	volume = {53},
-	issn = {0362-1340},
-	url = {https://doi.org/10.1145/3296979.3192420},
-	doi = {10.1145/3296979.3192420},
-	abstract = {An immutable multi-map is a many-to-many map data structure with expected fast insert and lookup operations. This data structure is used for applications processing graphs or many-to-many relations as applied in compilers, runtimes of programming languages, or in static analysis of object-oriented systems. Collection data structures are assumed to carefully balance execution time of operations with memory consumption characteristics and need to scale gracefully from a few elements to multiple gigabytes at least. When processing larger in-memory data sets the overhead of the data structure encoding itself becomes a memory usage bottleneck, dominating the overall performance. In this paper we propose AXIOM, a novel hash-trie data structure that allows for a highly efficient and type-safe multi-map encoding by distinguishing inlined values of singleton sets from nested sets of multi-mappings. AXIOM strictly generalizes over previous hash-trie data structures by supporting the processing of fine-grained type-heterogeneous content on the implementation level (while API and language support for type-heterogeneity are not scope of this paper). We detail the design and optimizations of AXIOM and further compare it against state-of-the-art immutable maps and multi-maps in Java, Scala and Clojure. We isolate key differences using microbenchmarks and validate the resulting conclusions on a case study in static analysis. AXIOM reduces the key-value storage overhead by 1.87x; with specializing and inlining across collection boundaries it improves by 5.1x.},
-	number = {4},
-	journal = {SIGPLAN Not.},
-	author = {Steindorfer, Michael J. and Vinju, Jurgen J.},
-	month = jun,
-	year = {2018},
-	note = {Number of pages: 13
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.issue\_date: April 2018},
-	keywords = {Data structures, JVM, functional programming, graph, hashtable, many-to-many relation, multi-map, optimization, performance, persistent data structures},
-	pages = {283--295},
-}
-
 @inproceedings{olma_taster_2019,
 	title = {Taster: {Self}-tuning, elastic and online approximate query processing},
 	doi = {10.1109/ICDE.2019.00050},
@@ -213,45 +1023,6 @@ tex.issue\_date: April 2018},
 Place: Amsterdam, Netherlands},
 	keywords = {RRaw: Yes, cluster:Adaptive Loading, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
 	pages = {883--899},
-}
-
-@article{yu_tabula_2020,
-	title = {Tabula in action: {A} sampling middleware for interactive geospatial visualization dashboards},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3415478.3415510},
-	doi = {10.14778/3415478.3415510},
-	abstract = {In this paper, we demonstrate Tabula, a middleware that sits between the data system and the geospatial visualization dashboard to increase user interactivity. The proposed system adopts a sampling cube approach that stores prematerialized spatial samples and allows data scientists to define their own accuracy loss function such that the produced samples can be used for various user-defined visualization tasks. The system ensures that the difference between the sample fed into the dashboard and the raw query answer never exceeds the user-specified loss threshold. For demonstration purposes, we connect Apache Zeppelin, a visualization dashboard, to the system and show how Tabula accelerates interactive visualizations on NYC Taxi Trip data, Yelp review data and San Diego Smart Streetlights data.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Yu, Jia and Chowdhury, Kanchan and Sarwat, Mohamed},
-	month = sep,
-	year = {2020},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2020},
-	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {2925--2928},
-}
-
-@article{wang_survey_2021,
-	title = {Survey on deep multi-modal data analytics: {Collaboration}, rivalry, and fusion},
-	volume = {17},
-	issn = {1551-6857},
-	url = {https://doi.org/10.1145/3408317},
-	doi = {10.1145/3408317},
-	abstract = {With the development of web technology, multi-modal or multi-view data has surged as a major stream for big data, where each modal/view encodes individual property of data objects. Often, different modalities are complementary to each other. This fact motivated a lot of research attention on fusing the multi-modal feature spaces to comprehensively characterize the data objects. Most of the existing state-of-the-arts focused on how to fuse the energy or information from multi-modal spaces to deliver a superior performance over their counterparts with single modal. Recently, deep neural networks have been exhibited as a powerful architecture to well capture the nonlinear distribution of high-dimensional multimedia data, so naturally does for multi-modal data. Substantial empirical studies are carried out to demonstrate its advantages that are benefited from deep multi-modal methods, which can essentially deepen the fusion from multi-modal deep feature spaces. In this article, we provide a substantial overview of the existing state-of-the-arts in the field of multi-modal data analytics from shallow to deep spaces. Throughout this survey, we further indicate that the critical components for this field go to collaboration, adversarial competition, and fusion over multi-modal spaces. Finally, we share our viewpoints regarding some future directions in this field.},
-	number = {1s},
-	journal = {ACM Transactions on Multimedia Computing Communications and Applications},
-	author = {Wang, Yang},
-	month = mar,
-	year = {2021},
-	note = {Number of pages: 25
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 10
-tex.issue\_date: January 2021},
-	keywords = {Multi-modal data, deep neural networks},
 }
 
 @inproceedings{grua_selfadaptation_2019,
@@ -312,25 +1083,6 @@ Place: New York, New York, USA},
 	pages = {1--12},
 }
 
-@article{chamanara_quis_2017,
-	title = {{QUIS}: {In}-situ heterogeneous data source querying},
-	volume = {10},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3137765.3137798},
-	doi = {10.14778/3137765.3137798},
-	abstract = {Existing data integration frameworks are poorly suited for the special requirements of scientists. To answer a specific research question, often, excerpts of data from different sources need to be integrated. The relevant parts and the set of underlying sources may differ from query to query. The analyses also oftentimes involve frequently changing data and exploratory querying. Additionally, The data sources not only store data in different formats, but also provide inconsistent data access functionality. The classic Extract-Transform-Load (ETL) approach seems too complex and time-consuming and does not fit well with interest and expertise of the scientists.With QUIS (QUery In-Situ), we provide a solution for this problem. QUIS is an open source heterogeneous in-situ data querying system. It utilizes a federated query virtualization approach that is built upon plugged-in adapters. QUIS takes a user query and transforms appropriate portions of it into the corresponding computation model on individual data sources and executes it. It complements the segments of the query that the target data sources can not execute. Hence, it guarantees full syntax and semantic support for its language on all data sources. QUIS's in-situ querying facility almost eliminates the time to prepare the data while maintaining a competitive performance and steady scalability.The present demonstration illustrates interesting features of the system: virtual Schemas, heterogeneous joins, and visual query results. We provide a realistic data processing scenario to examine the system's features. Users can interact with QUIS using its desktop workbench, command line interface, or from any R client including RStudio Server.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Chamanara, Javad and König-Ries, Birgitta and Jagadish, H. V.},
-	month = aug,
-	year = {2017},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2017},
-	keywords = {RDistributed: Yes, RRaw: Yes, cluster:Flexible Engines, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-	pages = {1877--1880},
-}
-
 @article{maroulis_resourceaware_2023,
 	title = {Resource-aware adaptive indexing for in situ visual exploration and analytics},
 	volume = {32},
@@ -345,25 +1097,6 @@ tex.issue\_date: August 2017},
 	year = {2023},
 	keywords = {RInteractive: Yes, RRaw: Yes, cluster:Adaptive Indexing, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
 	pages = {199--227},
-}
-
-@article{wang_rcindex_2018,
-	title = {{RC}-{Index}: {Diversifying} answers to range queries},
-	volume = {11},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3192965.3192969},
-	doi = {10.14778/3192965.3192969},
-	abstract = {Query result diversification is widely used in data exploration, Web search, and recommendation systems. The problem of returning diversified query results consists of finding a small subset of valid query answers that are representative and different from one another, usually quantified by a diversity score. Most existing techniques for query diversification first compute all valid query results and then find a diverse subset. These techniques are inefficient when the set of valid query results is large. Other work has proposed efficient solutions for restricted application settings, where results are shared across multiple queries. In this paper, our goal is to support result diversification for general range queries over a single relation. We propose the RC-Index, a novel index structure that achieves efficiency by reducing the number of items that must be retrieved by the database to form a diverse set of the desired size (about 1 second for a dataset of 1 million items). Further, we prove that an RC-Index offers strong approximation guarantees. To the best of our knowledge, this is the first index-based diversification method with a guaranteed approximation ratio for range queries.},
-	number = {7},
-	journal = {Proc. VLDB Endow.},
-	author = {Wang, Yue and Meliou, Alexandra and Miklau, Gerome},
-	month = mar,
-	year = {2018},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: March 2018},
-	keywords = {layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-	pages = {773--786},
 }
 
 @article{mei_rsatree_2020,
@@ -463,63 +1196,6 @@ Place: Portland, OR, USA},
 	pages = {2303--2318},
 }
 
-@article{orr_probabilistic_2017,
-	title = {Probabilistic database summarization for interactive data exploration},
-	volume = {10},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3115404.3115419},
-	doi = {10.14778/3115404.3115419},
-	abstract = {We present a probabilistic approach to generate a small, query-able summary of a dataset for interactive data exploration. Departing from traditional summarization techniques, we use the Principle of Maximum Entropy to generate a probabilistic representation of the data that can be used to give approximate query answers. We develop the theoretical framework and formulation of our probabilistic representation and show how to use it to answer queries. We then present solving techniques and give three critical optimizations to improve preprocessing time and query accuracy. Lastly, we experimentally evaluate our work using a 5 GB dataset of flights within the United States and a 210 GB dataset from an astronomy particle simulation. While our current work only supports linear queries, we show that our technique can successfully answer queries faster than sampling while introducing, on average, no more error than sampling and can better distinguish between rare and nonexistent values.},
-	number = {10},
-	journal = {Proc. VLDB Endow.},
-	author = {Orr, Laurel and Balazinska, Magdalena and Suciu, Dan},
-	month = jun,
-	year = {2017},
-	note = {Number of pages: 12
-Publisher: VLDB Endowment
-tex.issue\_date: June 2017},
-	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {1154--1165},
-}
-
-@article{lin_plato_2020,
-	title = {Plato: {Approximate} analytics over compressed time series with tight deterministic error guarantees},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3384345.3384357},
-	doi = {10.14778/3384345.3384357},
-	abstract = {Plato provides fast approximate analytics on time series, by precomputing and storing compressed time series. Plato's key novelty is the delivery of tight deterministic error guarantees for the linear algebra operators over vectors/time series, the inner product operator and arithmetic operators. Composing them allows for evaluating common statistics, such as correlation and cross-correlation. In the offline processing phase, Plato (i) segments each time series into several disjoint segmentations using known fixed-length or variable-length segmentation algorithms; (ii) compresses each segment by a compression function that is coming from a user-chosen compression function family; and (iii) associates to each segment 1 to 3 precomputed error measures. In the online query processing phase, Plato uses the error measures to compute the error guarantees. Importantly, we identify certain compression function families that lead to theoretically and experimentally higher quality guarantees.},
-	number = {7},
-	journal = {Proc. VLDB Endow.},
-	author = {Lin, Chunbin and Boursier, Etienne and Papakonstantinou, Yannis},
-	month = mar,
-	year = {2020},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: March 2020},
-	keywords = {cluster:Time Series, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-	pages = {1105--1118},
-}
-
-@article{berg_progressivedb_2019,
-	title = {{ProgressiveDB}: {Progressive} data analytics as a middleware},
-	volume = {12},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3352063.3352073},
-	doi = {10.14778/3352063.3352073},
-	abstract = {ProgressiveDB transforms any standard SQL database into a progressive database capable of continuous, approximate query processing. It introduces a few small extensions to the SQL query language that allow clients to express progressive analytical queries. These extensions are processed in the ProgressiveDB middleware that sits between a database application and the underlying database providing interactive query processing as well as query steering capabilities to the user. In our demo, we show how this system allows a database application with a graphical user interface to interact with different backends, while providing the user with immediate feedback during exploratory data exploration of an on-time flight database. ProgressiveDB also supports efficient query steering by providing a new technique, called progressive views, which allows the intermediate results of one progressive query to be shared and reused by multiple concurrent progressive queries with refined scope.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Berg, Lukas and Ziegler, Tobias and Binnig, Carsten and Röhm, Uwe},
-	month = aug,
-	year = {2019},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2019},
-	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {1814--1817},
-}
-
 @inproceedings{patel_query_2019,
 	address = {Singapore},
 	title = {Query {Morphing}: {A} {Proximity}-{Based} {Data} {Exploration} for {Query} {Reformulation}},
@@ -551,25 +1227,6 @@ tex.issue\_date: August 2019},
 Place: Houston, TX, USA},
 	keywords = {RRaw: Yes, UserStudy: Yes, cluster:Flexible Engines, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
 	pages = {943--958},
-}
-
-@article{ma_omics_2017,
-	title = {Omics informatics: {From} scattered individual software tools to integrated workflow management systems},
-	volume = {14},
-	issn = {1545-5963},
-	url = {https://doi.org/10.1109/TCBB.2016.2535251},
-	doi = {10.1109/TCBB.2016.2535251},
-	abstract = {Omic data analyses pose great informatics challenges. As an emerging subfield of bioinformatics, omics informatics focuses on analyzing multi-omic data efficiently and effectively, and is gaining momentum. There are two underlying trends in the expansion of omics informatics landscape: the explosion of scattered individual omics informatics tools with each of which focuses on a specific task in both single- and multi- omic settings, and the fast-evolving integrated software platforms such as workflow management systems that can assemble multiple tools into pipelines and streamline integrative analysis for complicated tasks. In this survey, we give a holistic view of omics informatics, from scattered individual informatics tools to integrated workflow management systems. We not only outline the landscape and challenges of omics informatics, but also sample a number of widely used and cutting-edge algorithms in omics data analysis to give readers a fine-grained view. We survey various workflow management systems WMSs, classify them into three levels of WMSs from simple software toolkits to integrated multi-omic analytical platforms, and point out the emerging needs for developing intelligent workflow management systems. We also discuss the challenges, strategies and some existing work in systematic evaluation of omics informatics tools. We conclude by providing future perspectives of emerging fields and new frontiers in omics informatics.},
-	number = {4},
-	journal = {IEEE/ACM Transactions on Computational Biology and Bioinformatics},
-	author = {Ma, Tianle and Zhang, Aidong},
-	month = jul,
-	year = {2017},
-	note = {Number of pages: 21
-Place: Washington, DC, USA
-Publisher: IEEE Computer Society Press
-tex.issue\_date: July 2017},
-	pages = {926--946},
 }
 
 @inproceedings{naka_optimization_2021,
@@ -605,24 +1262,6 @@ Place: Phuket, Thailand},
 	pages = {342--350},
 }
 
-@inproceedings{kim_optimally_2018,
-	address = {New York, NY, USA},
-	series = {{HILDA}'18},
-	title = {Optimally leveraging density and locality for exploratory browsing and sampling},
-	isbn = {978-1-4503-5827-9},
-	url = {https://doi.org/10.1145/3209900.3209903},
-	doi = {10.1145/3209900.3209903},
-	abstract = {Exploratory data analysis often involves repeatedly browsing a small sample of records that satisfy certain predicates. We propose a fast query evaluation engine, called NeedleTail, aimed at letting analysts browse a subset of the query result on large datasets as quickly as possible, independent of the overall size of the result. NeedleTail introduces DensityMaps, a lightweight in-memory indexing structure, and a set of efficient and theoretically sound algorithms to quickly locate promising blocks, trading off locality and density. In settings where the samples are used to compute aggregates, we extend techniques from survey sampling to mitigate the bias in our samples. Our experimental results demonstrate that NeedleTail returns results 7× faster on average on HDDs while occupying up to 23× less memory than existing techniques.},
-	booktitle = {Proceedings of the workshop on human-in-the-loop data analytics},
-	publisher = {Association for Computing Machinery},
-	author = {Kim, Albert and Xu, Liqi and Siddiqui, Tarique and Huang, Silu and Madden, Samuel and Parameswaran, Aditya},
-	year = {2018},
-	note = {Number of pages: 7
-Place: Houston, TX, USA
-tex.articleno: 7},
-	keywords = {RInteractive: Yes, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-}
-
 @inproceedings{peng_one_2022,
 	address = {New York, NY, USA},
 	series = {{SIGMOD} '22},
@@ -639,141 +1278,6 @@ tex.articleno: 7},
 Place: Philadelphia, PA, USA},
 	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
 	pages = {531--544},
-}
-
-@article{kraska_northstar_2018,
-	title = {Northstar: {An} interactive data science system},
-	volume = {11},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3229863.3240493},
-	doi = {10.14778/3229863.3240493},
-	abstract = {In order to democratize data science, we need to fundamentally rethink the current analytics stack, from the user interface to the "guts." Most importantly, enabling a broader range of users to unfold the potential of (their) data requires a change in the interface and the "protection" we offer them. On the one hand, visual interfaces for data science have to be intuitive, easy, and interactive to reach users without a strong background in computer science or statistics. On the other hand, we need to protect users from making false discoveries. Furthermore, it requires that technically involved (and often boring) tasks have to be automatically done by the system so that the user can focus on contributing their domain expertise to the problem. In this paper, we present Northstar, the Interactive Data Science System, which we have developed over the last 4 years to explore designs that make advanced analytics and model building more accessible.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Kraska, Tim},
-	month = aug,
-	year = {2018},
-	note = {Number of pages: 15
-Publisher: VLDB Endowment
-tex.issue\_date: August 2018},
-	keywords = {Full Stack, RInteractive: Yes, cluster:Query Approximation, cluster:Visual Tools, layer:Middleware, layer:User Interaction, supercluster:Data Visualization, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {2150--2164},
-}
-
-@inproceedings{li_informative_2022,
-	address = {New York, NY, USA},
-	series = {{MMAsia} '22},
-	title = {Informative sample-aware proxy for deep metric learning},
-	isbn = {978-1-4503-9478-9},
-	url = {https://doi.org/10.1145/3551626.3564942},
-	doi = {10.1145/3551626.3564942},
-	abstract = {Among various supervised deep metric learning methods proxy-based approaches have achieved high retrieval accuracies. Proxies, which are class-representative points in an embedding space, receive updates based on proxy-sample similarities in a similar manner to sample representations. In existing methods, a relatively small number of samples can produce large gradient magnitudes (i.e., hard samples), and a relatively large number of samples can produce small gradient magnitudes (i.e., easy samples); these can play a major part in updates. Assuming that acquiring too much sensitivity to such extreme sets of samples would deteriorate the generalizability of a method, we propose a novel proxy-based method called Informative Sample-Aware Proxy (Proxy-ISA), which directly modifies a gradient weighting factor for each sample using a scheduled threshold function, so that the model is more sensitive to the informative samples. Extensive experiments on the CUB-200-2011, Cars-196, Stanford Online Products and In-shop Clothes Retrieval datasets demonstrate the superiority of Proxy-ISA compared with the state-of-the-art methods.},
-	booktitle = {Proceedings of the 4th {ACM} international conference on multimedia in asia},
-	publisher = {Association for Computing Machinery},
-	author = {Li, Aoyu and Sato, Ikuro and Ishikawa, Kohta and Kawakami, Rei and Yokota, Rio},
-	year = {2022},
-	note = {Number of pages: 11
-Place: Tokyo, Japan
-tex.articleno: 4},
-	keywords = {cluster:Sampling, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
-}
-
-@article{rossi_interactive_2018,
-	title = {Interactive visual graph mining and learning},
-	volume = {9},
-	issn = {2157-6904},
-	url = {https://doi.org/10.1145/3200764},
-	doi = {10.1145/3200764},
-	abstract = {This article presents a platform for interactive graph mining and relational machine learning called GraphVis. The platform combines interactive visual representations with state-of-the-art graph mining and relational machine learning techniques to aid in revealing important insights quickly as well as learning an appropriate and highly predictive model for a particular task (e.g., classification, link prediction, discovering the roles of nodes, and finding influential nodes). Visual representations and interaction techniques and tools are developed for simple, fast, and intuitive real-time interactive exploration, mining, and modeling of graph data. In particular, we propose techniques for interactive relational learning (e.g., node/link classification), interactive link prediction and weighting, role discovery and community detection, higher-order network analysis (via graphlets, network motifs), among others. GraphVis also allows for the refinement and tuning of graph mining and relational learning methods for specific application domains and constraints via an end-to-end interactive visual analytic pipeline that learns, infers, and provides rapid interactive visualization with immediate feedback at each change/prediction in real-time. Other key aspects include interactive filtering, querying, ranking, manipulating, exporting, as well as tools for dynamic network analysis and visualization, interactive graph generators (including new block model approaches), and a variety of multi-level network analysis techniques.},
-	number = {5},
-	journal = {ACM Transactions on Intelligent Systems and Technology},
-	author = {Rossi, Ryan A. and Ahmed, Nesreen K. and Zhou, Rong and Eldardiry, Hoda},
-	month = jul,
-	year = {2018},
-	note = {Number of pages: 25
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 59
-tex.issue\_date: September 2018},
-	keywords = {RInteractive: Yes, cluster:Visual Tools, layer:User Interaction, supercluster:Data Visualization, type:Proposal of Solution},
-}
-
-@article{celes_mobility_2021,
-	title = {Mobility trace analysis for intelligent vehicular networks: {Methods}, models, and applications},
-	volume = {54},
-	issn = {0360-0300},
-	url = {https://doi.org/10.1145/3446679},
-	doi = {10.1145/3446679},
-	abstract = {Intelligent vehicular networks emerge as a promising technology to provide efficient data communication in transportation systems and smart cities. At the same time, the popularization of devices with attached sensors has allowed the obtaining of a large volume of data with spatiotemporal information from different entities. In this sense, we are faced with a large volume of vehicular mobility traces being recorded. Those traces provide unprecedented opportunities to understand the dynamics of vehicular mobility and provide data-driven solutions. In this article, we give an overview of the main publicly available vehicular mobility traces; then, we present the main issues for preprocessing these traces. Also, we present the methods used to characterize and model mobility data. Finally, we review existing proposals that apply the hidden knowledge extracted from the mobility trace for vehicular networks. This article provides a survey on studies that use vehicular mobility traces and provides a guideline for the proposition of data-driven solutions in the domain of vehicular networks. Moreover, we discuss open research problems and give some directions to undertake them.},
-	number = {3},
-	journal = {Acm Computing Surveys},
-	author = {Celes, Clayson and Boukerche, Azzedine and Loureiro, Antonio A. F.},
-	month = apr,
-	year = {2021},
-	note = {Number of pages: 38
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 49
-tex.issue\_date: April 2022},
-	keywords = {Vehicular networks, data analysis, data mining, mobility, routing, survey, topology, vanet},
-}
-
-@article{qin_making_2019,
-	title = {Making data visualization more efficient and effective: {A} survey},
-	volume = {29},
-	issn = {1066-8888},
-	url = {https://doi.org/10.1007/s00778-019-00588-3},
-	doi = {10.1007/s00778-019-00588-3},
-	abstract = {Data visualization is crucial in today’s data-driven business world, which has been widely used for helping decision making that is closely related to major revenues of many industrial companies. However, due to the high demand of data processing w.r.t. the volume, velocity, and veracity of data, there is an emerging need for database experts to help for efficient and effective data visualization. In response to this demand, this article surveys techniques that make data visualization more efficient and effective. (1) Visualization specifications define how the users can specify their requirements for generating visualizations. (2) Efficient approaches for data visualization process the data and a given visualization specification, which then produce visualizations with the primary target to be efficient and scalable at an interactive speed. (3) Data visualization recommendation is to auto-complete an incomplete specification, or to discover more interesting visualizations based on a reference visualization.},
-	number = {1},
-	journal = {The VLDB Journal},
-	author = {Qin, Xuedi and Luo, Yuyu and Tang, Nan and Li, Guoliang},
-	month = nov,
-	year = {2019},
-	note = {Number of pages: 25
-Place: Berlin, Heidelberg
-Publisher: Springer-Verlag
-tex.issue\_date: Jan 2020},
-	keywords = {Data visualization, Data visualization recommendation, Efficient data visualization, Visualization languages},
-	pages = {93--117},
-}
-
-@article{walenz_learning_2019,
-	title = {Learning to sample: {Counting} with complex queries},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3368289.3368302},
-	doi = {10.14778/3368289.3368302},
-	abstract = {We study the problem of efficiently estimating counts for queries involving complex filters, such as user-defined functions, or predicates involving self-joins and correlated subqueries. For such queries, traditional sampling techniques may not be applicable due to the complexity of the filter preventing sampling over joins, and sampling after the join may not be feasible due to the cost of computing the full join. The other natural approach of training and using an inexpensive classifier to estimate the count instead of the expensive predicate suffers from the difficulties in training a good classifier and giving meaningful confidence intervals. In this paper we propose a new method of learning to sample where we combine the best of both worlds by using sampling in two phases. First, we use samples to learn a probabilistic classifier, and then use the classifier to design a stratified sampling method to obtain the final estimates. We theoretically analyze algorithms for obtaining an optimal stratification, and compare our approach with a suite of natural alternatives like quantification learning, weighted and stratified sampling, and other techniques from the literature. We also provide extensive experiments in diverse use cases using multiple real and synthetic datasets to evaluate the quality, efficiency, and robustness of our approach.},
-	number = {3},
-	journal = {Proc. VLDB Endow.},
-	author = {Walenz, Brett and Sintos, Stavros and Roy, Sudeepa and Yang, Jun},
-	month = nov,
-	year = {2019},
-	note = {Number of pages: 13
-Publisher: VLDB Endowment
-tex.issue\_date: November 2019},
-	keywords = {cluster:Sampling, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
-	pages = {390--402},
-}
-
-@article{gan_momentbased_2018,
-	title = {Moment-based quantile sketches for efficient high cardinality aggregation queries},
-	volume = {11},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3236187.3236212},
-	doi = {10.14778/3236187.3236212},
-	abstract = {Interactive analytics increasingly involves querying for quantiles over sub-populations of high cardinality datasets. Data processing engines such as Druid and Spark use mergeable summaries to estimate quantiles, but summary merge times can be a bottleneck during aggregation. We show how a compact and efficiently mergeable quantile sketch can support aggregation workloads. This data structure, which we refer to as the moments sketch, operates with a small memory footprint (200 bytes) and computationally efficient (50ns) merges by tracking only a set of summary statistics, notably the sample moments. We demonstrate how we can efficiently estimate quantiles using the method of moments and the maximum entropy principle, and show how the use of a cascade further improves query time for threshold predicates. Empirical evaluation shows that the moments sketch can achieve less than 1 percent quantile error with 15× less overhead than comparable summaries, improving end query time in the MacroBase engine by up to 7× and the Druid engine by up to 60×.},
-	number = {11},
-	journal = {Proc. VLDB Endow.},
-	author = {Gan, Edward and Ding, Jialin and Tai, Kai Sheng and Sharan, Vatsal and Bailis, Peter},
-	month = jul,
-	year = {2018},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: July 2018},
-	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {1647--1660},
 }
 
 @article{zhang_laqp_2021,
@@ -833,123 +1337,6 @@ tex.issue\_date: July 2018},
 	pages = {1188--1199},
 }
 
-@article{pang_flashview_2017,
-	title = {{FlashView}: {An} interactive visual explorer for raw data},
-	volume = {10},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3137765.3137796},
-	doi = {10.14778/3137765.3137796},
-	abstract = {New data has been generated in an unexpected high speed. To get insight of those data, data analysts will perform a thorough study using state-of-the-art big data analytical tools. Before the analysis starts, a preprocessing is conducted, where data analyst tends to issue a few ad-hoc queries on a new dataset to explore and gain a better understanding. However, it is costly to perform such ad-hoc queries on large scale data using traditional data management systems, e.g., DBMS, because data loading and indexing are very expensive. In this demo, we propose a novel visual data explorer system, FlashView, which omits the loading process by directly querying raw data. FlashView applies approximate query processing technique to achieve real-time query results. It builds both in-memory index and disk index to facilitate the data scanning. It also supports tracking and updating multiple queries concurrently. Note that FlashView is not designed as a replacement of full-fledged DBMS. Instead, it tries to help the analysts quickly understand the characteristics of data, so he/she can selectively load data into the DBMS to do more sophisticated analysis.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Pang, Zhifei and Wu, Sai and Chen, Gang and Chen, Ke and Shou, Lidan},
-	month = aug,
-	year = {2017},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2017},
-	keywords = {RInteractive: Yes, RRaw: Yes, cluster:Visual Tools, layer:User Interaction, supercluster:Data Visualization, type:Proposal of Solution},
-	pages = {1869--1872},
-}
-
-@article{echihabi_hercules_2022,
-	title = {Hercules against data series similarity search},
-	volume = {15},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3547305.3547308},
-	doi = {10.14778/3547305.3547308},
-	abstract = {We propose Hercules, a parallel tree-based technique for exact similarity search on massive disk-based data series collections. We present novel index construction and query answering algorithms that leverage different summarization techniques, carefully schedule costly operations, optimize memory and disk accesses, and exploit the multi-threading and SIMD capabilities of modern hardware to perform CPU-intensive calculations. We demonstrate the superiority and robustness of Hercules with an extensive experimental evaluation against state-of-the-art techniques, using many synthetic and real datasets, and query workloads of varying difficulty. The results show that Hercules performs up to one order of magnitude faster than the best competitor (which is not always the same). Moreover, Hercules is the only index that outperforms the optimized scan on all scenarios, including the hard query workloads on disk-based datasets.},
-	number = {10},
-	journal = {Proc. VLDB Endow.},
-	author = {Echihabi, Karima and Fatourou, Panagiota and Zoumpatianos, Kostas and Palpanas, Themis and Benbrahim, Houda},
-	month = sep,
-	year = {2022},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: June 2022},
-	keywords = {cluster:Adaptive Indexing, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-	pages = {2005--2018},
-}
-
-@article{cai_generative_2021,
-	title = {Generative adversarial networks: {A} survey toward private and secure applications},
-	volume = {54},
-	issn = {0360-0300},
-	url = {https://doi.org/10.1145/3459992},
-	doi = {10.1145/3459992},
-	abstract = {Generative Adversarial Networks (GANs) have promoted a variety of applications in computer vision and natural language processing, among others, due to its generative model’s compelling ability to generate realistic examples plausibly drawn from an existing distribution of samples. GAN not only provides impressive performance on data generation-based tasks but also stimulates fertilization for privacy and security oriented research because of its game theoretic optimization strategy. Unfortunately, there are no comprehensive surveys on GAN in privacy and security, which motivates this survey to summarize systematically. The existing works are classified into proper categories based on privacy and security functions, and this survey conducts a comprehensive analysis of their advantages and drawbacks. Considering that GAN in privacy and security is still at a very initial stage and has imposed unique challenges that are yet to be well addressed, this article also sheds light on some potential privacy and security applications with GAN and elaborates on some future research directions.},
-	number = {6},
-	journal = {Acm Computing Surveys},
-	author = {Cai, Zhipeng and Xiong, Zuobin and Xu, Honghui and Wang, Peng and Li, Wei and Pan, Yi},
-	month = jul,
-	year = {2021},
-	note = {Number of pages: 38
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 132
-tex.issue\_date: July 2022},
-	keywords = {Generative adversarial networks, deep learning, privacy and security},
-}
-
-@article{dasilva_fog_2022,
-	title = {Fog computing platforms for smart city applications: {A} survey},
-	volume = {22},
-	issn = {1533-5399},
-	url = {https://doi.org/10.1145/3488585},
-	doi = {10.1145/3488585},
-	abstract = {Emerging IoT applications with stringent requirements on latency and data processing have posed many challenges to cloud-centric platforms for Smart Cities. Recently, Fog Computing has been advocated as a promising approach to support such new applications and handle the increasing volume of IoT data and devices. The Fog Computing paradigm is characterized by a horizontal system-level architecture where devices close to end-users and IoT devices are used for processing, storage, and networking functions. Fog Computing platforms aim to facilitate the development of applications and systems for Smart Cities by providing services and abstractions designed to integrate data from IoT devices and various information systems deployed in the city. Despite the potential of the Fog Computing paradigm, the literature still lacks a broad, comprehensive overview of what has been investigated on the use of such paradigm in platforms for Smart Cities and open issues to be addressed in future research and development. In this paper, a systematic mapping study was performed and we present a comprehensive understanding of the use of the Fog Computing paradigm in Smart Cities platforms, providing an overview of the current state of research on this topic, and identifying important gaps in the existing approaches and promising research directions.},
-	number = {4},
-	journal = {ACM Transactions on Internet Technology},
-	author = {Da Silva, Thiago Pereira and Batista, Thais and Lopes, Frederico and Neto, Aluizio Rocha and Delicato, Flávia C. and Pires, Paulo F. and Da Rocha, Atslands R.},
-	month = dec,
-	year = {2022},
-	note = {Number of pages: 32
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 96
-tex.issue\_date: November 2022},
-	keywords = {Fog computing, edge computing, smart cities},
-}
-
-@article{gu_serverbased_2021,
-	title = {From server-based to client-based machine learning: {A} comprehensive survey},
-	volume = {54},
-	issn = {0360-0300},
-	url = {https://doi.org/10.1145/3424660},
-	doi = {10.1145/3424660},
-	abstract = {In recent years, mobile devices have gained increasing development with stronger computation capability and larger storage space. Some of the computation-intensive machine learning tasks can now be run on mobile devices. To exploit the resources available on mobile devices and preserve personal privacy, the concept of client-based machine learning has been proposed. It leverages the users’ local hardware and local data to solve machine learning sub-problems on mobile devices and only uploads computation results rather than the original data for the optimization of the global model. Such an architecture can not only relieve computation and storage burdens on servers but also protect the users’ sensitive information. Another benefit is the bandwidth reduction because various kinds of local data can be involved in the training process without being uploaded. In this article, we provide a literature review on the progressive development of machine learning from server based to client based. We revisit a number of widely used server-based and client-based machine learning methods and applications. We also extensively discuss the challenges and future directions in this area. We believe that this survey will give a clear overview of client-based machine learning and provide guidelines on applying client-based machine learning to practice.},
-	number = {1},
-	journal = {Acm Computing Surveys},
-	author = {Gu, Renjie and Niu, Chaoyue and Wu, Fan and Chen, Guihai and Hu, Chun and Lyu, Chengfei and Wu, Zhihua},
-	month = jan,
-	year = {2021},
-	note = {Number of pages: 36
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 6
-tex.issue\_date: January 2022},
-	keywords = {Mobile intelligence, decentralized training, distributed system, federated learning, machine learning},
-}
-
-@article{muller_improved_2018,
-	title = {Improved selectivity estimation by combining knowledge from sampling and synopses},
-	volume = {11},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3213880.3213882},
-	doi = {10.14778/3213880.3213882},
-	abstract = {Estimating selectivities remains a critical task in query processing. Optimizers rely on the accuracy of selectivities when generating execution plans and, in approximate query answering, estimated selectivities affect the quality of the result. Many systems maintain synopses, e.g., histograms, and, in addition, provide sampling facilities. In this paper, we present a novel approach to combine knowledge from synopses and sampling for the purpose of selectivity estimation for conjunctive queries. We first show how to extract information from synopses and sampling such that they are mutually consistent. In a second step, we show how to combine them and decide on an admissible selectivity estimate. We compare our approach to state-of-the-art methods and evaluate the strengths and limitations of each approach.},
-	number = {9},
-	journal = {Proc. VLDB Endow.},
-	author = {Müller, Magnus and Moerkotte, Guido and Kolb, Oliver},
-	month = may,
-	year = {2018},
-	note = {Number of pages: 13
-Publisher: VLDB Endowment
-tex.issue\_date: May 2018},
-	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {1016--1028},
-}
-
 @article{pahins_hashedcubes_2017,
 	title = {Hashedcubes: {Simple}, low memory, real-time visual exploration of big data},
 	volume = {23},
@@ -994,121 +1381,6 @@ tex.issue\_date: May 2018},
 	pages = {1000--1007},
 }
 
-@article{peng_fast_2021,
-	title = {Fast data series indexing for in-memory data},
-	volume = {30},
-	issn = {1066-8888},
-	url = {https://doi.org/10.1007/s00778-021-00677-2},
-	doi = {10.1007/s00778-021-00677-2},
-	abstract = {Data series similarity search is a core operation for several data series analysis applications across many different domains. However, the state-of-the-art techniques fail to deliver the time performance required for interactive exploration, or analysis of large data series collections. In this work, we propose MESSI, the first data series index designed for in-memory operation on modern hardware. Our index takes advantage of the modern hardware parallelization opportunities (i.e., SIMD instructions, multi-socket and multi-core architectures), in order to accelerate both index construction and similarity search processing times. Moreover, it benefits from a careful design in the setup and coordination of the parallel workers and data structures, so that it maximizes its performance for in-memory operations. MESSI supports similarity search using both the Euclidean and dynamic time warping (DTW) distances. Our experiments with synthetic and real datasets demonstrate that overall MESSI is up to 4x faster at index construction and up to 11x faster at query answering than the state-of-the-art parallel approach. MESSI is the first to answer exact similarity search queries on 100GB datasets in ∼50\&nbsp;ms (30–75\&nbsp;ms across diverse datasets), which enables real-time, interactive data exploration on very large data series collections.},
-	number = {6},
-	journal = {The VLDB Journal},
-	author = {Peng, Botao and Fatourou, Panagiota and Palpanas, Themis},
-	month = jun,
-	year = {2021},
-	note = {Number of pages: 27
-Place: Berlin, Heidelberg
-Publisher: Springer-Verlag
-tex.issue\_date: Nov 2021},
-	keywords = {RInteractive: Yes, cluster:Time Series, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-	pages = {1041--1067},
-}
-
-@article{personnaz_eda4sum_2022,
-	title = {{EDA4SUM}: {Guided} exploration of data summaries},
-	volume = {15},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3554821.3554851},
-	doi = {10.14778/3554821.3554851},
-	abstract = {We demonstrate EDA4Sum, a framework dedicated to generating guided multi-step data summarization pipelines for very large datasets. Data summarization is the process of producing interpretable and representative subsets of an input dataset. It is usually performed following a one-shot process with the purpose of finding the best summary. EDA4Sum leverages Exploratory Data Analysis (EDA) to produce connected summaries in multiple steps, with the goal of maximizing their cumulative utility. A useful summary contains k individually uniform sets that are collectively diverse to be representative of the input data. EDA4Sum accommodates datasets with different characteristics by providing the ability to tune the weights of uniformity, diversity and novelty when generating multi-step summaries. We demonstrate the superiority of multi-step EDA summarization over single-step summarization for summarizing very large data, and the need to provide guidance to domain experts, by interacting with the VLDB'22 participants who will act as data analysts. The application is avilable at https://bit.ly/eda4sumₐpplication.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Personnaz, Aurélien and Youngmann, Brit and Amer-Yahia, Sihem},
-	month = sep,
-	year = {2022},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2022},
-	keywords = {cluster:Assisted Query Formulation, layer:User Interaction, supercluster:Exploration Interfaces, type:Proposal of Solution},
-	pages = {3590--3593},
-}
-
-@article{palkar_filter_2018,
-	title = {Filter before you parse: {Faster} analytics on raw data with sparser},
-	volume = {11},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3236187.3236207},
-	doi = {10.14778/3236187.3236207},
-	abstract = {Exploratory big data applications often run on raw unstructured or semi-structured data formats, such as JSON files or text logs. These applications can spend 80–90\% of their execution time parsing the data. In this paper, we propose a new approach for reducing this overhead: apply filters on the data's raw bytestream before parsing. This technique, which we call raw filtering, leverages the features of modern hardware and the high selectivity of queries found in many exploratory applications. With raw filtering, a user-specified query predicate is compiled into a set of filtering primitives called raw filters (RFs). RFs are fast, SIMD-based operators that occasionally yield false positives, but never false negatives. We combine multiple RFs into an RF cascade to decrease the false positive rate and maximize parsing throughput. Because the best RF cascade is data-dependent, we propose an optimizer that dynamically selects the combination of RFs with the best expected throughput, achieving within 10\% of the global optimum cascade while adding less than 1.2\% overhead. We implement these techniques in a system called Sparser, which automatically manages a parsing cascade given a data stream in a supported format (e.g., JSON, Avro, Parquet) and a user query. We show that many real-world applications are highly selective and benefit from Sparser. Across diverse workloads, Sparser accelerates state-of-the-art parsers such as Mison by up to 22 × and improves end-to-end application performance by up to 9 ×.},
-	number = {11},
-	journal = {Proc. VLDB Endow.},
-	author = {Palkar, Shoumik and Abuzaid, Firas and Bailis, Peter and Zaharia, Matei},
-	month = jul,
-	year = {2018},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: July 2018},
-	keywords = {RRaw: Yes, cluster:Flexible Engines, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
-	pages = {1576--1589},
-}
-
-@article{chandramouli_fishstore_2019,
-	title = {{FishStore}: {Fast} ingestion and indexing of raw data},
-	volume = {12},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3352063.3352100},
-	doi = {10.14778/3352063.3352100},
-	abstract = {The last decade has witnessed a huge increase in data being ingested into the cloud from a variety of data sources. The ingested data takes various forms such as JSON, CSV, and binary formats. Traditionally, data is either ingested into storage in raw form, indexed ad-hoc using range indices, or cooked into analytics-friendly columnar formats. None of these solutions is able to handle modern requirements on storage: making the data available immediately for ad-hoc and streaming queries while ingesting at extremely high throughputs. We demonstrate FishStore, our open-source concurrent latch-free storage layer for data with flexible schema. FishStore builds on recent advances in parsing and indexing techniques, and is based on multi-chain hash indexing of dynamically registered predicated subsets of data. We find predicated subset hashing to be a powerful primitive that supports a broad range of queries on ingested data and admits a higher performance (by up to an order of magnitude) implementation than current alternatives.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Chandramouli, Badrish and Xie, Dong and Li, Yinan and Kossmann, Donald},
-	month = aug,
-	year = {2019},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2019},
-	keywords = {RRaw: Yes, cluster:Flexible Engines, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-	pages = {1922--1925},
-}
-
-@article{rahman_evaluating_2019,
-	title = {Evaluating interactive data systems: {Survey} and case studies},
-	volume = {29},
-	issn = {1066-8888},
-	url = {https://doi.org/10.1007/s00778-019-00589-2},
-	doi = {10.1007/s00778-019-00589-2},
-	abstract = {Interactive query interfaces have become a popular tool for ad hoc data analysis and exploration. Compared with traditional systems that are optimized for throughput or batched performance, these systems focus more on user-centric interactivity. This poses a new class of performance challenges to the backend, which are further exacerbated by the advent of new interaction modes\&nbsp;(e.g., touch, gesture) and query interface paradigms\&nbsp;(e.g., sliders, maps). There is, thus, a need to clearly articulate the evaluation space for interactive systems. In this paper, we extensively survey the literature to guide the development and evaluation of interactive data systems. We highlight unique characteristics of interactive workloads, discuss confounding factors when conducting user studies, and catalog popular metrics for evaluation. We further delineate certain behaviors not captured by these metrics and propose complementary ones to provide a complete picture of interactivity. We demonstrate how to analyze and employ user behavior for system enhancements through three case studies. Our survey and case studies motivate the need for behavior-driven evaluation and optimizations when building interactive interfaces.},
-	number = {1},
-	journal = {The VLDB Journal},
-	author = {Rahman, Protiva and Jiang, Lilong and Nandi, Arnab},
-	month = nov,
-	year = {2019},
-	note = {Number of pages: 28
-Place: Berlin, Heidelberg
-Publisher: Springer-Verlag
-tex.issue\_date: Jan 2020},
-	keywords = {Benchmark, Evaluation, Gestural devices, Human-in-the-loop, Interactive systems, Survey, Touch-screen},
-	pages = {119--146},
-}
-
-@inproceedings{zhao_distributed_2018,
-	address = {New York, NY, USA},
-	series = {{SSDBM} '18},
-	title = {Distributed caching for processing raw arrays},
-	isbn = {978-1-4503-6505-5},
-	url = {https://doi.org/10.1145/3221269.3221295},
-	doi = {10.1145/3221269.3221295},
-	abstract = {As applications continue to generate multi-dimensional data at exponentially increasing rates, fast analytics to extract meaningful results is becoming extremely important. The database community has developed array databases that alleviate this problem through a series of techniques. In-situ mechanisms provide direct access to raw data in the original format—without loading and partitioning. Parallel processing scales to the largest datasets. In-memory caching reduces latency when the same data are accessed across a workload of queries. However, we are not aware of any work on distributed caching of multi-dimensional raw arrays. In this paper, we introduce a distributed framework for cost-based caching of multi-dimensional arrays in native format. Given a set of files that contain portions of an array and an online query workload, the framework computes an effective caching plan in two stages. First, the plan identifies the cells to be cached locally from each of the input files by continuously refining an evolving R-tree index. In the second stage, an optimal assignment of cells to nodes that collocates dependent cells in order to minimize the overall data transfer is determined. We design cache eviction and placement heuristic algorithms that consider the historical query workload. A thorough experimental evaluation over two real datasets in three file formats confirms the superiority - by as much as two orders of magnitude - of the proposed framework over existing techniques in terms of cache overhead and workload execution time.},
-	booktitle = {Proceedings of the 30th international conference on scientific and statistical database management},
-	publisher = {Association for Computing Machinery},
-	author = {Zhao, Weijie and Rusu, Florin and Dong, Bin and Wu, Kesheng and Ho, Anna Y. Q. and Nugent, Peter},
-	year = {2018},
-	note = {Number of pages: 12
-Place: Bozen-Bolzano, Italy
-tex.articleno: 22},
-	keywords = {RDistributed: Yes, RRaw: Yes, cluster:Data Prefetching, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-}
-
 @article{han_efficiently_2018,
 	title = {Efficiently processing deterministic approximate aggregation query on massive data},
 	volume = {57},
@@ -1125,26 +1397,6 @@ tex.articleno: 22},
 	pages = {437--473},
 }
 
-@article{meduri_evaluation_2021,
-	title = {Evaluation of machine learning algorithms in predicting the next {SQL} query from the future},
-	volume = {46},
-	issn = {0362-5915},
-	url = {https://doi.org/10.1145/3442338},
-	doi = {10.1145/3442338},
-	abstract = {Prediction of the next SQL query from the user, given her sequence of queries until the current timestep, during an ongoing interaction session of the user with the database, can help in speculative query processing and increased interactivity. While existing machine learning– (ML) based approaches use recommender systems to suggest relevant queries to a user, there has been no exhaustive study on applying temporal predictors to predict the next user issued query.In this work, we experimentally compare ML algorithms in predicting the immediate next future query in an interaction workload, given the current user query or the sequence of queries in a user session thus far. As a part of this, we propose the adaptation of two powerful temporal predictors: (a) Recurrent Neural Networks (RNNs) and (b) a Reinforcement Learning approach called Q-Learning that uses Markov Decision Processes. We represent each query as a comprehensive set of fragment embeddings that not only captures the SQL operators, attributes, and relations but also the arithmetic comparison operators and constants that occur in the query. Our experiments on two real-world datasets show the effectiveness of temporal predictors against the baseline recommender systems in predicting the structural fragments in a query w.r.t. both quality and time. Besides showing that RNNs can be used to synthesize novel queries, we find that exact Q-Learning outperforms RNNs despite predicting the next query entirely from the historical query logs.},
-	number = {1},
-	journal = {ACM Transactions on Database Systems},
-	author = {Meduri, Venkata Vamsikrishna and Chowdhury, Kanchan and Sarwat, Mohamed},
-	month = mar,
-	year = {2021},
-	note = {Number of pages: 46
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 4
-tex.issue\_date: March 2021},
-	keywords = {cluster:Data Prefetching, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-}
-
 @inproceedings{lee_exploiting_2022,
 	title = {Exploiting machine learning models for approximate query processing},
 	doi = {10.1109/BigData55660.2022.10020252},
@@ -1155,84 +1407,6 @@ tex.issue\_date: March 2021},
 	year = {2022},
 	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Validation Research},
 	pages = {6752--6754},
-}
-
-@article{trummer_demonstrating_2020,
-	title = {Demonstrating the voice-based exploration of large data sets with {CiceroDB}-{Zero}},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3415478.3415496},
-	doi = {10.14778/3415478.3415496},
-	abstract = {This demonstration enables participants to explore large data sets via voice interfaces. The focus of the demonstration is on methods generating concise speech descriptions of query results, specified by users via voice input. The technical novelty of the demonstrated system lies in the fact that processing overheads are mostly moved into a pre-processing phase, generating speeches for batches of queries defined via templates. Visitors can access the demo via smart speakers on-site or via their own smart phones. They will be able to customize the generated voice descriptions and to tune voice output methods.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Trummer, Immanuel},
-	month = sep,
-	year = {2020},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2020},
-	keywords = {cluster:Novel Query Interfaces, layer:User Interaction, supercluster:Exploration Interfaces, type:Proposal of Solution},
-	pages = {2869--2872},
-}
-
-@article{maccioni_crossing_2017,
-	title = {Crossing the finish line faster when paddling the data lake with {KAYAK}},
-	volume = {10},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3137765.3137792},
-	doi = {10.14778/3137765.3137792},
-	abstract = {Paddling in a data lake is strenuous for a data scientist. Being a loosely-structured collection of raw data with little or no meta-information available, the difficulties of extracting insights from a data lake start from the initial phases of data analysis. Indeed, data preparation, which involves many complex operations (such as source and feature selection, exploratory analysis, data profiling, and data curation), is a long and involved activity for navigating the lake before getting precious insights at the finish line.In this framework, we demonstrate KAYAK, a framework that supports data preparation in a data lake with ad-hoc primitives and allows data scientists to cross the finish line sooner. KAYAK takes into account the tolerance of the user in waiting for the primitives' results and it uses incremental execution strategies to produce informative previews of these results. The framework is based on a wise management of metadata and on features that limit human intervention, thus scaling smoothly when the data lake evolves.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Maccioni, Antonio and Torlone, Riccardo},
-	month = aug,
-	year = {2017},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2017},
-	keywords = {RDistributed: Yes, RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {1853--1856},
-}
-
-@article{bellavista_decentralised_2021,
-	title = {Decentralised learning in federated deployment environments: {A} system-level survey},
-	volume = {54},
-	issn = {0360-0300},
-	url = {https://doi.org/10.1145/3429252},
-	doi = {10.1145/3429252},
-	abstract = {Decentralised learning is attracting more and more interest because it embodies the principles of data minimisation and focused data collection, while favouring the transparency of purpose specification (i.e., the objective for which a model is built). Cloud-centric-only processing and deep learning are no longer strict necessities to train high-fidelity models; edge devices can actively participate in the decentralised learning process by exchanging meta-level information in place of raw data, thus paving the way for better privacy guarantees. In addition, these new possibilities can relieve the network backbone from unnecessary data transfer and allow it to meet strict low-latency requirements by leveraging on-device model inference. This survey provides a detailed and up-to-date overview of the most recent contributions available in the state-of-the-art decentralised learning literature. In particular, it originally provides the reader audience with a clear presentation of the peculiarities of federated settings, with a novel taxonomy of decentralised learning approaches, and with a detailed description of the most relevant and specific system-level contributions of the surveyed solutions for privacy, communication efficiency, non-IIDness, device heterogeneity, and poisoning defense.},
-	number = {1},
-	journal = {Acm Computing Surveys},
-	author = {Bellavista, Paolo and Foschini, Luca and Mora, Alessio},
-	month = feb,
-	year = {2021},
-	note = {Number of pages: 38
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 15
-tex.issue\_date: January 2022},
-	keywords = {Decentralised learning, communication efficiency, federated deployment, poisoning defense, privacy},
-}
-
-@article{hameed_data_2020,
-	title = {Data preparation: {A} survey of commercial tools},
-	volume = {49},
-	issn = {0163-5808},
-	url = {https://doi.org/10.1145/3444831.3444835},
-	doi = {10.1145/3444831.3444835},
-	abstract = {Raw data are often messy: they follow different encodings, records are not well structured, values do not adhere to patterns, etc. Such data are in general not fit to be ingested by downstream applications, such as data analytics tools, or even by data management systems. The act of obtaining information from raw data relies on some data preparation process. Data preparation is integral to advanced data analysis and data management, not only for data science but for any data-driven applications. Existing data preparation tools are operational and useful, but there is still room for improvement and optimization. With increasing data volume and its messy nature, the demand for prepared data increases day by day.To cater to this demand, companies and researchers are developing techniques and tools for data preparation. To better understand the available data preparation systems, we have conducted a survey to investigate (1) prominent data preparation tools, (2) distinctive tool features, (3) the need for preliminary data processing even for these tools and, (4) features and abilities that are still lacking. We conclude with an argument in support of automatic and intelligent data preparation beyond traditional and simplistic techniques.},
-	number = {3},
-	journal = {Sigmod Record},
-	author = {Hameed, Mazhar and Naumann, Felix},
-	month = dec,
-	year = {2020},
-	note = {Number of pages: 12
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.issue\_date: September 2020},
-	keywords = {data cleaning, data quality, data wrangling},
-	pages = {18--29},
 }
 
 @inproceedings{ma_dbest_2019,
@@ -1269,63 +1443,6 @@ Place: Amsterdam, Netherlands},
 Place: Hyderabad, India},
 	keywords = {cluster:Visual Optimizations, layer:User Interaction, supercluster:Data Visualization, type:Proposal of Solution},
 	pages = {98--106},
-}
-
-@article{jo_demonstration_2020,
-	title = {Demonstration of {ScroogeDB}: {Getting} more bang for the buck with deterministic approximation in the cloud},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3415478.3415519},
-	doi = {10.14778/3415478.3415519},
-	abstract = {We demonstrate ScroogeDB which aims at minimizing monetary cost of processing aggregation queries in the Cloud. It runs on top of a Cloud database that offers pay-as-you-go query processing where users pay according to the number of bytes processed. ScroogeDB exploits deterministic approximate query processing (DAQ) to achieve monetary savings. That is, ScroogeDB provides deterministic bounds, i.e., bounds that contain the true value with a 100\% probability. ScroogeDB creates small synopses of the database and uses these synopses to answer aggregation queries. By rewriting a query on base tables into a query on smaller synopses, we significantly reduce the amount of processed data. We do not pre-compute synopses in advance of an analysis session. Instead, we generate them on the fly, interleaving synopsis generation with query execution.In our demonstration, we show that our system realizes impressive monetary savings with little precision loss. We run our system on top of the Google BigQuery Cloud platform and provide users with a graphical interface that visualizes deterministic bounds. The graphical interface also provides information regarding the generated synopses and how they contribute to monetary savings.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Jo, Saehan and Pei, Jialing and Trummer, Immanuel},
-	month = sep,
-	year = {2020},
-	note = {Number of pages: 4
-Publisher: VLDB Endowment
-tex.issue\_date: August 2020},
-	keywords = {UserStudy: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Validation Research},
-	pages = {2961--2964},
-}
-
-@article{hilprecht_deepdb_2020,
-	title = {{DeepDB}: {Learn} from data, not from queries!},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3384345.3384349},
-	doi = {10.14778/3384345.3384349},
-	abstract = {The typical approach for learned DBMS components is to capture the behavior by running a representative set of queries and use the observations to train a machine learning model. This workload-driven approach, however, has two major downsides. First, collecting the training data can be very expensive, since all queries need to be executed on potentially large databases. Second, training data has to be recollected when the workload or the database changes. To overcome these limitations, we take a different route and propose a new data-driven approach for learned DBMS components which directly supports changes of the workload and data without the need of retraining. Indeed, one may now expect that this comes at a price of lower accuracy since workload-driven approaches can make use of more information. However, this is not the case. The results of our empirical evaluation demonstrate that our data-driven approach not only provides better accuracy than state-ofthe- art learned components but also generalizes better to unseen queries.},
-	number = {7},
-	journal = {Proc. VLDB Endow.},
-	author = {Hilprecht, Benjamin and Schmidt, Andreas and Kulessa, Moritz and Molina, Alejandro and Kersting, Kristian and Binnig, Carsten},
-	month = mar,
-	year = {2020},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: March 2020},
-	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {992--1005},
-}
-
-@article{kondylakis_coconut_2019,
-	title = {Coconut: {A} scalable bottom-up approach for building data series indexes},
-	volume = {11},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3199517.3199519},
-	doi = {10.14778/3199517.3199519},
-	abstract = {Many modern applications produce massive amounts of data series that need to be analyzed, requiring efficient similarity search operations. However, the state-of-the-art data series indexes that are used for this purpose do not scale well for massive datasets in terms of performance, or storage costs. We pinpoint the problem to the fact that existing summarizations of data series used for indexing cannot be sorted while keeping similar data series close to each other in the sorted order. This leads to two design problems. First, traditional bulk-loading algorithms based on sorting cannot be used. Instead, index construction takes place through slow top-down insertions, which create a non-contiguous index that results in many random I/Os. Second, data series cannot be sorted and split across nodes evenly based on their median value; thus, most leaf nodes are in practice nearly empty. This further slows down query speed and amplifies storage costs. To address these problems, we present Coconut. The first innovation in Coconut is an inverted, sortable data series summarization that organizes data series based on a z-order curve, keeping similar series close to each other in the sorted order. As a result, Coconut is able to use bulk-loading techniques that rely on sorting to quickly build a contiguous index using large sequential disk I/Os. We then explore prefix-based and median-based splitting policies for bottom-up bulk-loading, showing that median-based splitting outperforms the state of the art, ensuring that all nodes are densely populated. Overall, we show analytically and empirically that Coconut dominates the state-of-the-art data series indexes in terms of construction speed, query speed, and storage costs.},
-	number = {6},
-	journal = {Proc. VLDB Endow.},
-	author = {Kondylakis, Haridimos and Dayan, Niv and Zoumpatianos, Kostas and Palpanas, Themis},
-	month = jan,
-	year = {2019},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: February 2018},
-	keywords = {cluster:Time Series, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
-	pages = {677--690},
 }
 
 @inproceedings{liang_combining_2021,
@@ -1380,25 +1497,6 @@ Place: Portland, OR, USA},
 Place: Amsterdam, Netherlands},
 	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
 	pages = {1135--1152},
-}
-
-@article{gan_coopstore_2020,
-	title = {{CoopStore}: {Optimizing} precomputed summaries for aggregation},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3407790.3407817},
-	doi = {10.14778/3407790.3407817},
-	abstract = {An emerging class of data systems partition their data and precompute approximate summaries (i.e., sketches and samples) for each segment to reduce query costs. They can then aggregate and combine the segment summaries to estimate results without scanning the raw data. However, given limited storage space each summary introduces approximation errors that affect query accuracy. For instance, systems that use existing mergeable summaries cannot reduce query error below the error of an individual precomputed summary. We introduce CoopStore, a query system that optimizes item frequency and quantile summaries for accuracy when aggregating over multiple segments. Compared to conventional mergeable summaries, CoopStore leverages additional memory available for summary construction and aggregation to derive a more precise combined result. This reduces error by up to 25 x over interval aggregations and 4.5 x over data cube aggregations on industrial datasets compared to standard summarization methods, with provable worst-case error guarantees.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Gan, Edward and Bailis, Peter and Charikar, Moses},
-	month = sep,
-	year = {2020},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: August 2020},
-	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {2174--2187},
 }
 
 @article{li_bounded_2019,
@@ -1482,25 +1580,6 @@ Place: Washington, DC, USA},
 	pages = {53--64},
 }
 
-@article{grulich_babelfish_2022,
-	title = {Babelfish: {Efficient} execution of polyglot queries},
-	volume = {15},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3489496.3489501},
-	doi = {10.14778/3489496.3489501},
-	abstract = {Today's users of data processing systems come from different domains, have different levels of expertise, and prefer different programming languages. As a result, analytical workload requirements shifted from relational to polyglot queries involving user-defined functions (UDFs). Although some data processing systems support polyglot queries, they often embed third-party language runtimes. This embedding induces a high performance overhead, as it causes additional data materialization between execution engines.In this paper, we present Babelfish, a novel data processing engine designed for polyglot queries. Babelfish introduces an intermediate representation that unifies queries from different implementation languages. This enables new, holistic optimizations across operator and language boundaries, e.g., operator fusion and workload specialization. As a result, Babelfish avoids data transfers and enables efficient utilization of hardware resources. Our evaluation shows that Babelfish outperforms state-of-the-art data processing systems by up to one order of magnitude and reaches the performance of handwritten code. With Babelfish, we bridge the performance gap between relational and multi-language UDFs and lay the foundation for the efficient execution of future polyglot workloads.},
-	number = {2},
-	journal = {Proc. VLDB Endow.},
-	author = {Grulich, Philipp Marian and Zeuch, Steffen and Markl, Volker},
-	month = feb,
-	year = {2022},
-	note = {Number of pages: 15
-Publisher: VLDB Endowment
-tex.issue\_date: October 2021},
-	keywords = {cluster:Flexible Engines, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-	pages = {196--210},
-}
-
 @inproceedings{personnaz_balancing_2021,
 	address = {New York, NY, USA},
 	series = {{aiDM} '21},
@@ -1555,25 +1634,6 @@ Place: Houston, TX, USA},
 	pages = {1477--1492},
 }
 
-@article{wang_are_2021,
-	title = {Are we ready for learned cardinality estimation?},
-	volume = {14},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3461535.3461552},
-	doi = {10.14778/3461535.3461552},
-	abstract = {Cardinality estimation is a fundamental but long unresolved problem in query optimization. Recently, multiple papers from different research groups consistently report that learned models have the potential to replace existing cardinality estimators. In this paper, we ask a forward-thinking question: Are we ready to deploy these learned cardinality models in production? Our study consists of three main parts. Firstly, we focus on the static environment (i.e., no data updates) and compare five new learned methods with nine traditional methods on four real-world datasets under a unified workload setting. The results show that learned models are indeed more accurate than traditional methods, but they often suffer from high training and inference costs. Secondly, we explore whether these learned models are ready for dynamic environments (i.e., frequent data updates). We find that they cannot catch up with fast data updates and return large errors for different reasons. For less frequent updates, they can perform better but there is no clear winner among themselves. Thirdly, we take a deeper look into learned models and explore when they may go wrong. Our results show that the performance of learned methods can be greatly affected by the changes in correlation, skewness, or domain size. More importantly, their behaviors are much harder to interpret and often unpredictable. Based on these findings, we identify two promising research directions (control the cost of learned models and make learned models trustworthy) and suggest a number of research opportunities. We hope that our study can guide researchers and practitioners to work together to eventually push learned cardinality estimators into real database systems.},
-	number = {9},
-	journal = {Proc. VLDB Endow.},
-	author = {Wang, Xiaoying and Qu, Changbo and Wu, Weiyuan and Wang, Jiannan and Zhou, Qingqing},
-	month = oct,
-	year = {2021},
-	note = {Number of pages: 15
-Publisher: VLDB Endowment
-tex.issue\_date: May 2021},
-	keywords = {layer:Database Layer, supercluster:Indexes, type:Validation Research},
-	pages = {1640--1654},
-}
-
 @inproceedings{quoc_approxjoin_2018,
 	address = {New York, NY, USA},
 	series = {{SoCC} '18},
@@ -1625,44 +1685,6 @@ Place: Auckland, New Zealand},
 	pages = {404--416},
 }
 
-@article{rong_approximate_2020,
-	title = {Approximate partition selection for big-data workloads using summary statistics},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3407790.3407848},
-	doi = {10.14778/3407790.3407848},
-	abstract = {Many big-data clusters store data in large partitions that support access at a coarse, partition-level granularity. As a result, approximate query processing via row-level sampling is inefficient, often requiring reads of many partitions. In this work, we seek to answer queries quickly and approximately by reading a subset of the data partitions and combining partial answers in a weighted manner without modifying the data layout. We illustrate how to efficiently perform this query processing using a set of pre-computed summary statistics, which inform the choice of partitions and weights. We develop novel means of using the statistics to assess the similarity and importance of partitions. Our experiments on several datasets and data layouts demonstrate that to achieve the same relative error compared to uniform partition sampling, our techniques offer from 2.7x to 70x reduction in the number of partitions read, and the statistics stored per partition require fewer than 100KB.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Rong, Kexin and Lu, Yao and Bailis, Peter and Kandula, Srikanth and Levis, Philip},
-	month = sep,
-	year = {2020},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: August 2020},
-	keywords = {RDistributed: Yes, RRaw: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {2606--2619},
-}
-
-@article{kang_approximate_2020,
-	title = {Approximate selection with guarantees using proxies},
-	volume = {13},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3407790.3407804},
-	doi = {10.14778/3407790.3407804},
-	abstract = {Due to the falling costs of data acquisition and storage, researchers and industry analysts often want to find all instances of rare events in large datasets. For instance, scientists can cheaply capture thousands of hours of video, but are limited by the need to manually inspect long videos to identify relevant objects and events. To reduce this cost, recent work proposes to use cheap proxy models, such as image classifiers, to identify an approximate set of data points satisfying a data selection filter. Unfortunately, this recent work does not provide the statistical accuracy guarantees necessary in scientific and production settings.In this work, we introduce novel algorithms for approximate selection queries with statistical accuracy guarantees. Namely, given a limited number of exact identifications from an oracle, often a human or an expensive machine learning model, our algorithms meet a minimum precision or recall target with high probability. In contrast, existing approaches can catastrophically fail in satisfying these recall and precision targets. We show that our algorithms can improve query result quality by up to 30 x for both the precision and recall targets in both real and synthetic datasets.},
-	number = {12},
-	journal = {Proc. VLDB Endow.},
-	author = {Kang, Daniel and Gan, Edward and Bailis, Peter and Hashimoto, Tatsunori and Zaharia, Matei},
-	month = sep,
-	year = {2020},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: August 2020},
-	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {1990--2003},
-}
-
 @inproceedings{regev_approximating_2021,
 	title = {Approximating aggregated {SQL} queries with {LSTM} networks},
 	doi = {10.1109/IJCNN52387.2021.9533974},
@@ -1699,26 +1721,6 @@ tex.issue\_date: August 2020},
 	note = {ISSN: 2375-026X},
 	keywords = {RInteractive: Yes, cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
 	pages = {1309--1320},
-}
-
-@article{olma_adaptive_2019,
-	title = {Adaptive partitioning and indexing for in situ query processing},
-	volume = {29},
-	issn = {1066-8888},
-	url = {https://doi.org/10.1007/s00778-019-00580-x},
-	doi = {10.1007/s00778-019-00580-x},
-	abstract = {The constant flux of data and queries alike has been pushing the boundaries of data analysis systems. The increasing size of raw data files has made data loading an expensive operation that delays the data-to-insight time. To alleviate the loading cost, in situ query processing systems operate directly over raw data and offer instant access to data. At the same time, analytical workloads have increasing number of queries. Typically, each query focuses on a constantly shifting—yet small—range. As a result, minimizing the workload latency requires the benefits of indexing in in situ query processing. In this paper, we present an online partitioning and indexing scheme, along with a partitioning and indexing tuner tailored for in situ querying engines. The proposed system design improves query execution time by taking into account user query patterns, to (i) partition raw data files logically and (ii) build lightweight partition-specific indexes for each partition. We build an in situ query engine called Slalom to showcase the impact of our design. Slalom employs adaptive partitioning and builds non-obtrusive indexes in different partitions on-the-fly based on lightweight query access pattern monitoring. As a result of its lightweight nature, Slalom achieves efficient query processing over raw data with minimal memory consumption. Our experimentation with both microbenchmarks and real-life workloads shows that Slalom outperforms state-of-the-art in situ engines and achieves comparable query response times with fully indexed DBMS, offering lower cumulative query execution times for query workloads with increasing size and unpredictable access patterns.},
-	number = {1},
-	journal = {The VLDB Journal},
-	author = {Olma, Matthaios and Karpathiotakis, Manos and Alagiannis, Ioannis and Athanassoulis, Manos and Ailamaki, Anastasia},
-	month = nov,
-	year = {2019},
-	note = {Number of pages: 23
-Place: Berlin, Heidelberg
-Publisher: Springer-Verlag
-tex.issue\_date: Jan 2020},
-	keywords = {RRaw: Yes, cluster:Adaptive Indexing, layer:Database Layer, supercluster:Indexes, type:Proposal of Solution},
-	pages = {569--591},
 }
 
 @inproceedings{lepekhin_systematic_2019,
@@ -1771,43 +1773,6 @@ Place: Eindhoven, Netherlands},
 Place: Beijing, China},
 	keywords = {cluster:Sampling, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
 	pages = {2481--2484},
-}
-
-@inproceedings{kamat_unified_2017,
-	address = {New York, NY, USA},
-	series = {{SSDBM} '17},
-	title = {A unified correlation-based approach to sampling over joins},
-	isbn = {978-1-4503-5282-6},
-	url = {https://doi.org/10.1145/3085504.3085524},
-	doi = {10.1145/3085504.3085524},
-	abstract = {Supporting sampling in the presence of joins is an important problem in data analysis, but is inherently challenging due to the need to avoid correlation between output tuples. Current solutions provide either correlated or non-correlated samples. Sampling might not always be feasible in the non-correlated sampling-based approaches – the sample size or intermediate data size might be exceedingly large. On the other hand, a correlated sample may not be representative of the join. This paper presents a unified strategy towards join sampling, while considering sample correlation every step of the way. We provide two key contributions. First, in the case where a correlated sample is acceptable, we provide techniques, for all join types, to sample base relations so that their join is as random as possible. Second, in the case where a correlated sample is not acceptable, we provide enhancements to the state-of-the-art algorithms to reduce their execution time and intermediate data size.},
-	booktitle = {Proceedings of the 29th international conference on scientific and statistical database management},
-	publisher = {Association for Computing Machinery},
-	author = {Kamat, Niranjan and Nandi, Arnab},
-	year = {2017},
-	note = {Number of pages: 12
-Place: Chicago, IL, USA
-tex.articleno: 20},
-	keywords = {cluster:Sampling, layer:Database Layer, supercluster:Data Storage, type:Proposal of Solution},
-}
-
-@article{kang_accelerating_2021,
-	title = {Accelerating approximate aggregation queries with expensive predicates},
-	volume = {14},
-	issn = {2150-8097},
-	url = {https://doi.org/10.14778/3476249.3476285},
-	doi = {10.14778/3476249.3476285},
-	abstract = {Researchers and industry analysts are increasingly interested in computing aggregation queries over large, unstructured datasets with selective predicates that are computed using expensive deep neural networks (DNNs). As these DNNs are expensive and because many applications can tolerate approximate answers, analysts are interested in accelerating these queries via approximations. Unfortunately, standard approximate query processing techniques to accelerate such queries are not applicable because they assume the result of the predicates are available ahead of time. Furthermore, recent work using cheap approximations (i.e., proxies) do not support aggregation queries with predicates.To accelerate aggregation queries with expensive predicates, we develop and analyze a query processing algorithm that leverages proxies (ABAE). ABAE must account for the key challenge that it may sample records that do not satisfy the predicate. To address this challenge, we first use the proxy to group records into strata so that records satisfying the predicate are ideally grouped into few strata. Given these strata, ABAE uses pilot sampling and plugin estimates to sample according to the optimal allocation. We show that ABAE converges at an optimal rate in a novel analysis of stratified sampling with draws that may not satisfy the predicate. We further show that ABAE outperforms on baselines on six real-world datasets, reducing labeling costs by up to 2.3X.},
-	number = {11},
-	journal = {Proc. VLDB Endow.},
-	author = {Kang, Daniel and Guibas, John and Bailis, Peter and Hashimoto, Tatsunori and Sun, Yi and Zaharia, Matei},
-	month = oct,
-	year = {2021},
-	note = {Number of pages: 14
-Publisher: VLDB Endowment
-tex.issue\_date: July 2021},
-	keywords = {cluster:Query Approximation, layer:Middleware, supercluster:Interactive Performance Optimizations, type:Proposal of Solution},
-	pages = {2341--2354},
 }
 
 @inproceedings{savva_aggregate_2019,
@@ -1869,24 +1834,4 @@ Place: Budapest, Hungary},
 Place: Bangkok, Thailand},
 	keywords = {RInteractive: Yes, cluster:Visual Tools, layer:User Interaction, supercluster:Data Visualization, type:Proposal of Solution},
 	pages = {9--15},
-}
-
-@article{blazquez-garcia_review_2021,
-	title = {A review on {Outlier}/{Anomaly} detection in time series data},
-	volume = {54},
-	issn = {0360-0300},
-	url = {https://doi.org/10.1145/3444690},
-	doi = {10.1145/3444690},
-	abstract = {Recent advances in technology have brought major breakthroughs in data collection, enabling a large amount of data to be gathered over time and thus generating time series. Mining this data has become an important task for researchers and practitioners in the past few years, including the detection of outliers or anomalies that may represent errors or events of interest. This review aims to provide a structured and comprehensive state-of-the-art on unsupervised outlier detection techniques in the context of time series. To this end, a taxonomy is presented based on the main aspects that characterize an outlier detection technique.},
-	number = {3},
-	journal = {Acm Computing Surveys},
-	author = {Blázquez-García, Ane and Conde, Angel and Mori, Usue and Lozano, Jose A.},
-	month = apr,
-	year = {2021},
-	note = {Number of pages: 33
-Place: New York, NY, USA
-Publisher: Association for Computing Machinery
-tex.articleno: 56
-tex.issue\_date: April 2022},
-	keywords = {Outlier detection, anomaly detection, data mining, software, taxonomy, time series},
 }
