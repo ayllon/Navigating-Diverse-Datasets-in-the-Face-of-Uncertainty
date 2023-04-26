@@ -720,7 +720,7 @@ to a compute node if it is likely that it will run future queries that need that
 improves the performance and accuracy of \gls{AQP} using summary statistics to perform weighted sampling
 of the raw datasets: instead of randomly sampling the data, \PScube builds sketches for each data
 partition, using them at query time to select which set of partitions to sample maximizing the accuracy
-while reducing the overhead. At initialization, the system samples a set of known, existing queries
+while reducing the overhead. At initialization, the system samples a set of known, existing queries,
 and computes some summary statistics and the contribution of each partition to the answer. With this information,
 \PScube trains a model that learns which subset of statistics best discriminates the contribution
 of a given partition. With this, given a query, the system can predict how much a given partition will
