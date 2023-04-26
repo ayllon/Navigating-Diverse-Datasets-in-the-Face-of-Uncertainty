@@ -56,9 +56,6 @@ The results showed in the quasi-clique test set (section~\ref{sec:result_quasi_s
 demonstrate that the seed stage of \PresQ provides results close to the original
 cliques on uniform $n$-hypergraphs. The growing stage
 can recover them even for a high number of missing edges (up to $30\%$) at the expense of a higher run-time.
-These results also prove that the degree threshold based on the hypergeometric distribution
-offers comparable performance to a hand-picked ratio $\lambda$
-while being more stable and predictable.
 
 For real datasets, the ratio of missing edges can be intuitive to configure
 (simply $\gamma = 1 - \alpha$, where $\alpha$ is the test significance level), 
@@ -66,6 +63,9 @@ but $\lambda$ can be harder to interpret. We propose instead an intuitive and st
 interpretable method to dynamically adapt the threshold to the degree which is expected
 to follow a hypergeometric distribution and can be adjusted based on the quasi-clique
 itself, as shown in equation~\ref{eq:deg_hyperclique_hypergeom}.
+Our results also prove that the degree threshold based on the hypergeometric distribution
+offers comparable performance to a hand-picked ratio $\lambda$
+while being more stable and predictable.
 
 While our tests on artificial hypergraphs seem to point to the redundancy of the parameter $\Lambda$,
 the results shown in the real-world test set (section~\ref{sec:results_real}) prove that for real noisy graphs,
@@ -105,7 +105,7 @@ For instance, we can envision a ranking based on the previously discussed \emph{
 to decide which set of \glspl{EDD} is more suitable for cross-matching the datasets.
 
 In conclusion, \PresQ successfully identifies shared sets of attributes
-between multiple data files containing raw, numerical data \emph{exclusively} based
+between multiple data files containing raw, numerical data solely based
 on their distribution. This can guide users to cross-match datasets with unknown schemas,
 but also to label attributes for which the metadata is lost as long as there is available
 one dataset with properly labeled attributes.
@@ -113,7 +113,7 @@ one dataset with properly labeled attributes.
 Furthermore, \PresQ can also provide insights that drive serendipitous discoveries.
 The \gls{AFDS} result shown in figure~\ref{fig:afds} is an example of such a case:
 even with a set of files of unknown schema and unknown content, we could infer
-a relation between samples confirmed by the paper that published the data.
+a relation between samples, which we later confirmed looking at the paper that published the data.
 
 \section{Two-sample test based on \glsfmtlong{SOM}}
 \label{sec:discuss_som}
