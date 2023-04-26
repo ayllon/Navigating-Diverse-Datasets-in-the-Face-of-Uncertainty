@@ -9,7 +9,7 @@ We consider that Idreo's classification misses a category for this problem:
 \emph{Schema Homogenization}. This new category belongs to the \emph{Middleware} layer.
 
 In \emph{Data Mining in Astronomical Databases}, Borne
-describes how data exploration of this kind of diverse datasets is
+describes how data exploration of this kind of diverse dataset is
 relevant since it can drive serendipitous discoveries~\cite{Borne2001}. He proposes
 two groups of data mining approaches in this respect: event
 based and relationship based:
@@ -67,7 +67,7 @@ this context.
 In section~\ref{sec:real_use_cases}, we use an existing astronomy database
 to expand our understanding of how users explore datasets. Then,
 in section~\ref{sec:objectives}, we refine and concretize the objectives
-of the present thesis. In section~\ref{sec:gaps/principles} we identify
+of the present thesis. In section~\ref{sec:gaps/principles}, we identify
 solution principles from the literature. Finally, in
 section~\ref{sec:gaps/proposed}, we list two proposals of solution and refer
 to the respective chapters that document them.
@@ -214,7 +214,7 @@ combination of values in X appears in Y \cite{abedjan2015}
 \end{displayquote}
 
 The definition of \gls{IND} is based on set theory, which is not directly applicable to
-numeric data where measures are in the real domain (e.g. spatial coordinates
+numeric data where measures are in the real domain (e.g., spatial coordinates
 or flux measurements) and usually
 have an associated uncertainty that may or may not be explicitly stored.
 
@@ -306,7 +306,7 @@ This partial order enables us to structure the search space as a lattice, as exe
 \textsc{Mind}~\cite{DeMarchi2002} is a bottom-up approach: it starts
 from a set of known, satisfied unary \glspl{IND} and builds higher arity candidates
 combining them.
-These new candidates are then validated against the database and those satisfied
+These new candidates are then validated against the database, and those satisfied
 are used for computing the next-level candidates until no more candidates are available.
 
 \Zigzag~\cite{DeMarchi2003zigzag} starts with a \textsc{Mind} bottom-up approach
@@ -321,7 +321,7 @@ Those above a given threshold (too many different tuples) are added to the negat
 Those below are top-down traversed, from level $n$ to $n$--1, validated, and then added
 to the positive border if they are satisfied. The algorithm then iterates, building a new
 optimistic border until it is impossible to generate new \glspl{IND}. The optimistic approach
-can prune the search space very aggressively when there are high-arity \glspl{IND},
+can prune the search space aggressively when there are high-arity \glspl{IND},
 but when most arities are low,  \textsc{Mind} may perform better.
 
 \Find~\cite{koeller2003discovery} is based on the equivalence
@@ -338,7 +338,7 @@ are used to generate a new ($n$+1) uniform graph. This is a stage that correspon
 traversal.
 
 While these three algorithms were evaluated on \glspl{IND} between relational datasets
-and with attributes that can be directly compared (i.e. from discrete domains), their
+and with attributes that can be directly compared (i.e., from discrete domains), their
 traversal of the search space and their validation steps are well decoupled. They
 can be easily adapted to the equality-of-distribution statistical tests.
 
@@ -364,7 +364,7 @@ as hard as finding cliques, is doable.
 \subsection{Foreign Key Discovery}
 
 We briefly survey this area since we consider it complementary to
-\gls{IND} discovery. A \gls{FK} constrain on an attribute
+\gls{IND} discovery. A \gls{FK} constraint on an attribute
 $A$ over a \gls{PK} $B$ implies that all values present on $A$ must also be
 present on $B$.
 Therefore, there exists an inclusion dependency between $A$ and $B$.
@@ -442,7 +442,7 @@ expanding on the result from the literature mapping shown in chapter~\ref{chapte
 The algorithms described in section~\ref{sec:nind_finding} require
 discrete data, and they often need to be able to answer definitely whether
 a given \gls{IND} is satisfied --- i.e., \Mind, \Zigzag, \Find.
-While there has been proposals to enhance \Find with approximate,
+While there have been proposals to enhance \Find with approximate,
 heuristic methods, the data is still expected
 to be discrete, and the probabilistic aspect of the validation is decoupled
 from the inference of new \glspl{IND} from known \glspl{IND}.

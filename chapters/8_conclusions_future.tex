@@ -26,12 +26,12 @@ when meta-data is incomplete or inconsistent.
 In chapter~\ref{chapter:diverse}, we confirmed that users spend a non-negligible
 amount of resources just examining the data structure and layout.
 
-The question that followed was: can we leverage the data \emph{distribution} to
+The following question was: can we leverage the data \emph{distribution} to
 assist users in understanding the schema, on seeing how different datasets may come together?
 This is particularly important when the data is numerical and uncertain since
 one can not just compare tuples individually but needs to inspect distributions.
 In the relational world, the \gls{IND} concept comes close to the objective:
-Parts of a relation contained (included) within another. However, this modeling
+parts of a relation that are contained (included) within another. However, this modeling
 relies on the attributes' discrete nature, such as name, date of birth, etc.
 
 In chapter~\ref{chapter:presq} we propose a generalization, the \gls{EDD}, that
@@ -65,11 +65,11 @@ Almost 60\% of the classified works were published in 2015 and later.
 By the end of 2022, we updated our survey to check on the evolution of the research. This second
 round showed that sampling techniques for \gls{AQP} remain a popular and evolving
 area of research. Additionally, Deep Learning is becoming more popular in this domain thanks to its
-capabilities of pattern recognition and data summarization.
+pattern recognition and data summarization capabilities.
 
 The results of this survey, presented in chapter~\ref{chapter:literature_review}, are a valuable update on
 the state-of-the-art and contribute to the first sub-objective: finding existing techniques that help users
-to explore the data in situ.
+to explore the data \emph{in-situ}.
 
 \subsection{New category for Interactive Data Exploration}
 The state of the literature at the time of our survey indicated that within the
@@ -203,7 +203,7 @@ For instance, \PresQ is designed to \emph{link} multiple datasets containing noi
 It can be interesting to evaluate its capabilities to perform \emph{linking} (re-identification)
 attacks~\cite{Chen2009} on anonymized datasets. Additionally, the results of our tests on the
 two-sample test based on \gls{SOM}, particularly the example shown in section~\ref{subsec:som_oulad},
- hint at the possibility of using this technique in order to achieve \emph{attribute disclosure}:
+ hint at the possibility of using this technique to achieve \emph{attribute disclosure}:
  the attackers improve their knowledge of a set of attributes for a given individual~\cite{ENISA2015}.
 Should these algorithms prove useful in performing this kind of attack, researchers could
 use them to guide their efforts toward new defense models.
